@@ -78,7 +78,7 @@ export function HeroSection() {
                 </Link>
 
                 <a
-                  href="https://wa.me/904621234567"
+                  href="https://wa.me/905052754540"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-6 py-3.5 text-[15px] font-black text-white transition hover:bg-whatsapp-hover"

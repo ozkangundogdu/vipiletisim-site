@@ -193,7 +193,7 @@ export function SiteHeader() {
             <ContactBlock
               type="phone"
               title="Telefon Hattı"
-              value="+90 (462) 123 45 67"
+              value="+90 (505) 275 45 40"
             />
             <ContactBlock
               type="clock"
@@ -218,7 +218,7 @@ export function SiteHeader() {
           </div>
 
           <a
-            href="tel:+904621234567"
+            href="tel:+905052754540"
             className="rounded-[4px] bg-brand px-4 py-3 text-sm font-black text-white lg:hidden"
           >
             Ara

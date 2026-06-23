@@ -64,7 +64,7 @@ export function SiteFooter() {
     "@type": "LocalBusiness",
     name: "Vip İletişim Teknik Servis",
     url: "https://vipiletisim.com.tr",
-    telephone: "+904621234567",
+    telephone: "+905052754540",
     address: {
       "@type": "PostalAddress",
       streetAddress: "Trabzon Merkez",
@@ -112,8 +112,8 @@ export function SiteFooter() {
               </div>
               <div className="flex items-start gap-2 text-[13px]">
                 <PhoneIcon />
-                <a href="tel:+904621234567" className="hover:text-white transition-colors">
-                  +90 (462) 123 45 67
+                <a href="tel:+905052754540" className="hover:text-white transition-colors">
+                  +90 (505) 275 45 40
                 </a>
               </div>
               <div className="flex items-start gap-2 text-[13px]">
@@ -123,7 +123,7 @@ export function SiteFooter() {
             </address>
 
             <a
-              href="https://wa.me/904621234567"
+              href="https://wa.me/905052754540"
               target="_blank"
               rel="noopener noreferrer"
               className="mt-5 inline-flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-2.5 text-[13px] font-bold text-white hover:bg-whatsapp-hover transition-colors"
@@ -204,10 +204,10 @@ export function SiteFooter() {
             <div className="mt-6 rounded-xl border border-zinc-800 bg-zinc-900 p-4">
               <p className="mb-1 text-[12px] font-bold text-zinc-300">Hızlı Tamir İçin Ara</p>
               <a
-                href="tel:+904621234567"
+                href="tel:+905052754540"
                 className="text-[18px] font-black text-accent hover:underline"
               >
-                +90 (462) 123 45 67
+                +90 (505) 275 45 40
               </a>
               <p className="mt-1 text-[11px] text-zinc-500">Pzt – Cmt, 09:00 – 19:00</p>
             </div>

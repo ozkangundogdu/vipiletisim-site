@@ -79,7 +79,7 @@ const organizationSchema = {
   description:
     "Trabzon'da iPhone, Samsung, Xiaomi, Huawei ve Oppo telefon tamiri. Orijinal parça, uzman kadro.",
   url: BASE,
-  telephone: "+904621234567",
+  telephone: "+905052754540",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Trabzon Merkez",

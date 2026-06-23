@@ -214,13 +214,13 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
               <h3 className="mb-3 font-black text-zinc-900">Hemen İletişime Geç</h3>
               <a
-                href="tel:+904621234567"
+                href="tel:+905052754540"
                 className="mb-2 flex items-center gap-2 rounded-lg bg-accent px-4 py-3 font-bold text-zinc-900 hover:bg-accent-hover"
               >
-                📞 +90 (462) 123 45 67
+                📞 +90 (505) 275 45 40
               </a>
               <a
-                href="https://wa.me/904621234567"
+                href="https://wa.me/905052754540"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover"
