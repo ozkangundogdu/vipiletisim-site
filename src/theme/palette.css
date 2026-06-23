@@ -1,0 +1,35 @@
+/*
+ * Site renk paleti — tüm tema renkleri buradan yönetilir.
+ * Tailwind v4 @theme blokları ile utility class olarak kullanılabilir:
+ *   bg-brand, text-brand-hover, bg-surface-header ...
+ */
+
+@theme {
+  /* Ana marka rengi */
+  --color-brand:          #ff351b;
+  --color-brand-hover:    #e02d16;
+
+  /* Vurgu (altın sarısı) */
+  --color-accent:         #F3C409;
+  --color-accent-hover:   #d9af08;
+
+  /* WhatsApp */
+  --color-whatsapp:       #25D366;
+  --color-whatsapp-hover: #1ebc5a;
+
+  /* Arkaplan yüzeyleri */
+  --color-surface-page:     #f4f5f7;
+  --color-surface-header:   #101010;
+  --color-surface-hero:     #0a1a3a;
+  --color-surface-nav:      #FAFAFA;
+  --color-surface-nav-hover:#f0f0f0;
+
+  /* Metin */
+  --color-text-base:      #171717;
+  --color-text-muted:     #6b7280;
+  --color-text-subtle:    #9ca3af;
+
+  /* Markalar bölümü */
+  --color-brands-bg:        #FAFAFA;
+  --color-brands-divider:   #e0e0e0;
+}
