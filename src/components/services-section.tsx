@@ -90,7 +90,7 @@ const services = [
     ),
   },
   {
-    name: "Home Tuş",
+    name: "Face ID Tamiri",
     href: "/tamir-sihirbazi?ariza=face-id-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
