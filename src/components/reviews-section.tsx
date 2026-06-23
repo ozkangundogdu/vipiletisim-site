@@ -93,10 +93,6 @@ export function ReviewsSection() {
           Trabzon'da yüzlerce müşterimizin güvenini kazanan teknik servis deneyimi — orijinal parça, uzman kadro, garanti.
         </p>
 
-        <p className="mb-8 text-center text-[15px] text-zinc-500">
-          Trabzon'da hizmet verdiğimiz müşterilerimizin Google değerlendirmeleri
-        </p>
-
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (
             <article
