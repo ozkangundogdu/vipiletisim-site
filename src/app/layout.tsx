@@ -1,5 +1,13 @@
 import type { Metadata } from "next";
+import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+
+const nunitoSans = Nunito_Sans({
+  subsets: ["latin"],
+  weight: ["400", "600", "700", "800", "900"],
+  variable: "--font-nunito-sans",
+  display: "swap",
+});
 
 const BASE = "https://vipiletisim.com.tr";
 
@@ -113,7 +121,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="tr" className="h-full">
+    <html lang="tr" className={`h-full ${nunitoSans.variable}`}>
       <head>
         <script
           type="application/ld+json"

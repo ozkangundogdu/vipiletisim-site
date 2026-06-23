@@ -146,7 +146,7 @@ function DesktopNav() {
             <li key={item.label} className="h-full border-l border-zinc-300 last:border-r">
               <Link
                 href={item.href}
-                className="flex h-full items-center justify-center gap-2 whitespace-nowrap px-[22px] text-[17px] font-black leading-none text-zinc-700 transition hover:bg-surface-nav-hover hover:text-zinc-950"
+                className="flex h-full items-center justify-center gap-2 whitespace-nowrap px-[22px] text-[15px] font-extrabold leading-none text-zinc-700 transition hover:bg-surface-nav-hover hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
               >
                 {item.icon ? <WrenchIcon /> : null}
                 <span>{item.label}</span>
@@ -172,7 +172,7 @@ function MobileNav() {
           <Link
             key={item.label}
             href={item.href}
-            className="border-b border-zinc-300 px-5 py-3 text-sm font-bold text-zinc-700 hover:text-zinc-950"
+            className="border-b border-zinc-300 px-5 py-3 text-sm font-extrabold text-zinc-700 hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
           >
             {item.label}
           </Link>
