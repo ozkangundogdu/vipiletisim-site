@@ -17,10 +17,14 @@ export function BrandsSection() {
       <div className="text-center">
         <h2
           id="markalar-baslik"
-          className="mb-[15px] text-3xl font-black tracking-tight text-zinc-900 lg:text-4xl"
+          className="text-3xl font-black tracking-tight lg:text-4xl"
+          style={{ color: '#1A3A6B' }}
         >
           Hizmet Verdiğimiz Markalar
         </h2>
+        <p className="mt-2 mb-[15px] text-[15px] text-zinc-500">
+          Trabzon'da Apple, Samsung ve Xiaomi başta olmak üzere tüm akıllı telefon markalarında uzman teknik servis.
+        </p>
       </div>
 
       {/* Logolar — gri arka planda */}

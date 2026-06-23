@@ -141,10 +141,14 @@ export function ServicesSection() {
 
         <h2
           id="hizmetler-baslik"
-          className="mb-[15px] text-center text-3xl font-black tracking-tight text-zinc-900 lg:text-4xl"
+          className="text-center text-3xl font-black tracking-tight lg:text-4xl"
+          style={{ color: '#1A3A6B' }}
         >
           Tamir Hizmetlerimiz
         </h2>
+        <p className="mt-2 mb-[15px] text-center text-[15px] text-zinc-500">
+          Ekran değişiminden anakart tamirine kadar Trabzon'da geniş kapsamlı telefon tamir hizmetleri. Orijinal parça, aynı gün teslim.
+        </p>
 
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {services.map((service) => (

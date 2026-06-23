@@ -84,10 +84,14 @@ export function ReviewsSection() {
       <div className="mx-auto max-w-[1330px] px-6">
         <h2
           id="yorumlar-baslik"
-          className="mb-[15px] text-center text-3xl font-black tracking-tight text-zinc-900 lg:text-4xl"
+          className="text-center text-3xl font-black tracking-tight lg:text-4xl"
+          style={{ color: '#1A3A6B' }}
         >
           Memnuniyet Garantilerimiz
         </h2>
+        <p className="mt-2 mb-[15px] text-center text-[15px] text-zinc-500">
+          Trabzon'da yüzlerce müşterimizin güvenini kazanan teknik servis deneyimi — orijinal parça, uzman kadro, garanti.
+        </p>
 
         <p className="mb-8 text-center text-[15px] text-zinc-500">
           Trabzon'da hizmet verdiğimiz müşterilerimizin Google değerlendirmeleri
