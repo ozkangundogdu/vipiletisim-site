@@ -14,14 +14,10 @@ const navItems = [
 function Logo() {
   return (
     <Link href="/" className="flex h-full items-center" aria-label="Vip İletişim ana sayfa">
-      <Image
-        src="/images/logo.png"
-        alt="Vip İletişim Logo"
-        width={109}
-        height={52}
-        className="h-[52px] w-auto object-contain"
-        priority
-      />
+      <span className="text-2xl font-black tracking-tight">
+        <span style={{ color: '#F3C409' }}>VİP</span>
+        <span className="text-white"> İletişim</span>
+      </span>
     </Link>
   );
 }
