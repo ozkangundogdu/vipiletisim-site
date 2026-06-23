@@ -2,6 +2,7 @@
 
 import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
+import Image from 'next/image';
 import { type Brand, getModelsForBrand, getRepairTypesForModel, repairTypeList } from '@/data/services';
 
 const repairIcons: Record<string, string> = {
@@ -31,10 +32,10 @@ const repairIcons: Record<string, string> = {
     'M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14zm-3 0H7v-3h7v3z',
 };
 
-const brandConfig: Record<Brand, { label: string; bg: string; text: string }> = {
-  iphone:  { label: 'iPhone',  bg: '#111111', text: '#ffffff' },
-  samsung: { label: 'Samsung', bg: '#1428A0', text: '#ffffff' },
-  xiaomi:  { label: 'Xiaomi',  bg: '#FF6900', text: '#ffffff' },
+const brandConfig: Record<Brand, { label: string; bg: string; text: string; logo: string }> = {
+  iphone:  { label: 'iPhone',  bg: '#111111', text: '#ffffff', logo: '/images/temir sihirbazı/iphone.png' },
+  samsung: { label: 'Samsung', bg: '#1428A0', text: '#ffffff', logo: '/images/temir sihirbazı/samsung.png' },
+  xiaomi:  { label: 'Xiaomi',  bg: '#FF6900', text: '#ffffff', logo: '/images/temir sihirbazı/xiaomi.png' },
 };
 
 function StepIndicator({ step, total }: { step: number; total: number }) {
@@ -150,10 +151,15 @@ function WizardInner() {
                 <button
                   key={key}
                   onClick={() => selectBrand(key)}
-                  className="flex flex-col items-center justify-center gap-3 rounded-xl p-6 font-black text-lg transition hover:opacity-90 hover:scale-[1.02]"
-                  style={{ background: cfg.bg, color: cfg.text }}
+                  className="flex items-center justify-center rounded-xl border border-zinc-200 bg-white p-6 transition hover:border-zinc-400 hover:shadow-md hover:scale-[1.02]"
                 >
-                  {cfg.label}
+                  <Image
+                    src={cfg.logo}
+                    alt={cfg.label}
+                    width={120}
+                    height={60}
+                    className="h-14 w-auto object-contain"
+                  />
                 </button>
               )
             )}
