@@ -78,14 +78,10 @@ export function FaqSection() {
       <div className="relative mx-auto max-w-[1330px] px-6">
         <h2
           id="sss-baslik"
-          className="text-center text-3xl font-black tracking-tight lg:text-4xl"
-          style={{ color: '#1A3A6B' }}
+          className="mb-[15px] text-center text-3xl font-black tracking-tight text-zinc-900 lg:text-4xl"
         >
           Sıkça Sorulan Sorular
         </h2>
-        <p className="mt-2 mb-[15px] text-center text-[15px] text-zinc-500">
-          Trabzon cep telefonu tamiri hakkında merak ettikleriniz — ücretler, tamir süresi ve süreç hakkında net yanıtlar.
-        </p>
 
         <div className="mx-auto max-w-3xl divide-y divide-zinc-200">
           {faqs.map((faq, i) => (

@@ -27,7 +27,7 @@ export const repairTypeList: RepairTypeInfo[] = [
   { key: 'ekran-degisimi',         label: 'Ekran Değişimi',    duration: '30–60 dk'  },
   { key: 'batarya-degisimi',       label: 'Batarya Değişimi',  duration: '20–40 dk'  },
   { key: 'sarj-soketi-tamiri',     label: 'Şarj Soketi',       duration: '30–60 dk'  },
-  { key: 'kulaklik-soketi-tamiri', label: 'Ses Sorunları',     duration: '20–40 dk'  },
+  { key: 'kulaklik-soketi-tamiri', label: 'Kulaklık Soketi',   duration: '20–40 dk'  },
   { key: 'mikrofon-tamiri',        label: 'Mikrofon Tamiri',   duration: '30–60 dk'  },
   { key: 'hoparlor-tamiri',        label: 'Hoparlör Tamiri',   duration: '30–60 dk'  },
   { key: 'on-kamera-tamiri',       label: 'Ön Kamera',         duration: '30–60 dk'  },
@@ -36,14 +36,6 @@ export const repairTypeList: RepairTypeInfo[] = [
   { key: 'kamera-cami-tamiri',     label: 'Kamera Camı',       duration: '20–40 dk'  },
   { key: 'kasa-degisimi',          label: 'Kasa Değişimi',     duration: '60–120 dk' },
   { key: 'arka-kapak-tamiri',      label: 'Arka Kapak',        duration: '30–60 dk'  },
-  { key: 'anakart-tamiri',         label: 'Anakart Tamiri',    duration: '60–120 dk' },
-  { key: 'sivi-temasi',            label: 'Sıvı Teması',       duration: '60–120 dk' },
-  { key: 'wifi-tamiri',            label: 'Wifi Tamiri',       duration: '30–60 dk'  },
-  { key: 'servis-yok-arizasi',     label: 'Servis Yok Arızası',duration: '60–120 dk' },
-  { key: 'sarj-olmuyor',           label: 'Şarj Olmuyor',      duration: '30–60 dk'  },
-  { key: 'sarj-entegresi-tamiri',  label: 'Şarj Entegresi Tamiri', duration: '60–120 dk' },
-  { key: 'acma-kapama-tusu',       label: 'Açma/Kapama Tuşu Tamiri', duration: '30–60 dk' },
-  { key: 'on-cam-degisimi',        label: 'Ön Cam Değişimi',   duration: '20–40 dk'  },
 ];
 
 const brandModelMap: Record<Brand, string[]> = {

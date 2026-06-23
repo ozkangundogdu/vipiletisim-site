@@ -14,17 +14,13 @@ export function BrandsSection() {
     <section className="bg-white py-[20px]" aria-labelledby="markalar-baslik">
 
       {/* Başlık */}
-      <div className="text-center mb-[15px]">
+      <div className="text-center">
         <h2
           id="markalar-baslik"
-          className="text-3xl font-black tracking-tight lg:text-4xl"
-          style={{ color: '#1A3A6B' }}
+          className="mb-[15px] text-3xl font-black tracking-tight text-zinc-900 lg:text-4xl"
         >
           Hizmet Verdiğimiz Markalar
         </h2>
-        <p className="mt-2 text-[15px] text-zinc-500">
-          Trabzon'da Apple, Samsung ve Xiaomi başta olmak üzere tüm akıllı telefon markalarında uzman teknik servis.
-        </p>
       </div>
 
       {/* Logolar — gri arka planda */}
