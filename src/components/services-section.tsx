@@ -3,7 +3,7 @@ import Link from "next/link";
 const services = [
   {
     name: "Ekran Değişimi",
-    href: "/tamir-hizmetleri/iphone-16-ekran-degisimi",
+    href: "/tamir-sihirbazi?ariza=ekran-degisimi",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -13,7 +13,7 @@ const services = [
   },
   {
     name: "Batarya Değişimi",
-    href: "/tamir-hizmetleri/iphone-batarya-degisimi",
+    href: "/tamir-sihirbazi?ariza=batarya-degisimi",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <rect x="2" y="7" width="18" height="10" rx="2" />
@@ -24,7 +24,7 @@ const services = [
   },
   {
     name: "Şarj Soketi",
-    href: "/tamir-hizmetleri/iphone-sarj-soketi-tamiri",
+    href: "/tamir-sihirbazi?ariza=sarj-soketi-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <path d="M5 12h14" />
@@ -36,7 +36,7 @@ const services = [
   },
   {
     name: "Kulaklık Soketi",
-    href: "/tamir-hizmetleri",
+    href: "/tamir-sihirbazi?ariza=kulaklik-soketi-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
@@ -47,7 +47,7 @@ const services = [
   },
   {
     name: "Mikrofon Tamiri",
-    href: "/tamir-hizmetleri",
+    href: "/tamir-sihirbazi?ariza=mikrofon-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
@@ -59,7 +59,7 @@ const services = [
   },
   {
     name: "Hoparlör Tamiri",
-    href: "/tamir-hizmetleri/iphone-hoparlor-tamiri",
+    href: "/tamir-sihirbazi?ariza=hoparlor-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
@@ -70,7 +70,7 @@ const services = [
   },
   {
     name: "Ön Kamera",
-    href: "/tamir-hizmetleri",
+    href: "/tamir-sihirbazi?ariza=on-kamera-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <path d="M23 7l-7 5 7 5V7z" />
@@ -81,7 +81,7 @@ const services = [
   },
   {
     name: "Arka Kamera",
-    href: "/tamir-hizmetleri/iphone-arka-kamera-degisimi",
+    href: "/tamir-sihirbazi?ariza=arka-kamera-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
@@ -91,7 +91,7 @@ const services = [
   },
   {
     name: "Home Tuş",
-    href: "/tamir-hizmetleri/iphone-acma-kapama-tusu-degisimi",
+    href: "/tamir-sihirbazi?ariza=face-id-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <circle cx="12" cy="12" r="10" />
@@ -101,7 +101,7 @@ const services = [
   },
   {
     name: "Kamera Camı",
-    href: "/tamir-hizmetleri/iphone-kamera-cami-degisimi",
+    href: "/tamir-sihirbazi?ariza=kamera-cami-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <circle cx="12" cy="12" r="10" />
@@ -112,7 +112,7 @@ const services = [
   },
   {
     name: "Kasa Değişimi",
-    href: "/tamir-hizmetleri",
+    href: "/tamir-sihirbazi?ariza=kasa-degisimi",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <rect x="5" y="2" width="14" height="20" rx="2" />
@@ -123,7 +123,7 @@ const services = [
   },
   {
     name: "Arka Kapak",
-    href: "/tamir-hizmetleri",
+    href: "/tamir-sihirbazi?ariza=arka-kapak-tamiri",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <rect x="5" y="2" width="14" height="20" rx="2" />

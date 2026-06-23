@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { type Brand, getModelsForBrand, getRepairTypesForModel } from '@/data/services';
+import { useState, Suspense } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { type Brand, getModelsForBrand, getRepairTypesForModel, repairTypeList } from '@/data/services';
 
 const repairIcons: Record<string, string> = {
   'ekran-degisimi':
@@ -37,10 +37,10 @@ const brandConfig: Record<Brand, { label: string; bg: string; text: string }> = 
   xiaomi:  { label: 'Xiaomi',  bg: '#FF6900', text: '#ffffff' },
 };
 
-function StepIndicator({ step }: { step: number }) {
+function StepIndicator({ step, total }: { step: number; total: number }) {
   return (
     <div className="mb-8 flex items-center justify-center gap-3">
-      {[1, 2, 3].map((n) => (
+      {Array.from({ length: total }, (_, i) => i + 1).map((n) => (
         <div
           key={n}
           className="h-3 w-3 rounded-full transition-all"
@@ -79,8 +79,17 @@ function Chip({ label, color }: { label: string; color: string }) {
   );
 }
 
-export function WizardClient() {
+function WizardInner() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const arizoParam = searchParams.get('ariza');
+
+  const arizoLabel = arizoParam
+    ? (repairTypeList.find((r) => r.key === arizoParam)?.label ?? arizoParam)
+    : null;
+
+  const totalSteps = arizoParam ? 2 : 3;
+
   const [step, setStep] = useState<1 | 2 | 3>(1);
   const [brand, setBrand] = useState<Brand | null>(null);
   const [model, setModel] = useState<string | null>(null);
@@ -94,6 +103,14 @@ export function WizardClient() {
   }
 
   function selectModel(m: string) {
+    if (arizoParam && brand) {
+      const repairTypes = getRepairTypesForModel(m, brand);
+      const rt = repairTypes.find((r) => r.key === arizoParam);
+      if (rt) {
+        router.push(`/tamir-hizmetleri/${rt.slug}`);
+        return;
+      }
+    }
     setModel(m);
     setStep(3);
   }
@@ -106,11 +123,20 @@ export function WizardClient() {
   const filteredModels = models.filter((m) =>
     m.toLowerCase().includes(search.toLowerCase())
   );
-  const repairTypes = brand && model ? getRepairTypesForModel(model, brand) : [];
 
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm lg:p-8">
-      <StepIndicator step={step} />
+      <StepIndicator step={step} total={totalSteps} />
+
+      {/* Arıza bilgisi — param varsa göster */}
+      {arizoLabel && (
+        <div className="mb-5 flex items-center justify-center gap-2">
+          <span className="text-sm text-zinc-500">Seçilen arıza:</span>
+          <span className="rounded-full bg-yellow-100 px-3 py-1 text-sm font-black text-zinc-800">
+            {arizoLabel}
+          </span>
+        </div>
+      )}
 
       {/* ADIM 1 — Marka */}
       {step === 1 && (
@@ -141,7 +167,9 @@ export function WizardClient() {
           <BackButton onClick={() => setStep(1)} />
           <div className="mb-4 flex items-center gap-2">
             <Chip label={brandConfig[brand].label} color={brandConfig[brand].bg} />
-            <h2 className="text-lg font-black text-zinc-800">Model seçin</h2>
+            <h2 className="text-lg font-black text-zinc-800">
+              {arizoParam ? 'Modelinizi seçin' : 'Model seçin'}
+            </h2>
           </div>
           <input
             type="search"
@@ -164,8 +192,8 @@ export function WizardClient() {
         </div>
       )}
 
-      {/* ADIM 3 — Arıza */}
-      {step === 3 && brand && model && (
+      {/* ADIM 3 — Arıza (sadece normal akışta) */}
+      {step === 3 && brand && model && !arizoParam && (
         <div>
           <BackButton onClick={() => setStep(2)} />
           <div className="mb-4 flex flex-wrap items-center gap-2">
@@ -174,7 +202,7 @@ export function WizardClient() {
             <h2 className="text-lg font-black text-zinc-800">Arıza seçin</h2>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {repairTypes.map((rt) => (
+            {getRepairTypesForModel(model, brand).map((rt) => (
               <button
                 key={rt.key}
                 onClick={() => selectRepair(rt.slug)}
@@ -199,5 +227,13 @@ export function WizardClient() {
         </div>
       )}
     </div>
+  );
+}
+
+export function WizardClient() {
+  return (
+    <Suspense fallback={<div className="py-10 text-center text-zinc-400">Yükleniyor…</div>}>
+      <WizardInner />
+    </Suspense>
   );
 }
