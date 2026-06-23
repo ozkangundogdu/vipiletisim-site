@@ -98,7 +98,7 @@ export function SiteFooter() {
 
           {/* Kolon 1 — Firma Bilgisi */}
           <div className="lg:col-span-1">
-            <p className="mb-1 text-[16px] font-black text-white">Vip İletişim Teknik Servis</p>
+            <p className="mb-1 text-[16px] font-black" style={{ color: '#F3C409' }}>Vip İletişim Trabzon Cep Telefonu Teknik Servisi</p>
 
             <p className="mb-5 text-[13px] leading-relaxed text-zinc-400">
               Trabzon'da iPhone, Samsung, Xiaomi, Huawei ve Oppo dahil tüm marka ve modellerde
