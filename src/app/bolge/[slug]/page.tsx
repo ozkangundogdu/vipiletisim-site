@@ -122,7 +122,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
             <section>
               <h2 className="mb-3 text-xl font-black text-zinc-900">{name}'da Hangi Tamir Hizmetleri Sunulur?</h2>
               <ul className="grid grid-cols-2 gap-2">
-                {["Ekran Değişimi", "Batarya Değişimi", "Şarj Soketi Tamiri", "Kamera Tamiri", "Hoparlör Tamiri", "Mikrofon Tamiri", "Home Tuş Değişimi", "Arka Kapak Değişimi"].map((h) => (
+                {["Ekran Değişimi", "Batarya Değişimi", "Şarj Soketi Tamiri", "Kamera Tamiri", "Hoparlör Tamiri", "Mikrofon Tamiri", "Face ID Tamiri", "Arka Kapak Değişimi"].map((h) => (
                   <li key={h} className="flex items-center gap-2 text-[14px] text-zinc-700">
                     <span className="text-accent">✓</span> {h}
                   </li>

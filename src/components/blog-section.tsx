@@ -59,10 +59,14 @@ export function BlogSection() {
 
         <h2
           id="blog-baslik"
-          className="mb-[15px] text-center text-3xl font-black tracking-tight text-zinc-900 lg:text-4xl"
+          className="text-center text-3xl font-black tracking-tight lg:text-4xl"
+          style={{ color: '#1A3A6B' }}
         >
           Blog Yazıları
         </h2>
+        <p className="mt-2 mb-[15px] text-center text-[15px] text-zinc-500">
+          Telefon bakımı, tamir süreçleri ve teknik ipuçları hakkında Vip İletişim uzmanlarından güncel rehberler.
+        </p>
 
         <ul className="grid grid-cols-2 gap-6 lg:grid-cols-3">
           {posts.map((post) => (
@@ -88,7 +92,7 @@ export function BlogSection() {
                   >
                     {post.dateLabel}
                   </time>
-                  <h3 className="text-[15px] font-black leading-snug text-zinc-900 group-hover:text-accent">
+                  <h3 className="text-[15px] font-black leading-snug" style={{ color: '#E06100' }}>
                     {post.title}
                   </h3>
                   <p className="mt-1 line-clamp-3 text-[13px] leading-relaxed text-zinc-500">
