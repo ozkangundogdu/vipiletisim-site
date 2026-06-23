@@ -35,8 +35,8 @@ const services = [
     ),
   },
   {
-    name: "Kulaklık Soketi",
-    href: "/tamir-sihirbazi?ariza=kulaklik-soketi-tamiri",
+    name: "Ses Arızaları",
+    href: "/tamir-sihirbazi?ariza=ses-arizalari",
     icon: (
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
         <path d="M3 18v-6a9 9 0 0 1 18 0v6" />
@@ -129,6 +129,92 @@ const services = [
         <rect x="5" y="2" width="14" height="20" rx="2" />
         <path d="M9 6h6" strokeLinecap="round" />
         <path d="M10 20h4" strokeLinecap="round" />
+      </svg>
+    ),
+  },
+  {
+    name: "Anakart Tamiri",
+    href: "/tamir-sihirbazi?ariza=anakart-tamiri",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <rect x="4" y="4" width="16" height="16" rx="1" />
+        <rect x="8" y="8" width="8" height="8" rx="1" />
+        <path d="M8 2v2M16 2v2M8 20v2M16 20v2M2 8h2M2 16h2M20 8h2M20 16h2" />
+      </svg>
+    ),
+  },
+  {
+    name: "Sıvı Teması",
+    href: "/tamir-sihirbazi?ariza=sivi-temasi-tamiri",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <path d="M12 2c0 0-8 7-8 13a8 8 0 0 0 16 0c0-6-8-13-8-13z" />
+        <path d="M12 12v4M10 14h4" />
+      </svg>
+    ),
+  },
+  {
+    name: "WiFi Tamiri",
+    href: "/tamir-sihirbazi?ariza=wifi-tamiri",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+        <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+        <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+        <circle cx="12" cy="20" r="1" fill="currentColor" />
+      </svg>
+    ),
+  },
+  {
+    name: "Servis Yok Arızası",
+    href: "/tamir-sihirbazi?ariza=servis-yok-arizasi",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <rect x="7" y="2" width="10" height="20" rx="2" />
+        <path d="M12 6h.01M8 18h8" />
+        <path d="M10 10l4 4M14 10l-4 4" />
+      </svg>
+    ),
+  },
+  {
+    name: "Şarj Olmuyor",
+    href: "/tamir-sihirbazi?ariza=sarj-olmuyor-tamiri",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <rect x="2" y="7" width="18" height="10" rx="2" />
+        <path d="M22 11v2" strokeWidth="3" strokeLinecap="round" />
+        <path d="M10 10l4 4M14 10l-4 4" />
+      </svg>
+    ),
+  },
+  {
+    name: "Şarj Entegresi Tamiri",
+    href: "/tamir-sihirbazi?ariza=sarj-entegresi-tamiri",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+      </svg>
+    ),
+  },
+  {
+    name: "Açma/Kapama Tuşu",
+    href: "/tamir-sihirbazi?ariza=acma-kapama-tusu-tamiri",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <path d="M12 2v10" />
+        <path d="M7.2 7.2A7 7 0 1 0 16.8 7.2" />
+      </svg>
+    ),
+  },
+  {
+    name: "Ön Cam Değişimi",
+    href: "/tamir-sihirbazi?ariza=on-cam-degisimi",
+    icon: (
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-7 w-7">
+        <rect x="5" y="2" width="14" height="20" rx="2" />
+        <path d="M9 2v4a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1V2" />
+        <path d="M9 22v-2" />
+        <path d="M15 22v-2" />
       </svg>
     ),
   },
