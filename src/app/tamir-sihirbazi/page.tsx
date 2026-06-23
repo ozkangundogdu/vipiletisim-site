@@ -1,0 +1,31 @@
+import type { Metadata } from 'next';
+import { WizardClient } from '@/components/wizard-client';
+
+export const metadata: Metadata = {
+  title: 'Tamir Sihirbazı — Marka & Arıza Seçin | Vip İletişim Trabzon',
+  description:
+    'iPhone, Samsung veya Xiaomi modelinizi seçin, arızanızı belirtin. Trabzon\'da profesyonel cep telefonu tamiri — aynı gün teslim, orijinal parça.',
+};
+
+export default function TamirSihirbaziPage() {
+  return (
+    <main className="mx-auto max-w-[900px] px-4 py-10">
+      <nav aria-label="Breadcrumb" className="mb-6 text-sm text-zinc-500">
+        <ol className="flex items-center gap-1">
+          <li><a href="/" className="hover:underline">Anasayfa</a></li>
+          <li aria-hidden="true">/</li>
+          <li className="font-medium text-zinc-800">Tamir Sihirbazı</li>
+        </ol>
+      </nav>
+
+      <h1 className="mb-2 text-2xl font-black text-zinc-900 lg:text-3xl">
+        Tamir Sihirbazı
+      </h1>
+      <p className="mb-8 text-zinc-500">
+        Markanızı, modelinizi ve arıza türünüzü seçin — size özel tamir sayfasına yönlendirelim.
+      </p>
+
+      <WizardClient />
+    </main>
+  );
+}

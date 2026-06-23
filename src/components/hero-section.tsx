@@ -68,7 +68,7 @@ export function HeroSection() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <Link
-                  href="/iletisim"
+                  href="/tamir-sihirbazi"
                   className="inline-flex items-center gap-2 rounded-[4px] bg-accent px-6 py-3.5 text-[15px] font-black text-zinc-900 transition hover:bg-accent-hover"
                 >
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
