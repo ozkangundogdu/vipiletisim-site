@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const service = getServiceBySlug(slug);
   if (!service) return {};
   return {
-    title: `${service.title} | Vip İletişim Trabzon`,
+    title: { absolute: `${service.title} | Vip İletişim Trabzon` },
     description: service.metaDescription,
     keywords: [
       `${service.model} ${service.repairType.toLowerCase()}`,
@@ -78,7 +78,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
-      warranty: "Anakart onarımlarında 180 gün işçilik garantisi",
+      warranty: "Anakart onarımlarında 90 gün işçilik garantisi",
     },
   };
 
@@ -158,7 +158,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <ul className="list-disc space-y-2 pl-5 text-[15px] text-zinc-600">
                 <li>Trabzon'da 10+ yıllık teknik servis deneyimi</li>
                 <li>Orijinal ve OEM kalitesinde yedek parça kullanımı</li>
-                <li>Anakart onarımlarında 180 gün işçilik garantisi</li>
+                <li>Anakart onarımlarında 90 gün işçilik garantisi</li>
                 <li>Aynı gün teslim</li>
                 <li>Ücretsiz ön inceleme ve fiyat bildirimi</li>
                 <li>Giresun, Rize, Artvin, Gümüşhane, Bayburt'tan kargo ile tamir imkânı</li>

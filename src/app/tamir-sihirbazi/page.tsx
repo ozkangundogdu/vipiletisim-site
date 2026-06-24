@@ -2,9 +2,23 @@ import type { Metadata } from 'next';
 import { WizardClient } from '@/components/wizard-client';
 
 export const metadata: Metadata = {
-  title: 'Tamir Sihirbazı — Marka & Arıza Seçin | Vip İletişim Trabzon',
+  title: { absolute: 'Tamir Sihirbazı — Marka & Arıza Seçin | Vip İletişim Trabzon' },
   description:
-    'iPhone, Samsung veya Xiaomi modelinizi seçin, arızanızı belirtin. Trabzon\'da profesyonel cep telefonu tamiri — aynı gün teslim, orijinal parça.',
+    "iPhone, Samsung veya Xiaomi modelinizi seçin, arızanızı belirtin. Trabzon'da profesyonel cep telefonu tamiri — aynı gün teslim, orijinal parça.",
+  keywords: [
+    "trabzon tamir sihirbazı",
+    "trabzon iphone tamir seç",
+    "trabzon samsung tamir seç",
+    "trabzon xiaomi tamir seç",
+    "telefon arıza seçici trabzon",
+  ],
+  alternates: { canonical: "https://vipiletisim.com.tr/tamir-sihirbazi" },
+  openGraph: {
+    title: "Tamir Sihirbazı | Vip İletişim Trabzon",
+    description: "Markanızı ve arızanızı seçin, size özel tamir sayfasına yönlendirelim.",
+    url: "https://vipiletisim.com.tr/tamir-sihirbazi",
+    images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630, alt: "Trabzon Telefon Tamir Sihirbazı" }],
+  },
 };
 
 export default function TamirSihirbaziPage() {

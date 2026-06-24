@@ -1,13 +1,30 @@
 import Image from "next/image";
 import Link from "next/link";
 
-const navItems = [
+type NavChild = { label: string; href: string };
+type NavItem = {
+  label: string;
+  href: string;
+  hasDropdown?: boolean;
+  icon?: boolean;
+  children?: NavChild[];
+};
+
+const navItems: NavItem[] = [
   { label: "Anasayfa", href: "/" },
-  { label: "Tamir Merkezi", href: "/tamir-merkezi", hasDropdown: true, icon: true },
-  { label: "Fiyatlar", href: "/fiyatlar", hasDropdown: true },
-  { label: "Ücretsiz Kargo", href: "/ucretsiz-kargo" },
+  { label: "Tamir Merkezi", href: "/tamir-hizmetleri#wizard", hasDropdown: false, icon: true },
+  { label: "Fiyatlar", href: "/fiyatlar" },
+  { label: "Tamir Eğitimi", href: "/tamir-egitimi" },
   { label: "Blog", href: "/blog" },
-  { label: "Kurumsal", href: "/kurumsal", hasDropdown: true },
+  {
+    label: "Kurumsal",
+    href: "/kurumsal",
+    hasDropdown: true,
+    children: [
+      { label: "Hakkımızda", href: "/kurumsal/hakkimizda" },
+      { label: "Sıkça Sorulan Sorular", href: "/kurumsal/sikca-sorulan-sorular" },
+    ],
+  },
   { label: "İletişim", href: "/iletisim" },
 ];
 
@@ -143,7 +160,7 @@ function DesktopNav() {
       <div className="mx-auto flex h-full max-w-[1330px] justify-center px-6">
         <ul className="flex h-full items-stretch">
           {navItems.map((item) => (
-            <li key={item.label} className="h-full border-l border-zinc-300 last:border-r">
+            <li key={item.label} className="group relative h-full border-l border-zinc-300 last:border-r">
               <Link
                 href={item.href}
                 className="flex h-full items-center justify-center gap-2 whitespace-nowrap px-[22px] text-[15px] font-extrabold leading-none text-zinc-700 transition hover:bg-surface-nav-hover hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
@@ -152,6 +169,20 @@ function DesktopNav() {
                 <span>{item.label}</span>
                 {item.hasDropdown ? <ChevronIcon /> : null}
               </Link>
+
+              {item.children && (
+                <div className="invisible absolute left-0 top-full z-50 min-w-[220px] translate-y-1 rounded-b-lg bg-white opacity-0 shadow-lg ring-1 ring-zinc-200 transition-all duration-150 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100">
+                  {item.children.map((child) => (
+                    <Link
+                      key={child.href}
+                      href={child.href}
+                      className="block border-b border-zinc-100 px-5 py-3 text-[14px] font-bold text-zinc-700 last:border-b-0 transition hover:bg-zinc-50 hover:text-brand [font-family:var(--font-nunito-sans)]"
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </li>
           ))}
         </ul>
@@ -168,15 +199,35 @@ function MobileNav() {
         <ChevronIcon />
       </summary>
       <nav className="grid border-t border-zinc-300" aria-label="Mobil menü">
-        {navItems.map((item) => (
-          <Link
-            key={item.label}
-            href={item.href}
-            className="border-b border-zinc-300 px-5 py-3 text-sm font-extrabold text-zinc-700 hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
-          >
-            {item.label}
-          </Link>
-        ))}
+        {navItems.map((item) =>
+          item.children ? (
+            <details key={item.label} className="group border-b border-zinc-300" suppressHydrationWarning>
+              <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-sm font-extrabold text-zinc-700 [font-family:var(--font-nunito-sans)]">
+                {item.label}
+                <ChevronIcon />
+              </summary>
+              <div className="grid border-t border-zinc-200 bg-zinc-50">
+                {item.children.map((child) => (
+                  <Link
+                    key={child.href}
+                    href={child.href}
+                    className="border-b border-zinc-200 py-2.5 pl-9 pr-5 text-sm font-bold text-zinc-600 last:border-b-0 hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
+                  >
+                    {child.label}
+                  </Link>
+                ))}
+              </div>
+            </details>
+          ) : (
+            <Link
+              key={item.label}
+              href={item.href}
+              className="border-b border-zinc-300 px-5 py-3 text-sm font-extrabold text-zinc-700 hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
+            >
+              {item.label}
+            </Link>
+          )
+        )}
       </nav>
     </details>
   );

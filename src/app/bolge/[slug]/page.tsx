@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const city = getCityBySlug(slug);
   if (!city) return {};
   return {
-    title: `${city.title} | Vip İletişim Trabzon`,
+    title: { absolute: `${city.title} | Vip İletişim Trabzon` },
     description: city.metaDescription,
     keywords: [
       `${city.name.toLowerCase()} iPhone tamiri`,
@@ -32,7 +32,8 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     openGraph: {
       title: `${city.title} | Vip İletişim Trabzon`,
       description: city.metaDescription,
-      images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630 }],
+      url: `https://vipiletisim.com.tr/bolge/${slug}`,
+      images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630, alt: `${city.name} iPhone ve Cep Telefonu Tamiri` }],
     },
   };
 }
@@ -147,7 +148,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
               <ul className="list-disc space-y-2 pl-5 text-[15px] text-zinc-600">
                 <li>Trabzon'da 10+ yıllık teknik servis deneyimi</li>
                 <li>Orijinal ve OEM kalitesinde yedek parça</li>
-                <li><strong>Anakart onarımlarında 180 gün işçilik garantisi</strong></li>
+                <li><strong>Anakart onarımlarında 90 gün işçilik garantisi</strong></li>
                 <li>Aynı gün tamir ve teslim</li>
                 <li>Ücretsiz ön inceleme</li>
                 {isKargo && <li>{name}'dan ücretsiz kargo imkânı (koşullar için arayın)</li>}

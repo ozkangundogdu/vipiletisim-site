@@ -100,6 +100,7 @@ function WizardInner() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const arizoParam = searchParams.get('ariza');
+  const markaParam = searchParams.get('marka') as Brand | null;
 
   const arizoLabel = arizoParam
     ? (repairTypeList.find((r) => r.key === arizoParam)?.label ?? arizoParam)
@@ -107,8 +108,9 @@ function WizardInner() {
 
   const totalSteps = arizoParam ? 2 : 3;
 
-  const [step, setStep] = useState<1 | 2 | 3>(1);
-  const [brand, setBrand] = useState<Brand | null>(null);
+  const validMarka = markaParam && brandConfig[markaParam] ? markaParam : null;
+  const [step, setStep] = useState<1 | 2 | 3>(validMarka ? 2 : 1);
+  const [brand, setBrand] = useState<Brand | null>(validMarka);
   const [model, setModel] = useState<string | null>(null);
   const [search, setSearch] = useState('');
 
@@ -155,7 +157,7 @@ function WizardInner() {
         </div>
       )}
 
-      {/* ADIM 1 — Marka */}
+      {/* ADIM 1 — Marka: <a> ile render edilir, crawler görür; JS varsa preventDefault ile inline akış */}
       {step === 1 && (
         <div>
           <h2 className="mb-6 text-center text-lg font-black text-zinc-800">
@@ -164,9 +166,10 @@ function WizardInner() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {(Object.entries(brandConfig) as [Brand, typeof brandConfig[Brand]][]).map(
               ([key, cfg]) => (
-                <button
+                <a
                   key={key}
-                  onClick={() => selectBrand(key)}
+                  href={arizoParam ? `/tamir-sihirbazi?ariza=${arizoParam}&marka=${key}` : `/tamir-sihirbazi?marka=${key}`}
+                  onClick={(e) => { e.preventDefault(); selectBrand(key); }}
                   className="flex items-center justify-center rounded-xl border border-zinc-200 bg-white p-6 transition hover:border-zinc-400 hover:shadow-md hover:scale-[1.02]"
                 >
                   <Image
@@ -176,7 +179,7 @@ function WizardInner() {
                     height={60}
                     className="h-14 w-auto object-contain"
                   />
-                </button>
+                </a>
               )
             )}
           </div>
