@@ -3,7 +3,7 @@ import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 
 const nunitoSans = Nunito_Sans({
-  subsets: ["latin"],
+  subsets: ["latin", "latin-ext"],
   weight: ["400", "600", "700", "800", "900"],
   variable: "--font-nunito-sans",
   display: "swap",
@@ -82,16 +82,16 @@ const organizationSchema = {
   telephone: "+905052754540",
   address: {
     "@type": "PostalAddress",
-    streetAddress: "Trabzon Merkez",
-    addressLocality: "Trabzon",
+    streetAddress: "Çarşı Mahallesi Uzun Sokak Kolotoğlu Pasajı Kat 1",
+    addressLocality: "Ortahisar",
     addressRegion: "Trabzon",
-    postalCode: "61000",
+    postalCode: "61040",
     addressCountry: "TR",
   },
   geo: {
     "@type": "GeoCoordinates",
-    latitude: 41.0027,
-    longitude: 39.7168,
+    latitude: 41.0057,
+    longitude: 39.7254,
   },
   openingHoursSpecification: [
     {
@@ -110,9 +110,9 @@ const organizationSchema = {
     { "@type": "City", name: "Gümüşhane" },
     { "@type": "City", name: "Bayburt" },
   ],
-  hasMap: "https://maps.google.com/?q=Trabzon",
+  hasMap: "https://maps.app.goo.gl/DZ4cDzDNBNAGvxsR9",
   currenciesAccepted: "TRY",
-  paymentAccepted: "Nakit, Kredi Kartı",
+  paymentAccepted: "Nakit, EFT",
 };
 
 export default function RootLayout({

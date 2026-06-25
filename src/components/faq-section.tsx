@@ -29,7 +29,7 @@ const faqs = [
   {
     question: "Telefon tamiri için yetkili servis mi, özel servis mi tercih edilmeli?",
     answer:
-      "Garanti süresi içindeyseniz yetkili servis tercih edilmelidir. Garanti dışı cihazlarda ise uzman özel servisler hem daha hızlı hem de daha uygun fiyatlı hizmet sunar. Vip İletişim olarak anakart onarımlarında 180 gün işçilik garantisi, diğer işlemlerde uzman kadro güvencesi sunuyoruz.",
+      "Garanti süresi içindeyseniz yetkili servis tercih edilmelidir. Garanti dışı cihazlarda ise uzman özel servisler hem daha hızlı hem de daha uygun fiyatlı hizmet sunar. Vip İletişim olarak anakart onarımlarında 90 gün işçilik garantisi sunuyoruz.",
   },
   {
     question: "Trabzon'da iPhone tamiri nerede yaptırılır?",

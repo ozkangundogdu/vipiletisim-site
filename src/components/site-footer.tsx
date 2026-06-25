@@ -59,38 +59,8 @@ function WhatsAppIcon() {
 }
 
 export function SiteFooter() {
-  const footerSchema = {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Vip İletişim Teknik Servis",
-    url: "https://vipiletisim.com.tr",
-    telephone: "+905052754540",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Trabzon Merkez",
-      addressLocality: "Trabzon",
-      addressRegion: "Trabzon",
-      addressCountry: "TR",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-        opens: "09:00",
-        closes: "19:00",
-      },
-    ],
-    priceRange: "₺₺",
-    areaServed: ["Trabzon", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bayburt"],
-    sameAs: [],
-  };
-
   return (
     <footer className="bg-surface-header text-zinc-400" aria-label="Site alt bilgisi">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(footerSchema) }}
-      />
 
       {/* Ana Footer İçeriği */}
       <div className="mx-auto max-w-[1330px] px-6 pt-12 pb-8">
@@ -108,7 +78,7 @@ export function SiteFooter() {
             <address className="not-italic space-y-2.5">
               <div className="flex items-start gap-2 text-[13px]">
                 <MapPinIcon />
-                <span>Trabzon Merkez, Trabzon</span>
+                <span>Çarşı Mah. Uzun Sokak Kolotoğlu Pasajı Kat 1, Ortahisar/Trabzon</span>
               </div>
               <div className="flex items-start gap-2 text-[13px]">
                 <PhoneIcon />
