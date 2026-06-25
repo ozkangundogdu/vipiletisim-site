@@ -59,7 +59,7 @@ export default function CitiesListPage() {
 
       <main>
         {/* ── Hero ── */}
-        <section className="bg-surface-hero py-10 lg:py-14">
+        <section className="bg-surface-hero py-6 lg:py-8">
           <div className="mx-auto max-w-[1330px] px-6">
             <nav aria-label="Breadcrumb" className="mb-4 text-[13px] text-zinc-400">
               <Link href="/" className="hover:text-white transition-colors">Anasayfa</Link>
@@ -143,7 +143,7 @@ export default function CitiesListPage() {
         </section>
 
         {/* ── CTA ── */}
-        <section className="bg-surface-hero py-10">
+        <section className="bg-surface-hero py-6">
           <div className="mx-auto max-w-[1330px] px-6 text-center">
             <h2 className="text-2xl font-black text-white">Şehriniz Listede Yok mu?</h2>
             <p className="mt-2 text-white/70">Türkiye'nin her yerinden kargo ile cihaz kabul ediyoruz. Bize yazın.</p>

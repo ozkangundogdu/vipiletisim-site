@@ -212,7 +212,7 @@ export default function FiyatlarPage() {
 
       <main>
         {/* Hero Banner */}
-        <section className="bg-surface-hero py-10 lg:py-14" aria-label="Sayfa başlığı">
+        <section className="bg-surface-hero py-6 lg:py-8" aria-label="Sayfa başlığı">
           <div className="mx-auto max-w-[1330px] px-6">
             <nav aria-label="Breadcrumb">
               <ol className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
@@ -427,7 +427,7 @@ export default function FiyatlarPage() {
         </section>
 
         {/* CTA */}
-        <section className="bg-surface-hero py-12">
+        <section className="bg-surface-hero py-6">
           <div className="mx-auto max-w-[1330px] px-6 text-center">
             <h2 className="text-2xl font-black text-white lg:text-3xl">
               Güncel Fiyatı Öğrenmek 1 Dakika Alıyor

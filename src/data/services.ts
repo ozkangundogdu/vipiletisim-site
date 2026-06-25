@@ -4,6 +4,7 @@ export type RepairTypeInfo = {
   key: string;
   label: string;
   duration: string;
+  brands?: Brand[]; // undefined = tüm markalar için geçerli
 };
 
 export type BrandInfo = {
@@ -32,7 +33,7 @@ export const repairTypeList: RepairTypeInfo[] = [
   { key: 'hoparlor-tamiri',         label: 'Hoparlör Tamiri',        duration: '30–60 dk'  },
   { key: 'on-kamera-tamiri',        label: 'Ön Kamera',              duration: '30–60 dk'  },
   { key: 'arka-kamera-tamiri',      label: 'Arka Kamera',            duration: '30–60 dk'  },
-  { key: 'face-id-tamiri',          label: 'Face ID',                duration: '20–40 dk'  },
+  { key: 'face-id-tamiri',          label: 'Face ID',                duration: '20–40 dk',  brands: ['iphone'] },
   { key: 'kamera-cami-tamiri',      label: 'Kamera Camı',            duration: '20–40 dk'  },
   { key: 'kasa-degisimi',           label: 'Kasa Değişimi',          duration: '60–120 dk' },
   { key: 'arka-kapak-tamiri',       label: 'Arka Kapak',             duration: '30–60 dk'  },
@@ -58,6 +59,7 @@ const brandModelMap: Record<Brand, string[]> = {
     'iPhone 15', 'iPhone 15 Plus', 'iPhone 15 Pro', 'iPhone 15 Pro Max',
     'iPhone 16', 'iPhone 16 Plus', 'iPhone 16 Pro', 'iPhone 16 Pro Max',
     'iPhone 17', 'iPhone 17 Slim', 'iPhone 17 Pro', 'iPhone 17 Pro Max',
+    'iPhone 18', 'iPhone 18 Air', 'iPhone 18 Pro', 'iPhone 18 Pro Max',
   ],
   samsung: [
     'Galaxy S20', 'Galaxy S20+', 'Galaxy S20 Ultra', 'Galaxy S20 FE',
@@ -106,16 +108,18 @@ function buildMetaDesc(model: string, repairLabel: string): string {
 export const services: Service[] = (Object.entries(brandModelMap) as [Brand, string[]][]).flatMap(
   ([brand, models]) =>
     models.flatMap((model) =>
-      repairTypeList.map((rt) => ({
-        slug: `${slugify(model)}-${rt.key}`,
-        title: `${model} ${rt.label}`,
-        model,
-        brand,
-        repairType: rt.label,
-        repairKey: rt.key,
-        duration: rt.duration,
-        metaDescription: buildMetaDesc(model, rt.label),
-      }))
+      repairTypeList
+        .filter((rt) => !rt.brands || rt.brands.includes(brand))
+        .map((rt) => ({
+          slug: `${slugify(model)}-${rt.key}`,
+          title: `${model} ${rt.label}`,
+          model,
+          brand,
+          repairType: rt.label,
+          repairKey: rt.key,
+          duration: rt.duration,
+          metaDescription: buildMetaDesc(model, rt.label),
+        }))
     )
 );
 
@@ -137,11 +141,19 @@ export function getBrandInfos(): BrandInfo[] {
 
 export function getRepairTypesForModel(model: string, brand: Brand) {
   const modelSlug = slugify(model);
-  return repairTypeList.map((rt) => ({
-    key: rt.key,
-    label: rt.label,
-    duration: rt.duration,
-    slug: `${modelSlug}-${rt.key}`,
-    brand,
-  }));
+  return repairTypeList
+    .filter((rt) => !rt.brands || rt.brands.includes(brand))
+    .map((rt) => ({
+      key: rt.key,
+      label: rt.label,
+      duration: rt.duration,
+      slug: `${modelSlug}-${rt.key}`,
+      brand,
+    }));
+}
+
+export function getBrandsForRepair(repairKey: string): Brand[] | null {
+  const rt = repairTypeList.find((r) => r.key === repairKey);
+  if (!rt || !rt.brands) return null; // null = tüm markalar geçerli
+  return rt.brands;
 }

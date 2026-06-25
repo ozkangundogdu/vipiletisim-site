@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { getBrandsForRepair } from "@/data/services";
 
 type RepairType = { label: string; key: string; icon: string; desc: string };
 type Model = { name: string; slug: string };
@@ -35,6 +36,10 @@ const brands: Brand[] = [
   {
     id: "iphone", label: "iPhone", emoji: "/images/brands/iphone.png",
     models: [
+      { name: "iPhone 18 Pro Max",   slug: "iphone-18-pro-max" },
+      { name: "iPhone 18 Pro",       slug: "iphone-18-pro" },
+      { name: "iPhone 18 Air",       slug: "iphone-18-air" },
+      { name: "iPhone 18",           slug: "iphone-18" },
       { name: "iPhone 17 Pro Max",   slug: "iphone-17-pro-max" },
       { name: "iPhone 17 Pro",       slug: "iphone-17-pro" },
       { name: "iPhone 17",           slug: "iphone-17" },
@@ -225,7 +230,10 @@ export function RepairWizard() {
       {/* Adım 2: Marka */}
       {step === 2 && (
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-          {brands.map((b) => (
+          {brands.filter((b) => {
+            const allowed = repair ? getBrandsForRepair(repair.key) : null;
+            return !allowed || allowed.includes(b.id as "iphone" | "samsung" | "xiaomi");
+          }).map((b) => (
             <button
               key={b.id}
               onClick={() => handleBrandSelect(b)}

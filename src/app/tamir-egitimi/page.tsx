@@ -300,7 +300,7 @@ export default function TamirEgitimiPage() {
 
       <main>
         {/* ── Hero Banner ── */}
-        <section className="bg-surface-hero py-12 lg:py-16" aria-label="Sayfa başlığı">
+        <section className="bg-surface-hero py-6 lg:py-8" aria-label="Sayfa başlığı">
           <div className="mx-auto max-w-[1330px] px-6">
             <nav aria-label="Breadcrumb">
               <ol className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
@@ -519,7 +519,7 @@ export default function TamirEgitimiPage() {
         </section>
 
         {/* ── CTA ── */}
-        <section className="bg-surface-hero py-12">
+        <section className="bg-surface-hero py-6">
           <div className="mx-auto max-w-[1330px] px-6 text-center">
             <h2 className="text-2xl font-black text-white lg:text-3xl">Eğitime Başlamaya Hazır mısınız?</h2>
             <p className="mx-auto mt-3 max-w-[480px] text-[15px] text-white/60">

@@ -3,7 +3,7 @@
 import { useState, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import { type Brand, getModelsForBrand, getRepairTypesForModel, repairTypeList } from '@/data/services';
+import { type Brand, getModelsForBrand, getRepairTypesForModel, repairTypeList, getBrandsForRepair } from '@/data/services';
 
 const repairIcons: Record<string, string> = {
   'ekran-degisimi':
@@ -109,6 +109,7 @@ function WizardInner() {
   const totalSteps = arizoParam ? 2 : 3;
 
   const validMarka = markaParam && brandConfig[markaParam] ? markaParam : null;
+  const allowedBrands = arizoParam ? getBrandsForRepair(arizoParam) : null; // null = hepsi
   const [step, setStep] = useState<1 | 2 | 3>(validMarka ? 2 : 1);
   const [brand, setBrand] = useState<Brand | null>(validMarka);
   const [model, setModel] = useState<string | null>(null);
@@ -164,8 +165,9 @@ function WizardInner() {
             Telefonunuzun markasını seçin
           </h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {(Object.entries(brandConfig) as [Brand, typeof brandConfig[Brand]][]).map(
-              ([key, cfg]) => (
+            {(Object.entries(brandConfig) as [Brand, typeof brandConfig[Brand]][])
+              .filter(([key]) => !allowedBrands || allowedBrands.includes(key))
+              .map(([key, cfg]) => (
                 <a
                   key={key}
                   href={arizoParam ? `/tamir-sihirbazi?ariza=${arizoParam}&marka=${key}` : `/tamir-sihirbazi?marka=${key}`}
