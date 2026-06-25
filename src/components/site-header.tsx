@@ -34,9 +34,9 @@ function Logo() {
       <Image
         src="/images/logo.png"
         alt="Vip İletişim Logo"
-        width={109}
-        height={52}
-        className="h-[52px] w-auto object-contain"
+        width={218}
+        height={104}
+        className="h-[104px] w-auto origin-left scale-[2] object-contain"
         priority
       />
     </Link>
@@ -237,7 +237,7 @@ export function SiteHeader() {
   return (
     <header>
       <div className="bg-surface-header">
-        <div className="mx-auto flex min-h-[64px] max-w-[1330px] items-center justify-between gap-8 px-6">
+        <div className="mx-auto flex h-[90px] max-w-[1330px] items-center justify-between gap-8 px-6">
           <Logo />
 
           <div className="hidden flex-1 items-center justify-end gap-[58px] lg:flex">
