@@ -1,0 +1,42 @@
+{
+  "hero": {
+    "title": "Sosyal Medya",
+    "subtitle": "Vip İletişim'i sosyal medyada takip edin. Tamir videoları, müşteri yorumları ve güncel haberler için bizi izleyin.",
+    "image": ""
+  },
+  "intro": "Trabzon Vip İletişim olarak tüm sosyal medya kanallarımızda aktif olarak paylaşımlar yapıyoruz. Tamir süreçleri, müşteri deneyimleri ve sektörel içeriklerle takipçilerimizle buluşuyoruz.",
+  "platforms": [
+    {
+      "platform": "instagram",
+      "name": "Instagram",
+      "handle": "@trabzonvipiletisim",
+      "url": "https://www.instagram.com/trabzonvipiletisim/",
+      "description": "Tamir videoları, müşteri yorumları ve günlük teknik servis içerikleri. Reels ve hikayelerle tamir süreçlerini yakından takip edin.",
+      "image": ""
+    },
+    {
+      "platform": "youtube",
+      "name": "YouTube",
+      "handle": "@FatihcomertVip",
+      "url": "https://www.youtube.com/@FatihcomertVip",
+      "description": "Detaylı tamir videoları, eğitim içerikleri ve ürün incelemeleri. iPhone anakart tamiri ve microsoldering içerikleri.",
+      "image": ""
+    },
+    {
+      "platform": "facebook",
+      "name": "Facebook",
+      "handle": "fatih.comert.1000",
+      "url": "https://www.facebook.com/fatih.comert.1000",
+      "description": "Duyurular, kampanyalar ve müşteri yorumları. Trabzon ve çevre illerden müşterilerimizle buluşuyoruz.",
+      "image": ""
+    },
+    {
+      "platform": "google",
+      "name": "Google İşletme",
+      "handle": "Vip İletişim Teknik Servis",
+      "url": "https://share.google/0DFXLAirTOsTXCXZv",
+      "description": "Google haritalar üzerinde işletmemizi bulun, müşteri yorumlarını okuyun ve randevu alın.",
+      "image": ""
+    }
+  ]
+}

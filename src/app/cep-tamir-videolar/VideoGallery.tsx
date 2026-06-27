@@ -41,6 +41,9 @@ function VideoCard({ video }: { video: Video }) {
   const [imgOk, setImgOk] = useState(true);
   const gradient = PLACEHOLDER_GRADIENTS[video.category] ?? PLACEHOLDER_GRADIENTS.diger;
 
+  const thumbSrc = video.thumbnail
+    ?? (video.platform === "youtube" ? youtubeThumbnail(video.videoId) : null);
+
   return (
     <Link
       href={`/cep-tamir-videolar/${video.id}`}
@@ -48,9 +51,9 @@ function VideoCard({ video }: { video: Video }) {
     >
       {/* Thumbnail */}
       <div className="relative aspect-video overflow-hidden bg-zinc-900 shrink-0">
-        {video.platform === "youtube" && imgOk ? (
+        {thumbSrc && imgOk ? (
           <img
-            src={youtubeThumbnail(video.videoId)}
+            src={thumbSrc}
             alt={video.title}
             className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
             onError={() => setImgOk(false)}
@@ -95,12 +98,21 @@ function VideoCard({ video }: { video: Video }) {
   );
 }
 
+function newestFirst(videos: Video[]): Video[] {
+  return [...videos].sort((a, b) => {
+    const ta = parseInt(a.id.replace("v", "")) || 0;
+    const tb = parseInt(b.id.replace("v", "")) || 0;
+    return tb - ta;
+  });
+}
+
 export function VideoGallery({ videos }: { videos: Video[] }) {
   const [activeCategory, setActiveCategory] = useState<Category>("tumu");
 
+  const sorted = newestFirst(videos);
   const filtered = activeCategory === "tumu"
-    ? videos
-    : videos.filter((v) => v.category === activeCategory);
+    ? sorted
+    : sorted.filter((v) => v.category === activeCategory);
 
   return (
     <>

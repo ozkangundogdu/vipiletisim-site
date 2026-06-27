@@ -4,7 +4,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getVideos } from "@/lib/videos";
-import { youtubeEmbedUrl, instagramUrl, CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/video-utils";
+import { youtubeEmbedUrl, instagramEmbedUrl, instagramUrl, CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/video-utils";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -60,21 +60,15 @@ export default async function VideoDetailPage({ params }: Props) {
                 />
               </div>
             ) : (
-              <div className="aspect-video w-full overflow-hidden rounded-2xl bg-gradient-to-br from-purple-900 to-pink-700 flex flex-col items-center justify-center gap-4 shadow-lg">
-                <svg viewBox="0 0 24 24" className="h-16 w-16 text-white/40" fill="currentColor">
-                  <path d="M12 2.2c3.2 0 3.6.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.85 0 3.2-.01 3.6-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.63.07-4.85.07-3.2 0-3.6-.01-4.85-.07C3.69 21.57 2.15 20.03 2 16.8 1.94 15.55 1.93 15.17 1.93 12c0-3.2.01-3.6.07-4.85.15-3.27 1.67-4.77 4.92-4.92C8.4 2.21 8.8 2.2 12 2.2zm0 3.08a4.92 4.92 0 1 1 0 9.84 4.92 4.92 0 0 1 0-9.84z" />
-                </svg>
-                <a
-                  href={instagramUrl(video.videoId)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 rounded-xl bg-white/20 px-6 py-3 text-sm font-black text-white backdrop-blur-sm hover:bg-white/30 transition-colors"
-                >
-                  <svg viewBox="0 0 24 24" className="h-5 w-5 fill-current">
-                    <path d="M12 2.2c3.2 0 3.6.01 4.85.07 3.25.15 4.77 1.69 4.92 4.92.06 1.25.07 1.63.07 4.85 0 3.2-.01 3.6-.07 4.85-.15 3.23-1.66 4.77-4.92 4.92-1.25.06-1.63.07-4.85.07-3.2 0-3.6-.01-4.85-.07C3.69 21.57 2.15 20.03 2 16.8 1.94 15.55 1.93 15.17 1.93 12c0-3.2.01-3.6.07-4.85.15-3.27 1.67-4.77 4.92-4.92C8.4 2.21 8.8 2.2 12 2.2zm0 3.08a4.92 4.92 0 1 1 0 9.84 4.92 4.92 0 0 1 0-9.84z" />
-                  </svg>
-                  Instagram'da İzle
-                </a>
+              <div className="w-full overflow-hidden rounded-2xl bg-black shadow-lg flex justify-center" style={{ minHeight: 560 }}>
+                <iframe
+                  src={instagramEmbedUrl(video.videoId)}
+                  className="w-full max-w-[400px]"
+                  style={{ minHeight: 560, border: "none" }}
+                  allowFullScreen
+                  scrolling="no"
+                  title={video.title}
+                />
               </div>
             )}
 
@@ -126,9 +120,8 @@ export default async function VideoDetailPage({ params }: Props) {
               <h2 className="text-sm font-black text-zinc-500 uppercase tracking-widest mb-4">Diğer Videolar</h2>
               <div className="space-y-3">
                 {others.map((v) => {
-                  const thumb = v.platform === "youtube"
-                    ? `https://img.youtube.com/vi/${v.videoId}/default.jpg`
-                    : null;
+                  const thumb = v.thumbnail
+                    ?? (v.platform === "youtube" ? `https://img.youtube.com/vi/${v.videoId}/default.jpg` : null);
                   return (
                     <Link
                       key={v.id}

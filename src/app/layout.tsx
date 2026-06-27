@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
+import { getScripts } from "@/lib/scripts";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin", "latin-ext"],
@@ -120,6 +121,8 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const scripts = getScripts();
+
   return (
     <html lang="tr" className={`h-full ${nunitoSans.variable}`}>
       <head>
@@ -131,9 +134,46 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
         />
+        {scripts.gaId && (
+          <>
+            {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${scripts.gaId}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${scripts.gaId}');`,
+              }}
+            />
+          </>
+        )}
+        {scripts.gtmId && (
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','${scripts.gtmId}');`,
+            }}
+          />
+        )}
+        {scripts.headExtra && (
+          <div dangerouslySetInnerHTML={{ __html: scripts.headExtra }} />
+        )}
       </head>
       <body className="min-h-full bg-background text-foreground antialiased">
+        {scripts.gtmId && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${scripts.gtmId}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        )}
+        {scripts.bodyStart && (
+          <div dangerouslySetInnerHTML={{ __html: scripts.bodyStart }} />
+        )}
         {children}
+        {scripts.bodyEnd && (
+          <div dangerouslySetInnerHTML={{ __html: scripts.bodyEnd }} />
+        )}
       </body>
     </html>
   );

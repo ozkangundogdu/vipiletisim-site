@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { getPageContent } from "@/lib/page-content";
 
 export const metadata: Metadata = {
   title: "Hakkımızda — Trabzon Teknik Servis",
@@ -125,21 +126,17 @@ function CheckIcon() {
 }
 
 export default function HakkimizdaPage() {
+  const pc = getPageContent("hakkimizda");
+
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
       <SiteHeader />
 
       <main>
-        {/* Hero Banner */}
+        {/* Hero */}
         <section className="bg-surface-hero py-6 lg:py-8" aria-label="Sayfa başlığı">
           <div className="mx-auto max-w-[1330px] px-6">
             <nav aria-label="Breadcrumb">
@@ -151,12 +148,8 @@ export default function HakkimizdaPage() {
                 <li className="text-white/80">Hakkımızda</li>
               </ol>
             </nav>
-            <h1 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Trabzon Teknik Servis — Hakkımızda
-            </h1>
-            <p className="mt-2 text-[15px] text-white/60">
-              Trabzon&#39;da güvenilir telefon tamirinin adresi — Vip İletişim Teknik Servis
-            </p>
+            <h1 className="mt-3 text-3xl font-black text-white lg:text-4xl">{pc.hero.title}</h1>
+            <p className="mt-2 text-[15px] text-white/60">{pc.hero.subtitle}</p>
           </div>
         </section>
 
@@ -164,105 +157,74 @@ export default function HakkimizdaPage() {
         <section className="bg-surface-page py-14">
           <div className="mx-auto max-w-[1330px] px-6">
             <div className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
-
-              {/* Sol — Metin */}
               <div>
-                <p className="mb-3 text-[12px] font-black uppercase tracking-widest text-brand">
-                  Kim Biz?
-                </p>
+                <p className="mb-3 text-[12px] font-black uppercase tracking-widest text-brand">{pc.intro.badge}</p>
                 <h2 className="text-2xl font-black leading-snug text-zinc-800 lg:text-3xl">
-                  Trabzon&#39;un Güvenilir<br />
-                  Cep Telefonu Teknik Servisi
+                  {pc.intro.heading.split("\n").map((line, i) => (
+                    <span key={i}>{line}{i < pc.intro.heading.split("\n").length - 1 && <br />}</span>
+                  ))}
                 </h2>
                 <div className="mt-5 space-y-4 text-[15px] leading-relaxed text-zinc-600">
-                  <p>
-                    Vip İletişim Teknik Servis olarak Trabzon Ortahisar&#39;da, iPhone, Samsung, Xiaomi,
-                    Huawei ve Oppo dahil tüm marka ve modellerde profesyonel cep telefonu tamiri
-                    hizmeti sunuyoruz.
-                  </p>
-                  <p>
-                    Yıllar içinde edindiğimiz deneyim ve sürekli güncellenen teknik bilgi birikimimizle
-                    Trabzon&#39;un en güvenilir telefon teknik servisi olmayı hedefliyoruz. Her tamirde
-                    yalnızca orijinal veya sertifikalı yedek parça kullanıyor, işçilik garantimizle
-                    müşterilerimizin arkasında duruyoruz.
-                  </p>
-                  <p>
-                    Trabzon&#39;a ek olarak Doğu Karadeniz&#39;in pek çok iline kargo ve otobüs aracılığıyla
-                    uzaktan hizmet veriyor; bölge insanının güvenle başvurabileceği bir teknik servis
-                    olmayı sürdürüyoruz.
-                  </p>
+                  {pc.intro.paragraphs.map((p, i) => <p key={i}>{p}</p>)}
                 </div>
-
                 <ul className="mt-6 space-y-2.5">
-                  {[
-                    "Orijinal ve sertifikalı yedek parça",
-                    "Anakart tamirinde 90 gün işçilik garantisi",
-                    "Aynı gün teslim (standart tamirler)",
-                    "Uzaktan kargo / otobüs ile tamir kabulü",
-                  ].map((item) => (
+                  {pc.intro.checkList.map((item) => (
                     <li key={item} className="flex items-start gap-2.5 text-[14px] text-zinc-700">
-                      <CheckIcon />
-                      <span>{item}</span>
+                      <CheckIcon /><span>{item}</span>
                     </li>
                   ))}
                 </ul>
-
                 <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    href="/tamir-hizmetleri"
-                    className="inline-flex items-center gap-2 rounded-[4px] bg-brand px-6 py-3 text-[14px] font-black text-white transition hover:bg-brand-hover"
-                  >
+                  <Link href="/tamir-hizmetleri" className="inline-flex items-center gap-2 rounded-[4px] bg-brand px-6 py-3 text-[14px] font-black text-white transition hover:bg-brand-hover">
                     Tamir Hizmetlerimiz
                   </Link>
-                  <Link
-                    href="/iletisim"
-                    className="inline-flex items-center gap-2 rounded-[4px] border border-zinc-300 bg-white px-6 py-3 text-[14px] font-bold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50"
-                  >
+                  <Link href="/iletisim" className="inline-flex items-center gap-2 rounded-[4px] border border-zinc-300 bg-white px-6 py-3 text-[14px] font-bold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50">
                     İletişime Geç
                   </Link>
                 </div>
               </div>
 
-              {/* Sağ — İstatistikler */}
-              <div className="grid grid-cols-2 gap-4">
-                {stats.map((s) => (
-                  <div
-                    key={s.label}
-                    className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-zinc-100 text-center"
-                  >
+              {pc.intro.image ? (
+                <div className="overflow-hidden rounded-2xl shadow-lg">
+                  <img src={pc.intro.image} alt={pc.intro.heading} className="w-full h-full object-cover" />
+                </div>
+              ) : (
+                <div className="grid grid-cols-2 gap-4">
+                  {pc.stats.map((s) => (
+                    <div key={s.label} className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-zinc-100 text-center">
+                      <p className="text-[34px] font-black leading-none text-brand">{s.value}</p>
+                      <p className="mt-2 text-[13px] font-semibold text-zinc-500">{s.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+
+            {pc.intro.image && (
+              <div className="mt-12 grid grid-cols-2 gap-4 sm:grid-cols-4">
+                {pc.stats.map((s) => (
+                  <div key={s.label} className="rounded-xl bg-white p-6 shadow-sm ring-1 ring-zinc-100 text-center">
                     <p className="text-[34px] font-black leading-none text-brand">{s.value}</p>
                     <p className="mt-2 text-[13px] font-semibold text-zinc-500">{s.label}</p>
                   </div>
                 ))}
               </div>
-            </div>
+            )}
           </div>
         </section>
 
-        {/* Neden Bizi Seçmelisiniz */}
+        {/* Neden Biz */}
         <section className="border-y border-zinc-200 bg-white py-14">
           <div className="mx-auto max-w-[1330px] px-6">
             <div className="mb-10 text-center">
-              <p className="mb-2 text-[12px] font-black uppercase tracking-widest text-brand">
-                Fark Yaratan Unsurlar
-              </p>
-              <h2 className="text-2xl font-black text-zinc-800 lg:text-3xl">
-                Neden Vip İletişim?
-              </h2>
-              <p className="mx-auto mt-3 max-w-[560px] text-[14px] leading-relaxed text-zinc-500">
-                Trabzon ve çevre illerden müşterilerimizin bizi tercih etmesinin altında yatan
-                nedenler.
-              </p>
+              <p className="mb-2 text-[12px] font-black uppercase tracking-widest text-brand">Fark Yaratan Unsurlar</p>
+              <h2 className="text-2xl font-black text-zinc-800 lg:text-3xl">Neden Vip İletişim?</h2>
             </div>
-
             <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-              {whyUs.map((item) => (
-                <div
-                  key={item.title}
-                  className="flex items-start gap-4 rounded-xl bg-zinc-50 p-5 ring-1 ring-zinc-100"
-                >
+              {pc.whyUs.map((item) => (
+                <div key={item.title} className="flex items-start gap-4 rounded-xl bg-zinc-50 p-5 ring-1 ring-zinc-100">
                   <div className="mt-0.5 shrink-0 rounded-lg bg-brand/10 p-2.5 text-brand">
-                    {item.icon}
+                    <svg viewBox="0 0 24 24" className="h-6 w-6" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" /></svg>
                   </div>
                   <div>
                     <h3 className="text-[15px] font-black text-zinc-800">{item.title}</h3>
@@ -274,62 +236,37 @@ export default function HakkimizdaPage() {
           </div>
         </section>
 
-        {/* Desteklenen Markalar */}
+        {/* Markalar */}
         <section className="bg-surface-page py-14">
           <div className="mx-auto max-w-[1330px] px-6">
             <div className="mb-8 text-center">
-              <p className="mb-2 text-[12px] font-black uppercase tracking-widest text-brand">
-                Tüm Markalar
-              </p>
-              <h2 className="text-2xl font-black text-zinc-800 lg:text-3xl">
-                Hangi Cihazlara Bakıyoruz?
-              </h2>
+              <p className="mb-2 text-[12px] font-black uppercase tracking-widest text-brand">Tüm Markalar</p>
+              <h2 className="text-2xl font-black text-zinc-800 lg:text-3xl">Hangi Cihazlara Bakıyoruz?</h2>
             </div>
-
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
-              {brands.map((b) => (
-                <div
-                  key={b.name}
-                  className="rounded-xl bg-white p-4 text-center shadow-sm ring-1 ring-zinc-100"
-                >
+              {pc.brands.map((b) => (
+                <div key={b.name} className="rounded-xl bg-white p-4 text-center shadow-sm ring-1 ring-zinc-100">
                   <p className="text-[14px] font-black text-zinc-800">{b.name}</p>
                   <p className="mt-0.5 text-[12px] text-zinc-400">{b.note}</p>
                 </div>
               ))}
             </div>
-
-            <p className="mt-6 text-center text-[13px] text-zinc-400">
-              Listede görmediğiniz marka veya modeller için{" "}
-              <a href="https://wa.me/905052754540" target="_blank" rel="noopener noreferrer" className="font-bold text-brand hover:underline">
-                WhatsApp&#39;tan sorabilirsiniz
-              </a>
-              .
-            </p>
           </div>
         </section>
 
         {/* CTA */}
         <section className="bg-surface-hero py-6">
           <div className="mx-auto max-w-[1330px] px-6 text-center">
-            <h2 className="text-2xl font-black text-white lg:text-3xl">
-              Cihazınızı Bize Emanet Edin
-            </h2>
+            <h2 className="text-2xl font-black text-white lg:text-3xl">Cihazınızı Bize Emanet Edin</h2>
             <p className="mx-auto mt-3 max-w-[500px] text-[15px] text-white/60">
               Ön kontrol ve fiyat teklifi ücretsizdir. Hemen iletişime geçin.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <a
-                href="https://wa.me/905052754540"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-7 py-3.5 text-[15px] font-black text-white transition hover:bg-whatsapp-hover"
-              >
+              <a href="https://wa.me/905052754540" target="_blank" rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-7 py-3.5 text-[15px] font-black text-white transition hover:bg-whatsapp-hover">
                 WhatsApp&#39;tan Yaz
               </a>
-              <a
-                href="tel:+905052754540"
-                className="inline-flex items-center gap-2 rounded-[4px] bg-white/10 px-7 py-3.5 text-[15px] font-black text-white transition hover:bg-white/20"
-              >
+              <a href="tel:+905052754540" className="inline-flex items-center gap-2 rounded-[4px] bg-white/10 px-7 py-3.5 text-[15px] font-black text-white transition hover:bg-white/20">
                 +90 (505) 275 45 40
               </a>
             </div>

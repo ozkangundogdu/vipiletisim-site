@@ -1,0 +1,30 @@
+{
+  "hero": {
+    "title": "Trabzon Telefon Tamir Fiyatları",
+    "subtitle": "iPhone, Samsung ve Xiaomi tamir işçilik ücretleri arıza türüne ve cihaz modeline göre belirlenir. Güncel fiyat için WhatsApp hattımızdan anında bilgi alın.",
+    "image": ""
+  },
+  "pricingDesc": {
+    "heading": "Tamir Ücreti = Yedek Parça Maliyeti + İşçilik Ücreti",
+    "text": "Cep telefonu tamir ücretleri iki unsurdan oluşur: yedek parça maliyeti ve işçilik ücreti. Yedek parça fiyatları; döviz kuru, tedarikçi stoğu ve ürün modeline göre sürekli değiştiğinden sabit bir fiyat listesi yayınlamak müşterilerimizi yanıltabilir. Bu nedenle her talep için anlık parça fiyatı üzerinden hesaplama yapıp size bildiriyoruz. Fiyat teklifi tamamen ücretsizdir ve tamir onayınız olmadan işlem başlatılmaz."
+  },
+  "infoCards": [
+    { "title": "Parça Maliyeti", "desc": "Orijinal ve OEM kalitesinde yedek parça fiyatı döviz kuruna ve tedarike bağlı olarak değişir." },
+    { "title": "İşçilik Ücreti", "desc": "Teknik müdahalenin kapsamına göre belirlenen sabit işçilik ücreti tamir başlamadan bildirilir." },
+    { "title": "Ücretsiz Ön Teklif", "desc": "Cihaz modelini ve arızayı WhatsApp'tan yazın, dakikalar içinde güncel tamir ücretini öğrenin." }
+  ],
+  "ctaTitle": "Güncel Fiyatı Öğrenmek 1 Dakika Alıyor",
+  "ctaSubtitle": "Cihaz modelinizi ve arızanızı yazın, dakikalar içinde net fiyat bilgisi verelim. Ön teklif tamamen ücretsizdir.",
+  "faq": [
+    { "q": "iPhone ekran değişimi ücreti ne kadar?", "a": "iPhone ekran değişimi ücreti, cihazın modeline ve kullanılacak ekran kalitesine göre değişmektedir. iPhone X ile iPhone 17 Pro Max arasında maliyetler önemli ölçüde farklılaşır. Güncel fiyat bilgisi için WhatsApp hattımıza +90 (505) 275 45 40 numarasından ulaşabilirsiniz." },
+    { "q": "Samsung ekran değişimi fiyatı nedir?", "a": "Samsung Galaxy ekran değişimi fiyatı; S Serisi, A Serisi ve modele göre değişmektedir. Orijinal parça ile muadil parça arasındaki fark fiyatı doğrudan etkiler. Cihaz modelinizi belirterek WhatsApp üzerinden güncel fiyat alabilirsiniz." },
+    { "q": "Tamir fiyatları nasıl hesaplanıyor?", "a": "Tüm tamir fiyatlarımız iki unsurdan oluşur: yedek parça maliyeti ve işçilik ücreti. Parça maliyetleri küresel tedarik zinciri, döviz kuru ve ürün stoğuna bağlı olarak sürekli değiştiğinden sabit bir fiyat listesi yayınlamak yanıltıcı olur. Her talep için güncel parça fiyatı üzerinden fiyat hesaplanır." },
+    { "q": "Neden sabit fiyat listesi paylaşmıyorsunuz?", "a": "Cep telefonu yedek parça fiyatları; döviz kuru, tedarikçi fiyatları ve stok durumuna bağlı olarak sürekli değişmektedir. Sabit bir liste yayınlamak, daha sonra farklı bir ücret talep etmek zorunda kalmamıza yol açar ve müşteri memnuniyetsizliğine neden olur. Bu nedenle her talep için anlık fiyat belirliyoruz." },
+    { "q": "Fiyat teklifi almak ücretsiz mi?", "a": "Evet, fiyat teklifi tamamen ücretsizdir. Cihaz modelinizi ve arızayı WhatsApp'tan yazmanız yeterli; dakikalar içinde güncel fiyat bilgisini iletiyoruz." },
+    { "q": "Tamir başlamadan önce fiyatı onaylamam gerekiyor mu?", "a": "Evet, fiyat onayınız olmadan tamir başlatılmaz. Cihazı teslim aldıktan sonra ön inceleme yapıp size kesin fiyatı bildiriyoruz; onaylamanız durumunda tamir süreci başlıyor." },
+    { "q": "Anakart tamiri ne kadar tutar?", "a": "Anakart tamiri en değişken fiyatlı işlem türüdür; arızanın kapsamına, gerekli entegre veya bileşene göre fiyat önemli ölçüde değişir. Aynı zamanda 90 gün işçilik garantisi verdiğimiz işlem türüdür. Güncel fiyat için WhatsApp'tan cihaz modelini ve arızayı belirterek yazabilirsiniz." },
+    { "q": "Batarya değişimi ne kadar sürer ve maliyeti nedir?", "a": "Batarya değişimi ortalama 20–40 dakikada tamamlanır. Maliyet cihaz modeline ve batarya kalitesine göre değişir. Cihazınızın modelini belirterek WhatsApp üzerinden güncel fiyat öğrenebilirsiniz." },
+    { "q": "Ödeme yöntemleri neler?", "a": "Nakit ve EFT ile ödeme kabul ediyoruz. Ödeme, tamir tamamlandıktan ve cihazınızı teslim aldıktan sonra yapılır." },
+    { "q": "Uzak illerden kargo ile gönderince fiyat değişiyor mu?", "a": "Tamir ücreti aynıdır. Kargo ile gönderimde ek olarak gidiş-dönüş kargo ücreti müşteriye aittir. Tamir maliyeti cihaz teslim yönteminden bağımsız olarak hesaplanır." }
+  ]
+}

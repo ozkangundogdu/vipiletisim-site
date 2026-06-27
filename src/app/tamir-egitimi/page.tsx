@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { getPageContent } from "@/lib/page-content";
 
 export const metadata: Metadata = {
   title: "Trabzon Telefon Tamiri Eğitimi",
@@ -288,6 +289,8 @@ const accentMap = {
 };
 
 export default function TamirEgitimiPage() {
+  const pc = getPageContent("tamir-egitimi");
+
   return (
     <>
       {courseSchemas.map((s, i) => (
@@ -315,11 +318,10 @@ export default function TamirEgitimiPage() {
                   Trabzon — 3 Seviyeli Kurs
                 </span>
                 <h1 className="text-3xl font-black text-white lg:text-4xl xl:text-[42px]">
-                  Trabzon'da Cep Telefonu Tamiri Eğitimi
+                  {pc.hero.title}
                 </h1>
                 <p className="mt-3 max-w-[600px] text-[15px] leading-relaxed text-white/60">
-                  Hobi düzeyinden iPhone anakart uzmanlığına uzanan 3 seviyeli uygulamalı eğitim programı.
-                  Öğrenme garantili, yüz yüze uygulamalı eğitim.
+                  {pc.hero.subtitle}
                 </p>
               </div>
               <div className="flex shrink-0 flex-col gap-2 lg:items-end">

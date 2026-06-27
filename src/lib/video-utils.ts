@@ -8,6 +8,7 @@ export type Video = {
   title: string;
   description?: string;
   category: VideoCategory;
+  thumbnail?: string;
 };
 
 export function youtubeThumbnail(videoId: string): string {
@@ -20,6 +21,10 @@ export function youtubeEmbedUrl(videoId: string): string {
 
 export function instagramUrl(shortcode: string): string {
   return `https://www.instagram.com/reel/${shortcode}/`;
+}
+
+export function instagramEmbedUrl(shortcode: string): string {
+  return `https://www.instagram.com/reel/${shortcode}/embed/`;
 }
 
 export const CATEGORY_LABELS: Record<string, string> = {

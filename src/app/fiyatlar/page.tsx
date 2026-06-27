@@ -3,6 +3,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { repairTypeList } from "@/data/services";
+import { getPageContent } from "@/lib/page-content";
 
 export const metadata: Metadata = {
   title: "Trabzon Telefon Tamir Fiyatları",
@@ -202,6 +203,8 @@ function ChevronDownIcon() {
 }
 
 export default function FiyatlarPage() {
+  const pc = getPageContent("fiyatlar");
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
@@ -214,6 +217,11 @@ export default function FiyatlarPage() {
         {/* Hero Banner */}
         <section className="bg-surface-hero py-6 lg:py-8" aria-label="Sayfa başlığı">
           <div className="mx-auto max-w-[1330px] px-6">
+            {pc.hero.image && (
+              <div className="absolute inset-0 opacity-10 pointer-events-none">
+                <img src={pc.hero.image} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+              </div>
+            )}
             <nav aria-label="Breadcrumb">
               <ol className="flex flex-wrap items-center gap-2 text-[13px] text-white/50">
                 <li><Link href="/" className="hover:text-white/80 transition-colors">Anasayfa</Link></li>
@@ -222,11 +230,10 @@ export default function FiyatlarPage() {
               </ol>
             </nav>
             <h1 className="mt-3 text-3xl font-black text-white lg:text-4xl">
-              Trabzon Telefon Tamir Fiyatları
+              {pc.hero.title}
             </h1>
             <p className="mt-2 max-w-[600px] text-[15px] text-white/60">
-              iPhone, Samsung ve Xiaomi tamir işçilik ücretleri arıza türüne ve cihaz modeline göre belirlenir.
-              Güncel fiyat için WhatsApp hattımızdan anında bilgi alın.
+              {pc.hero.subtitle}
             </p>
           </div>
         </section>
@@ -241,17 +248,10 @@ export default function FiyatlarPage() {
                   Fiyatlandırma Nasıl Çalışır?
                 </p>
                 <h2 className="mb-3 text-[19px] font-black text-zinc-800">
-                  Tamir Ücreti = Yedek Parça Maliyeti + İşçilik Ücreti
+                  {pc.pricingDesc.heading}
                 </h2>
                 <p className="max-w-[700px] text-[14px] leading-relaxed text-zinc-600">
-                  Cep telefonu tamir ücretleri iki unsurdan oluşur:{" "}
-                  <strong className="text-zinc-800">yedek parça maliyeti</strong> ve{" "}
-                  <strong className="text-zinc-800">işçilik ücreti</strong>. Yedek parça fiyatları;
-                  döviz kuru, tedarikçi stoğu ve ürün modeline göre sürekli değiştiğinden sabit bir
-                  fiyat listesi yayınlamak müşterilerimizi yanıltabilir. Bu nedenle her talep için
-                  anlık parça fiyatı üzerinden hesaplama yapıp size bildiriyoruz.
-                  <strong className="text-zinc-800"> Fiyat teklifi tamamen ücretsizdir</strong> ve
-                  tamir onayınız olmadan işlem başlatılmaz.
+                  {pc.pricingDesc.text}
                 </p>
               </div>
 
@@ -272,31 +272,20 @@ export default function FiyatlarPage() {
 
             {/* 3 bilgi kartı */}
             <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-3">
-              {[
-                {
-                  title: "Parça Maliyeti",
-                  desc: "Orijinal ve OEM kalitesinde yedek parça fiyatı döviz kuruna ve tedarike bağlı olarak değişir.",
-                  color: "text-brand",
-                  bg: "bg-brand/5",
-                },
-                {
-                  title: "İşçilik Ücreti",
-                  desc: "Teknik müdahalenin kapsamına göre belirlenen sabit işçilik ücreti tamir başlamadan bildirilir.",
-                  color: "text-accent",
-                  bg: "bg-accent/10",
-                },
-                {
-                  title: "Ücretsiz Ön Teklif",
-                  desc: "Cihaz modelini ve arızayı WhatsApp'tan yazın, dakikalar içinde güncel tamir ücretini öğrenin.",
-                  color: "text-whatsapp",
-                  bg: "bg-whatsapp/10",
-                },
-              ].map((c) => (
-                <div key={c.title} className={`rounded-xl ${c.bg} p-5 ring-1 ring-zinc-100`}>
-                  <p className={`text-[14px] font-black ${c.color}`}>{c.title}</p>
-                  <p className="mt-1 text-[13px] leading-relaxed text-zinc-600">{c.desc}</p>
-                </div>
-              ))}
+              {pc.infoCards.map((c, idx) => {
+                const colors = [
+                  { color: "text-brand", bg: "bg-brand/5" },
+                  { color: "text-accent", bg: "bg-accent/10" },
+                  { color: "text-whatsapp", bg: "bg-whatsapp/10" },
+                ];
+                const { color, bg } = colors[idx % colors.length];
+                return (
+                  <div key={c.title} className={`rounded-xl ${bg} p-5 ring-1 ring-zinc-100`}>
+                    <p className={`text-[14px] font-black ${color}`}>{c.title}</p>
+                    <p className="mt-1 text-[13px] leading-relaxed text-zinc-600">{c.desc}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
@@ -407,7 +396,7 @@ export default function FiyatlarPage() {
               </p>
 
               <dl className="flex flex-col gap-3">
-                {faqItems.map((item) => (
+                {pc.faq.map((item) => (
                   <details
                     key={item.q}
                     className="group rounded-xl bg-white shadow-sm ring-1 ring-zinc-100"
@@ -430,11 +419,10 @@ export default function FiyatlarPage() {
         <section className="bg-surface-hero py-6">
           <div className="mx-auto max-w-[1330px] px-6 text-center">
             <h2 className="text-2xl font-black text-white lg:text-3xl">
-              Güncel Fiyatı Öğrenmek 1 Dakika Alıyor
+              {pc.ctaTitle}
             </h2>
             <p className="mx-auto mt-3 max-w-[500px] text-[15px] text-white/60">
-              Cihaz modelinizi ve arızanızı yazın, dakikalar içinde net fiyat bilgisi verelim.
-              Ön teklif tamamen ücretsizdir.
+              {pc.ctaSubtitle}
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <a

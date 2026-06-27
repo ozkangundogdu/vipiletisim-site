@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "title": "Trabzon Teknik Servis — Hakkımızda",
+    "subtitle": "Trabzon'da güvenilir telefon tamirinin adresi — Vip İletişim Teknik Servis",
+    "image": ""
+  },
+  "intro": {
+    "badge": "Kim Biz?",
+    "heading": "Trabzon'un Güvenilir\nCep Telefonu Teknik Servisi",
+    "image": "",
+    "paragraphs": [
+      "Vip İletişim Teknik Servis olarak Trabzon Ortahisar'da, iPhone, Samsung, Xiaomi, Huawei ve Oppo dahil tüm marka ve modellerde profesyonel cep telefonu tamiri hizmeti sunuyoruz.",
+      "Yıllar içinde edindiğimiz deneyim ve sürekli güncellenen teknik bilgi birikimimizle Trabzon'un en güvenilir telefon teknik servisi olmayı hedefliyoruz. Her tamirde yalnızca orijinal veya sertifikalı yedek parça kullanıyor, işçilik garantimizle müşterilerimizin arkasında duruyoruz.",
+      "Trabzon'a ek olarak Doğu Karadeniz'in pek çok iline kargo ve otobüs aracılığıyla uzaktan hizmet veriyor; bölge insanının güvenle başvurabileceği bir teknik servis olmayı sürdürüyoruz."
+    ],
+    "checkList": [
+      "Orijinal ve sertifikalı yedek parça",
+      "Anakart tamirinde 90 gün işçilik garantisi",
+      "Aynı gün teslim (standart tamirler)",
+      "Uzaktan kargo / otobüs ile tamir kabulü"
+    ]
+  },
+  "stats": [
+    { "value": "10+", "label": "Yıllık Deneyim" },
+    { "value": "50.000+", "label": "Başarılı Tamir" },
+    { "value": "6 İl", "label": "Hizmet Bölgesi" },
+    { "value": "90 Gün", "label": "Anakart Garantisi" }
+  ],
+  "whyUs": [
+    { "title": "Orijinal Parça Garantisi", "desc": "Tüm tamirlerimizde yalnızca orijinal veya sertifikalı yedek parça kullanıyoruz. Parça kalitesi, tamirin uzun ömürlü olmasının temelidir." },
+    { "title": "Uzman Teknisyen Kadrosu", "desc": "Sektörde deneyimli, sürekli kendini güncelleyen teknisyenlerimiz her marka ve modelde güvenle tamir yapabilmektedir." },
+    { "title": "Aynı Gün Teslim", "desc": "Ekran, batarya ve şarj soketi gibi standart tamirler çoğunlukla 30–60 dakikada tamamlanır. Cihazınızı bırakıp kısa sürede teslim alabilirsiniz." },
+    { "title": "90 Gün Anakart Garantisi", "desc": "Anakart tamiri ve kapsamlı onarımlarda 90 günlük işçilik güvencesi sunuyoruz." },
+    { "title": "Ücretsiz Ön Kontrol", "desc": "Cihazınızı getirmeden önce arızayı WhatsApp üzerinden fotoğrafla paylaşabilirsiniz. Ön kontrol ve fiyat teklifi tamamen ücretsizdir." },
+    { "title": "Doğu Karadeniz'e Kargo Hizmeti", "desc": "Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan kargo veya otobüsle cihaz kabul ediyoruz. Tamir sonrası güvenle aynı yollarla geri gönderiyoruz." }
+  ],
+  "brands": [
+    { "name": "Apple iPhone", "note": "X — 17 Pro Max" },
+    { "name": "Samsung Galaxy", "note": "S Serisi, A Serisi" },
+    { "name": "Xiaomi / Redmi", "note": "Tüm modeller" },
+    { "name": "Huawei", "note": "Tüm modeller" },
+    { "name": "Oppo", "note": "Tüm modeller" },
+    { "name": "Diğer Android", "note": "Tüm markalar" }
+  ]
+}

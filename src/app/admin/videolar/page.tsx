@@ -64,22 +64,39 @@ export default function VideolarPage() {
     setVideos(prev => prev.filter(v => v.id !== id));
   }
 
-  function addVideo() {
+  async function addVideo() {
     if (!addForm || !addForm.url.trim() || !addForm.title.trim()) return;
     const videoId = addForm.platform === "youtube"
       ? extractYouTubeId(addForm.url)
       : extractInstagramShortcode(addForm.url);
 
+    const id = `v${Date.now()}`;
     const video: Video = {
-      id: `v${Date.now()}`,
+      id,
       platform: addForm.platform,
       videoId,
       title: addForm.title,
       description: addForm.description || undefined,
       category: addForm.category,
     };
-    setVideos(prev => [...prev, video]);
+
+    // Yeni video listenin başına
+    setVideos(prev => [video, ...prev]);
     setAddForm(null);
+
+    // Thumbnail arka planda çek ve kaydet
+    fetch("/api/admin/videos/thumbnail", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id, platform: addForm.platform, videoId }),
+    })
+      .then(r => r.json())
+      .then((data: { path: string | null }) => {
+        if (data.path) {
+          setVideos(prev => prev.map(v => v.id === id ? { ...v, thumbnail: data.path ?? undefined } : v));
+        }
+      })
+      .catch(() => {});
   }
 
   function updateVideo(id: string, patch: Partial<Video>) {
@@ -201,9 +218,8 @@ export default function VideolarPage() {
       ) : (
         <div className="space-y-2">
           {videos.map((video, index) => {
-            const thumb = video.platform === "youtube"
-              ? `https://img.youtube.com/vi/${video.videoId}/default.jpg`
-              : null;
+            const thumb = video.thumbnail
+              ?? (video.platform === "youtube" ? `https://img.youtube.com/vi/${video.videoId}/default.jpg` : null);
             const isEditing = editingId === video.id;
 
             return (

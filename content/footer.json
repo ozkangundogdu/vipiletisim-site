@@ -1,0 +1,18 @@
+{
+  "firmaBaslik": "Vip İletişim Trabzon Cep Telefonu Teknik Servisi",
+  "popularHizmetler": [
+    { "label": "iPhone 16 Ekran Değişimi", "href": "/tamir-hizmetleri/iphone-16-ekran-degisimi" },
+    { "label": "iPhone 14 Ekran Değişimi", "href": "/tamir-hizmetleri/iphone-14-ekran-degisimi" },
+    { "label": "Samsung S24 Ekran", "href": "/tamir-hizmetleri/samsung-galaxy-s24-ekran-degisimi" },
+    { "label": "iPhone Şarj Soketi Tamiri", "href": "/tamir-hizmetleri/iphone-sarj-soketi-tamiri" },
+    { "label": "iPhone Batarya Değişimi", "href": "/tamir-hizmetleri/iphone-batarya-degisimi" }
+  ],
+  "popularBolgeler": [
+    { "label": "Trabzon iPhone Tamiri", "href": "/bolge/trabzon-iphone-tamiri" },
+    { "label": "Giresun Telefon Tamiri", "href": "/bolge/giresun-telefon-tamiri" },
+    { "label": "Rize iPhone Tamiri", "href": "/bolge/rize-iphone-tamiri" },
+    { "label": "Artvin Telefon Tamiri", "href": "/bolge/artvin-telefon-tamiri" },
+    { "label": "Gümüşhane Telefon Tamiri", "href": "/bolge/gumushane-telefon-tamiri" }
+  ],
+  "altMetin": "Trabzon iPhone Tamiri · Samsung Tamiri · Telefon Teknik Servis Trabzon"
+}

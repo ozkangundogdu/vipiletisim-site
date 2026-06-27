@@ -1,0 +1,70 @@
+{
+  "hero": {
+    "title": "Trabzon Telefon Tamiri Eğitimi",
+    "subtitle": "3 seviyeli uygulamalı kurs — hobiden iPhone anakart uzmanlığına. Öğrenme garantili, yüz yüze eğitim.",
+    "image": ""
+  },
+  "courses": [
+    {
+      "badge": "Seviye 1",
+      "title": "Hobi Eğitimi",
+      "subtitle": "Kendi Cihazını Kendin Tamir Et",
+      "devices": "iPhone + Android",
+      "duration": "1 Hafta (5 Gün)",
+      "target": "Teknik bilgisi olmayan, kendi ekran veya bataryasını değiştirmek isteyen herkes",
+      "image": "",
+      "topics": [
+        { "title": "Temel Elektronik & Güvenlik", "items": ["Statik elektrik ve ESD koruması", "Kullanılan aletler ve fonksiyonları", "Cihaz açma/kapama teknikleri"] },
+        { "title": "Ekran Değişimi", "items": ["iPhone ekran sökme ve takma", "Samsung / Xiaomi ekran değişimi", "Bağlantı konektörleri ve dikkat noktaları"] },
+        { "title": "Batarya Değişimi", "items": ["iPhone batarya söküm prosedürü", "Android batarya değişimi", "Batarya kalibrasyonu ve güvenlik"] },
+        { "title": "Kasa & Arka Kapak", "items": ["Arka kapak değişimi (cam / plastik)", "Kasa değişimi temelleri", "Su geçirmezlik bantı uygulaması"] }
+      ]
+    },
+    {
+      "badge": "Seviye 2",
+      "title": "Teknik Eğitim",
+      "subtitle": "Orta Düzey Tamir Becerileri",
+      "devices": "iPhone + Android",
+      "duration": "1 Hafta (5 Gün)",
+      "target": "Seviye 1'i tamamlayanlar veya temel tamir deneyimi olanlar",
+      "image": "",
+      "topics": [
+        { "title": "Lehimleme Temelleri", "items": ["Havya ve ısı tabancası kullanımı", "SMD bileşen söküm/takma", "Lehim kalitesi ve yaygın hatalar"] },
+        { "title": "Şarj & Güç Devreleri", "items": ["Şarj soketi değişimi (iPhone + Android)", "Şarj entegresi (IC) söküp takma", "Şarj olmuyor arızası analizi"] },
+        { "title": "Kamera, Ses & Tuş", "items": ["Ön/arka kamera değişimi", "Hoparlör ve mikrofon tamiri", "Ses & açma/kapama tuşu onarımı"] },
+        { "title": "Su Hasarı Müdahalesi", "items": ["Ultrasonik temizleme temelleri", "Korozyon analizi", "Kritik bileşen kurtarma adımları"] }
+      ]
+    },
+    {
+      "badge": "Seviye 3",
+      "title": "Anakart Tamiri",
+      "subtitle": "iPhone Uzmanlık Eğitimi",
+      "devices": "iPhone Odaklı",
+      "duration": "2–3 Hafta",
+      "target": "Seviye 2'yi tamamlamış, profesyonel teknik servis açmak ya da anakart uzmanı olmak isteyenler",
+      "image": "",
+      "topics": [
+        { "title": "Mikro Lehimleme (Microsoldering)", "items": ["Trinoküler mikroskop kullanımı", "BGA bileşen söküm/reballing", "Vias ve pad onarımı"] },
+        { "title": "Şema Okuma & Tanı", "items": ["iPhone şema diyagramları", "Multimetre ile devre analizi", "Voltaj noktaları ve referanslar"] },
+        { "title": "iPhone Anakart Onarımı", "items": ["PMIC, U2, Tristar entegre tamiri", "Servis yok / anten arızaları", "Baseband & NAND sorunları"] },
+        { "title": "Face ID & Güvenlik Çipleri", "items": ["Face ID devre analizi", "Touch ID / Secure Enclave", "iPhone Yazılımsal Sorunlar"] },
+        { "title": "Veri Kurtarma Temelleri", "items": ["NAND flash okuma teknikleri", "Hasarlı anakarttan veri alma", "Profesyonel araçlar tanıtımı"] },
+        { "title": "Servis Yönetimi (Bonus)", "items": ["Müşteri fiyatlandırma stratejisi", "Garanti politikası oluşturma", "Trabzon ve çevre ilde müşteri edinme"] }
+      ]
+    }
+  ],
+  "benefits": [
+    { "title": "10+ Yıllık Eğitmen Deneyimi", "desc": "Trabzon'un önde gelen teknik servisi olarak binlerce tamir deneyimini birebir aktarıyoruz." },
+    { "title": "Öğrenme Garantili", "desc": "Hedef becerileri kazanamayan katılımcılara ücretsiz tekrar eğitimi sunuyoruz." },
+    { "title": "Küçük Gruplar", "desc": "Her katılımcı eğitmenle birebir pratik yapma fırsatı buluyor. Maksimum 4 kişilik gruplar." },
+    { "title": "Gerçek Cihaz Uygulaması", "desc": "Eğitimler gerçek arızalı cihazlar üzerinde yürütülür; simülasyon değil, gerçek deneyim." }
+  ],
+  "faq": [
+    { "q": "Eğitime başlamak için önceden teknik bilgi gerekiyor mu?", "a": "Seviye 1 Hobi Eğitimi için herhangi bir ön bilgi gerekmez; sıfırdan başlıyoruz. Seviye 2 için Seviye 1'i tamamlamış olmak ya da eşdeğer pratik deneyime sahip olmak yeterlidir. Seviye 3 ise Seviye 2'yi tamamlamış ya da temel lehimleme deneyimine sahip kişilere yöneliktir." },
+    { "q": "Eğitim grupları kaç kişilik oluyor?", "a": "Eğitimler küçük gruplarla yüz yüze yapılmaktadır. Böylece her katılımcı eğitmenle birebir pratik yapma fırsatı buluyor ve öğrenme süreci hızlanıyor." },
+    { "q": "Öğrenme garantisi ne anlama geliyor?", "a": "Eğitim sonunda belirlenen hedef becerileri kazanamayan katılımcılara ücretsiz tekrar eğitimi sunuyoruz. Hedefe ulaşana kadar yanınızdayız." },
+    { "q": "Eğitim fiyatları ne kadar?", "a": "Eğitim ücretleri grup takvimi, içerik ve seviyeye göre değişmektedir. Güncel ücret bilgisi için WhatsApp hattımıza +90 (505) 275 45 40 numarasından ulaşabilirsiniz." },
+    { "q": "Kendi telefonumu getirip tamir etmeyi öğrenebilir miyim?", "a": "Evet. Özellikle Seviye 1 Hobi Eğitimi kendi cihazını onarmak isteyenler için tasarlanmıştır. Cihazınızı eğitime getirerek gerçek uygulama deneyimi edinebilirsiniz." },
+    { "q": "Eğitim hangi saatlerde yapılıyor?", "a": "Eğitimler hafta içi 09:00–17:00 saatleri arasında Kolotoğlu Pasajı Kat 1 adresimizde yüz yüze yapılmaktadır. Özel grup talepleri için esnek saat seçenekleri değerlendirilebilir." }
+  ]
+}
