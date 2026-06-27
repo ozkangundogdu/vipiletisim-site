@@ -1,23 +1,43 @@
+import fs from "fs";
+import path from "path";
 import Link from "next/link";
 import { cities } from "@/data/cities";
 import { services } from "@/data/services";
+import { unstable_noStore as noStore } from "next/cache";
 
-const popularServices = [
-  services.find(s => s.slug === "iphone-16-ekran-degisimi")!,
-  services.find(s => s.slug === "iphone-15-pro-batarya-degisimi")!,
-  services.find(s => s.slug === "iphone-14-sarj-soketi-tamiri")!,
-  services.find(s => s.slug === "iphone-13-ekran-degisimi")!,
-  services.find(s => s.slug === "iphone-x-batarya-degisimi")!,
-  services.find(s => s.slug === "iphone-xr-ekran-degisimi")!,
-  services.find(s => s.slug === "samsung-galaxy-s24-ekran-degisimi")!,
-  services.find(s => s.slug === "samsung-a54-batarya-degisimi")!,
-  services.find(s => s.slug === "xiaomi-ekran-degisimi")!,
-  services.find(s => s.slug === "iphone-kamera-cami-degisimi")!,
-];
+type PopularServiceEntry = {
+  slug: string;
+  customTitle: string;
+  customDescription: string;
+  customIntro: string;
+};
+
+function getPopularServices() {
+  noStore();
+  try {
+    const file = path.join(process.cwd(), "content/popular-services.json");
+    const raw = fs.readFileSync(file, "utf-8");
+    const entries: PopularServiceEntry[] = JSON.parse(raw);
+    return entries
+      .map((entry) => {
+        const svc = services.find((s) => s.slug === entry.slug);
+        if (!svc) return null;
+        return {
+          slug: entry.slug,
+          title: entry.customTitle || svc.title,
+        };
+      })
+      .filter(Boolean) as { slug: string; title: string }[];
+  } catch {
+    return [];
+  }
+}
 
 const popularCities = cities.slice(0, 10);
 
 export function PopularLinksSection() {
+  const popularServices = getPopularServices();
+
   return (
     <section className="bg-white py-[20px]" aria-label="Popüler bağlantılar">
       <div className="mx-auto max-w-[1330px] px-6">

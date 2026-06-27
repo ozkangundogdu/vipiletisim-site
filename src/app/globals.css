@@ -20,3 +20,25 @@ body {
   color: var(--foreground);
   font-family: var(--site-font-sans);
 }
+
+.input {
+  width: 100%;
+  border: 1px solid #e4e4e7;
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: #18181b;
+  background: #fff;
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.input:focus {
+  border-color: #ff351b;
+  box-shadow: 0 0 0 2px rgba(255,53,27,0.15);
+}
+.input::placeholder {
+  color: #a1a1aa;
+}
+textarea.input {
+  resize: vertical;
+}

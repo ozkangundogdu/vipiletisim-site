@@ -1,0 +1,42 @@
+[
+  {
+    "id": "1",
+    "soru": "Tamir süresi ne kadar?",
+    "cevap": "Ekran ve batarya değişimi genellikle 30–60 dakika içinde tamamlanır. Anakart tamiri veya su hasarı gibi karmaşık işlemler 1–3 iş günü sürebilir."
+  },
+  {
+    "id": "2",
+    "soru": "Hangi markaları tamir ediyorsunuz?",
+    "cevap": "iPhone, Samsung, Xiaomi, Huawei, Oppo, Realme ve daha birçok Android marka ve modeli tamir ediyoruz."
+  },
+  {
+    "id": "3",
+    "soru": "Garanti veriyor musunuz?",
+    "cevap": "Tüm tamir işlemlerimize 3 ay garanti veriyoruz. Orijinal veya orijinal kalite yedek parça kullanıyoruz."
+  },
+  {
+    "id": "4",
+    "soru": "Fiyatları önceden öğrenebilir miyim?",
+    "cevap": "WhatsApp üzerinden cihazınızın modelini ve arızasını yazarsanız fiyat bilgisi verebiliriz. Randevu almadan da dükkânımıza gelebilirsiniz."
+  },
+  {
+    "id": "5",
+    "soru": "Orijinal parça kullanıyor musunuz?",
+    "cevap": "İmkân dahilinde orijinal (OEM) parça kullanıyoruz. Stok dışı durumlarda ise OEM kalitesinde yedek parça tercih ediliyor ve size önceden bilgi veriliyor."
+  },
+  {
+    "id": "6",
+    "soru": "Verilerim güvende mi?",
+    "cevap": "Tamir öncesi verilerinize asla erişmiyoruz. Ekran tamiri gibi işlemlerde zaten veri erişimi gerçekleşmiyor. Anakart gibi daha derin işlemlerde telefonunuzu size teslim ediyoruz."
+  },
+  {
+    "id": "7",
+    "soru": "Adresiniz nerede?",
+    "cevap": "Çarşı Mahallesi Uzun Sokak Kolotoğlu Pasajı Kat 1, Ortahisar / Trabzon adresindeyiz. Google Haritalar üzerinden yol tarifi alabilirsiniz."
+  },
+  {
+    "id": "8",
+    "soru": "Çalışma saatleriniz nedir?",
+    "cevap": "Pazartesi – Cumartesi: 09:00 – 19:00 saatleri arasında hizmet veriyoruz. Pazar günleri kapalıyız."
+  }
+]

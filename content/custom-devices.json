@@ -1,0 +1,14 @@
+[
+  {
+    "id": "custom-1782534752256",
+    "brandKey": "iphone",
+    "brandLabel": "iPhone",
+    "model": "iphone 19",
+    "repairKeys": [
+      "ekran-degisimi",
+      "batarya-degisimi",
+      "sarj-soketi-tamiri",
+      "kamera-cami-tamiri"
+    ]
+  }
+]

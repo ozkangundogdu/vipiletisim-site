@@ -38,12 +38,11 @@ const breadcrumbSchema = {
 
 const CATEGORIES = ["Tümü", "Tamir Rehberi", "Arıza Rehberi", "iPhone Sorunları", "Acil Rehber", "Hizmet Rehberi"];
 
+const AYLAR = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+
 function formatDate(dateStr: string) {
-  return new Date(dateStr).toLocaleDateString("tr-TR", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-  });
+  const d = new Date(dateStr);
+  return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 }
 
 function CategoryBadge({ category }: { category: string }) {

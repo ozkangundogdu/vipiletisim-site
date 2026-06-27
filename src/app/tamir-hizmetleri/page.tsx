@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
-import { RepairWizard } from "@/components/repair-wizard";
+import { WizardClient } from "@/components/wizard-client";
+import { getCustomDevices, getDraftCustomSlugs } from "@/lib/custom-services";
 
 export const metadata: Metadata = {
   title: "Trabzon Telefon Tamir Hizmetleri",
@@ -114,7 +115,7 @@ export default function ServicesListPage() {
           <div className="mx-auto max-w-[1330px] px-6">
             <h2 className="mb-2 text-xl font-black text-zinc-900">Arıza Türüne Göre Tamir</h2>
             <p className="mb-6 text-[14px] text-zinc-500">Arızanızı seçin → Markanızı seçin → Modelinizi seçin → İlgili sayfaya gidin.</p>
-            <RepairWizard />
+            <WizardClient customDevices={getCustomDevices()} draftCustomSlugs={getDraftCustomSlugs()} />
           </div>
         </section>
 

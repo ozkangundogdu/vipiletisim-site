@@ -1,0 +1,50 @@
+[
+  {
+    "id": "1",
+    "name": "Ahmet Yılmaz",
+    "rating": 5,
+    "text": "iPhone 13 ekranım çatlamıştı, aynı gün değiştirdiler. Çok hızlı ve kaliteli hizmet. Kesinlikle tavsiye ederim!",
+    "tarih": "2024-11-15",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "2",
+    "name": "Fatma Demir",
+    "rating": 5,
+    "text": "Samsung S23 batarya sorunu yaşıyordum. Fiyat makul, işçilik çok iyi. Artık telefon eski gibi çalışıyor.",
+    "tarih": "2024-11-02",
+    "hizmet": "Batarya Değişimi"
+  },
+  {
+    "id": "3",
+    "name": "Mehmet Kaya",
+    "rating": 5,
+    "text": "Telefonum suya düştü, paniklemiştim. Vip İletişim kurtardı. Profesyonel ekip, teşekkürler.",
+    "tarih": "2024-10-28",
+    "hizmet": "Su Hasarı Tamiri"
+  },
+  {
+    "id": "4",
+    "name": "Zeynep Arslan",
+    "rating": 5,
+    "text": "Xiaomi telefonumun şarj soketi arızalandı. Hızlı teşhis ve uygun fiyatla çözüldü. Teşekkürler.",
+    "tarih": "2024-10-20",
+    "hizmet": "Şarj Soketi Tamiri"
+  },
+  {
+    "id": "5",
+    "name": "Ali Çelik",
+    "rating": 5,
+    "text": "Face ID çalışmıyordu, orijinal parçayla düzelttiler. Garantili işçilik için doğru adres.",
+    "tarih": "2024-10-10",
+    "hizmet": "Face ID Tamiri"
+  },
+  {
+    "id": "6",
+    "name": "Elif Şahin",
+    "rating": 5,
+    "text": "Kameran bulanık görüntü veriyordu. Bir saatte hallettiler, çok memnun kaldım. Herkese tavsiye.",
+    "tarih": "2024-09-25",
+    "hizmet": "Kamera Tamiri"
+  }
+]

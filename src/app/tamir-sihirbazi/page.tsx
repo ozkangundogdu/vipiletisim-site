@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { WizardClient } from '@/components/wizard-client';
+import { getCustomDevices, getDraftCustomSlugs } from '@/lib/custom-services';
 
 export const metadata: Metadata = {
   title: { absolute: 'Tamir Sihirbazı — Marka & Arıza Seçin | Vip İletişim Trabzon' },
@@ -22,6 +23,8 @@ export const metadata: Metadata = {
 };
 
 export default function TamirSihirbaziPage() {
+  const customDevices = getCustomDevices();
+  const draftCustomSlugs = getDraftCustomSlugs();
   return (
     <main className="mx-auto max-w-[900px] px-4 py-10">
       <nav aria-label="Breadcrumb" className="mb-6 text-sm text-zinc-500">
@@ -39,7 +42,7 @@ export default function TamirSihirbaziPage() {
         Markanızı, modelinizi ve arıza türünüzü seçin — size özel tamir sayfasına yönlendirelim.
       </p>
 
-      <WizardClient />
+      <WizardClient customDevices={customDevices} draftCustomSlugs={draftCustomSlugs} />
     </main>
   );
 }

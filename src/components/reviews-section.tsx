@@ -1,41 +1,4 @@
-const reviews = [
-  {
-    name: "Ahmet Yılmaz",
-    rating: 5,
-    date: "2 hafta önce",
-    text: "Trabzon'da iPhone tamiri için en iyi adres kesinlikle Vip İletişim. iPhone 14 Pro ekranım kırılmıştı, aynı gün orijinal parça ile değiştirdiler. Hem hızlı hem de fiyatı gayet uygundu. Kesinlikle tavsiye ederim.",
-  },
-  {
-    name: "Fatma Demir",
-    rating: 5,
-    date: "1 ay önce",
-    text: "Samsung Galaxy S23 bataryam şişmişti, başka yerlere sordum çok pahalıydı. Vip İletişim'de hem uygun fiyata hem de orijinal parçayla değiştirdiler. Trabzon'da güvenilir telefon tamiri arıyorsanız burası.",
-  },
-  {
-    name: "Mehmet Kaya",
-    rating: 5,
-    date: "3 hafta önce",
-    text: "iPhone şarj almıyordu, şarj soketini değiştirdiler. 45 dakikada hallettiler. Trabzon'daki en hızlı ve en güvenilir teknik servis diyebilirim. Fiyat performans açısından da çok memnun kaldım.",
-  },
-  {
-    name: "Elif Çelik",
-    rating: 5,
-    date: "2 ay önce",
-    text: "Xiaomi telefonum suya düşmüştü, açılmıyordu. Vip İletişim'e götürdüm, ultrasonik temizlik yaptılar ve cihazımı kurtardılar. Trabzon'da bu kadar uzman bir ekip bulmak gerçekten zor. Teşekkürler!",
-  },
-  {
-    name: "Hasan Arslan",
-    rating: 5,
-    date: "1 ay önce",
-    text: "iPhone 13 ekranım kırılmıştı, orijinal ekran takılmasını istedim. Aynı gün temin edip değiştirdiler. Renk kalitesi ve dokunmatik hassasiyeti mükemmel. Trabzon iPhone tamiri deyince akla ilk bu yer gelmeli.",
-  },
-  {
-    name: "Zeynep Öztürk",
-    rating: 5,
-    date: "3 ay önce",
-    text: "Huawei telefonumun kamerası bulanık çekiyordu, kamera camı değiştirdiler. İşlem çok hızlı oldu ve sonuç mükemmel. Trabzon'da telefon tamiri için aradığım kalite ve güven burada. Herkese öneririm.",
-  },
-];
+import { getReviews } from "@/lib/settings";
 
 function StarIcon() {
   return (
@@ -57,6 +20,8 @@ function GoogleIcon() {
 }
 
 export function ReviewsSection() {
+  const reviews = getReviews();
+
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
@@ -96,7 +61,7 @@ export function ReviewsSection() {
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {reviews.map((review) => (
             <article
-              key={review.name}
+              key={review.id}
               className="flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm"
             >
               <div className="flex items-center justify-between">
@@ -106,7 +71,7 @@ export function ReviewsSection() {
                   </div>
                   <div>
                     <p className="text-[14px] font-bold text-zinc-900">{review.name}</p>
-                    <p className="text-[12px] text-zinc-400">{review.date}</p>
+                    <p className="text-[12px] text-zinc-400">{review.hizmet}</p>
                   </div>
                 </div>
                 <GoogleIcon />

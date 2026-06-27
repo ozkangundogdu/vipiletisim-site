@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, Suspense } from 'react';
+import { useState, useMemo, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
 import { type Brand, getModelsForBrand, getRepairTypesForModel, repairTypeList, getBrandsForRepair } from '@/data/services';
+import type { CustomDevice } from '@/lib/custom-services';
 
 const repairIcons: Record<string, string> = {
   'ekran-degisimi':
@@ -54,6 +55,21 @@ const brandConfig: Record<Brand, { label: string; bg: string; text: string; logo
   xiaomi:  { label: 'Xiaomi',  bg: '#FF6900', text: '#ffffff', logo: '/images/temir sihirbazı/xiaomi.png' },
 };
 
+function slugify(text: string): string {
+  return text
+    .replace(/\+/g, ' Plus')
+    .toLowerCase()
+    .replace(/ı/g, 'i').replace(/İ/g, 'i')
+    .replace(/ş/g, 's').replace(/ğ/g, 'g')
+    .replace(/ü/g, 'u').replace(/ö/g, 'o')
+    .replace(/ç/g, 'c')
+    .replace(/\./g, '')
+    .replace(/[^a-z0-9\s-]/g, '')
+    .trim()
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
 function StepIndicator({ step, total }: { step: number; total: number }) {
   return (
     <div className="mb-8 flex items-center justify-center gap-3">
@@ -87,16 +103,19 @@ function BackButton({ onClick }: { onClick: () => void }) {
 
 function Chip({ label, color }: { label: string; color: string }) {
   return (
-    <span
-      className="rounded-full px-3 py-1 text-xs font-bold text-white"
-      style={{ background: color }}
-    >
+    <span className="rounded-full px-3 py-1 text-xs font-bold text-white" style={{ background: color }}>
       {label}
     </span>
   );
 }
 
-function WizardInner() {
+function WizardInner({
+  customDevices,
+  draftCustomSlugs,
+}: {
+  customDevices: CustomDevice[];
+  draftCustomSlugs: string[];
+}) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const arizoParam = searchParams.get('ariza');
@@ -106,14 +125,38 @@ function WizardInner() {
     ? (repairTypeList.find((r) => r.key === arizoParam)?.label ?? arizoParam)
     : null;
 
-  const totalSteps = arizoParam ? 2 : 3;
+  const draftSet = useMemo(() => new Set(draftCustomSlugs), [draftCustomSlugs]);
 
   const validMarka = markaParam && brandConfig[markaParam] ? markaParam : null;
-  const allowedBrands = arizoParam ? getBrandsForRepair(arizoParam) : null; // null = hepsi
+  const allowedBrands = arizoParam ? getBrandsForRepair(arizoParam) : null;
   const [step, setStep] = useState<1 | 2 | 3>(validMarka ? 2 : 1);
   const [brand, setBrand] = useState<Brand | null>(validMarka);
   const [model, setModel] = useState<string | null>(null);
   const [search, setSearch] = useState('');
+
+  // Custom models for selected brand (only live ones for the selected repair)
+  const customModelsForBrand = useMemo(() => {
+    if (!brand) return [] as CustomDevice[];
+    return customDevices.filter((d) => {
+      if (d.brandKey !== brand) return false;
+      if (!arizoParam) return true;
+      // Only include if this repair key is supported and not a draft
+      const slug = `${slugify(d.model)}-${arizoParam}`;
+      return d.repairKeys.includes(arizoParam) && !draftSet.has(slug);
+    });
+  }, [brand, customDevices, arizoParam, draftSet]);
+
+  const allModels = useMemo(() => {
+    if (!brand) return [];
+    const hardcoded = getModelsForBrand(brand);
+    const customNames = customModelsForBrand.map((d) => d.model);
+    // Prepend custom models, avoid duplicates
+    return [...customNames.filter((n) => !hardcoded.includes(n)), ...hardcoded];
+  }, [brand, customModelsForBrand]);
+
+  const filteredModels = allModels.filter((m) =>
+    m.toLowerCase().includes(search.toLowerCase())
+  );
 
   function selectBrand(b: Brand) {
     setBrand(b);
@@ -123,6 +166,24 @@ function WizardInner() {
   }
 
   function selectModel(m: string) {
+    // Check if this is a custom device
+    const customDevice = customDevices.find((d) => d.model === m && d.brandKey === brand);
+
+    if (customDevice) {
+      const mSlug = slugify(customDevice.model);
+      if (arizoParam) {
+        const slug = `${mSlug}-${arizoParam}`;
+        if (customDevice.repairKeys.includes(arizoParam) && !draftSet.has(slug)) {
+          router.push(`/tamir-hizmetleri/${slug}`);
+        }
+        return;
+      }
+      setModel(m);
+      setStep(3);
+      return;
+    }
+
+    // Hardcoded device
     if (arizoParam && brand) {
       const repairTypes = getRepairTypesForModel(m, brand);
       const rt = repairTypes.find((r) => r.key === arizoParam);
@@ -139,16 +200,29 @@ function WizardInner() {
     router.push(`/tamir-hizmetleri/${slug}`);
   }
 
-  const models = brand ? getModelsForBrand(brand) : [];
-  const filteredModels = models.filter((m) =>
-    m.toLowerCase().includes(search.toLowerCase())
-  );
+  // Repair types for selected model (handles both custom and hardcoded)
+  const repairTypesForModel = useMemo(() => {
+    if (!model || !brand) return [];
+    const customDevice = customDevices.find((d) => d.model === model && d.brandKey === brand);
+    if (customDevice) {
+      const mSlug = slugify(customDevice.model);
+      return customDevice.repairKeys
+        .filter((rk) => !draftSet.has(`${mSlug}-${rk}`))
+        .map((rk) => {
+          const rt = repairTypeList.find((r) => r.key === rk);
+          return rt ? { key: rk, label: rt.label, duration: rt.duration, slug: `${mSlug}-${rk}` } : null;
+        })
+        .filter(Boolean) as { key: string; label: string; duration: string; slug: string }[];
+    }
+    return getRepairTypesForModel(model, brand);
+  }, [model, brand, customDevices, draftSet]);
+
+  const totalSteps = arizoParam ? 2 : 3;
 
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm lg:p-8">
       <StepIndicator step={step} total={totalSteps} />
 
-      {/* Arıza bilgisi — param varsa göster */}
       {arizoLabel && (
         <div className="mb-5 flex items-center justify-center gap-2">
           <span className="text-sm text-zinc-500">Seçilen arıza:</span>
@@ -158,7 +232,7 @@ function WizardInner() {
         </div>
       )}
 
-      {/* ADIM 1 — Marka: <a> ile render edilir, crawler görür; JS varsa preventDefault ile inline akış */}
+      {/* ADIM 1 — Marka */}
       {step === 1 && (
         <div>
           <h2 className="mb-6 text-center text-lg font-black text-zinc-800">
@@ -182,8 +256,7 @@ function WizardInner() {
                     className="h-14 w-auto object-contain"
                   />
                 </a>
-              )
-            )}
+              ))}
           </div>
         </div>
       )}
@@ -206,20 +279,26 @@ function WizardInner() {
             className="mb-4 w-full rounded-lg border border-zinc-300 px-4 py-2.5 text-sm outline-none focus:border-zinc-500"
           />
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {filteredModels.map((m) => (
-              <button
-                key={m}
-                onClick={() => selectModel(m)}
-                className="rounded-lg border border-zinc-200 px-3 py-2.5 text-left text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50"
-              >
-                {m}
-              </button>
-            ))}
+            {filteredModels.map((m) => {
+              const isCustom = customDevices.some((d) => d.model === m && d.brandKey === brand);
+              return (
+                <button
+                  key={m}
+                  onClick={() => selectModel(m)}
+                  className="rounded-lg border border-zinc-200 px-3 py-2.5 text-left text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50 flex items-center gap-2"
+                >
+                  <span className="flex-1">{m}</span>
+                  {isCustom && (
+                    <span className="shrink-0 text-[9px] font-black px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">YENİ</span>
+                  )}
+                </button>
+              );
+            })}
           </div>
         </div>
       )}
 
-      {/* ADIM 3 — Arıza (sadece normal akışta) */}
+      {/* ADIM 3 — Arıza */}
       {step === 3 && brand && model && !arizoParam && (
         <div>
           <BackButton onClick={() => setStep(2)} />
@@ -229,24 +308,16 @@ function WizardInner() {
             <h2 className="text-lg font-black text-zinc-800">Arıza seçin</h2>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {getRepairTypesForModel(model, brand).map((rt) => (
+            {repairTypesForModel.map((rt) => (
               <button
                 key={rt.key}
                 onClick={() => selectRepair(rt.slug)}
                 className="flex flex-col items-center gap-2 rounded-xl border border-zinc-200 p-4 text-center transition hover:border-accent hover:bg-yellow-50"
               >
-                <svg
-                  width="28"
-                  height="28"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className="text-zinc-600"
-                >
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-zinc-600">
                   <path d={repairIcons[rt.key] ?? ''} />
                 </svg>
-                <span className="text-xs font-bold leading-tight text-zinc-700">
-                  {rt.label}
-                </span>
+                <span className="text-xs font-bold leading-tight text-zinc-700">{rt.label}</span>
                 <span className="text-[10px] text-zinc-400">{rt.duration}</span>
               </button>
             ))}
@@ -257,10 +328,16 @@ function WizardInner() {
   );
 }
 
-export function WizardClient() {
+export function WizardClient({
+  customDevices = [],
+  draftCustomSlugs = [],
+}: {
+  customDevices?: CustomDevice[];
+  draftCustomSlugs?: string[];
+}) {
   return (
     <Suspense fallback={<div className="py-10 text-center text-zinc-400">Yükleniyor…</div>}>
-      <WizardInner />
+      <WizardInner customDevices={customDevices} draftCustomSlugs={draftCustomSlugs} />
     </Suspense>
   );
 }
