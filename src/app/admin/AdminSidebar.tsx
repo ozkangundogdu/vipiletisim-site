@@ -6,6 +6,8 @@ import { useState } from "react";
 
 const NAV_ITEMS = [
   { href: "/admin", label: "Dashboard", icon: "⬛" },
+  { href: "/admin/header", label: "Header", icon: "🔝" },
+  { href: "/admin/hero", label: "Hero Bölümü", icon: "🏠" },
   { href: "/admin/iletisim", label: "İletişim & Site", icon: "⚙️" },
   { href: "/admin/blog", label: "Blog Yazıları", icon: "📝" },
   { href: "/admin/tamirler", label: "Tamir Sayfaları", icon: "🔧" },
@@ -13,6 +15,7 @@ const NAV_ITEMS = [
   { href: "/admin/yorumlar", label: "Yorumlar", icon: "⭐" },
   { href: "/admin/sss", label: "SSS", icon: "❓" },
   { href: "/admin/navigasyon", label: "Navigasyon", icon: "🔗" },
+  { href: "/admin/videolar", label: "Videolar", icon: "🎬" },
 ];
 
 export function AdminSidebar() {

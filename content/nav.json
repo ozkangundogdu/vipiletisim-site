@@ -1,17 +1,47 @@
 [
-  { "label": "Anasayfa", "href": "/" },
-  { "label": "Tamir Merkezi", "href": "/tamir-hizmetleri#wizard", "icon": true },
-  { "label": "Fiyatlar", "href": "/fiyatlar" },
-  { "label": "Tamir Eğitimi", "href": "/tamir-egitimi" },
-  { "label": "Blog", "href": "/blog" },
+  {
+    "label": "Anasayfa",
+    "href": "/"
+  },
+  {
+    "label": "Tamir Merkezi",
+    "href": "/tamir-hizmetleri#wizard",
+    "icon": true
+  },
+  {
+    "label": "Fiyatlar",
+    "href": "/fiyatlar"
+  },
+  {
+    "label": "Tamir Eğitimi",
+    "href": "/tamir-egitimi"
+  },
+  {
+    "label": "Blog",
+    "href": "/blog"
+  },
   {
     "label": "Kurumsal",
     "href": "/kurumsal",
     "hasDropdown": true,
     "children": [
-      { "label": "Hakkımızda", "href": "/kurumsal/hakkimizda" },
-      { "label": "Sıkça Sorulan Sorular", "href": "/kurumsal/sikca-sorulan-sorular" }
+      {
+        "label": "Hakkımızda",
+        "href": "/kurumsal/hakkimizda"
+      },
+      {
+        "label": "Sıkça Sorulan Sorular",
+        "href": "/kurumsal/sikca-sorulan-sorular"
+      }
     ]
   },
-  { "label": "İletişim", "href": "/iletisim" }
+  {
+    "label": "İletişim",
+    "href": "/iletisim"
+  },
+  {
+    "label": "Sosyal Medya ",
+    "href": "/cep-tamir-videolar",
+    "icon": false
+  }
 ]

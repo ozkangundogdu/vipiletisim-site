@@ -3,6 +3,7 @@ import path from "path";
 import { unstable_noStore as noStore } from "next/cache";
 
 export type SiteSettings = {
+  logo?: string;
   telefon: string;
   telefonRaw: string;
   whatsapp: string;

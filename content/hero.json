@@ -1,0 +1,24 @@
+{
+  "baslikOnce": "Profesyonel",
+  "baslikVurgu": "iPhone",
+  "baslikSonra": "ve Cep Telefonu Tamiri",
+  "aciklama": "Trabzon'da iPhone, Samsung, Xiaomi ve tüm marka telefonlar için aynı gün tamir. Orijinal parça, uzman kadro.",
+  "arkaplan": "/images/hero/phone-repair-hero.webp",
+  "ozellikler": [
+    {
+      "ikon": "check",
+      "baslik": "Anakart Tamirinde 90 Gün Garanti",
+      "aciklama": "Anakart onarımlarında 90 gün işçilik garantisi, tüm işlemlerde uzman kadro güvencesi."
+    },
+    {
+      "ikon": "speed",
+      "baslik": "Hızlı & Kaliteli İşçilik",
+      "aciklama": "Orijinal parçalarla kalite garantisiyle en hızlı şekilde tamir edilir."
+    },
+    {
+      "ikon": "search",
+      "baslik": "Uzman Teknisyenler: Hızlı Tamir",
+      "aciklama": "Sektörün en iyi teknisyenleri ile cihazınızı kısa sürede teslim alın."
+    }
+  ]
+}

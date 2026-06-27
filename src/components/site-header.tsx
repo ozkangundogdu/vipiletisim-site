@@ -13,11 +13,11 @@ function cn(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-function Logo() {
+function Logo({ src }: { src: string }) {
   return (
     <Link href="/" className="flex h-full items-center" aria-label="Vip İletişim ana sayfa">
       <Image
-        src="/images/logo.png"
+        src={src}
         alt="Vip İletişim Logo"
         width={218}
         height={104}
@@ -344,7 +344,7 @@ export function SiteHeader() {
     <header>
       <div className={cn("bg-surface-header", headerTextureClass)}>
         <div className="mx-auto flex h-[90px] max-w-[1330px] items-center justify-between gap-8 px-6">
-          <Logo />
+          <Logo src={settings.logo ?? "/images/logo.png"} />
 
           <div className="hidden flex-1 items-center justify-end gap-[40px] lg:flex">
             <ContactBlock
