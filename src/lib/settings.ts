@@ -38,6 +38,15 @@ export type FaqItem = {
   cevap: string;
 };
 
+export type NavChild = { label: string; href: string };
+export type NavItem = {
+  label: string;
+  href: string;
+  icon?: boolean;
+  hasDropdown?: boolean;
+  children?: NavChild[];
+};
+
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
 export function getSettings(): SiteSettings {
@@ -68,4 +77,35 @@ export function saveReviews(data: Review[]): void {
 
 export function saveFaq(data: FaqItem[]): void {
   fs.writeFileSync(path.join(CONTENT_DIR, "faq.json"), JSON.stringify(data, null, 2), "utf-8");
+}
+
+const DEFAULT_NAV: NavItem[] = [
+  { label: "Anasayfa", href: "/" },
+  { label: "Tamir Merkezi", href: "/tamir-hizmetleri#wizard", icon: true },
+  { label: "Fiyatlar", href: "/fiyatlar" },
+  { label: "Tamir Eğitimi", href: "/tamir-egitimi" },
+  { label: "Blog", href: "/blog" },
+  {
+    label: "Kurumsal", href: "/kurumsal", hasDropdown: true,
+    children: [
+      { label: "Hakkımızda", href: "/kurumsal/hakkimizda" },
+      { label: "Sıkça Sorulan Sorular", href: "/kurumsal/sikca-sorulan-sorular" },
+    ],
+  },
+  { label: "İletişim", href: "/iletisim" },
+];
+
+export function getNav(): NavItem[] {
+  noStore();
+  const filePath = path.join(CONTENT_DIR, "nav.json");
+  if (!fs.existsSync(filePath)) return DEFAULT_NAV;
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf-8")) as NavItem[];
+  } catch {
+    return DEFAULT_NAV;
+  }
+}
+
+export function saveNav(data: NavItem[]): void {
+  fs.writeFileSync(path.join(CONTENT_DIR, "nav.json"), JSON.stringify(data, null, 2), "utf-8");
 }

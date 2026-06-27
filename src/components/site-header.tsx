@@ -1,33 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getSettings } from "@/lib/settings";
-
-type NavChild = { label: string; href: string };
-type NavItem = {
-  label: string;
-  href: string;
-  hasDropdown?: boolean;
-  icon?: boolean;
-  children?: NavChild[];
-};
-
-const navItems: NavItem[] = [
-  { label: "Anasayfa", href: "/" },
-  { label: "Tamir Merkezi", href: "/tamir-hizmetleri#wizard", hasDropdown: false, icon: true },
-  { label: "Fiyatlar", href: "/fiyatlar" },
-  { label: "Tamir Eğitimi", href: "/tamir-egitimi" },
-  { label: "Blog", href: "/blog" },
-  {
-    label: "Kurumsal",
-    href: "/kurumsal",
-    hasDropdown: true,
-    children: [
-      { label: "Hakkımızda", href: "/kurumsal/hakkimizda" },
-      { label: "Sıkça Sorulan Sorular", href: "/kurumsal/sikca-sorulan-sorular" },
-    ],
-  },
-  { label: "İletişim", href: "/iletisim" },
-];
+import { getSettings, getNav } from "@/lib/settings";
+import type { NavItem } from "@/lib/settings";
 
 const navGradientClass = "bg-[linear-gradient(180deg,#FAFAFA_0%,#b8b8b8_100%)]";
 const navSeparatorClass =
@@ -266,7 +240,7 @@ function ContactBlock({
   );
 }
 
-function DesktopNav() {
+function DesktopNav({ navItems }: { navItems: NavItem[] }) {
   return (
     <nav className={cn(navGradientClass, "hidden h-[53px] lg:block")} aria-label="Ana menü">
       <div className="mx-auto flex h-full max-w-[1330px] justify-center px-6">
@@ -307,7 +281,7 @@ function DesktopNav() {
   );
 }
 
-function MobileNav() {
+function MobileNav({ navItems }: { navItems: NavItem[] }) {
   return (
     <details className={cn(navGradientClass, "lg:hidden")} suppressHydrationWarning>
       <summary
@@ -364,6 +338,7 @@ function MobileNav() {
 
 export function SiteHeader() {
   const settings = getSettings();
+  const navItems = getNav();
 
   return (
     <header>
@@ -408,8 +383,8 @@ export function SiteHeader() {
         </div>
       </div>
 
-      <DesktopNav />
-      <MobileNav />
+      <DesktopNav navItems={navItems} />
+      <MobileNav navItems={navItems} />
     </header>
   );
 }

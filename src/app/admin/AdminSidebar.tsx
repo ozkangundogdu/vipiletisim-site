@@ -12,6 +12,7 @@ const NAV_ITEMS = [
   { href: "/admin/zamanlama", label: "Zamanlama", icon: "🗓️" },
   { href: "/admin/yorumlar", label: "Yorumlar", icon: "⭐" },
   { href: "/admin/sss", label: "SSS", icon: "❓" },
+  { href: "/admin/navigasyon", label: "Navigasyon", icon: "🔗" },
 ];
 
 export function AdminSidebar() {

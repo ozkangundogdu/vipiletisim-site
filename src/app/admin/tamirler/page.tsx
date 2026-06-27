@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { services, repairTypeList } from "@/data/services";
@@ -48,7 +48,7 @@ function deviceTimestamp(device: CustomDevice): number {
   return parseInt(device.id.replace("custom-", "")) || 0;
 }
 
-export default function TamirlerPage() {
+function TamirlerInner() {
   const searchParams = useSearchParams();
   const [popularList, setPopularList] = useState<PopularService[]>([]);
   const [customDevices, setCustomDevices] = useState<CustomDevice[]>([]);
@@ -738,5 +738,13 @@ export default function TamirlerPage() {
         </div>
       )}
     </div>
+  );
+}
+
+export default function TamirlerPage() {
+  return (
+    <Suspense>
+      <TamirlerInner />
+    </Suspense>
   );
 }
