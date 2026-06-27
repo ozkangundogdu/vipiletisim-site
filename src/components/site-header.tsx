@@ -29,6 +29,16 @@ const navItems: NavItem[] = [
   { label: "İletişim", href: "/iletisim" },
 ];
 
+const navGradientClass = "bg-[linear-gradient(180deg,#FAFAFA_0%,#b8b8b8_100%)]";
+const navSeparatorClass =
+  "before:absolute before:left-0 before:top-0 before:h-full before:w-px before:bg-zinc-600/35 before:content-[''] after:absolute after:left-px after:top-0 after:h-full after:w-px after:bg-white/70 after:content-[''] last:border-r last:border-zinc-600/35 last:shadow-[inset_-1px_0_0_rgba(255,255,255,0.65)]";
+const headerTextureClass =
+  "bg-[repeating-linear-gradient(135deg,rgba(255,255,255,0.055)_0px,rgba(255,255,255,0.055)_1px,transparent_1px,transparent_9px)]";
+
+function cn(...classes: string[]) {
+  return classes.filter(Boolean).join(" ");
+}
+
 function Logo() {
   return (
     <Link href="/" className="flex h-full items-center" aria-label="Vip İletişim ana sayfa">
@@ -107,9 +117,29 @@ function WrenchIcon() {
       stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
-      strokeWidth="2"
+      strokeWidth="2.1"
     >
-      <path d="M14.7 6.3a4.2 4.2 0 0 0-5.1 5.1L3 18v3h3l6.6-6.6a4.2 4.2 0 0 0 5.1-5.1l-2.5 2.5-2.3-2.3 2.5-2.5Z" />
+      <path d="M16 4.7a4.8 4.8 0 0 0-6.4 6.1L4.1 16.3a2.2 2.2 0 0 0 0 3.1l.5.5a2.2 2.2 0 0 0 3.1 0l5.5-5.5a4.8 4.8 0 0 0 6.1-6.4l-3.5 3.5-3.3-3.3L16 4.7Z" />
+      <path d="M6.2 17.8h.01" />
+    </svg>
+  );
+}
+
+function HomeIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      viewBox="0 0 24 24"
+      className="h-[21px] w-[21px] shrink-0 text-zinc-700"
+      fill="none"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2.2"
+    >
+      <path d="M3 10.8 12 3l9 7.8" />
+      <path d="M5.5 9.2V21h13V9.2" />
+      <path d="M9.5 21v-6h5v6" />
     </svg>
   );
 }
@@ -238,15 +268,19 @@ function ContactBlock({
 
 function DesktopNav() {
   return (
-    <nav className="hidden h-[53px] bg-surface-nav lg:block" aria-label="Ana menü">
+    <nav className={cn(navGradientClass, "hidden h-[53px] lg:block")} aria-label="Ana menü">
       <div className="mx-auto flex h-full max-w-[1330px] justify-center px-6">
         <ul className="flex h-full items-stretch">
           {navItems.map((item) => (
-            <li key={item.label} className="group relative h-full border-l border-zinc-300 last:border-r">
+            <li key={item.label} className={cn(navSeparatorClass, "group relative h-full")}>
               <Link
                 href={item.href}
-                className="flex h-full items-center justify-center gap-2 whitespace-nowrap px-[22px] text-[15px] font-extrabold leading-none text-zinc-700 transition hover:bg-surface-nav-hover hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
+                className={cn(
+                  navGradientClass,
+                  "flex h-full items-center justify-center gap-2 whitespace-nowrap px-[22px] text-[15px] font-extrabold leading-none text-zinc-700 transition hover:bg-surface-nav-hover hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
+                )}
               >
+                {item.href === "/" ? <HomeIcon /> : null}
                 {item.icon ? <WrenchIcon /> : null}
                 <span>{item.label}</span>
                 {item.hasDropdown ? <ChevronIcon /> : null}
@@ -258,7 +292,7 @@ function DesktopNav() {
                     <Link
                       key={child.href}
                       href={child.href}
-                      className="block border-b border-zinc-100 px-5 py-3 text-[14px] font-bold text-zinc-700 last:border-b-0 transition hover:bg-zinc-50 hover:text-brand [font-family:var(--font-nunito-sans)]"
+                      className="block border-b border-zinc-100 px-5 py-3 text-[14px] font-bold text-zinc-700 first:rounded-t-none last:rounded-b-lg last:border-b-0 transition hover:bg-zinc-50 hover:text-brand [font-family:var(--font-nunito-sans)]"
                     >
                       {child.label}
                     </Link>
@@ -275,8 +309,13 @@ function DesktopNav() {
 
 function MobileNav() {
   return (
-    <details className="bg-surface-nav lg:hidden" suppressHydrationWarning>
-      <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[16px] font-black text-zinc-700">
+    <details className={cn(navGradientClass, "lg:hidden")} suppressHydrationWarning>
+      <summary
+        className={cn(
+          navGradientClass,
+          "flex cursor-pointer list-none items-center justify-between px-5 py-4 text-[16px] font-black text-zinc-700"
+        )}
+      >
         Menü
         <ChevronIcon />
       </summary>
@@ -284,7 +323,12 @@ function MobileNav() {
         {navItems.map((item) =>
           item.children ? (
             <details key={item.label} className="group border-b border-zinc-300" suppressHydrationWarning>
-              <summary className="flex cursor-pointer list-none items-center justify-between px-5 py-3 text-sm font-extrabold text-zinc-700 [font-family:var(--font-nunito-sans)]">
+              <summary
+                className={cn(
+                  navGradientClass,
+                  "flex cursor-pointer list-none items-center justify-between px-5 py-3 text-sm font-extrabold text-zinc-700 [font-family:var(--font-nunito-sans)]"
+                )}
+              >
                 {item.label}
                 <ChevronIcon />
               </summary>
@@ -304,7 +348,10 @@ function MobileNav() {
             <Link
               key={item.label}
               href={item.href}
-              className="border-b border-zinc-300 px-5 py-3 text-sm font-extrabold text-zinc-700 hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
+              className={cn(
+                navGradientClass,
+                "border-b border-zinc-300 px-5 py-3 text-sm font-extrabold text-zinc-700 hover:text-zinc-950 [font-family:var(--font-nunito-sans)]"
+              )}
             >
               {item.label}
             </Link>
@@ -320,7 +367,7 @@ export function SiteHeader() {
 
   return (
     <header>
-      <div className="bg-surface-header">
+      <div className={cn("bg-surface-header", headerTextureClass)}>
         <div className="mx-auto flex h-[90px] max-w-[1330px] items-center justify-between gap-8 px-6">
           <Logo />
 

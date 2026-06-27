@@ -40,7 +40,7 @@ export function ReviewsSection() {
   };
 
   return (
-    <section className="bg-zinc-50 py-[20px]" aria-labelledby="yorumlar-baslik">
+    <section className="bg-zinc-50 py-12 lg:py-14" aria-labelledby="yorumlar-baslik">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
@@ -54,7 +54,7 @@ export function ReviewsSection() {
         >
           Memnuniyet Garantilerimiz
         </h2>
-        <p className="mt-2 mb-[15px] text-center text-[15px] text-zinc-500">
+        <p className="mx-auto mt-4 mb-8 max-w-[920px] text-center text-[15px] leading-relaxed text-zinc-500">
           Trabzon'da yüzlerce müşterimizin güvenini kazanan teknik servis deneyimi — orijinal parça, uzman kadro, garanti.
         </p>
 
