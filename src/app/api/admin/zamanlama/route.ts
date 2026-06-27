@@ -3,7 +3,8 @@ import { getAllPostsAdmin, updatePostPublishedAt } from "@/lib/blog";
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const posts = getAllPostsAdmin();
+  const now = new Date();
+  const posts = getAllPostsAdmin().filter((p) => new Date(p.publishedAt) > now);
   return Response.json(posts.map((p) => ({
     slug: p.slug,
     title: p.title,

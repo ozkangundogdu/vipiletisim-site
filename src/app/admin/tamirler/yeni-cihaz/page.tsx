@@ -56,6 +56,16 @@ export default function YeniCihazPage() {
   function selectNone() { setSelectedRepairs([]); }
   function selectCommon() { setSelectedRepairs(COMMON_REPAIRS); }
 
+  function makeSlug(text: string, repairKey: string): string {
+    const s = text
+      .replace(/\+/g, " Plus").toLowerCase()
+      .replace(/ı/g, "i").replace(/İ/g, "i").replace(/ş/g, "s").replace(/ğ/g, "g")
+      .replace(/ü/g, "u").replace(/ö/g, "o").replace(/ç/g, "c")
+      .replace(/\./g, "").replace(/[^a-z0-9\s-]/g, "").trim()
+      .replace(/\s+/g, "-").replace(/-+/g, "-");
+    return `${s}-${repairKey}`;
+  }
+
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!model.trim()) { setError("Model adı gerekli."); return; }
@@ -89,13 +99,33 @@ export default function YeniCihazPage() {
       body: JSON.stringify(updated),
     });
 
-    setSaving(false);
-    if (saveRes.ok) {
-      router.push("/admin/tamirler");
-      router.refresh();
-    } else {
+    if (!saveRes.ok) {
+      setSaving(false);
       setError("Kayıt sırasında hata oluştu.");
+      return;
     }
+
+    // Her tamir türü için taslak JSON oluştur
+    await Promise.all(
+      selectedRepairs.map((repairKey) => {
+        const slug = makeSlug(model.trim(), repairKey);
+        return fetch(`/api/admin/repair-page/${slug}`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            customTitle: "",
+            customDescription: "",
+            customContent: "",
+            coverImage: "",
+            publishedAt: "2099-01-01T00:00",
+          }),
+        });
+      })
+    );
+
+    setSaving(false);
+    router.push("/admin/tamirler");
+    router.refresh();
   }
 
   return (

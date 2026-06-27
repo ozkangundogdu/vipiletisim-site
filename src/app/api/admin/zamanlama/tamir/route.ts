@@ -30,17 +30,20 @@ function readAll(): RepairPageFile[] {
 }
 
 export async function GET() {
+  const now = new Date();
   const files = readAll();
-  const items = files.map((file) => {
-    const svc = getServiceBySlug(file.slug) ?? getCustomServiceBySlug(file.slug);
-    return {
-      slug: file.slug,
-      title: file.customTitle || svc?.title || file.slug,
-      publishedAt: file.publishedAt ?? "",
-      hasContent: !!file.customContent,
-      isDraft: file.publishedAt ? new Date(file.publishedAt) > new Date() : false,
-    };
-  });
+  const items = files
+    .filter((file) => !file.publishedAt || new Date(file.publishedAt) > now)
+    .map((file) => {
+      const svc = getServiceBySlug(file.slug) ?? getCustomServiceBySlug(file.slug);
+      return {
+        slug: file.slug,
+        title: file.customTitle || svc?.title || file.slug,
+        publishedAt: file.publishedAt ?? "",
+        hasContent: !!file.customContent,
+        isDraft: !!file.publishedAt,
+      };
+    });
   return Response.json(items);
 }
 

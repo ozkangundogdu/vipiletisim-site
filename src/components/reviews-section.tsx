@@ -39,14 +39,17 @@ export function ReviewsSection() {
     })),
   };
 
+  const doubled = [...reviews, ...reviews];
+  const duration = `${reviews.length * 4}s`;
+
   return (
-    <section className="bg-zinc-50 py-12 lg:py-14" aria-labelledby="yorumlar-baslik">
+    <section className="bg-zinc-50 py-12 lg:py-14 overflow-hidden" aria-labelledby="yorumlar-baslik">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaData) }}
       />
 
-      <div className="mx-auto max-w-[1330px] px-6">
+      <div className="mx-auto max-w-[1330px] px-6 mb-8">
         <h2
           id="yorumlar-baslik"
           className="text-center text-3xl font-black tracking-tight lg:text-4xl"
@@ -54,40 +57,63 @@ export function ReviewsSection() {
         >
           Memnuniyet Garantilerimiz
         </h2>
-        <p className="mx-auto mt-4 mb-8 max-w-[920px] text-center text-[15px] leading-relaxed text-zinc-500">
+        <p className="mx-auto mt-4 max-w-[920px] text-center text-[15px] leading-relaxed text-zinc-500">
           Trabzon'da yüzlerce müşterimizin güvenini kazanan teknik servis deneyimi — orijinal parça, uzman kadro, garanti.
         </p>
+      </div>
 
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {reviews.map((review) => (
+      {/* Kayan şerit */}
+      <div className="relative group">
+        <div className="pointer-events-none absolute left-0 top-0 h-full w-20 z-10"
+          style={{ background: "linear-gradient(to right, rgb(244,244,245), transparent)" }} />
+        <div className="pointer-events-none absolute right-0 top-0 h-full w-20 z-10"
+          style={{ background: "linear-gradient(to left, rgb(244,244,245), transparent)" }} />
+
+        <div
+          className="flex gap-4 w-max reviews-scroll group-hover:[animation-play-state:paused]"
+          style={{ animationDuration: duration }}
+        >
+          {doubled.map((review, i) => (
             <article
-              key={review.id}
-              className="flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm"
+              key={`${review.id}-${i}`}
+              className="flex-shrink-0 w-[300px] flex flex-col gap-3 rounded-xl border border-zinc-200 bg-white p-5 shadow-sm"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-black text-zinc-900">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-accent font-black text-zinc-900 shrink-0">
                     {review.name.charAt(0)}
                   </div>
-                  <div>
-                    <p className="text-[14px] font-bold text-zinc-900">{review.name}</p>
-                    <p className="text-[12px] text-zinc-400">{review.hizmet}</p>
+                  <div className="min-w-0">
+                    <p className="text-[14px] font-bold text-zinc-900 truncate">{review.name}</p>
+                    <p className="text-[12px] text-zinc-400 truncate">{review.hizmet}</p>
                   </div>
                 </div>
                 <GoogleIcon />
               </div>
 
               <div className="flex gap-0.5" aria-label={`${review.rating} yıldız`}>
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <StarIcon key={i} />
+                {Array.from({ length: review.rating }).map((_, i2) => (
+                  <StarIcon key={i2} />
                 ))}
               </div>
 
-              <p className="text-[14px] leading-relaxed text-zinc-600">{review.text}</p>
+              <p className="text-[13px] leading-relaxed text-zinc-600 line-clamp-4">{review.text}</p>
             </article>
           ))}
         </div>
       </div>
+
+      <style>{`
+        .reviews-scroll {
+          animation-name: reviewsScroll;
+          animation-timing-function: linear;
+          animation-iteration-count: infinite;
+        }
+        @keyframes reviewsScroll {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
     </section>
   );
 }

@@ -33,3 +33,17 @@ export async function POST(
   fs.writeFileSync(path.join(DIR, `${slug}.json`), JSON.stringify({ slug, ...body }, null, 2), "utf-8");
   return Response.json({ ok: true });
 }
+
+export async function DELETE(
+  _: Request,
+  { params }: { params: Promise<{ slug: string }> }
+) {
+  const { slug } = await params;
+  const filePath = path.join(DIR, `${slug}.json`);
+  try {
+    if (fs.existsSync(filePath)) fs.unlinkSync(filePath);
+    return Response.json({ ok: true });
+  } catch {
+    return Response.json({ ok: false }, { status: 500 });
+  }
+}

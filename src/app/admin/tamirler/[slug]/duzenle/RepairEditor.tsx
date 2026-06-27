@@ -11,12 +11,15 @@ type RepairPageData = {
   publishedAt: string;
 };
 
+type DeviceRepair = { slug: string; title: string; repairTypeLabel: string };
+
 type Props = {
   slug: string;
   serviceTitle: string;
   serviceModel: string;
   serviceRepairType: string;
   templateMarkdown: string;
+  deviceRepairs: DeviceRepair[];
 };
 
 function simplePreview(md: string): string {
@@ -66,24 +69,27 @@ function simplePreview(md: string): string {
 
 function ToolBtn({ onClick, title, children }: { onClick?: () => void; title?: string; children: React.ReactNode }) {
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      title={title}
-      className="px-2 py-1 text-xs font-bold text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded transition-colors"
-    >
+    <button type="button" onClick={onClick} title={title}
+      className="px-2 py-1 text-xs font-bold text-zinc-600 hover:text-zinc-900 hover:bg-zinc-100 rounded transition-colors">
       {children}
     </button>
   );
 }
 
-export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairType, templateMarkdown }: Props) {
+export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairType, templateMarkdown, deviceRepairs }: Props) {
   const router = useRouter();
   const taRef = useRef<HTMLTextAreaElement>(null);
   const [activeTab, setActiveTab] = useState<"yaz" | "onizle" | "seo">("yaz");
   const [saving, setSaving] = useState(false);
   const [saved, setSaved] = useState(false);
+  const [switching, setSwitching] = useState(false);
   const [uploadingImg, setUploadingImg] = useState(false);
+
+  // Aktif slug state — değiştirilebilir
+  const [activeSlug, setActiveSlug] = useState(slug);
+  const [activeTitle, setActiveTitle] = useState(serviceTitle);
+  const [activeRepairType, setActiveRepairType] = useState(serviceRepairType);
+  const [activeTemplate, setActiveTemplate] = useState(templateMarkdown);
 
   const [data, setData] = useState<RepairPageData>({
     customTitle: "",
@@ -151,51 +157,87 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
     if (json.url) setData((p) => ({ ...p, coverImage: json.url }));
   }
 
-  async function handleSave() {
-    setSaving(true);
-    await fetch(`/api/admin/repair-page/${slug}`, {
+  async function saveCurrentData(currentData: RepairPageData, currentSlug: string) {
+    await fetch(`/api/admin/repair-page/${currentSlug}`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(data),
+      body: JSON.stringify(currentData),
     });
-    setSaving(false);
-    setSaved(true);
-    setTimeout(() => setSaved(false), 2500);
   }
 
-  const titleDisplay = data.customTitle || serviceTitle;
-  const descDisplay = data.customDescription || `Trabzon'da ${serviceModel} ${serviceRepairType} hizmeti. Uzman teknisyen, orijinal parça.`;
+  async function handleSave() {
+    setSaving(true);
+    await saveCurrentData(data, activeSlug);
+    setSaving(false);
+    // Taslak ise zamanlama sekmesine yönlendir
+    const stillDraft = data.publishedAt && new Date(data.publishedAt) > new Date();
+    if (stillDraft) {
+      router.push("/admin/tamirler?tab=zamanlama");
+    } else {
+      setSaved(true);
+      setTimeout(() => setSaved(false), 2500);
+    }
+  }
+
+  async function switchToRepair(repair: DeviceRepair) {
+    if (repair.slug === activeSlug || switching) return;
+    setSwitching(true);
+
+    // Mevcut içeriği otomatik kaydet
+    await saveCurrentData(data, activeSlug);
+
+    // Yeni sayfanın verisini ve template'ini paralel çek
+    const [pageRes, tmplRes] = await Promise.all([
+      fetch(`/api/admin/repair-page/${repair.slug}`).then((r) => r.json()),
+      fetch(`/api/admin/repair-template/${repair.slug}`).then((r) => r.json()),
+    ]);
+
+    setActiveSlug(repair.slug);
+    setActiveTitle(repair.title);
+    setActiveRepairType(repair.repairTypeLabel);
+    setActiveTemplate(tmplRes.templateMarkdown ?? "");
+    setData({
+      customTitle: pageRes.customTitle ?? "",
+      customDescription: pageRes.customDescription ?? "",
+      customContent: pageRes.customContent ?? "",
+      coverImage: pageRes.coverImage ?? "",
+      publishedAt: pageRes.publishedAt ?? "",
+    });
+    setSaved(false);
+    setActiveTab("yaz");
+    setSwitching(false);
+  }
+
+  // Yayın durumu
+  const now = new Date();
+  const isImmediate = !data.publishedAt;
+  const isDraft = !!data.publishedAt && new Date(data.publishedAt) > now;
+
+  const titleDisplay = data.customTitle || activeTitle;
+  const descDisplay = data.customDescription || `Trabzon'da ${serviceModel} ${activeRepairType} hizmeti. Uzman teknisyen, orijinal parça.`;
 
   return (
     <div className="p-6 md:p-8 pt-16 md:pt-8">
       {/* Header */}
       <div className="flex items-center gap-3 mb-6 flex-wrap">
-        <button
-          onClick={() => router.push("/admin/tamirler")}
-          className="text-zinc-400 hover:text-zinc-700 transition-colors text-sm font-bold"
-        >
+        <button onClick={() => router.push("/admin/tamirler")}
+          className="text-zinc-400 hover:text-zinc-700 transition-colors text-sm font-bold">
           ← Tamir Sayfaları
         </button>
         <div className="flex-1 min-w-0">
-          <h1 className="text-xl font-black text-zinc-900 truncate">{serviceTitle}</h1>
-          <p className="text-xs text-zinc-400 font-mono mt-0.5">/tamir-hizmetleri/{slug}</p>
+          <h1 className="text-xl font-black text-zinc-900 truncate">{activeTitle}</h1>
+          <p className="text-xs text-zinc-400 font-mono mt-0.5">/tamir-hizmetleri/{activeSlug}</p>
         </div>
         <div className="flex items-center gap-3 ml-auto">
-          {saved && <span className="text-sm font-bold text-green-600">✓ Kaydedildi</span>}
-          <a
-            href={`/tamir-hizmetleri/${slug}`}
-            target="_blank"
-            rel="noopener"
-            className="text-sm font-bold text-zinc-500 hover:text-zinc-700 transition-colors"
-          >
+          {switching && <span className="text-sm text-zinc-400">Geçiliyor...</span>}
+          {saved && !switching && <span className="text-sm font-bold text-green-600">✓ Kaydedildi</span>}
+          <a href={`/tamir-hizmetleri/${activeSlug}`} target="_blank" rel="noopener"
+            className="text-sm font-bold text-zinc-500 hover:text-zinc-700 transition-colors">
             Önizle ↗
           </a>
-          <button
-            onClick={handleSave}
-            disabled={saving}
+          <button onClick={handleSave} disabled={saving || switching}
             className="px-5 py-2.5 rounded-lg text-white text-sm font-black transition disabled:opacity-50"
-            style={{ background: "#ff351b" }}
-          >
+            style={{ background: "#ff351b" }}>
             {saving ? "Kaydediliyor..." : "Kaydet"}
           </button>
         </div>
@@ -211,12 +253,10 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
               Kapak Görseli (isteğe bağlı)
             </label>
             <div className="flex gap-3 items-center">
-              <input
-                value={data.coverImage}
+              <input value={data.coverImage}
                 onChange={(e) => setData((p) => ({ ...p, coverImage: e.target.value }))}
                 placeholder="https://... veya /uploads/..."
-                className="input flex-1"
-              />
+                className="input flex-1" />
               <label className="cursor-pointer px-3 py-2 text-xs font-bold rounded-lg bg-zinc-100 text-zinc-700 hover:bg-zinc-200 transition-colors whitespace-nowrap">
                 <input type="file" accept="image/*" className="hidden" onChange={handleCoverUpload} />
                 {uploadingImg ? "Yükleniyor..." : "Dosya Seç"}
@@ -229,15 +269,11 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
 
           {/* Markdown editor */}
           <div className="bg-white rounded-xl shadow-sm border border-zinc-100 overflow-hidden">
-            {/* Tabs + image upload */}
             <div className="flex items-center border-b border-zinc-100 px-4">
               {(["yaz", "onizle", "seo"] as const).map((t) => (
-                <button
-                  key={t}
-                  onClick={() => setActiveTab(t)}
+                <button key={t} onClick={() => setActiveTab(t)}
                   className="px-4 py-3 text-xs font-black uppercase tracking-wide border-b-2 -mb-px transition-colors"
-                  style={{ borderColor: activeTab === t ? "#ff351b" : "transparent", color: activeTab === t ? "#ff351b" : "#71717a" }}
-                >
+                  style={{ borderColor: activeTab === t ? "#ff351b" : "transparent", color: activeTab === t ? "#ff351b" : "#71717a" }}>
                   {t === "yaz" ? "İçerik Yaz" : t === "onizle" ? "Önizle" : "SEO"}
                 </button>
               ))}
@@ -247,19 +283,15 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
                     <input type="file" accept="image/*" className="hidden" onChange={handleImageUpload} />
                     <ToolBtn title="Resim ekle">🖼 Resim</ToolBtn>
                   </label>
-                  <button
-                    type="button"
-                    onClick={() => setData((p) => ({ ...p, customContent: templateMarkdown }))}
-                    className="px-3 py-1 text-xs font-bold text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100 rounded transition-colors"
-                    title="Otomatik oluşturulan şablonu düzenleme alanına aktar"
-                  >
+                  <button type="button"
+                    onClick={() => setData((p) => ({ ...p, customContent: activeTemplate }))}
+                    className="px-3 py-1 text-xs font-bold text-zinc-500 hover:text-zinc-800 hover:bg-zinc-100 rounded transition-colors">
                     Şablondan Başla
                   </button>
                 </div>
               )}
             </div>
 
-            {/* Toolbar */}
             {activeTab === "yaz" && (
               <div className="flex flex-wrap gap-0.5 px-3 py-2 border-b border-zinc-50 bg-zinc-50">
                 <ToolBtn onClick={() => insert("**", "**", "kalın")} title="Kalın"><strong>B</strong></ToolBtn>
@@ -278,17 +310,13 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
               </div>
             )}
 
-            {/* Editor content */}
             {activeTab === "yaz" && (
               <div className="relative">
-                <textarea
-                  ref={taRef}
-                  value={data.customContent}
+                <textarea ref={taRef} value={data.customContent}
                   onChange={(e) => setData((p) => ({ ...p, customContent: e.target.value }))}
-                  placeholder={`${serviceTitle} hakkında içerik yazın...\n\nBoş bırakırsanız otomatik oluşturulan içerik kullanılır.\n"Şablondan Başla" butonuyla mevcut şablonu buraya aktarabilirsiniz.`}
+                  placeholder={`${activeTitle} hakkında içerik yazın...\n\nBoş bırakırsanız otomatik oluşturulan içerik kullanılır.\n"Şablondan Başla" butonuyla mevcut şablonu buraya aktarabilirsiniz.`}
                   className="w-full h-[500px] resize-y p-5 text-sm font-mono text-zinc-700 border-none outline-none leading-relaxed"
-                  spellCheck={false}
-                />
+                  spellCheck={false} />
                 <div className="absolute bottom-3 right-4 text-xs text-zinc-300 select-none">
                   {data.customContent.length} karakter
                 </div>
@@ -296,14 +324,12 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
             )}
 
             {activeTab === "onizle" && (
-              <div
-                className="p-6 min-h-[400px] prose max-w-none"
+              <div className="p-6 min-h-[400px] prose max-w-none"
                 dangerouslySetInnerHTML={{
                   __html: data.customContent
                     ? simplePreview(data.customContent)
-                    : `<p style="color:#aaa;font-style:italic">İçerik boş — otomatik şablon içeriği görünecek.</p><hr style="margin:1em 0">${simplePreview(templateMarkdown)}`
-                }}
-              />
+                    : `<p style="color:#aaa;font-style:italic">İçerik boş — otomatik şablon içeriği görünecek.</p><hr style="margin:1em 0">${simplePreview(activeTemplate)}`
+                }} />
             )}
 
             {activeTab === "seo" && (
@@ -315,15 +341,11 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
                       {data.customTitle.length}/60
                     </span>
                   </div>
-                  <input
-                    value={data.customTitle}
+                  <input value={data.customTitle}
                     onChange={(e) => setData((p) => ({ ...p, customTitle: e.target.value }))}
-                    placeholder={serviceTitle}
-                    className="input"
-                  />
-                  <p className="text-xs text-zinc-400 mt-1">Boş bırakırsanız: <em>{serviceTitle} | Vip İletişim Trabzon</em></p>
+                    placeholder={activeTitle} className="input" />
+                  <p className="text-xs text-zinc-400 mt-1">Boş bırakırsanız: <em>{activeTitle} | Vip İletişim Trabzon</em></p>
                 </div>
-
                 <div>
                   <div className="flex justify-between mb-1">
                     <label className="text-xs font-black text-zinc-600 uppercase tracking-wide">Meta Açıklama</label>
@@ -331,41 +353,17 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
                       {data.customDescription.length}/160
                     </span>
                   </div>
-                  <textarea
-                    value={data.customDescription}
+                  <textarea value={data.customDescription}
                     onChange={(e) => setData((p) => ({ ...p, customDescription: e.target.value }))}
                     rows={3}
-                    placeholder={`Trabzon'da ${serviceModel} ${serviceRepairType} için profesyonel tamir hizmeti...`}
-                    className="input"
-                  />
+                    placeholder={`Trabzon'da ${serviceModel} ${activeRepairType} için profesyonel tamir hizmeti...`}
+                    className="input" />
                 </div>
-
-                {/* Google Preview */}
                 <div className="border border-zinc-200 rounded-xl p-5 bg-zinc-50">
                   <p className="text-[10px] text-zinc-400 uppercase tracking-widest mb-3 font-bold">Google Arama Önizlemesi</p>
-                  <p className="text-xs text-green-700 mb-0.5">vipiletisim.com.tr/tamir-hizmetleri/{slug}</p>
-                  <p className="text-[17px] text-blue-700 font-medium mb-0.5 line-clamp-1">
-                    {titleDisplay} | Vip İletişim Trabzon
-                  </p>
+                  <p className="text-xs text-green-700 mb-0.5">vipiletisim.com.tr/tamir-hizmetleri/{activeSlug}</p>
+                  <p className="text-[17px] text-blue-700 font-medium mb-0.5 line-clamp-1">{titleDisplay} | Vip İletişim Trabzon</p>
                   <p className="text-sm text-zinc-500 line-clamp-2">{descDisplay}</p>
-                  <div className="mt-3 pt-3 border-t border-zinc-200">
-                    <div className="flex gap-3">
-                      <div className="text-center">
-                        <div className={`w-full h-1.5 rounded-full bg-zinc-200`}>
-                          <div className={`h-full rounded-full transition-all ${data.customTitle.length > 60 ? "bg-red-400" : data.customTitle.length > 40 ? "bg-green-400" : "bg-zinc-400"}`}
-                            style={{ width: `${Math.min(100, (data.customTitle.length / 60) * 100)}%` }} />
-                        </div>
-                        <p className="text-[10px] text-zinc-400 mt-1">Başlık</p>
-                      </div>
-                      <div className="flex-1 text-center">
-                        <div className="w-full h-1.5 rounded-full bg-zinc-200">
-                          <div className={`h-full rounded-full transition-all ${data.customDescription.length > 160 ? "bg-red-400" : data.customDescription.length > 110 ? "bg-green-400" : "bg-zinc-400"}`}
-                            style={{ width: `${Math.min(100, (data.customDescription.length / 160) * 100)}%` }} />
-                        </div>
-                        <p className="text-[10px] text-zinc-400 mt-1">Açıklama</p>
-                      </div>
-                    </div>
-                  </div>
                 </div>
               </div>
             )}
@@ -374,6 +372,8 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
 
         {/* Right sidebar */}
         <div className="space-y-4">
+
+          {/* Sayfa bilgisi */}
           <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
             <h3 className="font-black text-zinc-900 text-sm mb-3">Sayfa Bilgisi</h3>
             <dl className="space-y-2 text-xs">
@@ -383,50 +383,75 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
               </div>
               <div className="flex justify-between">
                 <dt className="text-zinc-500">Tamir Türü</dt>
-                <dd className="font-bold text-zinc-800">{serviceRepairType}</dd>
+                <dd className="font-bold text-zinc-800">{activeRepairType}</dd>
               </div>
               <div className="flex justify-between">
-                <dt className="text-zinc-500">İçerik Durumu</dt>
+                <dt className="text-zinc-500">İçerik</dt>
                 <dd className={`font-bold ${data.customContent ? "text-green-600" : "text-zinc-400"}`}>
                   {data.customContent ? "Özel içerik" : "Otomatik şablon"}
                 </dd>
               </div>
-              <div className="flex justify-between items-center pt-2 border-t border-zinc-100">
-                <dt className="text-zinc-500">Yayın Tarihi</dt>
-                <dd className="font-bold text-zinc-700 text-[11px]">
-                  {data.publishedAt
-                    ? new Date(data.publishedAt) > new Date()
-                      ? <span className="text-amber-600">Taslak</span>
-                      : <span className="text-green-600">Yayında</span>
-                    : <span className="text-zinc-400">Atanmamış</span>}
-                </dd>
-              </div>
-              <div>
-                <label className="block text-xs font-bold text-zinc-500 mb-1">Yayın Tarihi / Saati</label>
-                <input
-                  type="datetime-local"
-                  value={data.publishedAt}
-                  onChange={(e) => setData((p) => ({ ...p, publishedAt: e.target.value }))}
-                  className="input text-xs"
-                />
-                <p className="text-[10px] text-zinc-400 mt-1">Boş = hemen yayına girer</p>
-              </div>
             </dl>
           </div>
 
-          <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
-            <h3 className="font-black text-zinc-900 text-sm mb-3">İçerik Hakkında</h3>
-            <p className="text-xs text-zinc-500 leading-relaxed">
-              İçerik alanını boş bırakırsanız sayfada otomatik oluşturulan şablon metni kullanılır.
-            </p>
-            <p className="text-xs text-zinc-500 leading-relaxed mt-2">
-              İçerik yazarsanız şablon yerine yazdığınız metin görünür. SSS, "Neden Vip İletişim" bölümleri her zaman otomatik eklenir.
-            </p>
-            <p className="text-xs text-zinc-500 leading-relaxed mt-2">
-              <strong>"Şablondan Başla"</strong> butonu mevcut şablonu editöre aktarır; buradan düzenlemeye devam edebilirsiniz.
-            </p>
+          {/* Yayın durumu */}
+          <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100 space-y-3">
+            <h3 className="font-black text-zinc-900 text-sm">Yayın Durumu</h3>
+            <div className="flex items-center gap-2">
+              <span className={`text-[10px] font-black px-2 py-1 rounded-full ${isImmediate ? "bg-green-100 text-green-700" : isDraft ? "bg-amber-100 text-amber-700" : "bg-green-100 text-green-700"}`}>
+                {isImmediate ? "Hemen yayınlanacak" : isDraft ? "Taslak" : "Yayında"}
+              </span>
+            </div>
+            {isDraft && (
+              <button
+                type="button"
+                onClick={() => setData((p) => ({ ...p, publishedAt: "" }))}
+                className="w-full py-2 rounded-lg text-xs font-black border-2 transition-colors"
+                style={{ borderColor: "#ff351b", color: "#ff351b", background: "#fff5f5" }}>
+                Hemen Yayınla
+              </button>
+            )}
+            {isImmediate && (
+              <p className="text-[10px] text-zinc-400">Kaydettiğinizde hemen yayına girer</p>
+            )}
+            {isDraft && (
+              <p className="text-[10px] text-zinc-400">Kaydet → Zamanlama sayfasına gider</p>
+            )}
           </div>
 
+          {/* Aynı cihazdaki diğer tamir türleri */}
+          {deviceRepairs.length > 1 && (
+            <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
+              <h3 className="font-black text-zinc-900 text-sm mb-3">
+                Diğer Tamir Türleri
+                <span className="ml-2 text-[10px] font-bold text-zinc-400">({deviceRepairs.length})</span>
+              </h3>
+              <div className="space-y-0.5 max-h-64 overflow-y-auto -mx-1">
+                {deviceRepairs.map((r) => {
+                  const isActive = r.slug === activeSlug;
+                  return (
+                    <button key={r.slug} type="button"
+                      onClick={() => switchToRepair(r)}
+                      disabled={isActive || switching}
+                      className="w-full text-left px-3 py-2 rounded-lg text-xs font-bold transition-colors disabled:cursor-default"
+                      style={{
+                        background: isActive ? "#fff5f5" : undefined,
+                        color: isActive ? "#ff351b" : "#52525b",
+                      }}
+                      onMouseEnter={(e) => { if (!isActive) e.currentTarget.style.background = "#f4f4f5"; }}
+                      onMouseLeave={(e) => { if (!isActive) e.currentTarget.style.background = ""; }}
+                    >
+                      {isActive && <span className="mr-1">›</span>}
+                      {r.repairTypeLabel}
+                    </button>
+                  );
+                })}
+              </div>
+              <p className="text-[10px] text-zinc-400 mt-2">Tıkla → otomatik kaydeder ve geçer</p>
+            </div>
+          )}
+
+          {/* Hızlı ekle */}
           <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
             <h3 className="font-black text-zinc-900 text-sm mb-3">Hızlı Ekle</h3>
             <div className="space-y-1.5">
@@ -435,16 +460,24 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
                 ["Önemli Not", "> **Önemli:** Buraya not ekleyin."],
                 ["Uzman Notu", "> **Uzman Notu:** Teknik tavsiye buraya."],
               ].map(([label, snippet]) => (
-                <button
-                  key={label}
-                  type="button"
+                <button key={label} type="button"
                   onClick={() => setData((p) => ({ ...p, customContent: p.customContent + (p.customContent ? "\n\n" : "") + snippet }))}
-                  className="w-full text-left text-xs font-bold text-zinc-600 hover:text-zinc-900 py-1.5 px-2 rounded hover:bg-zinc-50 transition-colors"
-                >
+                  className="w-full text-left text-xs font-bold text-zinc-600 hover:text-zinc-900 py-1.5 px-2 rounded hover:bg-zinc-50 transition-colors">
                   + {label}
                 </button>
               ))}
             </div>
+          </div>
+
+          {/* İçerik hakkında */}
+          <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
+            <h3 className="font-black text-zinc-900 text-sm mb-3">İçerik Hakkında</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              İçerik boş bırakılırsa sayfada otomatik şablon kullanılır.
+            </p>
+            <p className="text-xs text-zinc-500 leading-relaxed mt-2">
+              <strong>"Şablondan Başla"</strong> butonu şablonu editöre aktarır.
+            </p>
           </div>
         </div>
       </div>

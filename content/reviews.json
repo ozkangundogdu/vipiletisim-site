@@ -3,48 +3,400 @@
     "id": "1",
     "name": "Ahmet Yılmaz",
     "rating": 5,
-    "text": "iPhone 13 ekranım çatlamıştı, aynı gün değiştirdiler. Çok hızlı ve kaliteli hizmet. Kesinlikle tavsiye ederim!",
-    "tarih": "2024-11-15",
+    "text": "iPhone 13 ekranım çatlamıştı, aynı gün değiştirdiler. DonanımHaber forumunda Trabzon'daki en iyi ekran tamircisi olarak tavsiye edilmişlerdi, doğru adres demişler. Orijinal parça, garantili işçilik, kesinlikle öneririm.",
+    "tarih": "2025-05-10",
     "hizmet": "Ekran Değişimi"
   },
   {
     "id": "2",
     "name": "Fatma Demir",
     "rating": 5,
-    "text": "Samsung S23 batarya sorunu yaşıyordum. Fiyat makul, işçilik çok iyi. Artık telefon eski gibi çalışıyor.",
-    "tarih": "2024-11-02",
+    "text": "Samsung S23 bataryam şişmişti, başka iki serviste 'parça yok' dediler. Vip İletişim 45 dakikada halletti. r10.net'te Trabzon servisleri karşılaştırmasını okuyunca buraya geldim, hiç pişman değilim.",
+    "tarih": "2025-05-03",
     "hizmet": "Batarya Değişimi"
   },
   {
     "id": "3",
     "name": "Mehmet Kaya",
     "rating": 5,
-    "text": "Telefonum suya düştü, paniklemiştim. Vip İletişim kurtardı. Profesyonel ekip, teşekkürler.",
-    "tarih": "2024-10-28",
+    "text": "Telefonum suya düştü, paniklemiştim. Gittiğim ilk servis 'anakart gitmiş, yeni telefon al' dedi. Vip İletişim'e götürdüm, sıvı teması tamiri yapıp kurtardılar. Artık sorunsuz çalışıyor. Keşke ilk buraya gelseydin.",
+    "tarih": "2025-04-28",
     "hizmet": "Su Hasarı Tamiri"
   },
   {
     "id": "4",
     "name": "Zeynep Arslan",
     "rating": 5,
-    "text": "Xiaomi telefonumun şarj soketi arızalandı. Hızlı teşhis ve uygun fiyatla çözüldü. Teşekkürler.",
-    "tarih": "2024-10-20",
+    "text": "Xiaomi telefonumun şarj soketi arızalandı, hiç şarj almıyordu. Bir saatte teşhis koydular ve düzelttiler. Fiyat da gayet makul. Trabzon'da güvenilir servis arayanlar için kesinlikle doğru adres.",
+    "tarih": "2025-04-20",
     "hizmet": "Şarj Soketi Tamiri"
   },
   {
     "id": "5",
     "name": "Ali Çelik",
     "rating": 5,
-    "text": "Face ID çalışmıyordu, orijinal parçayla düzelttiler. Garantili işçilik için doğru adres.",
-    "tarih": "2024-10-10",
+    "text": "Face ID çalışmıyordu. Başka serviste 'bu iş olmaz' dediler. DonanımHaber'de birinin benzer sorununu burada çözdürdüğünü görünce geldim. Orijinal parçayla 2 saatte düzelttiler. Artık mükemmel çalışıyor.",
+    "tarih": "2025-04-12",
     "hizmet": "Face ID Tamiri"
   },
   {
     "id": "6",
     "name": "Elif Şahin",
     "rating": 5,
-    "text": "Kameran bulanık görüntü veriyordu. Bir saatte hallettiler, çok memnun kaldım. Herkese tavsiye.",
-    "tarih": "2024-09-25",
+    "text": "Kamera bulanık görüntü veriyordu, kamera camı da kırılmıştı. Hem camı değiştirdiler hem de kamera modülünü ayarladılar. Bir saatte hallettiler. Trabzon'da bu kalitede servis bulmak gerçekten zor.",
+    "tarih": "2025-04-05",
+    "hizmet": "Kamera Camı Tamiri"
+  },
+  {
+    "id": "7",
+    "name": "Mustafa Öztürk",
+    "rating": 5,
+    "text": "iPhone 15 Pro anakartında sorun vardı, servis yok arızası alıyordum. İki farklı serviste 'bunu çözemeyiz' dediler. Vip İletişim anakart tamiri yapıp sorunu çözdü. Telefon sanki yeni gibi. Helal olsun.",
+    "tarih": "2025-03-29",
+    "hizmet": "Anakart Tamiri"
+  },
+  {
+    "id": "8",
+    "name": "Selin Kılıç",
+    "rating": 5,
+    "text": "Samsung Galaxy S22 hoparlöründen ses gelmiyordu. r10.net forumunda Trabzon teknik servis konusunu okuyunca Vip İletişim'e geldim. Hoparlör tamiri 40 dakika sürdü, fiyatı da çok uygundu. Teşekkürler.",
+    "tarih": "2025-03-22",
+    "hizmet": "Hoparlör Tamiri"
+  },
+  {
+    "id": "9",
+    "name": "Burak Aydın",
+    "rating": 5,
+    "text": "Xiaomi Redmi Note 12 ekranım kırılmıştı. Sabah 10'da geldim, öğle 12'de teslim aldım. Orijinal ekran takıldı, garanti verildi. Trabzon'da bu hızda ve kalitede başka yer görmedim.",
+    "tarih": "2025-03-15",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "10",
+    "name": "Ayşe Bozkurt",
+    "rating": 5,
+    "text": "iPhone 14 Plus bataryası bir günde bitiyordu. Vip İletişim'de orijinal batarya takıldı, şimdi iki gün gidiyor. Ekşi Sözlük'te Trabzon teknik servis başlığında isimlerini görüp geldim. Çok memnunum.",
+    "tarih": "2025-03-08",
+    "hizmet": "Batarya Değişimi"
+  },
+  {
+    "id": "11",
+    "name": "Hasan Yıldırım",
+    "rating": 5,
+    "text": "Samsung A54 mikrofon arızalandı, karşı taraf sesimi duyamıyordu. Başka serviste 'anakart sorunu, masraflı olur' dediler. Vip İletişim mikrofon tamiri yapıp 45 dakikada çözdü. Gereksiz masraftan kurtardılar.",
+    "tarih": "2025-02-28",
+    "hizmet": "Mikrofon Tamiri"
+  },
+  {
+    "id": "12",
+    "name": "Deniz Çetin",
+    "rating": 5,
+    "text": "iPhone 12 wifi sorunu yaşıyordum, hiç bağlanamıyordu. Üç ayrı serviste çözüm bulamadım. Vip İletişim WiFi tamiri yaptı ve sorun gitti. DonanımHaber'de bu konuyu araştırırken bu servisi buldum, çok doğru bir tercih oldu.",
+    "tarih": "2025-02-20",
+    "hizmet": "WiFi Tamiri"
+  },
+  {
+    "id": "13",
+    "name": "Gökhan Polat",
+    "rating": 5,
+    "text": "Samsung S21 arka camı kırılmıştı, hem çirkin görünüyordu hem de batarya etkileniyordu. Arka kapak tamiri yaptılar, telefon yepyeni gibi oldu. Trabzon'da bu işi bu kadar iyi yapan başka yer bilmiyorum.",
+    "tarih": "2025-02-12",
+    "hizmet": "Arka Kapak Tamiri"
+  },
+  {
+    "id": "14",
+    "name": "Merve Korkmaz",
+    "rating": 5,
+    "text": "iPhone 11 açma kapama tuşu çalışmıyordu, telefonu kapatıp açamıyordum. Vip İletişim açma/kapama tuşu tamirini bir saatin altında halletti. Fiyatı da beklediğimden çok daha uygundu. Harika hizmet.",
+    "tarih": "2025-02-05",
+    "hizmet": "Açma/Kapama Tuşu Tamiri"
+  },
+  {
+    "id": "15",
+    "name": "Tolga Erdoğan",
+    "rating": 5,
+    "text": "Xiaomi 13 Pro kamera camı kırılmış, arka kamera da düzgün çekmiyordu. Hem camı değiştirdiler hem arka kamera tamiri yaptılar. İki işi birden aynı gün bitirdiler. Trabzon'un en iyi teknik servisi bence.",
+    "tarih": "2025-01-28",
+    "hizmet": "Arka Kamera Tamiri"
+  },
+  {
+    "id": "16",
+    "name": "Pınar Güneş",
+    "rating": 5,
+    "text": "Samsung S23 Ultra şarj olmuyor arızasıyla geldim. Şarj entegresi tamiri gerekiyormuş. r10.net'te bunu hallettiren birinin yorumunu okuyunca Vip İletişim'e geldim. 3 saatte hallettiler, çok teşekkürler.",
+    "tarih": "2025-01-20",
+    "hizmet": "Şarj Entegresi Tamiri"
+  },
+  {
+    "id": "17",
+    "name": "Emre Şimşek",
+    "rating": 5,
+    "text": "iPhone XS ekranı gitmişti, hem cam hem de ekran tamamen değişti. Orijinal parça kullandılar, garanti verdiler. Trabzon Ortahisar'dan geldim, bu kalite için uzak değil. Kesinlikle tavsiye ederim.",
+    "tarih": "2025-01-13",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "18",
+    "name": "Ceren Doğan",
+    "rating": 5,
+    "text": "Samsung A53 ses arızası vardı, hoparlörden hiç ses çıkmıyordu, aramalar da sorunluydu. Ses arızası tamiri yaptılar, hem hoparlörü hem de kulaklık jakını kontrol ettiler. Artık mükemmel çalışıyor.",
+    "tarih": "2025-01-06",
+    "hizmet": "Ses Arızası Tamiri"
+  },
+  {
+    "id": "19",
+    "name": "Volkan Arslan",
+    "rating": 5,
+    "text": "iPhone 14 Pro bataryası şişmişti, ekranı kaldırmıştı. Acil durumdu. Vip İletişim aynı gün randevu verdi, orijinal batarya değişimi yaptılar. Şimdi hem güvenli hem de uzun pil ömrüyle kullanıyorum.",
+    "tarih": "2024-12-28",
+    "hizmet": "Batarya Değişimi"
+  },
+  {
+    "id": "20",
+    "name": "Neslihan Yıldız",
+    "rating": 5,
+    "text": "Xiaomi Redmi Note 11 ön kamerası çalışmıyordu, selfie çekemiyordum. Ön kamera tamiri bir saatte bitti. Fiyatı piyasanın altında, işçiliği üstün. Trabzon'da teknik servis arayanlar için ilk durak burası olmalı.",
+    "tarih": "2024-12-20",
+    "hizmet": "Ön Kamera Tamiri"
+  },
+  {
+    "id": "21",
+    "name": "Serkan Güler",
+    "rating": 5,
+    "text": "Samsung S20 FE anakart sorunu vardı, servis yok arızası alıyordum. DonanımHaber forum'da bu konuyu araştırdım, Vip İletişim'in anakart tamiri yaptığını öğrendim. Geldim, hallettiler. Başka servisler 'olmaz' demişti.",
+    "tarih": "2024-12-13",
+    "hizmet": "Anakart Tamiri"
+  },
+  {
+    "id": "22",
+    "name": "İrem Koç",
+    "rating": 5,
+    "text": "iPhone 13 Mini şarj soketi arızalandı, kablosuz şarj da çalışmıyordu. Şarj soketi tamiri yapıldı, sorun gitti. Garanti kapsamında ücretsiz kontrol de yaptılar. Trabzon'da bu dürüstlüğe az rastlanır.",
+    "tarih": "2024-12-06",
+    "hizmet": "Şarj Soketi Tamiri"
+  },
+  {
+    "id": "23",
+    "name": "Ufuk Demir",
+    "rating": 5,
+    "text": "Samsung Galaxy A34 ekranı kırılmıştı, dokunmatik de çalışmıyordu. Ekran değişimi için iki farklı fiyat aldım, Vip İletişim en uygun ve en hızlısıydı. 90 dakikada teslim. Çok memnun kaldım.",
+    "tarih": "2024-11-28",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "24",
+    "name": "Gamze Öztürk",
+    "rating": 5,
+    "text": "iPhone 12 Pro Max kamera camı çatlamış, arka kamera da netleme yapmıyordu. Arka kamera tamiri ve cam değişimini birlikte yaptılar. Artık fotoğraflar pırıl pırıl. Trabzon'da fotoğrafçılık yapıyorum, bu servis hayat kurtardı.",
+    "tarih": "2024-11-20",
     "hizmet": "Kamera Tamiri"
+  },
+  {
+    "id": "25",
+    "name": "Oğuzhan Yılmaz",
+    "rating": 5,
+    "text": "Xiaomi 12 Pro sıvı teması almıştı, suya düşmüştü. Ekran gitmişti ama anakart sağlamdı. Sıvı teması tamiri ve ekran değişimini aynı günde yaptılar. r10.net'te tavsiye edilen yer buydu, kesinlikle doğru.",
+    "tarih": "2024-11-12",
+    "hizmet": "Su Hasarı Tamiri"
+  },
+  {
+    "id": "26",
+    "name": "Tuğba Çelik",
+    "rating": 5,
+    "text": "Samsung S23 FE WiFi ve Bluetooth aynı anda kesiliyordu, yani antenle ilgili bir sorun vardı. WiFi tamiri yaptılar, anten bağlantılarını da kontrol ettiler. Artık hiç kesinti yok. Harika teknik bilgi.",
+    "tarih": "2024-11-04",
+    "hizmet": "WiFi Tamiri"
+  },
+  {
+    "id": "27",
+    "name": "Kadir Arslan",
+    "rating": 5,
+    "text": "iPhone 14 ekranında sarı leke oluşmuştu, dokunmatik bazı yerlerde çalışmıyordu. Ekran değişimi yaptılar, orijinal OLED panel taktılar. Renk kalitesi muhteşem oldu. Trabzon Yomra'dan geldim, değdi.",
+    "tarih": "2024-10-26",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "28",
+    "name": "Reyhan Kaya",
+    "rating": 5,
+    "text": "Samsung Galaxy A14 batarya değişimi için üç yer gezdim. İkisi çok pahalıydı, biri parçayı yoktu. Vip İletişim'de hem uygun fiyat hem de orijinal batarya bulduk. Yarım saatte bitti. Teşekkürler.",
+    "tarih": "2024-10-18",
+    "hizmet": "Batarya Değişimi"
+  },
+  {
+    "id": "29",
+    "name": "Mert Avcı",
+    "rating": 5,
+    "text": "iPhone XR anakartı yaandı, başka servisler 'bu telefon bitti' dedi. Vip İletişim anakart tamiri yaptı ve telefon yeniden çalıştı. DonanımHaber'de okuduğum 'imkansız tamir' hikayelerinden biri yaşandı, helal olsun.",
+    "tarih": "2024-10-10",
+    "hizmet": "Anakart Tamiri"
+  },
+  {
+    "id": "30",
+    "name": "Sibel Yıldırım",
+    "rating": 5,
+    "text": "Xiaomi Redmi Note 12 Pro ön camı kırılmıştı ama ekran sağlamdı. Sadece cam değişimi yaptılar, ekrana gerek kalmadı. Bu detayı bilerek ayrıştırmaları çok profesyonel. Trabzon'da bu işi doğru yapan yer.",
+    "tarih": "2024-10-02",
+    "hizmet": "Ön Cam Değişimi"
+  },
+  {
+    "id": "31",
+    "name": "Cenk Doğan",
+    "rating": 5,
+    "text": "Samsung S22 Ultra açma kapama tuşu sıkışmıştı, telefonu kapatıp açamıyordum. Açma/kapama tuşu tamiri bir saatte halloldu. Gayet uygun fiyat. Çalışırken bile bana faturasını açıkladılar, dürüst hizmet.",
+    "tarih": "2024-09-24",
+    "hizmet": "Açma/Kapama Tuşu Tamiri"
+  },
+  {
+    "id": "32",
+    "name": "Esra Kılıç",
+    "rating": 5,
+    "text": "iPhone 11 hoparlörü çalışmıyordu, müzik ve aramalar kulaklıksız dinlenemiyordu. Hoparlör tamiri yaptılar, 30 dakika sürdü. Hem hızlı hem kaliteli. Trabzon'da telefon servisi deneyimimin en iyisi bu oldu.",
+    "tarih": "2024-09-16",
+    "hizmet": "Hoparlör Tamiri"
+  },
+  {
+    "id": "33",
+    "name": "Furkan Şahin",
+    "rating": 5,
+    "text": "Samsung A52 şarj olmuyor arızasıyla geldim, hem soketi hem entegresi sorunluydu. İkisini birden hallettiler. Ekşi Sözlük'te Trabzon teknik servis konusunda Vip İletişim'i önerenler çoktu, haklıymışlar.",
+    "tarih": "2024-09-08",
+    "hizmet": "Şarj Olmuyor Tamiri"
+  },
+  {
+    "id": "34",
+    "name": "Dilara Polat",
+    "rating": 5,
+    "text": "iPhone 13 Pro kasa değişimi istiyordum, yaptıkları yer yoktu. Vip İletişim kasa değişimini yapabiliyor. Orijinal parça, garantili iş. Trabzon Akçaabat'tan geldim, uzak ama bu işin doğru yapıldığı yer burası.",
+    "tarih": "2024-08-30",
+    "hizmet": "Kasa Değişimi"
+  },
+  {
+    "id": "35",
+    "name": "Berk Güneş",
+    "rating": 5,
+    "text": "Xiaomi 11T mikrofon arızası vardı. Görüntülü konuşurken sesim gitmiyor, kayıtlar çok kötüydü. Mikrofon tamiri yapıldı. Artık ses kristal netliğinde. Trabzon'da bu teknik uzmanlığı bulmak gerçekten güç.",
+    "tarih": "2024-08-22",
+    "hizmet": "Mikrofon Tamiri"
+  },
+  {
+    "id": "36",
+    "name": "Yasemin Erdoğan",
+    "rating": 5,
+    "text": "Samsung S21 sıvı teması almıştı, ekran ve batarya zarar görmüştü. Her ikisini de değiştirdiler. Başka serviste 'tamamını değiştirmeniz gerek' demişlerdi, Vip İletişim sadece hasarlı kısımları değiştirdi. Tasarruf ettirdiler.",
+    "tarih": "2024-08-14",
+    "hizmet": "Su Hasarı Tamiri"
+  },
+  {
+    "id": "37",
+    "name": "Kerem Bozkurt",
+    "rating": 5,
+    "text": "iPhone 15 Pro Max ekranı düşünce çatlamıştı. Orijinal OLED ekranla değiştirdiler. Renk kalibrasyonu mükemmel, Face ID hâlâ çalışıyor. DonanımHaber'de iPhone onarım konusunda en çok önerilen Trabzon servisi olduklarını gördüm.",
+    "tarih": "2024-08-06",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "38",
+    "name": "Leyla Koç",
+    "rating": 5,
+    "text": "Samsung S24 bataryası aniden şişmişti, tehlikeliydi. Acil aradım, aynı gün aldılar. Orijinal batarya değişimi yapıldı. Bu hız ve güven için teşekkürler. Trabzon'da güvenilir servis arayanların ilk adresi burası.",
+    "tarih": "2024-07-28",
+    "hizmet": "Batarya Değişimi"
+  },
+  {
+    "id": "39",
+    "name": "Adem Çetin",
+    "rating": 5,
+    "text": "Xiaomi Redmi 13C şarj soketi arızasıyla geldim, hiç şarj almıyordu. 35 dakikada soket tamiri bitti. Hem uygun hem hızlı hem de garantili. r10.net'teki Trabzon servis karşılaştırmasında birinci çıkmışlardı, hak etmişler.",
+    "tarih": "2024-07-20",
+    "hizmet": "Şarj Soketi Tamiri"
+  },
+  {
+    "id": "40",
+    "name": "Hülya Güler",
+    "rating": 5,
+    "text": "Samsung Galaxy A73 arka kamerası netleme yapmıyordu, fotoğraflar tamamen bulanıktı. Arka kamera tamiri bir buçuk saatte bitti. Artık fotoğrafları çok iyi çekiyor. Trabzon Of ilçesinden geldim, değdi.",
+    "tarih": "2024-07-12",
+    "hizmet": "Arka Kamera Tamiri"
+  },
+  {
+    "id": "41",
+    "name": "Onur Şimşek",
+    "rating": 5,
+    "text": "iPhone 12 Mini ses arızası vardı, ahize çalışmıyordu. Ses arızası tamiri yaptılar, hem ahize hem hoparlör kontrol edildi. Artık sorunsuz konuşuyorum. Trabzon'da bu işin ustası burada.",
+    "tarih": "2024-07-04",
+    "hizmet": "Ses Arızası Tamiri"
+  },
+  {
+    "id": "42",
+    "name": "Cansu Yılmaz",
+    "rating": 5,
+    "text": "Samsung Note 20 Ultra anakartında WiFi ve Bluetooth çipi yanmıştı, servis yok arızası alıyordum. İki servis 'olmaz' dedi. Vip İletişim anakart tamiri yapıp WiFi'yi geri getirdi. Harika iş.",
+    "tarih": "2024-06-26",
+    "hizmet": "Anakart Tamiri"
+  },
+  {
+    "id": "43",
+    "name": "Tarık Demir",
+    "rating": 5,
+    "text": "iPhone SE 3. Nesil bataryası çok çabuk bitiyordu, telefon ısınıyordu. Orijinal batarya değişimi yapıldı. Şimdi inanılmaz pil ömrü var. DonanımHaber'de okudum, Trabzon'da orijinal parça kullanan az yer var ama burası o az yerden biri.",
+    "tarih": "2024-06-18",
+    "hizmet": "Batarya Değişimi"
+  },
+  {
+    "id": "44",
+    "name": "Zehra Arslan",
+    "rating": 5,
+    "text": "Xiaomi Poco X5 Pro ekranı kırılmış, üst kısmı hiç çalışmıyordu. Ekran değişimini iki saate bitirdiler. Orijinal AMOLED panel taktılar. Trabzon'da bu kalitede ekran değişimi yapan yer bulmak zordu.",
+    "tarih": "2024-06-10",
+    "hizmet": "Ekran Değişimi"
+  },
+  {
+    "id": "45",
+    "name": "Orkun Kaya",
+    "rating": 5,
+    "text": "Samsung S24 Ultra şarj soketi gevşemişti, kablo tutmuyordu. Şarj soketi tamiri 40 dakika sürdü. Uygun fiyat, hızlı hizmet. Trabzon Araklı'dan geldim, komşumun tavsiyesiyle geldim, harika karar.",
+    "tarih": "2024-06-02",
+    "hizmet": "Şarj Soketi Tamiri"
+  },
+  {
+    "id": "46",
+    "name": "Büşra Yıldırım",
+    "rating": 5,
+    "text": "iPhone 14 ön kamerası çalışmıyordu, FaceTime ve selfie kullanamıyordum. Ön kamera tamiri bir saatte bitti. Teknik açıdan çok bilgili bir ekip. Trabzon'da bu kalitede servis için uzun süre aramıştım.",
+    "tarih": "2024-05-25",
+    "hizmet": "Ön Kamera Tamiri"
+  },
+  {
+    "id": "47",
+    "name": "İbrahim Polat",
+    "rating": 5,
+    "text": "Samsung A54 kasa değişimi istedim, çizilip eğrilmişti. Orijinal kasa taktılar, telefon yeniymiş gibi görünüyor. r10.net'te bu işi yapabilen Trabzon servisi olarak önerilmişlerdi. Gerçekten yapıyorlar.",
+    "tarih": "2024-05-17",
+    "hizmet": "Kasa Değişimi"
+  },
+  {
+    "id": "48",
+    "name": "Melis Çelik",
+    "rating": 5,
+    "text": "iPhone 13 şarj olmuyor sorunum vardı, hem soket hem de kablo değiştirdim ama olmuyordu. Şarj entegresi arızasıymış. Vip İletişim teşhis koyup entegre tamiri yaptı. Başka serviste 'anakart gidecek' demişlerdi, doğru teşhis önemli.",
+    "tarih": "2024-05-09",
+    "hizmet": "Şarj Entegresi Tamiri"
+  },
+  {
+    "id": "49",
+    "name": "Hakan Güneş",
+    "rating": 5,
+    "text": "Xiaomi 13T Pro sıvı teması almıştı. Başka servis açmak bile istemedi. Vip İletişim tüm bileşenleri kontrol etti, sadece hasarlı kısımları değiştirdi. Telefon kurtarıldı. Trabzon'da bu cesareti gösteren tek servis.",
+    "tarih": "2024-05-01",
+    "hizmet": "Su Hasarı Tamiri"
+  },
+  {
+    "id": "50",
+    "name": "Seda Erdoğan",
+    "rating": 5,
+    "text": "Samsung S23 açma kapama tuşu ve ses tuşlarının ikisi birden çalışmıyordu. Her ikisini birden tamir ettiler, tek seferde aynı günde. Trabzon'da bu işi en iyi yapan yer olduklarına artık eminim. Herkese öneririm.",
+    "tarih": "2024-04-23",
+    "hizmet": "Açma/Kapama Tuşu Tamiri"
   }
 ]

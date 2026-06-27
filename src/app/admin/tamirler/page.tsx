@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { services, repairTypeList } from "@/data/services";
 import type { CustomDevice } from "@/lib/custom-services";
@@ -48,6 +49,7 @@ function deviceTimestamp(device: CustomDevice): number {
 }
 
 export default function TamirlerPage() {
+  const searchParams = useSearchParams();
   const [popularList, setPopularList] = useState<PopularService[]>([]);
   const [customDevices, setCustomDevices] = useState<CustomDevice[]>([]);
   const [loading, setLoading] = useState(true);
@@ -56,7 +58,8 @@ export default function TamirlerPage() {
   const [search, setSearch] = useState("");
   const [brandFilter, setBrandFilter] = useState("");
   const [repairFilter, setRepairFilter] = useState("");
-  const [activeTab, setActiveTab] = useState<"populer" | "tumü" | "zamanlama">("populer");
+  const initialTab = searchParams.get("tab") === "zamanlama" ? "zamanlama" : "populer";
+  const [activeTab, setActiveTab] = useState<"populer" | "tumü" | "zamanlama">(initialTab);
 
   // Inline device editing
   const [editingDeviceId, setEditingDeviceId] = useState<string | null>(null);
@@ -93,6 +96,24 @@ export default function TamirlerPage() {
   function flash(msg: string) {
     setSavedMsg(msg);
     setTimeout(() => setSavedMsg(""), 2500);
+  }
+
+  async function deleteRepairPage(slug: string) {
+    if (!confirm("Bu taslak içerik sayfası silinsin mi?")) return;
+    await fetch(`/api/admin/repair-page/${slug}`, { method: "DELETE" });
+    setRepairItems((prev) => prev.filter((i) => i.slug !== slug));
+    setSchedSelected((prev) => { const n = new Set(prev); n.delete(slug); return n; });
+    setSchedShowPreview(false);
+  }
+
+  async function deleteSelected() {
+    if (schedSelected.size === 0) return;
+    if (!confirm(`Seçili ${schedSelected.size} sayfa silinsin mi?`)) return;
+    const slugs = [...schedSelected];
+    await Promise.all(slugs.map((s) => fetch(`/api/admin/repair-page/${s}`, { method: "DELETE" })));
+    setRepairItems((prev) => prev.filter((i) => !schedSelected.has(i.slug)));
+    setSchedSelected(new Set());
+    setSchedShowPreview(false);
   }
 
   async function savePopular(list: PopularService[]) {
@@ -537,25 +558,32 @@ export default function TamirlerPage() {
                         {group.items.map((item) => {
                           const isSel = schedSelected.has(item.slug);
                           return (
-                            <label key={item.slug} className={`flex items-start gap-3 pl-8 pr-4 py-2.5 cursor-pointer border-b border-zinc-50 hover:bg-zinc-50 transition-colors ${isSel ? "bg-red-50/40" : ""}`}>
-                              <span className={`mt-0.5 w-4 h-4 shrink-0 rounded border-2 flex items-center justify-center transition-colors ${isSel ? "border-[#ff351b] bg-[#ff351b]" : "border-zinc-300"}`}>
-                                {isSel && <span className="text-white text-[9px] font-black">✓</span>}
-                              </span>
-                              <input type="checkbox" className="sr-only" checked={isSel}
-                                onChange={() => {
-                                  setSchedSelected((prev) => { const n = new Set(prev); n.has(item.slug) ? n.delete(item.slug) : n.add(item.slug); return n; });
-                                  setSchedSelMode("manual"); setSchedShowPreview(false);
-                                }} />
-                              <div className="flex-1 min-w-0">
-                                <p className="text-xs font-bold text-zinc-800 truncate">{item.title}</p>
-                                <div className="flex items-center gap-2 mt-0.5">
-                                  <span className={`text-[9px] font-black px-1 py-0.5 rounded ${item.isDraft ? "bg-amber-100 text-amber-700" : "bg-green-100 text-green-700"}`}>
-                                    {item.isDraft ? "TASLAK" : "YAYINDA"}
-                                  </span>
-                                  {item.publishedAt && <span className="text-[10px] text-zinc-400">{fmtDate(item.publishedAt)}</span>}
+                            <div key={item.slug} className={`flex items-center border-b border-zinc-50 hover:bg-zinc-50 transition-colors ${isSel ? "bg-red-50/40" : ""}`}>
+                              <label className="flex items-start gap-3 pl-8 pr-2 py-2.5 cursor-pointer flex-1 min-w-0">
+                                <span className={`mt-0.5 w-4 h-4 shrink-0 rounded border-2 flex items-center justify-center transition-colors ${isSel ? "border-[#ff351b] bg-[#ff351b]" : "border-zinc-300"}`}>
+                                  {isSel && <span className="text-white text-[9px] font-black">✓</span>}
+                                </span>
+                                <input type="checkbox" className="sr-only" checked={isSel}
+                                  onChange={() => {
+                                    setSchedSelected((prev) => { const n = new Set(prev); n.has(item.slug) ? n.delete(item.slug) : n.add(item.slug); return n; });
+                                    setSchedSelMode("manual"); setSchedShowPreview(false);
+                                  }} />
+                                <div className="flex-1 min-w-0">
+                                  <p className="text-xs font-bold text-zinc-800 truncate">{item.title}</p>
+                                  <div className="flex items-center gap-2 mt-0.5">
+                                    <span className={`text-[9px] font-black px-1 py-0.5 rounded ${item.isDraft ? "bg-amber-100 text-amber-700" : "bg-green-100 text-green-700"}`}>
+                                      {item.isDraft ? "TASLAK" : "YAYINDA"}
+                                    </span>
+                                    {item.publishedAt && <span className="text-[10px] text-zinc-400">{fmtDate(item.publishedAt)}</span>}
+                                  </div>
                                 </div>
-                              </div>
-                            </label>
+                              </label>
+                              <button
+                                onClick={() => deleteRepairPage(item.slug)}
+                                className="shrink-0 mr-3 w-6 h-6 flex items-center justify-center rounded text-zinc-300 hover:text-red-500 hover:bg-red-50 transition-colors text-sm font-black"
+                                title="Sil"
+                              >×</button>
+                            </div>
                           );
                         })}
                       </div>
@@ -563,8 +591,14 @@ export default function TamirlerPage() {
                   })}
                 </div>
 
-                <div className="px-5 py-3 border-t border-zinc-100 bg-zinc-50 text-xs text-zinc-500 font-bold">
-                  {schedSelected.size} sayfa seçili · Cihaz bazlı sıralanacak
+                <div className="px-5 py-3 border-t border-zinc-100 bg-zinc-50 flex items-center justify-between">
+                  <span className="text-xs text-zinc-500 font-bold">{schedSelected.size} sayfa seçili · Cihaz bazlı sıralanacak</span>
+                  {schedSelected.size > 0 && (
+                    <button onClick={deleteSelected}
+                      className="text-xs font-black text-red-500 hover:text-red-700 hover:bg-red-50 px-2.5 py-1 rounded-lg transition-colors">
+                      Seçilileri Sil
+                    </button>
+                  )}
                 </div>
               </div>
 

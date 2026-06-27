@@ -1,9 +1,9 @@
-import { notFound } from "next/navigation";
-import { getServiceBySlug, services, repairTypeList } from "@/data/services";
-import { getCustomServiceBySlug, getCustomDevices, makeSlug } from "@/lib/custom-services";
+import { getServiceBySlug, repairTypeList } from "@/data/services";
+import { getCustomServiceBySlug } from "@/lib/custom-services";
 import { getRepairContent } from "@/lib/repair-content";
 import type { RepairContent } from "@/lib/repair-content";
-import { RepairEditor } from "./RepairEditor";
+
+export const dynamic = "force-dynamic";
 
 function contentToMarkdown(c: RepairContent, intro: string): string {
   const lines: string[] = [];
@@ -22,14 +22,16 @@ function contentToMarkdown(c: RepairContent, intro: string): string {
   return lines.join("\n");
 }
 
-export default async function DuzenlePage({ params }: { params: Promise<{ slug: string }> }) {
+export async function GET(
+  _: Request,
+  { params }: { params: Promise<{ slug: string }> }
+) {
   const { slug } = await params;
-
   const hardcoded = getServiceBySlug(slug);
   const custom = !hardcoded ? getCustomServiceBySlug(slug) : null;
   const service = hardcoded ?? custom;
 
-  if (!service) notFound();
+  if (!service) return Response.json({ templateMarkdown: "" });
 
   let templateMarkdown = "";
   try {
@@ -39,43 +41,5 @@ export default async function DuzenlePage({ params }: { params: Promise<{ slug: 
     templateMarkdown = `## ${service.title}\n\nBu sayfa için içerik yazın.`;
   }
 
-  // Aynı cihazdaki diğer tamir türleri
-  type DeviceRepair = { slug: string; title: string; repairTypeLabel: string };
-  let deviceRepairs: DeviceRepair[] = [];
-
-  if (custom) {
-    const devices = getCustomDevices();
-    const device = devices.find((d) =>
-      d.repairKeys.some((rk) => makeSlug(d.model, rk) === slug)
-    );
-    if (device) {
-      deviceRepairs = device.repairKeys.map((rk) => {
-        const rt = repairTypeList.find((r) => r.key === rk);
-        return {
-          slug: makeSlug(device.model, rk),
-          title: `${device.model} ${rt?.label ?? rk}`,
-          repairTypeLabel: rt?.label ?? rk,
-        };
-      });
-    }
-  } else if (hardcoded) {
-    deviceRepairs = services
-      .filter((s) => s.model === hardcoded.model)
-      .map((s) => ({
-        slug: s.slug,
-        title: s.title,
-        repairTypeLabel: s.repairType,
-      }));
-  }
-
-  return (
-    <RepairEditor
-      slug={slug}
-      serviceTitle={service.title}
-      serviceModel={service.model}
-      serviceRepairType={service.repairType}
-      templateMarkdown={templateMarkdown}
-      deviceRepairs={deviceRepairs}
-    />
-  );
+  return Response.json({ templateMarkdown });
 }
