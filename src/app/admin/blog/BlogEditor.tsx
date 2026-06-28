@@ -22,6 +22,42 @@ const DEFAULT_CATEGORIES = [
   "Hizmet Rehberi",
 ];
 
+async function compressImage(file: File, maxSizeBytes = 5 * 1024 * 1024): Promise<File> {
+  return new Promise((resolve) => {
+    const img = new Image();
+    const url = URL.createObjectURL(file);
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      const canvas = document.createElement("canvas");
+      const MAX_DIM = 1920;
+      let { width, height } = img;
+      if (width > MAX_DIM || height > MAX_DIM) {
+        if (width > height) { height = Math.round((height * MAX_DIM) / width); width = MAX_DIM; }
+        else { width = Math.round((width * MAX_DIM) / height); height = MAX_DIM; }
+      }
+      canvas.width = width;
+      canvas.height = height;
+      canvas.getContext("2d")!.drawImage(img, 0, 0, width, height);
+
+      let quality = 0.85;
+      const tryCompress = () => {
+        canvas.toBlob((blob) => {
+          if (!blob) { resolve(file); return; }
+          if (blob.size <= maxSizeBytes || quality <= 0.3) {
+            resolve(new File([blob], file.name.replace(/\.[^.]+$/, ".jpg"), { type: "image/jpeg" }));
+          } else {
+            quality -= 0.1;
+            tryCompress();
+          }
+        }, "image/jpeg", quality);
+      };
+      tryCompress();
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+
 function slugify(text: string): string {
   return text
     .toLowerCase()
@@ -97,9 +133,25 @@ export function BlogEditor({ mode, initialData }: Props) {
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState("");
   const [uploadingImage, setUploadingImage] = useState(false);
+  const [coverUploadError, setCoverUploadError] = useState("");
+  const [imageSearchQuery, setImageSearchQuery] = useState("");
+  const [imageSearchResults, setImageSearchResults] = useState<{ url: string; thumb: string; title: string; source: string }[]>([]);
+  const [imageSearching, setImageSearching] = useState(false);
+  const [imageSearchError, setImageSearchError] = useState("");
   const [categories, setCategories] = useState<string[]>(DEFAULT_CATEGORIES);
   const [newCat, setNewCat] = useState("");
   const [addingCat, setAddingCat] = useState(false);
+
+  useEffect(() => {
+    if (initialData?.title) {
+      setImageSearchQuery(initialData.title);
+      fetch(`/api/admin/image-search?q=${encodeURIComponent(initialData.title)}`)
+        .then((r) => r.json())
+        .then((json) => {
+          if (json.images) setImageSearchResults(json.images);
+        });
+    }
+  }, [initialData?.title]);
 
   useEffect(() => {
     fetch("/api/admin/categories")
@@ -171,26 +223,81 @@ export function BlogEditor({ mode, initialData }: Props) {
     }, 0);
   }
 
+  async function handleImageSearch() {
+    if (!imageSearchQuery.trim()) return;
+    setImageSearching(true);
+    setImageSearchError("");
+    setImageSearchResults([]);
+    const res = await fetch(`/api/admin/image-search?q=${encodeURIComponent(imageSearchQuery)}`);
+    const json = await res.json();
+    setImageSearching(false);
+    if (json.images) {
+      setImageSearchResults(json.images);
+    } else {
+      setImageSearchError(json.error ?? "Arama başarısız");
+    }
+  }
+
+  async function handleSelectSearchImage(imageUrl: string) {
+    setUploadingImage(true);
+    setCoverUploadError("");
+    try {
+      const proxyRes = await fetch(`/api/admin/image-proxy?url=${encodeURIComponent(imageUrl)}`);
+      if (!proxyRes.ok) throw new Error("İndirme başarısız");
+      const blob = await proxyRes.blob();
+      const file = new File([blob], "gorsel.jpg", { type: blob.type || "image/jpeg" });
+      const compressed = await compressImage(file);
+      const fd = new FormData();
+      fd.append("file", compressed);
+      if (data.slug) fd.append("filename", `${data.slug}-kapak`);
+      const uploadRes = await fetch("/api/admin/upload", { method: "POST", body: fd });
+      const uploadJson = await uploadRes.json();
+      if (uploadJson.url) {
+        setData((prev) => ({ ...prev, coverImage: uploadJson.url }));
+        setImageSearchResults([]);
+        setImageSearchQuery("");
+      } else {
+        setCoverUploadError(uploadJson.error ?? "Yükleme başarısız");
+      }
+    } catch {
+      setCoverUploadError("Görsel indirilemedi");
+    }
+    setUploadingImage(false);
+  }
+
   async function handleCoverUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
     setUploadingImage(true);
+    setCoverUploadError("");
+    const compressed = await compressImage(file);
     const fd = new FormData();
-    fd.append("file", file);
+    fd.append("file", compressed);
+    if (data.slug) fd.append("filename", `${data.slug}-kapak`);
     const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
     const json = await res.json();
     setUploadingImage(false);
-    if (json.url) setData((prev) => ({ ...prev, coverImage: json.url }));
+    if (json.url) {
+      setData((prev) => ({ ...prev, coverImage: json.url }));
+    } else {
+      setCoverUploadError(json.error ?? "Yükleme başarısız");
+    }
+    e.target.value = "";
   }
 
   async function handleContentImageUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
+    const compressed = await compressImage(file);
     const fd = new FormData();
-    fd.append("file", file);
+    fd.append("file", compressed);
+    const baseName = file.name.replace(/\.[^.]+$/, "").replace(/[^a-z0-9-]/gi, "-").toLowerCase();
+    const seoName = data.slug ? `${data.slug}-${baseName}` : baseName;
+    fd.append("filename", seoName);
     const res = await fetch("/api/admin/upload", { method: "POST", body: fd });
     const json = await res.json();
-    if (json.url) insertMarkdown(`![${file.name}](`, ")", file.name);
+    const altText = data.title || file.name;
+    if (json.url) insertMarkdown(`![${altText}](`, ")", altText);
     e.target.value = "";
   }
 
@@ -480,11 +587,58 @@ export function BlogEditor({ mode, initialData }: Props) {
               <input type="file" accept="image/*" className="hidden" onChange={handleCoverUpload} />
               {uploadingImage ? "Yükleniyor..." : "Görsel Yükle"}
             </label>
+            {coverUploadError && (
+              <p className="text-xs text-red-600 font-bold mt-1">{coverUploadError}</p>
+            )}
             <div className="mt-3">
               <label className="block text-xs font-bold text-zinc-600 mb-1">veya URL gir</label>
               <input value={data.coverImage}
                 onChange={(e) => setData((prev) => ({ ...prev, coverImage: e.target.value }))}
                 className="input" placeholder="/images/blog/kapak.webp" />
+            </div>
+
+            {/* Görsel Arama */}
+            <div className="mt-3 pt-3 border-t border-zinc-100">
+              <label className="block text-xs font-bold text-zinc-600 mb-1">veya Google'da ara</label>
+              <div className="flex gap-2">
+                <input
+                  value={imageSearchQuery}
+                  onChange={(e) => setImageSearchQuery(e.target.value)}
+                  onKeyDown={(e) => e.key === "Enter" && handleImageSearch()}
+                  placeholder="samsung ekran değişimi..."
+                  className="input flex-1"
+                />
+                <button
+                  type="button"
+                  onClick={handleImageSearch}
+                  disabled={imageSearching || !imageSearchQuery.trim()}
+                  className="px-3 py-2 text-xs font-black text-white rounded-lg disabled:opacity-50 whitespace-nowrap"
+                  style={{ background: "#ff351b" }}
+                >
+                  {imageSearching ? "..." : "Ara"}
+                </button>
+              </div>
+              {imageSearchError && (
+                <p className="text-xs text-red-600 font-bold mt-1">{imageSearchError}</p>
+              )}
+              {imageSearchResults.length > 0 && (
+                <div className="mt-2 grid grid-cols-2 gap-1.5 max-h-64 overflow-y-auto">
+                  {imageSearchResults.map((img, i) => (
+                    <button
+                      key={i}
+                      type="button"
+                      onClick={() => handleSelectSearchImage(img.url)}
+                      disabled={uploadingImage}
+                      className="relative rounded-lg overflow-hidden border-2 border-transparent hover:border-[#ff351b] transition-all group"
+                      title={img.title as string}
+                    >
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={img.thumb} alt={img.title as string} className="w-full h-20 object-cover" />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
 

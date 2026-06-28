@@ -11,17 +11,20 @@ export async function POST(request: Request) {
     return Response.json({ error: "Dosya bulunamadı" }, { status: 400 });
   }
 
-  const allowedTypes = ["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"];
-  if (!allowedTypes.includes(file.type)) {
-    return Response.json({ error: "Desteklenmeyen dosya türü" }, { status: 400 });
+  if (!file.type.startsWith("image/")) {
+    return Response.json({ error: "Desteklenmeyen dosya türü. Sadece resim dosyaları kabul edilir." }, { status: 400 });
   }
 
   if (file.size > 5 * 1024 * 1024) {
     return Response.json({ error: "Dosya 5MB'dan büyük olamaz" }, { status: 400 });
   }
 
+  const customName = (formData.get("filename") as string | null)?.trim();
   const ext = file.name.split(".").pop()?.toLowerCase() ?? "jpg";
-  const safeName = `${Date.now()}-${Math.random().toString(36).slice(2)}.${ext}`;
+  const baseName = customName
+    ? customName.replace(/[^a-z0-9-]/g, "").slice(0, 80)
+    : `${Date.now()}-${Math.random().toString(36).slice(2)}`;
+  const safeName = `${baseName}.${ext}`;
   const uploadsDir = path.join(process.cwd(), "public", "uploads");
 
   if (!fs.existsSync(uploadsDir)) {
