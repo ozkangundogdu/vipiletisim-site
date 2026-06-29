@@ -11,10 +11,14 @@ const OUT_DIR = 'C:\\Users\\W11\\Desktop\\ifitit';
 const API     = 'https://www.ifixit.com/api/2.0';
 const DELAY   = 400;
 
-// Sadece başarısız olan veya eksik modeller
+// Ana run'da başarısız olan modeller (6 adet)
 const RETRY_MODELS: Record<string, { ifixitSlug: string; brand: string; folderSlug: string }> = {
-  'iPhone X':             { ifixitSlug: 'iPhone_X',       brand: 'iphone', folderSlug: 'iphone-x' },
-  'iPhone SE (2. Nesil)': { ifixitSlug: 'iPhone_SE_2020', brand: 'iphone', folderSlug: 'iphone-se-2020' },
+  'iPhone X':             { ifixitSlug: 'iPhone_X',            brand: 'iphone',  folderSlug: 'iphone-x' },
+  'iPhone SE (2. Nesil)': { ifixitSlug: 'iPhone_SE_2020',      brand: 'iphone',  folderSlug: 'iphone-se-2020' },
+  'iPhone 12 Pro Max':    { ifixitSlug: 'iPhone_12_Pro_Max',   brand: 'iphone',  folderSlug: 'iphone-12-pro-max' },
+  'iPhone 13 Pro':        { ifixitSlug: 'iPhone_13_Pro',       brand: 'iphone',  folderSlug: 'iphone-13-pro' },
+  'Galaxy S20+':          { ifixitSlug: 'Samsung_Galaxy_S20_Plus', brand: 'samsung', folderSlug: 'galaxy-s20-plus' },
+  'Galaxy A12':           { ifixitSlug: 'Samsung_Galaxy_A12',  brand: 'samsung', folderSlug: 'galaxy-a12' },
 };
 
 const KEY_GUIDE_KEYWORDS = [
