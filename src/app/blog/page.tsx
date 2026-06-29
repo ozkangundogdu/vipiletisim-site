@@ -5,36 +5,7 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getAllPosts } from "@/lib/blog";
 
-export const metadata: Metadata = {
-  title: "Telefon Tamir Rehberleri — Trabzon",
-  description:
-    "Trabzon Vip İletişim teknik ekibinden iPhone ve Android tamir rehberleri. Arıza tanı ipuçları, bakım önerileri ve pratik çözümler her hafta yayınlanıyor.",
-  keywords: [
-    "trabzon iphone tamir rehberi",
-    "telefon arıza çözümü trabzon",
-    "trabzon telefon tamiri blog",
-    "iphone batarya sorunları",
-    "android tamir ipuçları",
-    "trabzon cep telefonu bakım",
-  ],
-  alternates: { canonical: "https://vipiletisim.com.tr/blog" },
-  openGraph: {
-    title: "Telefon Tamir Rehberleri | Vip İletişim Trabzon",
-    description:
-      "iPhone ve Android telefon tamir rehberleri, arıza tanı ipuçları ve bakım önerileri. Trabzon Vip İletişim teknik ekibinden.",
-    url: "https://vipiletisim.com.tr/blog",
-    images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630, alt: "Trabzon Telefon Tamir Rehberleri" }],
-  },
-};
-
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Anasayfa", item: "https://vipiletisim.com.tr" },
-    { "@type": "ListItem", position: 2, name: "Blog", item: "https://vipiletisim.com.tr/blog" },
-  ],
-};
+const BASE = "https://vipiletisim.com.tr";
 
 const CATEGORIES = ["Tümü", "Tamir Rehberi", "Arıza Rehberi", "iPhone Sorunları", "Acil Rehber", "Hizmet Rehberi"];
 
@@ -60,19 +31,85 @@ function CategoryBadge({ category }: { category: string }) {
   );
 }
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export async function generateMetadata({
+  searchParams,
+}: {
+  searchParams: Promise<{ kategori?: string }>;
+}): Promise<Metadata> {
+  const { kategori } = await searchParams;
+
+  if (kategori && CATEGORIES.includes(kategori) && kategori !== "Tümü") {
+    return {
+      title: `${kategori} Makaleleri — Trabzon Vip İletişim`,
+      description: `Trabzon Vip İletişim teknik ekibinden ${kategori} kategorisindeki tüm makaleler. iPhone ve Android tamir rehberleri.`,
+      keywords: ["trabzon telefon tamiri", kategori.toLowerCase(), "trabzon vip iletişim"],
+      alternates: { canonical: `${BASE}/blog?kategori=${encodeURIComponent(kategori)}` },
+      openGraph: {
+        title: `${kategori} Makaleleri | Vip İletişim Trabzon`,
+        description: `Trabzon Vip İletişim'den ${kategori} kategorisindeki uzman makaleler.`,
+        url: `${BASE}/blog?kategori=${encodeURIComponent(kategori)}`,
+      },
+    };
+  }
+
+  return {
+    title: "Telefon Tamir Rehberleri — Trabzon",
+    description:
+      "Trabzon Vip İletişim teknik ekibinden iPhone ve Android tamir rehberleri. Arıza tanı ipuçları, bakım önerileri ve pratik çözümler her hafta yayınlanıyor.",
+    keywords: [
+      "trabzon iphone tamir rehberi",
+      "telefon arıza çözümü trabzon",
+      "trabzon telefon tamiri blog",
+      "iphone batarya sorunları",
+      "android tamir ipuçları",
+      "trabzon cep telefonu bakım",
+    ],
+    alternates: { canonical: `${BASE}/blog` },
+    openGraph: {
+      title: "Telefon Tamir Rehberleri | Vip İletişim Trabzon",
+      description:
+        "iPhone ve Android telefon tamir rehberleri, arıza tanı ipuçları ve bakım önerileri. Trabzon Vip İletişim teknik ekibinden.",
+      url: `${BASE}/blog`,
+      images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630, alt: "Trabzon Telefon Tamir Rehberleri" }],
+    },
+  };
+}
+
+export default async function BlogPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ kategori?: string }>;
+}) {
+  const { kategori } = await searchParams;
+  const allPosts = getAllPosts();
+
+  const activeCategory = kategori && CATEGORIES.includes(kategori) ? kategori : "Tümü";
+  const posts = activeCategory === "Tümü"
+    ? allPosts
+    : allPosts.filter((p) => p.category === activeCategory);
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Anasayfa", item: `${BASE}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${BASE}/blog` },
+      ...(activeCategory !== "Tümü"
+        ? [{ "@type": "ListItem", position: 3, name: activeCategory, item: `${BASE}/blog?kategori=${encodeURIComponent(activeCategory)}` }]
+        : []),
+    ],
+  };
 
   const itemListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "Vip İletişim Blog Yazıları",
-    url: "https://vipiletisim.com.tr/blog",
+    name: activeCategory === "Tümü" ? "Vip İletişim Blog Yazıları" : `${activeCategory} Makaleleri`,
+    url: activeCategory === "Tümü" ? `${BASE}/blog` : `${BASE}/blog?kategori=${encodeURIComponent(activeCategory)}`,
     numberOfItems: posts.length,
     itemListElement: posts.map((p, i) => ({
       "@type": "ListItem",
       position: i + 1,
-      url: `https://vipiletisim.com.tr/blog/${p.slug}`,
+      url: `${BASE}/blog/${p.slug}`,
       name: p.title,
     })),
   };
@@ -91,13 +128,23 @@ export default function BlogPage() {
             <nav aria-label="Breadcrumb" className="mb-4 text-[13px] text-zinc-400">
               <Link href="/" className="hover:text-white transition-colors">Anasayfa</Link>
               <span className="mx-2">/</span>
-              <span className="text-white">Blog</span>
+              {activeCategory !== "Tümü" ? (
+                <>
+                  <Link href="/blog" className="hover:text-white transition-colors">Blog</Link>
+                  <span className="mx-2">/</span>
+                  <span className="text-white">{activeCategory}</span>
+                </>
+              ) : (
+                <span className="text-white">Blog</span>
+              )}
             </nav>
             <h1 className="text-3xl font-black text-white lg:text-4xl">
-              Blog & Tamir Rehberleri
+              {activeCategory === "Tümü" ? "Blog & Tamir Rehberleri" : `${activeCategory} Makaleleri`}
             </h1>
             <p className="mt-3 max-w-2xl text-[16px] text-white/70">
-              iPhone ve Android telefon arızaları hakkında uzman rehberler. Kendi sorununuzu tanıyın, doğru kararı verin.
+              {activeCategory === "Tümü"
+                ? "iPhone ve Android telefon arızaları hakkında uzman rehberler. Kendi sorununuzu tanıyın, doğru kararı verin."
+                : `Trabzon Vip İletişim teknik ekibinden ${activeCategory} kategorisindeki tüm makaleler.`}
             </p>
           </div>
         </section>
@@ -106,22 +153,45 @@ export default function BlogPage() {
         <div className="border-b border-zinc-200 bg-white">
           <div className="mx-auto max-w-[1330px] overflow-x-auto px-6">
             <div className="flex gap-1 py-3">
-              {CATEGORIES.map((cat) => (
-                <span
-                  key={cat}
-                  className="shrink-0 rounded-full border border-zinc-200 px-4 py-1.5 text-[13px] font-bold text-zinc-600 hover:border-brand hover:text-brand cursor-pointer transition-colors"
-                >
-                  {cat}
-                </span>
-              ))}
+              {CATEGORIES.map((cat) => {
+                const href = cat === "Tümü" ? "/blog" : `/blog?kategori=${encodeURIComponent(cat)}`;
+                const isActive = cat === activeCategory;
+                return (
+                  <Link
+                    key={cat}
+                    href={href}
+                    className={`shrink-0 rounded-full border px-4 py-1.5 text-[13px] font-bold transition-colors ${
+                      isActive
+                        ? "border-brand bg-brand text-white"
+                        : "border-zinc-200 text-zinc-600 hover:border-brand hover:text-brand"
+                    }`}
+                  >
+                    {cat}
+                  </Link>
+                );
+              })}
             </div>
           </div>
         </div>
 
+        {/* Sonuç sayısı */}
+        {activeCategory !== "Tümü" && (
+          <div className="mx-auto max-w-[1330px] px-6 pt-6">
+            <p className="text-[14px] text-zinc-500">
+              <span className="font-bold text-zinc-900">{posts.length}</span> makale bulundu
+            </p>
+          </div>
+        )}
+
         {/* Makale Grid */}
-        <div className="mx-auto max-w-[1330px] px-6 py-12">
+        <div className="mx-auto max-w-[1330px] px-6 py-8">
           {posts.length === 0 ? (
-            <p className="text-center text-zinc-500">Henüz yayınlanmış makale bulunmuyor.</p>
+            <div className="py-16 text-center">
+              <p className="text-zinc-500">Bu kategoride henüz makale bulunmuyor.</p>
+              <Link href="/blog" className="mt-4 inline-block text-[14px] font-bold text-brand hover:underline">
+                Tüm makalelere dön →
+              </Link>
+            </div>
           ) : (
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
               {posts.map((post) => (

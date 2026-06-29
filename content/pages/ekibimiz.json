@@ -1,0 +1,68 @@
+{
+  "hero": {
+    "title": "Uzman Kadromuz",
+    "subtitle": "Sertifikalı, deneyimli teknisyenlerimizle her arızaya en doğru çözümü üretiyoruz."
+  },
+  "members": [
+    {
+      "name": "Fatih Cömert",
+      "title": "Baş Teknisyen & Eğitmen",
+      "education": "Üniversite Mezunu",
+      "experience": "15 Yıllık Deneyim",
+      "bio": "Üniversite mezunu olan Fatih Cömert, 15 yıllık sektör deneyimiyle Vip İletişim'in baş teknisyeni ve teknik eğitmenidir. Mesleki Yeterlilik Belgesi, Ustalık Belgesi ve Usta Öğreticilik Belgesi sahibi olan Fatih Bey, tamir işlemlerini en üst düzeyde icra etmekte; aynı zamanda iPhone tamiri konusunda özel kurslar ve uygulamalı eğitimler vermektedir. Sektördeki yoğun deneyimi sayesinde en karmaşık anakart arızalarında bile güvenilir çözümler üretmektedir.",
+      "certificates": [
+        "Mesleki Yeterlilik Belgesi",
+        "Ustalık Belgesi",
+        "Usta Öğreticilik Belgesi",
+        "iPhone Teknik Servis Eğitim Sertifikası"
+      ],
+      "specialties": [
+        "iPhone İşlemci (CPU) Seviyesi Tamir",
+        "Android CPU / İşlemci Seviyesi Tamir",
+        "Anakart Mikro Lehimleme",
+        "iPhone Tamir Eğitimi"
+      ],
+      "image": "/images/team/fatih-comert.jpg",
+      "imagePosition": "center top"
+    },
+    {
+      "name": "Serter Baydoğan",
+      "title": "Kıdemli Teknisyen",
+      "education": "Lise Mezunu",
+      "experience": "20 Yıllık Deneyim",
+      "bio": "20 yıllık kesintisiz sektör deneyimiyle Serter Baydoğan, ekibimizin en köklü ismidir. Mesleki Yeterlilik Belgesi, Ustalık Belgesi ve Usta Öğreticilik Belgesi sahibi olan Serter Bey, iPhone anakart tamirinde işlemci (CPU) seviyesinde müdahale yapabilecek nadir uzmanlardan biridir. Yıllar içinde binlerce cihaza dokunmuş olan deneyimi, özellikle zorlu CPU ve logic board tamirlerinde fark yaratmaktadır.",
+      "certificates": [
+        "Mesleki Yeterlilik Belgesi",
+        "Ustalık Belgesi",
+        "Usta Öğreticilik Belgesi"
+      ],
+      "specialties": [
+        "iPhone CPU / İşlemci Seviyesi Tamir",
+        "Logic Board Onarımı",
+        "Anakart Mikro Lehimleme",
+        "Veri Kurtarma"
+      ],
+      "image": "/images/team/serter-baydogan.jpg",
+      "imagePosition": "center 20%"
+    },
+    {
+      "name": "Gürkan Boğoç",
+      "title": "Ekran & Cam Uzmanı",
+      "education": "Lise Mezunu",
+      "experience": "10 Yıllık Deneyim",
+      "bio": "10 yıllık deneyimiyle Gürkan Boğoç, ekran söküp takma ve cam değişimi konusunda uzmanlaşmış bir teknisyendir. Her marka ve modelde ekran değişimini titizlikle ve hızlı biçimde gerçekleştiren Gürkan Bey, servisimizde ekran onarımlarının vazgeçilmez ismidir.",
+      "certificates": [
+        "Mesleki Yeterlilik Belgesi",
+        "Ustalık Belgesi"
+      ],
+      "specialties": [
+        "Ekran Değişimi & Onarımı",
+        "Ön / Arka Cam Değişimi",
+        "Dokunmatik Kalibrasyonu",
+        "Çerçeve Düzeltme"
+      ],
+      "image": "",
+      "imagePosition": "center top"
+    }
+  ]
+}

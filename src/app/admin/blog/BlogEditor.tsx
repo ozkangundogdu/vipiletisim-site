@@ -3,6 +3,8 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+type FaqEntry = { q: string; a: string };
+
 type BlogData = {
   slug: string;
   title: string;
@@ -12,6 +14,7 @@ type BlogData = {
   coverImage: string;
   keywords: string[];
   content: string;
+  faqs: FaqEntry[];
 };
 
 const DEFAULT_CATEGORIES = [
@@ -182,6 +185,7 @@ export function BlogEditor({ mode, initialData }: Props) {
     coverImage: initialData?.coverImage ?? "",
     keywords: initialData?.keywords ?? [],
     content: initialData?.content ?? "",
+    faqs: (initialData as { faqs?: FaqEntry[] })?.faqs ?? [],
   });
 
   const keywordsStr = data.keywords.join(", ");
@@ -653,6 +657,58 @@ export function BlogEditor({ mode, initialData }: Props) {
               placeholder="Kısa açıklama (120-160 karakter)"
             />
             <p className="text-xs text-zinc-400 mt-1 text-right">{data.description.length}/160</p>
+          </div>
+
+          {/* SSS Editörü */}
+          <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-xs font-black text-zinc-700 uppercase tracking-wide">Sıkça Sorulan Sorular</h3>
+              <button
+                type="button"
+                onClick={() => setData((prev) => ({ ...prev, faqs: [...prev.faqs, { q: "", a: "" }] }))}
+                className="text-xs font-black text-brand hover:underline"
+              >
+                + Soru Ekle
+              </button>
+            </div>
+            {data.faqs.length === 0 && (
+              <p className="text-xs text-zinc-400">SSS ekleyerek Google&apos;da featured snippet fırsatı yaratın.</p>
+            )}
+            <div className="space-y-3">
+              {data.faqs.map((faq, i) => (
+                <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[10px] font-black text-zinc-400">SORU {i + 1}</span>
+                    <button
+                      type="button"
+                      onClick={() => setData((prev) => ({ ...prev, faqs: prev.faqs.filter((_, idx) => idx !== i) }))}
+                      className="text-[11px] text-red-500 hover:underline"
+                    >
+                      Sil
+                    </button>
+                  </div>
+                  <input
+                    value={faq.q}
+                    onChange={(e) => {
+                      const arr = [...data.faqs]; arr[i] = { ...arr[i], q: e.target.value };
+                      setData((prev) => ({ ...prev, faqs: arr }));
+                    }}
+                    placeholder="Soru metni..."
+                    className="input w-full text-[13px]"
+                  />
+                  <textarea
+                    value={faq.a}
+                    onChange={(e) => {
+                      const arr = [...data.faqs]; arr[i] = { ...arr[i], a: e.target.value };
+                      setData((prev) => ({ ...prev, faqs: arr }));
+                    }}
+                    placeholder="Cevap metni..."
+                    rows={3}
+                    className="input w-full resize-none text-[13px]"
+                  />
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

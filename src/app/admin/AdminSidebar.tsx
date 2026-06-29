@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: "/admin/kodlar", label: "Kod & Scriptler", icon: "💻" },
   { href: "/admin/sayfalar", label: "Sayfa Yönetimi", icon: "📄" },
   { href: "/admin/blog", label: "Blog Yazıları", icon: "📝" },
+  { href: "/admin/toplu-yayin", label: "Toplu Yayın", icon: "📦" },
   { href: "/admin/tamirler", label: "Tamir Sayfaları", icon: "🔧" },
   { href: "/admin/zamanlama", label: "Zamanlama", icon: "🗓️" },
   { href: "/admin/yorumlar", label: "Yorumlar", icon: "⭐" },

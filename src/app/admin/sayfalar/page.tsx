@@ -23,6 +23,13 @@ const PAGES = [
     icon: "🏢",
   },
   {
+    slug: "ekibimiz",
+    label: "Uzman Kadromuz",
+    url: "/kurumsal/ekibimiz",
+    desc: "Teknisyen kartları, fotoğraflar, belgeler, uzmanlık alanları",
+    icon: "👥",
+  },
+  {
     slug: "sosyal-medya",
     label: "Sosyal Medya",
     url: "/sosyal-medya",

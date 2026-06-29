@@ -9,8 +9,12 @@ import { generateServiceFaqs } from "@/lib/faq-generators";
 import { getRepairContent } from "@/lib/repair-content";
 import { getModelSpec } from "@/data/model-specs";
 import { markdownToHtml } from "@/lib/markdown-to-html";
+import { getSettings } from "@/lib/settings";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+import { ArticleFaq } from "@/components/article-faq";
+import { AuthorCard, type AuthorInfo } from "@/components/author-card";
+import { TableOfContents, extractToc, slugifyHeading } from "@/components/table-of-contents";
 
 type RepairPageOverride = {
   customTitle?: string;
@@ -18,6 +22,7 @@ type RepairPageOverride = {
   customContent?: string;
   coverImage?: string;
   publishedAt?: string;
+  faqs?: { q: string; a: string }[];
 };
 
 function getRepairPageOverride(slug: string): RepairPageOverride {
@@ -25,6 +30,16 @@ function getRepairPageOverride(slug: string): RepairPageOverride {
     const file = path.join(process.cwd(), "content/repair-pages", `${slug}.json`);
     return JSON.parse(fs.readFileSync(file, "utf-8"));
   } catch { return {}; }
+}
+
+function getAuthor(): AuthorInfo {
+  try {
+    const file = path.join(process.cwd(), "content/pages/ekibimiz.json");
+    const data = JSON.parse(fs.readFileSync(file, "utf-8"));
+    const member = data.members?.[0];
+    if (member) return { name: member.name, title: member.title, experience: member.experience, bio: member.bio, image: member.image };
+  } catch { /* fallback */ }
+  return { name: "Fatih Cömert", title: "Baş Teknisyen & Eğitmen", experience: "15 Yıllık Deneyim", bio: "Vip İletişim baş teknisyeni.", image: "/images/team/fatih-comert.jpg" };
 }
 
 export async function generateStaticParams() {
@@ -67,6 +82,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   if (!service) notFound();
 
   const override = getRepairPageOverride(slug);
+  const settings = getSettings();
+  const author = getAuthor();
+  const regions = settings.hizmetBolgeleri ?? [];
+
   const { model, repairType, repairKey, brand } = service;
   const title = override.customTitle || service.title;
   const modelSpec = getModelSpec(model);
@@ -79,20 +98,42 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     useTemplate = false;
   }
 
-  const faqs = generateServiceFaqs(model, repairType);
+  const autoFaqs = generateServiceFaqs(model, repairType);
+  const rawFaqs = (override.faqs && override.faqs.length > 0) ? override.faqs : autoFaqs;
+
+  // Normalize: {question,answer} → {q,a}
+  const faqs = rawFaqs.map((f) => {
+    if ("q" in f) return f as { q: string; a: string };
+    const fi = f as { question: string; answer: string };
+    return { q: fi.question, a: fi.answer };
+  });
 
   const customContentLive =
     override.customContent &&
     (!override.publishedAt || new Date(override.publishedAt) <= new Date());
   const customHtml = customContentLive ? markdownToHtml(override.customContent!) : null;
 
+  // TOC: custom içerikten parse et, template içeriği için section başlıklarını kullan
+  let tocItems = extractToc(override.customContent ?? "");
+  if (tocItems.length < 2 && useTemplate && templateContent) {
+    tocItems = [
+      { id: slugifyHeading(templateContent.symptomsHeading), text: templateContent.symptomsHeading, level: 2 },
+      { id: slugifyHeading(templateContent.whyHeading), text: templateContent.whyHeading, level: 2 },
+      { id: slugifyHeading(templateContent.processHeading), text: templateContent.processHeading, level: 2 },
+      { id: slugifyHeading(templateContent.dataSafeHeading), text: templateContent.dataSafeHeading, level: 2 },
+      { id: slugifyHeading(templateContent.priceHeading), text: templateContent.priceHeading, level: 2 },
+      { id: "neden-vip-iletisim", text: `Trabzon'da ${repairType} İçin Neden Vip İletişim?`, level: 2 },
+      ...(faqs.length > 0 ? [{ id: "sikca-sorulan-sorular", text: "Sıkça Sorulan Sorular", level: 2 as const }] : []),
+    ];
+  }
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     mainEntity: faqs.map((f) => ({
       "@type": "Question",
-      name: f.question,
-      acceptedAnswer: { "@type": "Answer", text: f.answer },
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
     })),
   };
 
@@ -116,7 +157,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
       name: "Vip İletişim Teknik Servis",
       address: { "@type": "PostalAddress", addressLocality: "Trabzon", addressCountry: "TR" },
     },
-    areaServed: ["Trabzon", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bayburt"],
+    areaServed: regions.length > 0 ? regions.map((r) => r.il) : ["Trabzon", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bayburt"],
     offers: {
       "@type": "Offer",
       availability: "https://schema.org/InStock",
@@ -126,6 +167,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   const relatedServices = services.filter((s) => s.slug !== slug && s.model === model).slice(0, 4);
   const otherServices = services.filter((s) => s.slug !== slug && s.model !== model && s.brand === brand).slice(0, 4);
+
+  const displayFaqs = faqs.filter((f) => f.q && f.a);
 
   return (
     <>
@@ -160,6 +203,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
         <div className="grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 space-y-8">
 
+            {/* TOC */}
+            <TableOfContents items={tocItems} />
+
             {/* Main content: custom markdown OR template */}
             {customHtml ? (
               <div
@@ -175,7 +221,9 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
                 {/* Belirtiler */}
                 <section>
-                  <h2 className="mb-3 text-xl font-black text-zinc-900">{templateContent.symptomsHeading}</h2>
+                  <h2 id={slugifyHeading(templateContent.symptomsHeading)} className="mb-3 scroll-mt-20 text-xl font-black text-zinc-900">
+                    {templateContent.symptomsHeading}
+                  </h2>
                   <ul className="space-y-2">
                     {templateContent.symptoms.map((s, i) => (
                       <li key={i} className="flex items-start gap-2 text-[15px] text-zinc-600">
@@ -188,13 +236,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
                 {/* Neden Gerekli */}
                 <section>
-                  <h2 className="mb-3 text-xl font-black text-zinc-900">{templateContent.whyHeading}</h2>
+                  <h2 id={slugifyHeading(templateContent.whyHeading)} className="mb-3 scroll-mt-20 text-xl font-black text-zinc-900">
+                    {templateContent.whyHeading}
+                  </h2>
                   <p className="text-[15px] leading-relaxed text-zinc-600">{templateContent.why}</p>
                 </section>
 
                 {/* Tamir Süreci */}
                 <section>
-                  <h2 className="mb-4 text-xl font-black text-zinc-900">{templateContent.processHeading}</h2>
+                  <h2 id={slugifyHeading(templateContent.processHeading)} className="mb-4 scroll-mt-20 text-xl font-black text-zinc-900">
+                    {templateContent.processHeading}
+                  </h2>
                   <div className="space-y-3">
                     {templateContent.processSteps.map((step, i) => (
                       <div key={i} className="flex gap-4 rounded-xl border border-zinc-100 bg-zinc-50 p-4">
@@ -210,13 +262,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
                 {/* Veri Güvenliği */}
                 <section>
-                  <h2 className="mb-3 text-xl font-black text-zinc-900">{templateContent.dataSafeHeading}</h2>
+                  <h2 id={slugifyHeading(templateContent.dataSafeHeading)} className="mb-3 scroll-mt-20 text-xl font-black text-zinc-900">
+                    {templateContent.dataSafeHeading}
+                  </h2>
                   <p className="text-[15px] leading-relaxed text-zinc-600">{templateContent.dataSafe}</p>
                 </section>
 
                 {/* Fiyat */}
                 <section>
-                  <h2 className="mb-3 text-xl font-black text-zinc-900">{templateContent.priceHeading}</h2>
+                  <h2 id={slugifyHeading(templateContent.priceHeading)} className="mb-3 scroll-mt-20 text-xl font-black text-zinc-900">
+                    {templateContent.priceHeading}
+                  </h2>
                   <p className="text-[15px] leading-relaxed text-zinc-600">{templateContent.price}</p>
                 </section>
 
@@ -236,7 +292,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
             {/* Neden Vip İletişim */}
             <section>
-              <h2 className="mb-4 text-xl font-black text-zinc-900">
+              <h2 id="neden-vip-iletisim" className="mb-4 scroll-mt-20 text-xl font-black text-zinc-900">
                 Trabzon&apos;da {repairType} İçin Neden Vip İletişim?
               </h2>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -246,7 +302,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                   { title: "Ücretsiz Ön İnceleme", desc: "İşleme başlamadan önce ücretsiz tanı yapılır; onaylamazsanız ücret alınmaz." },
                   { title: "90 Gün İşçilik Garantisi", desc: "Anakart onarımlarında ve kapsamlı tamirimlerde 90 gün garanti sunulur." },
                   { title: "10+ Yıl Trabzon'da", desc: "Trabzon'un köklü teknik servisi olarak binlerce başarılı tamir geçmişimiz var." },
-                  { title: "Kargo ile Tamir", desc: "Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan kargo ile tamir imkânı." },
+                  { title: "Kargo ile Tamir", desc: `${regions.filter(r => r.il !== "Trabzon").map(r => r.il).join(", ")} ve çevre illerden kargo ile tamir imkânı.` },
                 ].map((item) => (
                   <div key={item.title} className="rounded-xl border border-zinc-100 bg-zinc-50 p-4">
                     <h3 className="mb-1 text-[14px] font-black text-zinc-800">{item.title}</h3>
@@ -256,26 +312,17 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               </div>
             </section>
 
+            {/* Yazar Kartı */}
+            <AuthorCard author={author} />
+
             {/* SSS */}
-            {faqs.length > 0 && (
-              <section aria-label="Sıkça Sorulan Sorular">
-                <h2 className="mb-5 text-xl font-black text-zinc-900">
-                  {model} {repairType} Hakkında Sıkça Sorulan Sorular
-                </h2>
-                <div className="space-y-3">
-                  {faqs.map((faq, i) => (
-                    <details key={i} suppressHydrationWarning className="group rounded-xl border border-zinc-200 bg-zinc-50 open:bg-white">
-                      <summary className="flex cursor-pointer select-none items-center justify-between gap-4 px-5 py-4 text-[15px] font-bold text-zinc-900 marker:hidden list-none">
-                        <span>{faq.question}</span>
-                        <span className="shrink-0 text-accent text-lg transition-transform group-open:rotate-45">+</span>
-                      </summary>
-                      <div className="border-t border-zinc-200 px-5 py-4 text-[14px] leading-relaxed text-zinc-600">
-                        {faq.answer}
-                      </div>
-                    </details>
-                  ))}
-                </div>
-              </section>
+            {displayFaqs.length > 0 && (
+              <div id="sikca-sorulan-sorular" className="scroll-mt-20">
+                <ArticleFaq
+                  faqs={displayFaqs}
+                  title={`${model} ${repairType} Hakkında Sıkça Sorulan Sorular`}
+                />
+              </div>
             )}
 
             {/* İlgili Hizmetler */}
@@ -299,10 +346,10 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <aside className="space-y-4">
             <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
               <h3 className="mb-3 font-black text-zinc-900">Hemen İletişime Geç</h3>
-              <a href="tel:+905052754540" className="mb-2 flex items-center gap-2 rounded-lg bg-accent px-4 py-3 font-bold text-zinc-900 hover:bg-accent-hover">
-                📞 +90 (505) 275 45 40
+              <a href={`tel:+${settings.telefonRaw}`} className="mb-2 flex items-center gap-2 rounded-lg bg-accent px-4 py-3 font-bold text-zinc-900 hover:bg-accent-hover">
+                📞 {settings.telefon}
               </a>
-              <a href="https://wa.me/905052754540" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover">
+              <a href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover">
                 💬 WhatsApp ile Yaz
               </a>
             </div>
@@ -328,6 +375,25 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </div>
               </dl>
             </div>
+
+            {/* Hizmet Bölgeleri */}
+            {regions.length > 0 && (
+              <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <p className="mb-3 text-[13px] font-black uppercase tracking-wide text-zinc-400">
+                  Hizmet Bölgelerimiz
+                </p>
+                <ul className="space-y-2">
+                  {regions.map((r) => (
+                    <li key={r.il} className="flex items-center justify-between">
+                      <span className="text-[14px] font-bold text-zinc-800 flex items-center gap-1.5">
+                        <span className="text-brand">📍</span> {r.il}
+                      </span>
+                      <span className="text-[12px] text-zinc-400">{r.detay}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
 
             {modelSpec && (
               <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">

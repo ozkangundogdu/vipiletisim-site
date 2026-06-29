@@ -79,6 +79,105 @@ export function generateServiceFaqs(model: string, repairType: string): FaqItem[
   ];
 }
 
+export function generateBlogFaqs(
+  title: string,
+  category: string,
+  keywords: string[]
+): { q: string; a: string }[] {
+  const kw = (title + " " + category + " " + keywords.join(" ")).toLowerCase();
+
+  const isBatarya = kw.includes("batarya") || kw.includes("pil") || kw.includes("şarj");
+  const isEkran = kw.includes("ekran") || kw.includes("cam") || kw.includes("dokunmatik");
+  const isKamera = kw.includes("kamera") || kw.includes("fotoğraf");
+  const isSu = kw.includes("su") || kw.includes("ıslatma");
+  const isIphone = kw.includes("iphone") || kw.includes("apple");
+  const isSamsung = kw.includes("samsung") || kw.includes("galaxy");
+  const isTrabzon = kw.includes("trabzon");
+  const marka = isIphone ? "iPhone" : isSamsung ? "Samsung" : "telefon";
+
+  const faqs: { q: string; a: string }[] = [];
+
+  if (isBatarya) {
+    faqs.push(
+      {
+        q: `${marka} batarya değişimi ne kadar sürer?`,
+        a: `Trabzon Vip İletişim'de ${marka} batarya değişimi ortalama 30–45 dakikada tamamlanır. Aynı gün teslim garantisi veriyoruz. İşlem öncesinde ücretsiz ön inceleme yapılır.`,
+      },
+      {
+        q: `${marka} batarya değişimi veri kaybına yol açar mı?`,
+        a: `Hayır. Batarya değişimi yalnızca donanım işlemidir; yazılım ve depolama birimine dokunulmaz. Yine de işlem öncesinde iCloud veya Google yedek almanızı tavsiye ederiz.`,
+      },
+      {
+        q: `Trabzon'da ${marka} batarya değişimi için nereye gidebilirim?`,
+        a: `Trabzon Merkez'deki Vip İletişim Teknik Servis'e başvurabilirsiniz. Orijinal ve OEM kalitesinde batarya kullanıyor, aynı gün teslim yapıyoruz. Giresun, Rize, Artvin ve çevre illerden kargo ile de tamir yaptırabilirsiniz.`,
+      }
+    );
+  }
+
+  if (isEkran) {
+    faqs.push(
+      {
+        q: `${marka} ekran tamiri ne kadar sürer?`,
+        a: `Trabzon Vip İletişim'de ${marka} ekran değişimi 45–60 dakikada tamamlanır. Stokta parça bulunması halinde aynı gün teslim yapılır.`,
+      },
+      {
+        q: `Kırık ekranı geç tamir ettirmenin zararı var mı?`,
+        a: `Evet. Çatlak ekran zamanla LCD veya OLED paneli bozar, suya karşı korumayı ortadan kaldırır. Erken müdahale hem maliyet hem de güvenlik açısından daha doğrudur.`,
+      },
+      {
+        q: `Trabzon'da ${marka} ekran değişimi yaptırmak için ne yapmalıyım?`,
+        a: `Trabzon Vip İletişim Teknik Servis'e randevusuz gelebilirsiniz. Ücretsiz ön inceleme ile durumu belirliyor, onayınızın ardından işleme başlıyoruz. Giresun, Rize, Artvin illerinden kargo ile de tamir yaptırabilirsiniz.`,
+      }
+    );
+  }
+
+  if (isKamera) {
+    faqs.push(
+      {
+        q: `${marka} kamera tamiri ne kadar sürer?`,
+        a: `${marka} kamera değişimi veya cam tamiri Vip İletişim'de 30–60 dakikada tamamlanır. Parça stokta mevcutsa aynı gün teslim yapılır.`,
+      },
+      {
+        q: `${marka} kamera camı kırılırsa fotoğraf kalitesi nasıl etkilenir?`,
+        a: `Kırık veya çizili kamera camı ışığı düzgün kıramaz; fotoğraflarda bulanıklık, sis ve leke oluşur. Cam değişimiyle görüntü kalitesi orijinal seviyesine döner.`,
+      }
+    );
+  }
+
+  if (isSu) {
+    faqs.push(
+      {
+        q: `Suya düşen telefon için ne yapmalıyım?`,
+        a: `Telefonu hemen kapatın, şarj etmeyin ve ısıya maruz bırakmayın. En kısa sürede Vip İletişim'e getirin. Ultrasonik temizleme ile pek çok su hasarlı cihaz kurtarılabilmektedir.`,
+      },
+      {
+        q: `Su hasarlı ${marka} tamiri ne kadar sürer?`,
+        a: `Su hasarı incelemesi birkaç saat sürebilir. Ultrasonik temizleme ve kurutma işlemi tamamlandıktan sonra hasar değerlendirilir. İşlem süresi hasarın boyutuna göre değişir.`,
+      }
+    );
+  }
+
+  // Her blog için genel sorular
+  faqs.push(
+    {
+      q: `Trabzon'da ${marka} tamiri için ücretsiz ön inceleme var mı?`,
+      a: `Evet. Trabzon Vip İletişim'de tüm cihazlara ücretsiz ön inceleme yapılır. Arızayı tespit edip net fiyatı bildiriyoruz; onaylamazsanız herhangi bir ücret alınmaz.`,
+    },
+    {
+      q: isTrabzon
+        ? `Trabzon'da telefon tamiri için en iyi adres neresi?`
+        : `Trabzon'da ${marka} tamiri için en güvenilir servis hangisi?`,
+      a: `Trabzon'da 10+ yıllık deneyimi, orijinal yedek parça kullanımı ve aynı gün teslim garantisiyle Vip İletişim Teknik Servis öne çıkmaktadır. Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan kargo ile tamir imkânı da sunulmaktadır.`,
+    },
+    {
+      q: `Trabzon dışından kargo ile tamir yaptırabilir miyim?`,
+      a: `Evet. Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan kargoya verilen cihazlar servisimize ulaştığı gün tamir edilir ve aynı gün kargolanır. Detaylı bilgi için WhatsApp hattımızdan ulaşabilirsiniz.`,
+    }
+  );
+
+  return faqs;
+}
+
 export function generateCityFaqs(name: string, il: string): FaqItem[] {
   const isKargo = il !== "Trabzon";
 

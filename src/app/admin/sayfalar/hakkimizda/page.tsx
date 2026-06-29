@@ -166,6 +166,7 @@ export default function HakkimizdaEditor() {
           </div>
         ))}
       </section>
+
     </div>
   );
 }

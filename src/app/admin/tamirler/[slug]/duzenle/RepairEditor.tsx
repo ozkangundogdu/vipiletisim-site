@@ -3,12 +3,15 @@
 import { useState, useRef, useCallback, useEffect } from "react";
 import { useRouter } from "next/navigation";
 
+type FaqEntry = { q: string; a: string };
+
 type RepairPageData = {
   customTitle: string;
   customDescription: string;
   customContent: string;
   coverImage: string;
   publishedAt: string;
+  faqs: FaqEntry[];
 };
 
 type DeviceRepair = { slug: string; title: string; repairTypeLabel: string };
@@ -97,6 +100,7 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
     customContent: "",
     coverImage: "",
     publishedAt: "",
+    faqs: [],
   });
 
   useEffect(() => {
@@ -108,6 +112,7 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
         customContent: d.customContent ?? "",
         coverImage: d.coverImage ?? "",
         publishedAt: d.publishedAt ?? "",
+        faqs: d.faqs ?? [],
       }));
   }, [slug]);
 
@@ -202,6 +207,7 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
       customContent: pageRes.customContent ?? "",
       coverImage: pageRes.coverImage ?? "",
       publishedAt: pageRes.publishedAt ?? "",
+      faqs: pageRes.faqs ?? [],
     });
     setSaved(false);
     setActiveTab("yaz");
@@ -478,6 +484,61 @@ export function RepairEditor({ slug, serviceTitle, serviceModel, serviceRepairTy
             <p className="text-xs text-zinc-500 leading-relaxed mt-2">
               <strong>"Şablondan Başla"</strong> butonu şablonu editöre aktarır.
             </p>
+          </div>
+
+          {/* SSS Editörü */}
+          <div className="bg-white rounded-xl p-5 shadow-sm border border-zinc-100">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="font-black text-zinc-900 text-sm">Özel SSS</h3>
+              <button
+                type="button"
+                onClick={() => setData((p) => ({ ...p, faqs: [...p.faqs, { q: "", a: "" }] }))}
+                className="text-xs font-black text-brand hover:underline"
+              >
+                + Soru Ekle
+              </button>
+            </div>
+            {data.faqs.length === 0 ? (
+              <p className="text-xs text-zinc-400 leading-relaxed">
+                Boş bırakırsanız otomatik SSS gösterilir. Özel sorular ekleyerek sayfayı özelleştirebilirsiniz.
+              </p>
+            ) : (
+              <div className="space-y-3">
+                {data.faqs.map((faq, i) => (
+                  <div key={i} className="rounded-lg border border-zinc-200 bg-zinc-50 p-3 space-y-2">
+                    <div className="flex items-center justify-between">
+                      <span className="text-[10px] font-black text-zinc-400">SORU {i + 1}</span>
+                      <button
+                        type="button"
+                        onClick={() => setData((p) => ({ ...p, faqs: p.faqs.filter((_, idx) => idx !== i) }))}
+                        className="text-[11px] text-red-500 hover:underline"
+                      >
+                        Sil
+                      </button>
+                    </div>
+                    <input
+                      value={faq.q}
+                      onChange={(e) => {
+                        const arr = [...data.faqs]; arr[i] = { ...arr[i], q: e.target.value };
+                        setData((p) => ({ ...p, faqs: arr }));
+                      }}
+                      placeholder="Soru metni..."
+                      className="input w-full text-xs"
+                    />
+                    <textarea
+                      value={faq.a}
+                      onChange={(e) => {
+                        const arr = [...data.faqs]; arr[i] = { ...arr[i], a: e.target.value };
+                        setData((p) => ({ ...p, faqs: arr }));
+                      }}
+                      placeholder="Cevap metni..."
+                      rows={3}
+                      className="input w-full resize-none text-xs"
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>

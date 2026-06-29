@@ -150,8 +150,8 @@ function WizardInner({
     if (!brand) return [];
     const hardcoded = getModelsForBrand(brand);
     const customNames = customModelsForBrand.map((d) => d.model);
-    // Prepend custom models, avoid duplicates
-    return [...customNames.filter((n) => !hardcoded.includes(n)), ...hardcoded];
+    // Custom modeller önce (zaten yeni), hardcoded yeniden eskiye
+    return [...customNames.filter((n) => !hardcoded.includes(n)), ...[...hardcoded].reverse()];
   }, [brand, customModelsForBrand]);
 
   const filteredModels = allModels.filter((m) =>
@@ -278,8 +278,14 @@ function WizardInner({
             onChange={(e) => setSearch(e.target.value)}
             className="mb-4 w-full rounded-lg border border-zinc-300 px-4 py-2.5 text-sm outline-none focus:border-zinc-500"
           />
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {filteredModels.map((m) => {
+
+          {/* Samsung: S ve A serisi yan yana (arama yoksa) */}
+          {brand === 'samsung' && !search ? (() => {
+            const sSeries = filteredModels.filter((m) => /^Galaxy S\d/.test(m));
+            const aSeries = filteredModels.filter((m) => /^Galaxy A\d/.test(m));
+            const others  = filteredModels.filter((m) => !/^Galaxy [SA]\d/.test(m));
+
+            const ModelButton = ({ m }: { m: string }) => {
               const isCustom = customDevices.some((d) => d.model === m && d.brandKey === brand);
               return (
                 <button
@@ -287,14 +293,59 @@ function WizardInner({
                   onClick={() => selectModel(m)}
                   className="rounded-lg border border-zinc-200 px-3 py-2.5 text-left text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50 flex items-center gap-2"
                 >
-                  <span className="flex-1">{m}</span>
+                  <span className="flex-1">Samsung {m}</span>
                   {isCustom && (
                     <span className="shrink-0 text-[9px] font-black px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">YENİ</span>
                   )}
                 </button>
               );
-            })}
-          </div>
+            };
+
+            return (
+              <div className="space-y-4">
+                <div className="grid grid-cols-2 gap-4">
+                  {/* S Serisi */}
+                  <div>
+                    <p className="mb-2 text-[11px] font-black uppercase tracking-widest text-zinc-400">Galaxy S Serisi</p>
+                    <div className="flex flex-col gap-1.5">
+                      {sSeries.map((m) => <ModelButton key={m} m={m} />)}
+                    </div>
+                  </div>
+                  {/* A Serisi */}
+                  <div>
+                    <p className="mb-2 text-[11px] font-black uppercase tracking-widest text-zinc-400">Galaxy A Serisi</p>
+                    <div className="flex flex-col gap-1.5">
+                      {aSeries.map((m) => <ModelButton key={m} m={m} />)}
+                    </div>
+                  </div>
+                </div>
+                {others.length > 0 && (
+                  <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
+                    {others.map((m) => <ModelButton key={m} m={m} />)}
+                  </div>
+                )}
+              </div>
+            );
+          })() : (
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
+              {filteredModels.map((m) => {
+                const isCustom = customDevices.some((d) => d.model === m && d.brandKey === brand);
+                const displayName = brand === 'samsung' ? `Samsung ${m}` : m;
+                return (
+                  <button
+                    key={m}
+                    onClick={() => selectModel(m)}
+                    className="rounded-lg border border-zinc-200 px-3 py-2.5 text-left text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50 flex items-center gap-2"
+                  >
+                    <span className="flex-1">{displayName}</span>
+                    {isCustom && (
+                      <span className="shrink-0 text-[9px] font-black px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">YENİ</span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       )}
 

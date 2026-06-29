@@ -2,6 +2,8 @@ import fs from "fs";
 import path from "path";
 import { unstable_noStore as noStore } from "next/cache";
 
+export type HizmetBolgesi = { il: string; detay: string };
+
 export type SiteSettings = {
   logo?: string;
   telefon: string;
@@ -22,6 +24,7 @@ export type SiteSettings = {
     facebook: string;
     google: string;
   };
+  hizmetBolgeleri?: HizmetBolgesi[];
 };
 
 export type Review = {

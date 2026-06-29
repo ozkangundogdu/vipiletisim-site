@@ -1,3 +1,11 @@
+function slugId(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/ç/g, "c").replace(/ğ/g, "g").replace(/ı/g, "i")
+    .replace(/ö/g, "o").replace(/ş/g, "s").replace(/ü/g, "u")
+    .replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+}
+
 export function markdownToHtml(md: string): string {
   const escaped = md
     .replace(/&/g, "&amp;")
@@ -21,11 +29,13 @@ export function markdownToHtml(md: string): string {
     if (/^### /.test(line)) {
       if (inUl) { html.push("</ul>"); inUl = false; }
       if (inOl) { html.push("</ol>"); inOl = false; }
-      html.push(`<h3 class="text-[15px] font-black text-zinc-800 mt-5 mb-1">${line.slice(4)}</h3>`);
+      const h3text = line.slice(4);
+      html.push(`<h3 id="${slugId(h3text)}" class="text-[15px] font-black text-zinc-800 mt-5 mb-1">${h3text}</h3>`);
     } else if (/^## /.test(line)) {
       if (inUl) { html.push("</ul>"); inUl = false; }
       if (inOl) { html.push("</ol>"); inOl = false; }
-      html.push(`<h2 class="text-xl font-black text-zinc-900 mt-7 mb-3">${line.slice(3)}</h2>`);
+      const h2text = line.slice(3);
+      html.push(`<h2 id="${slugId(h2text)}" class="text-xl font-black text-zinc-900 mt-7 mb-3">${h2text}</h2>`);
     } else if (/^# /.test(line)) {
       if (inUl) { html.push("</ul>"); inUl = false; }
       if (inOl) { html.push("</ol>"); inOl = false; }

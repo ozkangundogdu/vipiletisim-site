@@ -13,6 +13,23 @@ export type FiyatlarContent = {
   faq: { q: string; a: string }[];
 };
 
+export type TeamMember = {
+  name: string;
+  title: string;
+  education: string;
+  experience: string;
+  bio: string;
+  certificates: string[];
+  specialties: string[];
+  image: string;
+  imagePosition?: string;
+};
+
+export type EkibimizContent = {
+  hero: { title: string; subtitle: string };
+  members: TeamMember[];
+};
+
 export type HakkimizdaContent = {
   hero: { title: string; subtitle: string; image: string };
   intro: {
@@ -64,6 +81,7 @@ export type SosyalMedyaContent = {
 type PageContentMap = {
   fiyatlar: FiyatlarContent;
   hakkimizda: HakkimizdaContent;
+  ekibimiz: EkibimizContent;
   "tamir-egitimi": TamirEgitimiContent;
   "sosyal-medya": SosyalMedyaContent;
 };

@@ -31,8 +31,9 @@ export async function PUT(
   }
 
   const body = await request.json();
-  const { title, description, publishedAt, category, coverImage, keywords, content } = body;
-  const frontmatter = { title, description, publishedAt, category, coverImage, keywords };
+  const { title, description, publishedAt, category, coverImage, keywords, content, faqs } = body;
+  const frontmatter: Record<string, unknown> = { title, description, publishedAt, category, coverImage, keywords };
+  if (faqs && faqs.length > 0) frontmatter.faqs = faqs;
   const fileContent = matter.stringify(content ?? "", frontmatter);
   fs.writeFileSync(filePath, fileContent, "utf-8");
 

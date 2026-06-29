@@ -1,11 +1,16 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import fs from "fs";
+import path from "path";
 import { notFound } from "next/navigation";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getAllPosts, getPostBySlug, getAllSlugs } from "@/lib/blog";
+import { getSettings } from "@/lib/settings";
+import { TableOfContents, extractToc, slugifyHeading } from "@/components/table-of-contents";
+import { AuthorCard, type AuthorInfo } from "@/components/author-card";
 
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
@@ -43,47 +48,80 @@ function formatDate(dateStr: string) {
   return `${d.getUTCDate()} ${AYLAR[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
 }
 
-const mdxComponents = {
-  h2: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h2 className="mb-3 mt-8 text-xl font-black text-zinc-900 first:mt-0" {...props} />
-  ),
-  h3: (props: React.HTMLAttributes<HTMLHeadingElement>) => (
-    <h3 className="mb-2 mt-6 text-[17px] font-black text-zinc-800" {...props} />
-  ),
-  p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
-    <p className="mb-4 text-[15px] leading-relaxed text-zinc-600" {...props} />
-  ),
-  ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
-    <ul className="mb-4 list-disc space-y-1.5 pl-5 text-[15px] text-zinc-600" {...props} />
-  ),
-  ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
-    <ol className="mb-4 list-decimal space-y-1.5 pl-5 text-[15px] text-zinc-600" {...props} />
-  ),
-  li: (props: React.HTMLAttributes<HTMLLIElement>) => (
-    <li className="leading-relaxed" {...props} />
-  ),
-  strong: (props: React.HTMLAttributes<HTMLElement>) => (
-    <strong className="font-black text-zinc-800" {...props} />
-  ),
-  a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
-    <a className="font-bold text-brand underline hover:text-brand/80" {...props} />
-  ),
-  blockquote: (props: React.HTMLAttributes<HTMLElement>) => (
-    <blockquote className="my-4 border-l-4 border-brand bg-zinc-50 py-3 pl-4 pr-3 text-[14px] text-zinc-600 not-italic" {...props} />
-  ),
-  table: (props: React.HTMLAttributes<HTMLTableElement>) => (
-    <div className="my-4 overflow-x-auto">
-      <table className="w-full border-collapse text-[14px]" {...props} />
-    </div>
-  ),
-  th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <th className="border border-zinc-200 bg-zinc-100 px-4 py-2 text-left font-black text-zinc-800" {...props} />
-  ),
-  td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
-    <td className="border border-zinc-200 px-4 py-2 text-zinc-600" {...props} />
-  ),
-  hr: () => <hr className="my-8 border-zinc-200" />,
-};
+function getChildText(children: React.ReactNode): string {
+  if (typeof children === "string") return children;
+  if (Array.isArray(children)) return children.map(getChildText).join("");
+  if (children && typeof children === "object" && "props" in (children as object)) {
+    return getChildText((children as { props: { children?: React.ReactNode } }).props.children);
+  }
+  return "";
+}
+
+function makeMdxComponents() {
+  return {
+    h2: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+      const text = getChildText(children);
+      const id = slugifyHeading(text);
+      return (
+        <h2 id={id} className="mb-3 mt-8 scroll-mt-20 text-xl font-black text-zinc-900 first:mt-0" {...props}>
+          {children}
+        </h2>
+      );
+    },
+    h3: ({ children, ...props }: React.HTMLAttributes<HTMLHeadingElement>) => {
+      const text = getChildText(children);
+      const id = slugifyHeading(text);
+      return (
+        <h3 id={id} className="mb-2 mt-6 scroll-mt-20 text-[17px] font-black text-zinc-800" {...props}>
+          {children}
+        </h3>
+      );
+    },
+    p: (props: React.HTMLAttributes<HTMLParagraphElement>) => (
+      <p className="mb-4 text-[15px] leading-relaxed text-zinc-600" {...props} />
+    ),
+    ul: (props: React.HTMLAttributes<HTMLUListElement>) => (
+      <ul className="mb-4 list-disc space-y-1.5 pl-5 text-[15px] text-zinc-600" {...props} />
+    ),
+    ol: (props: React.HTMLAttributes<HTMLOListElement>) => (
+      <ol className="mb-4 list-decimal space-y-1.5 pl-5 text-[15px] text-zinc-600" {...props} />
+    ),
+    li: (props: React.HTMLAttributes<HTMLLIElement>) => (
+      <li className="leading-relaxed" {...props} />
+    ),
+    strong: (props: React.HTMLAttributes<HTMLElement>) => (
+      <strong className="font-black text-zinc-800" {...props} />
+    ),
+    a: (props: React.AnchorHTMLAttributes<HTMLAnchorElement>) => (
+      <a className="font-bold text-brand underline hover:text-brand/80" {...props} />
+    ),
+    blockquote: (props: React.HTMLAttributes<HTMLElement>) => (
+      <blockquote className="my-4 border-l-4 border-brand bg-zinc-50 py-3 pl-4 pr-3 text-[14px] text-zinc-600 not-italic" {...props} />
+    ),
+    table: (props: React.HTMLAttributes<HTMLTableElement>) => (
+      <div className="my-4 overflow-x-auto">
+        <table className="w-full border-collapse text-[14px]" {...props} />
+      </div>
+    ),
+    th: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
+      <th className="border border-zinc-200 bg-zinc-100 px-4 py-2 text-left font-black text-zinc-800" {...props} />
+    ),
+    td: (props: React.HTMLAttributes<HTMLTableCellElement>) => (
+      <td className="border border-zinc-200 px-4 py-2 text-zinc-600" {...props} />
+    ),
+    hr: () => <hr className="my-8 border-zinc-200" />,
+  };
+}
+
+function getAuthor(): AuthorInfo {
+  try {
+    const file = path.join(process.cwd(), "content/pages/ekibimiz.json");
+    const data = JSON.parse(fs.readFileSync(file, "utf-8"));
+    const member = data.members?.[0];
+    if (member) return { name: member.name, title: member.title, experience: member.experience, bio: member.bio, image: member.image };
+  } catch { /* fallback */ }
+  return { name: "Fatih Cömert", title: "Baş Teknisyen & Eğitmen", experience: "15 Yıllık Deneyim", bio: "Vip İletişim baş teknisyeni.", image: "/images/team/fatih-comert.jpg" };
+}
 
 export default async function BlogPostPage({
   params,
@@ -93,6 +131,11 @@ export default async function BlogPostPage({
   const { slug } = await params;
   const post = getPostBySlug(slug);
   if (!post) notFound();
+
+  const settings = getSettings();
+  const author = getAuthor();
+  const tocItems = extractToc(post.content);
+  const regions = settings.hizmetBolgeleri ?? [];
 
   const allPosts = getAllPosts();
   const related = allPosts
@@ -112,18 +155,17 @@ export default async function BlogPostPage({
     datePublished: post.publishedAt,
     dateModified: post.publishedAt,
     author: {
-      "@type": "Organization",
-      name: "Vip İletişim Teknik Ekibi",
-      url: "https://vipiletisim.com.tr",
+      "@type": "Person",
+      name: author.name,
+      jobTitle: author.title,
+      url: "https://vipiletisim.com.tr/kurumsal/ekibimiz",
+      image: author.image ? `https://vipiletisim.com.tr${author.image}` : undefined,
     },
     publisher: {
       "@type": "Organization",
       name: "Vip İletişim Trabzon",
       url: "https://vipiletisim.com.tr",
-      logo: {
-        "@type": "ImageObject",
-        url: "https://vipiletisim.com.tr/images/logo.png",
-      },
+      logo: { "@type": "ImageObject", url: "https://vipiletisim.com.tr/images/logo.png" },
     },
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -142,11 +184,12 @@ export default async function BlogPostPage({
     ],
   };
 
+  const mdxComponents = makeMdxComponents();
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-
       <SiteHeader />
 
       <main className="mx-auto max-w-[1330px] px-6 py-10">
@@ -170,8 +213,13 @@ export default async function BlogPostPage({
               <h1 className="mb-4 text-2xl font-black leading-tight text-zinc-900 lg:text-3xl">
                 {post.title}
               </h1>
-              <div className="flex items-center gap-4 text-[13px] text-zinc-500">
-                <span>Vip İletişim Teknik Ekibi</span>
+              <div className="flex items-center gap-3 text-[13px] text-zinc-500 flex-wrap">
+                <Link href="/kurumsal/ekibimiz" className="flex items-center gap-1.5 hover:text-brand transition-colors">
+                  {author.image && (
+                    <Image src={author.image} alt={author.name} width={22} height={22} className="rounded-full object-cover" style={{ objectPosition: "center top" }} />
+                  )}
+                  <span>{author.name}</span>
+                </Link>
                 <span>·</span>
                 <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
                 <span>·</span>
@@ -191,13 +239,21 @@ export default async function BlogPostPage({
               />
             </div>
 
+            {/* TOC */}
+            <TableOfContents items={tocItems} />
+
             {/* MDX İçerik */}
             <div className="prose-custom">
               <MDXRemote source={post.content} components={mdxComponents} />
             </div>
 
+            {/* Yazar Kartı */}
+            <div className="mt-10">
+              <AuthorCard author={author} />
+            </div>
+
             {/* Alt CTA */}
-            <div className="mt-10 rounded-xl border border-zinc-200 bg-zinc-50 p-6">
+            <div className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50 p-6">
               <h3 className="mb-1 text-[17px] font-black text-zinc-900">
                 Telefonunuzda Bu Sorun mu Var?
               </h3>
@@ -206,13 +262,13 @@ export default async function BlogPostPage({
               </p>
               <div className="flex flex-wrap gap-3">
                 <a
-                  href="tel:+905052754540"
+                  href={`tel:+${settings.telefonRaw}`}
                   className="rounded-lg bg-accent px-5 py-2.5 text-[14px] font-black text-zinc-900 hover:bg-accent-hover transition-colors"
                 >
-                  +90 (505) 275 45 40
+                  {settings.telefon}
                 </a>
                 <a
-                  href="https://wa.me/905052754540"
+                  href={`https://wa.me/${settings.whatsapp}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg bg-whatsapp px-5 py-2.5 text-[14px] font-black text-white hover:bg-whatsapp-hover transition-colors"
@@ -234,13 +290,13 @@ export default async function BlogPostPage({
                 Ücretsiz ön inceleme için bizi arayın
               </p>
               <a
-                href="tel:+905052754540"
+                href={`tel:+${settings.telefonRaw}`}
                 className="mb-2 flex items-center justify-center gap-2 rounded-lg bg-accent py-3 text-[14px] font-black text-zinc-900 hover:bg-accent-hover transition-colors"
               >
-                +90 (505) 275 45 40
+                {settings.telefon}
               </a>
               <a
-                href="https://wa.me/905052754540"
+                href={`https://wa.me/${settings.whatsapp}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 rounded-lg bg-whatsapp py-3 text-[14px] font-black text-white hover:bg-whatsapp-hover transition-colors"
@@ -248,6 +304,28 @@ export default async function BlogPostPage({
                 WhatsApp
               </a>
             </div>
+
+            {/* Hizmet Bölgeleri */}
+            {regions.length > 0 && (
+              <div className="rounded-xl border border-zinc-200 bg-white p-5 shadow-sm">
+                <p className="mb-3 text-[13px] font-black uppercase tracking-wide text-zinc-400">
+                  Hizmet Bölgelerimiz
+                </p>
+                <ul className="space-y-2">
+                  {regions.map((r) => (
+                    <li key={r.il} className="flex items-center justify-between">
+                      <span className="text-[14px] font-bold text-zinc-800 flex items-center gap-1.5">
+                        <span className="text-brand">📍</span> {r.il}
+                      </span>
+                      <span className="text-[12px] text-zinc-400">{r.detay}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-3 text-[11px] text-zinc-400">
+                  Kargo ile tamir için bize yazın.
+                </p>
+              </div>
+            )}
 
             {/* İlgili Makaleler */}
             {sidebar.length > 0 && (

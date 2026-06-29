@@ -12,6 +12,7 @@ export type BlogPost = {
   keywords: string[];
   readingTime: number;
   content: string;
+  faqs?: { q: string; a: string }[];
 };
 
 const CONTENT_DIR = path.join(process.cwd(), "content/blog");
@@ -34,6 +35,7 @@ export function getAllPosts(): BlogPost[] {
         keywords: (data.keywords as string[]) ?? [],
         readingTime: Math.max(1, Math.ceil(content.split(/\s+/).length / 200)),
         content,
+        faqs: (data.faqs as { q: string; a: string }[] | undefined),
       };
     })
     .filter((p) => new Date(p.publishedAt) <= new Date())
@@ -59,6 +61,7 @@ export function getPostBySlug(slug: string): BlogPost | null {
     keywords: (data.keywords as string[]) ?? [],
     readingTime: Math.max(1, Math.ceil(content.split(/\s+/).length / 200)),
     content,
+    faqs: (data.faqs as { q: string; a: string }[] | undefined),
   };
 }
 
@@ -80,6 +83,7 @@ export function getAllPostsAdmin(): (BlogPost & { isDraft: boolean })[] {
         keywords: (data.keywords as string[]) ?? [],
         readingTime: Math.max(1, Math.ceil(content.split(/\s+/).length / 200)),
         content,
+        faqs: (data.faqs as { q: string; a: string }[] | undefined),
         isDraft: new Date(publishedAt) > new Date(),
       };
     })

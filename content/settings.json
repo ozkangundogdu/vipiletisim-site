@@ -16,5 +16,13 @@
     "youtube": "https://www.youtube.com/@FatihcomertVip",
     "facebook": "https://www.facebook.com/fatih.comert.1000",
     "google": "https://share.google/0DFXLAirTOsTXCXZv"
-  }
+  },
+  "hizmetBolgeleri": [
+    { "il": "Trabzon", "detay": "Merkez ve tüm ilçeler" },
+    { "il": "Rize", "detay": "Kargo ile tamir" },
+    { "il": "Giresun", "detay": "Kargo ile tamir" },
+    { "il": "Artvin", "detay": "Kargo ile tamir" },
+    { "il": "Gümüşhane", "detay": "Kargo ile tamir" },
+    { "il": "Bayburt", "detay": "Kargo ile tamir" }
+  ]
 }

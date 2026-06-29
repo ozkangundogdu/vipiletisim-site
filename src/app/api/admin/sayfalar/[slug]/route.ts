@@ -2,7 +2,7 @@ import { getPageContent, savePageContent } from "@/lib/page-content";
 
 export const dynamic = "force-dynamic";
 
-const ALLOWED = ["fiyatlar", "hakkimizda", "tamir-egitimi", "sosyal-medya"] as const;
+const ALLOWED = ["fiyatlar", "hakkimizda", "ekibimiz", "tamir-egitimi", "sosyal-medya"] as const;
 type Slug = typeof ALLOWED[number];
 
 function isAllowed(slug: string): slug is Slug {
