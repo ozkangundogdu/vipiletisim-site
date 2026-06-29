@@ -323,9 +323,8 @@ async function processModel(modelName: string): Promise<void> {
     const imageUrls = extractImageUrls(guide);
     for (const imgUrl of imageUrls) {
       imageCounter++;
-      const ext  = imgUrl.includes('.large') ? 'jpg' : imgUrl.split('.').pop()?.split('?')[0] || 'jpg';
       const slug = sanitizeFilename(g.title);
-      const dest = path.join(imagesDir, `${slug}-${imageCounter}.${ext}`);
+      const dest = path.join(imagesDir, `${slug}-${imageCounter}.jpg`);
       await sleep(150);
       await downloadImage(imgUrl, dest);
     }
