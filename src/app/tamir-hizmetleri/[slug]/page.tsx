@@ -7,6 +7,7 @@ import { services, getServiceBySlug } from "@/data/services";
 import { getCustomServiceBySlug, getCustomServices } from "@/lib/custom-services";
 import { generateServiceFaqs } from "@/lib/faq-generators";
 import { getRepairContent } from "@/lib/repair-content";
+import { getModelSpec } from "@/data/model-specs";
 import { markdownToHtml } from "@/lib/markdown-to-html";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
@@ -68,11 +69,12 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const override = getRepairPageOverride(slug);
   const { model, repairType, repairKey, brand } = service;
   const title = override.customTitle || service.title;
+  const modelSpec = getModelSpec(model);
 
   let templateContent = null;
   let useTemplate = true;
   try {
-    templateContent = getRepairContent(model, brand as "iphone" | "samsung" | "xiaomi", repairKey);
+    templateContent = getRepairContent(model, brand as "iphone" | "samsung" | "xiaomi", repairKey, modelSpec);
   } catch {
     useTemplate = false;
   }
@@ -326,6 +328,40 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
                 </div>
               </dl>
             </div>
+
+            {modelSpec && (
+              <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
+                <h3 className="mb-3 font-black text-zinc-900">Model Özellikleri</h3>
+                <dl className="space-y-2 text-[13px]">
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-zinc-500 shrink-0">İşlemci</dt>
+                    <dd className="font-bold text-zinc-800 text-right">{modelSpec.chip}</dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-zinc-500 shrink-0">Yıl</dt>
+                    <dd className="font-bold text-zinc-800">{modelSpec.year}</dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-zinc-500 shrink-0">Ekran</dt>
+                    <dd className="font-bold text-zinc-800 text-right">{modelSpec.screen}</dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-zinc-500 shrink-0">Batarya</dt>
+                    <dd className="font-bold text-zinc-800">{modelSpec.battery} mAh</dd>
+                  </div>
+                  <div className="flex justify-between gap-2">
+                    <dt className="text-zinc-500 shrink-0">Konektör</dt>
+                    <dd className="font-bold text-zinc-800">{modelSpec.port}</dd>
+                  </div>
+                  {modelSpec.ip && (
+                    <div className="flex justify-between gap-2">
+                      <dt className="text-zinc-500 shrink-0">Su Dayanımı</dt>
+                      <dd className="font-bold text-zinc-800">{modelSpec.ip}</dd>
+                    </div>
+                  )}
+                </dl>
+              </div>
+            )}
 
             {otherServices.length > 0 && (
               <div className="rounded-xl border border-zinc-200 bg-zinc-50 p-5">
