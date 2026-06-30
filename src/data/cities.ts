@@ -19,7 +19,7 @@ export const cities: City[] = [
   { slug: "trabzon-macka-telefon-tamiri", name: "Maçka", il: "Trabzon", title: "Maçka Telefon Tamiri", metaDescription: "Maçka ilçesinde telefon arızası mı? Trabzon Vip İletişim ile hızlı ve uygun fiyatlı tamir." },
   { slug: "trabzon-tonya-telefon-tamiri", name: "Tonya", il: "Trabzon", title: "Tonya Telefon Tamiri", metaDescription: "Tonya'dan Trabzon'a telefon tamiri. Vip İletişim ile garantili, profesyonel teknik servis hizmeti." },
   // Giresun
-  { slug: "giresun-telefon-tamiri", name: "Giresun", il: "Giresun", title: "Giresun iPhone ve Telefon Tamiri", metaDescription: "Giresun'dan kargo ile telefon tamiri. Vip İletişim Trabzon'a kargo, orijinal parça, uzman servis." },
+  { slug: "giresun-telefon-tamiri", name: "Giresun", il: "Giresun", title: "Giresun iPhone ve Telefon Tamiri", metaDescription: "Giresun'dan kargo ile telefon tamiri. Trabzon Vip İletişim'e kargo, orijinal parça, uzman servis." },
   { slug: "giresun-bulancak-telefon-tamiri", name: "Bulancak", il: "Giresun", title: "Bulancak Telefon Tamiri", metaDescription: "Bulancak'tan kargo ile Trabzon'a telefon tamiri. Vip İletişim ile güvenli ve hızlı tamir." },
   { slug: "giresun-gorele-telefon-tamiri", name: "Görele", il: "Giresun", title: "Görele Telefon Tamiri", metaDescription: "Görele'den Trabzon'a iPhone ve telefon tamiri. Kargo ile gönder, aynı gün tamir et, geri al." },
   { slug: "giresun-tirebolu-telefon-tamiri", name: "Tirebolu", il: "Giresun", title: "Tirebolu Telefon Tamiri", metaDescription: "Tirebolu'dan Trabzon Vip İletişim'e kargo ile telefon tamiri. Orijinal parça, hızlı teslim." },

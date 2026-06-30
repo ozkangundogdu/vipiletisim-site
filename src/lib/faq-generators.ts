@@ -76,7 +76,7 @@ export function generateServiceFaqs(model: string, repairType: string): FaqItem[
       question: `Trabzon'da ${model} ${rt} için en iyi teknik servis hangisi?`,
       answer: `Trabzon'da ${model} ${rt} için Vip İletişim Teknik Servis öne çıkmaktadır. Orijinal parça kullanımı, aynı gün teslim ve ücretsiz ön inceleme ile Trabzon'un en çok tercih edilen teknik servislerinden biridir.`,
     },
-  ];
+  ].slice(0, 5);
 }
 
 export function generateBlogFaqs(

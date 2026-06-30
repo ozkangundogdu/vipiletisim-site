@@ -5,9 +5,9 @@ import { SiteFooter } from "@/components/site-footer";
 import { getPageContent } from "@/lib/page-content";
 
 export const metadata: Metadata = {
-  title: "Uzman Kadromuz — Vip İletişim Trabzon Teknik Servis",
+  title: "Uzman Kadromuz — Trabzon Vip İletişim",
   description:
-    "Vip İletişim Trabzon teknik servis ekibi: Mesleki Yeterlilik, Ustalık ve Usta Öğreticilik belgeli, CPU seviyesinde tamir yapan uzman teknisyenler.",
+    "Trabzon Vip İletişim teknik servis ekibi: Mesleki Yeterlilik, Ustalık ve Usta Öğreticilik belgeli, CPU seviyesinde tamir yapan uzman teknisyenler.",
   keywords: [
     "trabzon telefon tamiri uzman teknisyen",
     "vip iletişim ekip trabzon",
@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://vipiletisim.com.tr/kurumsal/ekibimiz" },
   openGraph: {
-    title: "Uzman Kadromuz | Vip İletişim Trabzon",
+    title: "Uzman Kadromuz | Trabzon Vip İletişim",
     description:
       "Trabzon Vip İletişim teknik servis ekibi. CPU seviyesi tamir, anakart onarımı ve ekran değişiminde uzman sertifikalı teknisyenler.",
     url: "https://vipiletisim.com.tr/kurumsal/ekibimiz",
@@ -49,7 +49,7 @@ export default function EkibimizPage() {
         name: m.name,
         jobTitle: m.title,
         description: m.bio,
-        worksFor: { "@type": "Organization", name: "Vip İletişim Trabzon" },
+        worksFor: { "@type": "Organization", name: "Trabzon Vip İletişim" },
         ...(m.image ? { image: `https://vipiletisim.com.tr${m.image}` } : {}),
       },
     })),

@@ -7,6 +7,8 @@ import { generateCityFaqs } from "@/lib/faq-generators";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
+export const revalidate = 600;
+
 export async function generateStaticParams() {
   return cities.map((c) => ({ slug: c.slug }));
 }
@@ -16,7 +18,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const city = getCityBySlug(slug);
   if (!city) return {};
   return {
-    title: { absolute: `${city.title} | Vip İletişim Trabzon` },
+    title: { absolute: `${city.title} | Trabzon Vip İletişim` },
     description: city.metaDescription,
     keywords: [
       `${city.name.toLowerCase()} iPhone tamiri`,
@@ -30,7 +32,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       canonical: `https://vipiletisim.com.tr/bolge/${slug}`,
     },
     openGraph: {
-      title: `${city.title} | Vip İletişim Trabzon`,
+      title: `${city.title} | Trabzon Vip İletişim`,
       description: city.metaDescription,
       url: `https://vipiletisim.com.tr/bolge/${slug}`,
       images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630, alt: `${city.name} iPhone ve Cep Telefonu Tamiri` }],
@@ -70,7 +72,8 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
   const localBusinessSchema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Vip İletişim Teknik Servis",
+    name: "Trabzon Vip İletişim",
+    alternateName: "Vip İletişim Teknik Servis",
     description: `${name} ve çevresinde iPhone, Samsung, Xiaomi, Huawei telefon tamiri. Orijinal parça, uzman kadro.`,
     address: { "@type": "PostalAddress", addressLocality: "Trabzon", addressRegion: "Trabzon", addressCountry: "TR" },
     areaServed: [name, il, "Trabzon"],

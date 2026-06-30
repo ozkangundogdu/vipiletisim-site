@@ -6,7 +6,7 @@ import { getPageContent } from "@/lib/page-content";
 import type { SosyalPlatform } from "@/lib/page-content";
 
 export const metadata: Metadata = {
-  title: "Sosyal Medya | Vip İletişim Trabzon",
+  title: "Sosyal Medya | Trabzon Vip İletişim",
   description: "Vip İletişim Trabzon sosyal medya kanalları. Instagram, YouTube, Facebook ve Google İşletme hesaplarımızı takip edin.",
   alternates: { canonical: "https://vipiletisim.com.tr/sosyal-medya" },
 };

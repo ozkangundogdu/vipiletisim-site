@@ -14,7 +14,7 @@ export type FooterContent = {
 const FILE = path.join(process.cwd(), "content/footer.json");
 
 const DEFAULT: FooterContent = {
-  firmaBaslik: "Vip İletişim Trabzon Cep Telefonu Teknik Servisi",
+  firmaBaslik: "Trabzon Vip İletişim — Cep Telefonu Teknik Servisi",
   popularHizmetler: [
     { label: "iPhone 16 Ekran Değişimi", href: "/tamir-hizmetleri/iphone-16-ekran-degisimi" },
     { label: "iPhone 14 Ekran Değişimi", href: "/tamir-hizmetleri/iphone-14-ekran-degisimi" },

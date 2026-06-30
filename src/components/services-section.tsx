@@ -1,4 +1,17 @@
+"use client";
 import Link from "next/link";
+
+// face-id-tamiri yalnızca iPhone için geçerli
+const TAMIR_MARKALAR: Record<string, { key: string; label: string }[]> = {
+  default: [
+    { key: "iphone", label: "iPhone" },
+    { key: "samsung", label: "Samsung" },
+    { key: "xiaomi", label: "Xiaomi" },
+  ],
+  "face-id-tamiri": [
+    { key: "iphone", label: "iPhone" },
+  ],
+};
 
 const services = [
   {
@@ -237,22 +250,38 @@ export function ServicesSection() {
         </p>
 
         <ul className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {services.map((service) => (
-            <li key={service.name}>
-              <Link
-                href={service.href}
-                className="group flex items-center gap-4 rounded-xl border border-zinc-100 bg-zinc-50 px-5 py-5 transition hover:border-accent hover:bg-white hover:shadow-md"
-                title={`${service.name} hizmeti`}
-              >
-                <span className="shrink-0 text-zinc-900 transition group-hover:text-accent">
-                  {service.icon}
-                </span>
-                <span className="text-[15px] font-bold leading-snug text-zinc-800 group-hover:text-zinc-900">
-                  {service.name}
-                </span>
-              </Link>
-            </li>
-          ))}
+          {services.map((service) => {
+            const arizoKey = service.href.split("ariza=")[1];
+            return (
+              <li key={service.name} className="rounded-xl border border-zinc-100 bg-zinc-50 transition hover:border-accent hover:bg-white hover:shadow-md">
+                <Link
+                  href={service.href}
+                  className="group flex items-center gap-4 px-5 pt-5 pb-3"
+                  title={`${service.name} hizmeti`}
+                >
+                  <span className="shrink-0 text-zinc-900 transition group-hover:text-accent">
+                    {service.icon}
+                  </span>
+                  <span className="text-[15px] font-bold leading-snug text-zinc-800 group-hover:text-zinc-900">
+                    {service.name}
+                  </span>
+                </Link>
+                {arizoKey && (
+                  <div className="flex gap-1 px-5 pb-3">
+                    {(TAMIR_MARKALAR[arizoKey] ?? TAMIR_MARKALAR.default).map((m) => (
+                      <Link
+                        key={m.key}
+                        href={`/tamir-hizmetleri/${m.key}-${arizoKey}`}
+                        className="rounded px-2 py-0.5 text-[10px] font-black text-zinc-500 hover:bg-accent hover:text-zinc-900 transition-colors"
+                      >
+                        {m.label}
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+            );
+          })}
         </ul>
 
       </div>

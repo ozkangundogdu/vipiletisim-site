@@ -3,7 +3,7 @@
 import { useState, useMemo, Suspense } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 import Image from 'next/image';
-import { type Brand, getModelsForBrand, getRepairTypesForModel, repairTypeList, getBrandsForRepair } from '@/data/services';
+import { type Brand, repairTypeList, getBrandsForRepair } from '@/data/services';
 import type { CustomDevice } from '@/lib/custom-services';
 
 const repairIcons: Record<string, string> = {
@@ -125,99 +125,36 @@ function WizardInner({
     ? (repairTypeList.find((r) => r.key === arizoParam)?.label ?? arizoParam)
     : null;
 
-  const draftSet = useMemo(() => new Set(draftCustomSlugs), [draftCustomSlugs]);
-
   const validMarka = markaParam && brandConfig[markaParam] ? markaParam : null;
   const allowedBrands = arizoParam ? getBrandsForRepair(arizoParam) : null;
-  const [step, setStep] = useState<1 | 2 | 3>(validMarka ? 2 : 1);
+  const [step, setStep] = useState<1 | 2>(validMarka ? 2 : 1);
   const [brand, setBrand] = useState<Brand | null>(validMarka);
-  const [model, setModel] = useState<string | null>(null);
-  const [search, setSearch] = useState('');
-
-  // Custom models for selected brand (only live ones for the selected repair)
-  const customModelsForBrand = useMemo(() => {
-    if (!brand) return [] as CustomDevice[];
-    return customDevices.filter((d) => {
-      if (d.brandKey !== brand) return false;
-      if (!arizoParam) return true;
-      // Only include if this repair key is supported and not a draft
-      const slug = `${slugify(d.model)}-${arizoParam}`;
-      return d.repairKeys.includes(arizoParam) && !draftSet.has(slug);
-    });
-  }, [brand, customDevices, arizoParam, draftSet]);
-
-  const allModels = useMemo(() => {
-    if (!brand) return [];
-    const hardcoded = getModelsForBrand(brand);
-    const customNames = customModelsForBrand.map((d) => d.model);
-    // Custom modeller önce (zaten yeni), hardcoded yeniden eskiye
-    return [...customNames.filter((n) => !hardcoded.includes(n)), ...[...hardcoded].reverse()];
-  }, [brand, customModelsForBrand]);
-
-  const filteredModels = allModels.filter((m) =>
-    m.toLowerCase().includes(search.toLowerCase())
-  );
 
   function selectBrand(b: Brand) {
+    // Arıza seçiliyse direkt marka-tamir sayfasına git
+    if (arizoParam) {
+      router.push(`/tamir-hizmetleri/${b}-${arizoParam}`);
+      return;
+    }
     setBrand(b);
-    setModel(null);
-    setSearch('');
     setStep(2);
   }
 
-  function selectModel(m: string) {
-    // Check if this is a custom device
-    const customDevice = customDevices.find((d) => d.model === m && d.brandKey === brand);
-
-    if (customDevice) {
-      const mSlug = slugify(customDevice.model);
-      if (arizoParam) {
-        const slug = `${mSlug}-${arizoParam}`;
-        if (customDevice.repairKeys.includes(arizoParam) && !draftSet.has(slug)) {
-          router.push(`/tamir-hizmetleri/${slug}`);
-        }
-        return;
-      }
-      setModel(m);
-      setStep(3);
-      return;
+  function selectRepair(key: string) {
+    if (brand) {
+      router.push(`/tamir-hizmetleri/${brand}-${key}`);
     }
-
-    // Hardcoded device
-    if (arizoParam && brand) {
-      const repairTypes = getRepairTypesForModel(m, brand);
-      const rt = repairTypes.find((r) => r.key === arizoParam);
-      if (rt) {
-        router.push(`/tamir-hizmetleri/${rt.slug}`);
-        return;
-      }
-    }
-    setModel(m);
-    setStep(3);
   }
 
-  function selectRepair(slug: string) {
-    router.push(`/tamir-hizmetleri/${slug}`);
-  }
+  // Marka için tamir türleri (marka-tamir slug'larıyla)
+  const repairTypesForBrand = useMemo(() => {
+    if (!brand) return [];
+    return repairTypeList
+      .filter((rt) => !rt.brands || rt.brands.includes(brand))
+      .map((rt) => ({ key: rt.key, label: rt.label, duration: rt.duration }));
+  }, [brand]);
 
-  // Repair types for selected model (handles both custom and hardcoded)
-  const repairTypesForModel = useMemo(() => {
-    if (!model || !brand) return [];
-    const customDevice = customDevices.find((d) => d.model === model && d.brandKey === brand);
-    if (customDevice) {
-      const mSlug = slugify(customDevice.model);
-      return customDevice.repairKeys
-        .filter((rk) => !draftSet.has(`${mSlug}-${rk}`))
-        .map((rk) => {
-          const rt = repairTypeList.find((r) => r.key === rk);
-          return rt ? { key: rk, label: rt.label, duration: rt.duration, slug: `${mSlug}-${rk}` } : null;
-        })
-        .filter(Boolean) as { key: string; label: string; duration: string; slug: string }[];
-    }
-    return getRepairTypesForModel(model, brand);
-  }, [model, brand, customDevices, draftSet]);
-
-  const totalSteps = arizoParam ? 2 : 3;
+  const totalSteps = arizoParam ? 1 : 2;
 
   return (
     <div className="rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm lg:p-8">
@@ -261,108 +198,19 @@ function WizardInner({
         </div>
       )}
 
-      {/* ADIM 2 — Model */}
+      {/* ADIM 2 — Arıza Türü */}
       {step === 2 && brand && (
         <div>
           <BackButton onClick={() => setStep(1)} />
           <div className="mb-4 flex items-center gap-2">
             <Chip label={brandConfig[brand].label} color={brandConfig[brand].bg} />
-            <h2 className="text-lg font-black text-zinc-800">
-              {arizoParam ? 'Modelinizi seçin' : 'Model seçin'}
-            </h2>
-          </div>
-          <input
-            type="search"
-            placeholder="Model ara…"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-            className="mb-4 w-full rounded-lg border border-zinc-300 px-4 py-2.5 text-sm outline-none focus:border-zinc-500"
-          />
-
-          {/* Samsung: S ve A serisi yan yana (arama yoksa) */}
-          {brand === 'samsung' && !search ? (() => {
-            const sSeries = filteredModels.filter((m) => /^Galaxy S\d/.test(m));
-            const aSeries = filteredModels.filter((m) => /^Galaxy A\d/.test(m));
-            const others  = filteredModels.filter((m) => !/^Galaxy [SA]\d/.test(m));
-
-            const ModelButton = ({ m }: { m: string }) => {
-              const isCustom = customDevices.some((d) => d.model === m && d.brandKey === brand);
-              return (
-                <button
-                  key={m}
-                  onClick={() => selectModel(m)}
-                  className="rounded-lg border border-zinc-200 px-3 py-2.5 text-left text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50 flex items-center gap-2"
-                >
-                  <span className="flex-1">Samsung {m}</span>
-                  {isCustom && (
-                    <span className="shrink-0 text-[9px] font-black px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">YENİ</span>
-                  )}
-                </button>
-              );
-            };
-
-            return (
-              <div className="space-y-4">
-                <div className="grid grid-cols-2 gap-4">
-                  {/* S Serisi */}
-                  <div>
-                    <p className="mb-2 text-[11px] font-black uppercase tracking-widest text-zinc-400">Galaxy S Serisi</p>
-                    <div className="flex flex-col gap-1.5">
-                      {sSeries.map((m) => <ModelButton key={m} m={m} />)}
-                    </div>
-                  </div>
-                  {/* A Serisi */}
-                  <div>
-                    <p className="mb-2 text-[11px] font-black uppercase tracking-widest text-zinc-400">Galaxy A Serisi</p>
-                    <div className="flex flex-col gap-1.5">
-                      {aSeries.map((m) => <ModelButton key={m} m={m} />)}
-                    </div>
-                  </div>
-                </div>
-                {others.length > 0 && (
-                  <div className="grid grid-cols-2 gap-1.5 sm:grid-cols-3">
-                    {others.map((m) => <ModelButton key={m} m={m} />)}
-                  </div>
-                )}
-              </div>
-            );
-          })() : (
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-              {filteredModels.map((m) => {
-                const isCustom = customDevices.some((d) => d.model === m && d.brandKey === brand);
-                const displayName = brand === 'samsung' ? `Samsung ${m}` : m;
-                return (
-                  <button
-                    key={m}
-                    onClick={() => selectModel(m)}
-                    className="rounded-lg border border-zinc-200 px-3 py-2.5 text-left text-sm font-semibold text-zinc-700 transition hover:border-zinc-400 hover:bg-zinc-50 flex items-center gap-2"
-                  >
-                    <span className="flex-1">{displayName}</span>
-                    {isCustom && (
-                      <span className="shrink-0 text-[9px] font-black px-1.5 py-0.5 rounded bg-blue-100 text-blue-700">YENİ</span>
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* ADIM 3 — Arıza */}
-      {step === 3 && brand && model && !arizoParam && (
-        <div>
-          <BackButton onClick={() => setStep(2)} />
-          <div className="mb-4 flex flex-wrap items-center gap-2">
-            <Chip label={brandConfig[brand].label} color={brandConfig[brand].bg} />
-            <Chip label={model} color="#374151" />
-            <h2 className="text-lg font-black text-zinc-800">Arıza seçin</h2>
+            <h2 className="text-lg font-black text-zinc-800">Arızayı seçin</h2>
           </div>
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-            {repairTypesForModel.map((rt) => (
+            {repairTypesForBrand.map((rt) => (
               <button
                 key={rt.key}
-                onClick={() => selectRepair(rt.slug)}
+                onClick={() => selectRepair(rt.key)}
                 className="flex flex-col items-center gap-2 rounded-xl border border-zinc-200 p-4 text-center transition hover:border-accent hover:bg-yellow-50"
               >
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" className="text-zinc-600">

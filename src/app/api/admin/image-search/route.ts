@@ -28,12 +28,22 @@ export async function GET(request: Request) {
     return Response.json({ error: data.message ?? "Arama başarısız" }, { status: res.status });
   }
 
-  const images = (data.images ?? []).map((item: Record<string, unknown>) => ({
-    url: item.imageUrl,
-    thumb: item.thumbnailUrl,
-    title: item.title,
-    source: item.source,
-  }));
+  const VIDEO_HOSTS = ["youtube.com", "youtu.be", "instagram.com", "tiktok.com", "vimeo.com", "dailymotion.com"];
+  const IMAGE_EXTS = /\.(jpe?g|png|webp|gif|avif)(\?|$)/i;
+
+  const images = (data.images ?? [])
+    .filter((item: Record<string, unknown>) => {
+      const url = String(item.imageUrl ?? "");
+      const isVideoHost = VIDEO_HOSTS.some((h) => url.includes(h));
+      const hasImageExt = IMAGE_EXTS.test(url);
+      return !isVideoHost && (hasImageExt || url.startsWith("http"));
+    })
+    .map((item: Record<string, unknown>) => ({
+      url: item.imageUrl,
+      thumb: item.thumbnailUrl,
+      title: item.title,
+      source: item.source,
+    }));
 
   return Response.json({ images });
 }

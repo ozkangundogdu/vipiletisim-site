@@ -10,7 +10,7 @@ export async function generateMetadata({ searchParams }: Props): Promise<Metadat
   const { q } = await searchParams;
   return {
     title: q ? `"${q}" için arama sonuçları` : "Arama",
-    description: "Vip İletişim Trabzon — telefon tamiri hizmetleri, modeller ve blog yazılarında arama yapın.",
+    description: "Trabzon Vip İletişim — telefon tamiri hizmetleri, modeller ve blog yazılarında arama yapın.",
     robots: { index: false, follow: true },
   };
 }

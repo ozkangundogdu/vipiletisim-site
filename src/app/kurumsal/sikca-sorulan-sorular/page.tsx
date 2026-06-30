@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://vipiletisim.com.tr/kurumsal/sikca-sorulan-sorular" },
   openGraph: {
-    title: "Sıkça Sorulan Sorular | Vip İletişim Trabzon",
+    title: "Sıkça Sorulan Sorular | Trabzon Vip İletişim",
     description:
       "Telefon tamiri, kargo gönderimi, garanti ve ödeme hakkında merak ettiğiniz her şey Vip İletişim SSS sayfasında.",
     url: "https://vipiletisim.com.tr/kurumsal/sikca-sorulan-sorular",

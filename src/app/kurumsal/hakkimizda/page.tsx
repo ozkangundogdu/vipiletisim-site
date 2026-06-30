@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
   ],
   alternates: { canonical: "https://vipiletisim.com.tr/kurumsal/hakkimizda" },
   openGraph: {
-    title: "Hakkımızda | Vip İletişim Trabzon",
+    title: "Hakkımızda | Trabzon Vip İletişim",
     description:
       "Trabzon'da profesyonel cep telefonu tamiri. Uzman kadro, orijinal parça, anakart tamirinde 90 gün garanti.",
     url: "https://vipiletisim.com.tr/kurumsal/hakkimizda",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
 const aboutPageSchema = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  name: "Hakkımızda — Vip İletişim Trabzon",
+  name: "Hakkımızda — Trabzon Vip İletişim",
   url: "https://vipiletisim.com.tr/kurumsal/hakkimizda",
   description:
     "Trabzon Vip İletişim Teknik Servis hakkında bilgi. Orijinal parça, uzman kadro ve garanti ile iPhone, Samsung, Xiaomi tamiri.",
@@ -185,8 +186,8 @@ export default function HakkimizdaPage() {
               </div>
 
               {pc.intro.image ? (
-                <div className="overflow-hidden rounded-2xl shadow-lg">
-                  <img src={pc.intro.image} alt={pc.intro.heading} className="w-full h-full object-cover" />
+                <div className="relative overflow-hidden rounded-2xl shadow-lg" style={{ minHeight: 280 }}>
+                  <Image src={pc.intro.image} alt={pc.intro.heading} fill className="object-cover" sizes="(max-width:1024px) 100vw, 50vw" />
                 </div>
               ) : (
                 <div className="grid grid-cols-2 gap-4">

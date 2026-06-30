@@ -1,3 +1,10 @@
+const SAFE_URL = /^(https?:\/\/|\/|mailto:|tel:)/i;
+
+function safeUrl(url: string): string {
+  const trimmed = url.trim();
+  return SAFE_URL.test(trimmed) ? trimmed : "#";
+}
+
 function slugId(text: string): string {
   return text
     .toLowerCase()
@@ -23,8 +30,8 @@ export function markdownToHtml(md: string): string {
       .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
       .replace(/\*(.+?)\*/g, "<em>$1</em>")
       .replace(/`([^`]+)`/g, "<code>$1</code>")
-      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width:100%;border-radius:8px;margin:8px 0">')
-      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" style="color:#ff351b;text-decoration:underline">$1</a>');
+      .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, url) => `<img src="${safeUrl(url)}" alt="${alt}" style="max-width:100%;border-radius:8px;margin:8px 0">`)
+      .replace(/\[([^\]]+)\]\(([^)]+)\)/g, (_, text, url) => `<a href="${safeUrl(url)}" style="color:#ff351b;text-decoration:underline">${text}</a>`);
 
     if (/^### /.test(line)) {
       if (inUl) { html.push("</ul>"); inUl = false; }

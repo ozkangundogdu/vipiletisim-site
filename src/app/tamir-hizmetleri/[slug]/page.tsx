@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { services, getServiceBySlug } from "@/data/services";
 import { getCustomServiceBySlug, getCustomServices } from "@/lib/custom-services";
+import { getMarkaTamir, getAllMarkaTamirler } from "@/lib/marka-tamir";
 import { generateServiceFaqs } from "@/lib/faq-generators";
 import { getRepairContent } from "@/lib/repair-content";
 import { getModelSpec } from "@/data/model-specs";
@@ -15,6 +16,9 @@ import { SiteHeader } from "@/components/site-header";
 import { ArticleFaq } from "@/components/article-faq";
 import { AuthorCard, type AuthorInfo } from "@/components/author-card";
 import { TableOfContents, extractToc, slugifyHeading } from "@/components/table-of-contents";
+import { MarkaTamirPage } from "@/components/marka-tamir-page";
+
+export const revalidate = 600;
 
 type RepairPageOverride = {
   customTitle?: string;
@@ -46,18 +50,50 @@ export async function generateStaticParams() {
   return [
     ...services.map((s) => ({ slug: s.slug })),
     ...getCustomServices().map((s) => ({ slug: s.slug })),
+    ...getAllMarkaTamirler().map((m) => ({ slug: m.slug })),
   ];
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
+
+  const markaTamir = getMarkaTamir(slug);
+  if (markaTamir) {
+    const pageTitle = `${markaTamir.title} — Trabzon | Vip İletişim`;
+    return {
+      title: { absolute: pageTitle },
+      description: markaTamir.metaDescription,
+      keywords: [
+        `${markaTamir.markaLabel} ${markaTamir.tamirLabel.toLowerCase()}`,
+        `trabzon ${markaTamir.markaLabel.toLowerCase()} ${markaTamir.tamirLabel.toLowerCase()}`,
+        `${markaTamir.markaLabel.toLowerCase()} ${markaTamir.tamirLabel.toLowerCase()} trabzon`,
+        "trabzon telefon tamiri",
+        "trabzon teknik servis",
+        "vip iletişim trabzon",
+      ],
+      alternates: { canonical: `https://vipiletisim.com.tr/tamir-hizmetleri/${slug}` },
+      openGraph: {
+        title: pageTitle,
+        description: markaTamir.metaDescription,
+        url: `https://vipiletisim.com.tr/tamir-hizmetleri/${slug}`,
+        images: [{ url: "/images/hero/phone-repair-hero.webp", width: 1200, height: 630, alt: `${markaTamir.title} Trabzon Vip İletişim` }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: pageTitle,
+        description: markaTamir.metaDescription,
+        images: ["/images/hero/phone-repair-hero.webp"],
+      },
+    };
+  }
+
   const service = getServiceBySlug(slug) ?? getCustomServiceBySlug(slug);
   if (!service) return {};
   const override = getRepairPageOverride(slug);
   const title = override.customTitle || service.title;
   const description = override.customDescription || service.metaDescription;
   return {
-    title: { absolute: `${title} | Vip İletişim Trabzon` },
+    title: { absolute: `${title} | Trabzon Vip İletişim` },
     description,
     keywords: [
       `${service.model} ${service.repairType.toLowerCase()}`,
@@ -69,15 +105,103 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     ],
     alternates: { canonical: `https://vipiletisim.com.tr/tamir-hizmetleri/${slug}` },
     openGraph: {
-      title: `${title} | Vip İletişim Trabzon`,
+      title: `${title} | Trabzon Vip İletişim`,
       description,
       images: [{ url: override.coverImage || "/images/hero/phone-repair-hero.webp", width: 1200, height: 630 }],
     },
   };
 }
 
+const BRANDS = ['iphone', 'samsung', 'xiaomi'] as const;
+const REPAIR_KEYS = [
+  'ekran-degisimi', 'batarya-degisimi', 'sarj-soketi-tamiri', 'ses-arizalari',
+  'mikrofon-tamiri', 'hoparlor-tamiri', 'on-kamera-tamiri', 'arka-kamera-tamiri',
+  'face-id-tamiri', 'kamera-cami-tamiri', 'kasa-degisimi', 'arka-kapak-tamiri',
+  'anakart-tamiri', 'sivi-temasi-tamiri', 'wifi-tamiri', 'servis-yok-arizasi',
+  'sarj-olmuyor-tamiri', 'sarj-entegresi-tamiri', 'acma-kapama-tusu-tamiri', 'on-cam-degisimi',
+];
+
+function resolveMarkaTamirRedirect(slug: string): string | null {
+  for (const repairKey of REPAIR_KEYS) {
+    if (!slug.endsWith('-' + repairKey)) continue;
+
+    // Zaten marka-tamir sayfasıysa yönlendirme yapma
+    if (BRANDS.some((b) => slug === `${b}-${repairKey}`)) return null;
+
+    // iphone-*, samsung-*, xiaomi-* prefix'i
+    for (const brand of BRANDS) {
+      if (slug.startsWith(brand + '-')) return `${brand}-${repairKey}`;
+    }
+
+    // Samsung Galaxy modelleri: galaxy-a16-..., galaxy-s24-...
+    if (slug.startsWith('galaxy-')) return `samsung-${repairKey}`;
+
+    // Xiaomi modelleri: redmi-*, mi-*, poco-*
+    if (slug.startsWith('redmi-') || slug.startsWith('mi-') || slug.startsWith('poco-')) {
+      return `xiaomi-${repairKey}`;
+    }
+  }
+  return null;
+}
+
 export default async function ServicePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
+
+  // Eski model-spesifik URL'leri marka sayfasına yönlendir
+  const redirectTarget = resolveMarkaTamirRedirect(slug);
+  if (redirectTarget) {
+    permanentRedirect(`/tamir-hizmetleri/${redirectTarget}`);
+  }
+
+  // Marka bazlı tamir sayfası
+  const markaTamir = getMarkaTamir(slug);
+  if (markaTamir) {
+    const settings = getSettings();
+    const author = getAuthor();
+    const faqSchema = {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: markaTamir.sss.map((s) => ({
+        "@type": "Question",
+        name: s.soru,
+        acceptedAnswer: { "@type": "Answer", text: s.cevap },
+      })),
+    };
+    const breadcrumbSchema = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Ana Sayfa", item: "https://vipiletisim.com.tr/" },
+        { "@type": "ListItem", position: 2, name: "Tamir Hizmetleri", item: "https://vipiletisim.com.tr/tamir-hizmetleri" },
+        { "@type": "ListItem", position: 3, name: markaTamir.title, item: `https://vipiletisim.com.tr/tamir-hizmetleri/${slug}` },
+      ],
+    };
+    const serviceSchema = {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      name: `${markaTamir.title} — Trabzon`,
+      description: markaTamir.metaDescription,
+      provider: {
+        "@id": "https://vipiletisim.com.tr/#localbusiness",
+      },
+      areaServed: (settings.hizmetBolgeleri ?? []).length > 0
+        ? (settings.hizmetBolgeleri ?? []).map((r) => r.il)
+        : ["Trabzon", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bayburt"],
+    };
+    return (
+      <>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }} />
+        <SiteHeader />
+        <main className="mx-auto max-w-[1330px] px-6 py-10">
+          <MarkaTamirPage data={markaTamir} author={author} />
+        </main>
+        <SiteFooter />
+      </>
+    );
+  }
+
   const service = getServiceBySlug(slug) ?? getCustomServiceBySlug(slug);
   if (!service) notFound();
 
@@ -154,7 +278,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
     description: service.metaDescription,
     provider: {
       "@type": "LocalBusiness",
-      name: "Vip İletişim Teknik Servis",
+      name: "Trabzon Vip İletişim",
       address: { "@type": "PostalAddress", addressLocality: "Trabzon", addressCountry: "TR" },
     },
     areaServed: regions.length > 0 ? regions.map((r) => r.il) : ["Trabzon", "Giresun", "Rize", "Artvin", "Gümüşhane", "Bayburt"],

@@ -48,42 +48,9 @@ export const repairTypeList: RepairTypeInfo[] = [
 ];
 
 const brandModelMap: Record<Brand, string[]> = {
-  iphone: [
-    'iPhone X', 'iPhone XS', 'iPhone XS Max', 'iPhone XR',
-    'iPhone 11', 'iPhone 11 Pro', 'iPhone 11 Pro Max',
-    'iPhone SE (2. Nesil)',
-    'iPhone 12 mini', 'iPhone 12', 'iPhone 12 Pro', 'iPhone 12 Pro Max',
-    'iPhone 13 mini', 'iPhone 13', 'iPhone 13 Pro', 'iPhone 13 Pro Max',
-    'iPhone SE (3. Nesil)',
-    'iPhone 14', 'iPhone 14 Plus', 'iPhone 14 Pro', 'iPhone 14 Pro Max',
-    'iPhone 15', 'iPhone 15 Plus', 'iPhone 15 Pro', 'iPhone 15 Pro Max',
-    'iPhone 16', 'iPhone 16 Plus', 'iPhone 16 Pro', 'iPhone 16 Pro Max',
-    'iPhone 17', 'iPhone 17 Slim', 'iPhone 17 Pro', 'iPhone 17 Pro Max',
-    'iPhone 18', 'iPhone 18 Air', 'iPhone 18 Pro', 'iPhone 18 Pro Max',
-  ],
-  samsung: [
-    'Galaxy S20', 'Galaxy S20+', 'Galaxy S20 Ultra', 'Galaxy S20 FE',
-    'Galaxy S21', 'Galaxy S21+', 'Galaxy S21 Ultra', 'Galaxy S21 FE',
-    'Galaxy S22', 'Galaxy S22+', 'Galaxy S22 Ultra',
-    'Galaxy S23', 'Galaxy S23+', 'Galaxy S23 Ultra', 'Galaxy S23 FE',
-    'Galaxy S24', 'Galaxy S24+', 'Galaxy S24 Ultra', 'Galaxy S24 FE',
-    'Galaxy S25', 'Galaxy S25+', 'Galaxy S25 Ultra', 'Galaxy S25 Slim',
-    'Galaxy S26', 'Galaxy S26+', 'Galaxy S26 Ultra',
-    'Galaxy A12', 'Galaxy A13', 'Galaxy A14', 'Galaxy A15',
-    'Galaxy A16', 'Galaxy A17',
-    'Galaxy A32', 'Galaxy A33', 'Galaxy A34', 'Galaxy A35',
-    'Galaxy A36', 'Galaxy A37',
-  ],
-  xiaomi: [
-    'Redmi Note 11 Pro', 'Redmi Note 12 Pro', 'Redmi Note 13 Pro',
-    'Redmi Note 14 Pro', 'Redmi Note 15 Pro', 'Redmi Note 15 Pro+',
-    'Redmi 13C', 'Redmi 14C', 'Redmi 15C',
-    'Mi 11 Lite', 'Xiaomi 12 Lite',
-    'Xiaomi 13', 'Xiaomi 13T', 'Xiaomi 13T Pro',
-    'Xiaomi 14', 'Xiaomi 14T', 'Xiaomi 14T Pro',
-    'Xiaomi 15', 'Xiaomi 15T', 'Xiaomi 15T Pro', 'Xiaomi 15 Ultra',
-    'Xiaomi 17', 'Xiaomi 17T',
-  ],
+  iphone: [],
+  samsung: [],
+  xiaomi: [],
 };
 
 function slugify(text: string): string {

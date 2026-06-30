@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     canonical: "https://vipiletisim.com.tr/iletisim",
   },
   openGraph: {
-    title: "İletişim | Vip İletişim Trabzon",
+    title: "İletişim | Trabzon Vip İletişim",
     description:
       "Trabzon'da iPhone ve cep telefonu tamiri için bize ulaşın. Çarşı Mah. Uzun Sokak Kolotoğlu Pasajı Kat 1 Ortahisar/Trabzon.",
     url: "https://vipiletisim.com.tr/iletisim",
@@ -76,7 +76,7 @@ const breadcrumbSchema = {
 const contactPageSchema = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
-  name: "İletişim — Vip İletişim Trabzon",
+  name: "İletişim — Trabzon Vip İletişim",
   url: "https://vipiletisim.com.tr/iletisim",
   description: "Trabzon Vip İletişim Teknik Servis iletişim bilgileri, adres ve konum.",
   mainEntity: {

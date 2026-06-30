@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     "telefon tamiri hobi kursu",
   ],
   openGraph: {
-    title: "Cep Telefonu Tamiri Eğitimi | Vip İletişim Trabzon",
+    title: "Cep Telefonu Tamiri Eğitimi | Trabzon Vip İletişim",
     description:
       "Trabzon'da 3 seviyeli cep telefonu tamiri kursu. Hobi eğitiminden iPhone anakart uzmanlığına. Öğrenme garantili, uygulamalı eğitim.",
     url: "https://vipiletisim.com.tr/tamir-egitimi",
@@ -38,7 +38,7 @@ const courseSchemas = [
     provider: {
       "@type": "LocalBusiness",
       "@id": "https://vipiletisim.com.tr/#localbusiness",
-      name: "Vip İletişim Teknik Servis",
+      name: "Trabzon Vip İletişim",
     },
     hasCourseInstance: {
       "@type": "CourseInstance",
@@ -48,7 +48,7 @@ const courseSchemas = [
       courseWorkload: "PT40H",
       location: {
         "@type": "Place",
-        name: "Vip İletişim Teknik Servis",
+        name: "Trabzon Vip İletişim",
         address: {
           "@type": "PostalAddress",
           streetAddress: "Çarşı Mahallesi Uzun Sokak Kolotoğlu Pasajı Kat 1",
@@ -71,7 +71,7 @@ const courseSchemas = [
     provider: {
       "@type": "LocalBusiness",
       "@id": "https://vipiletisim.com.tr/#localbusiness",
-      name: "Vip İletişim Teknik Servis",
+      name: "Trabzon Vip İletişim",
     },
     hasCourseInstance: {
       "@type": "CourseInstance",
@@ -95,7 +95,7 @@ const courseSchemas = [
     provider: {
       "@type": "LocalBusiness",
       "@id": "https://vipiletisim.com.tr/#localbusiness",
-      name: "Vip İletişim Teknik Servis",
+      name: "Trabzon Vip İletişim",
     },
     hasCourseInstance: {
       "@type": "CourseInstance",
