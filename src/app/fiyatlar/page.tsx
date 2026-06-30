@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { repairTypeList } from "@/data/services";
 import { getPageContent } from "@/lib/page-content";
+
+export const revalidate = 600;
 
 export const metadata: Metadata = {
   title: "Trabzon Telefon Tamir Fiyatları",
@@ -166,7 +169,7 @@ const serviceSchema = {
   provider: {
     "@type": "LocalBusiness",
     "@id": "https://vipiletisim.com.tr/#localbusiness",
-    name: "Vip İletişim Teknik Servis",
+    name: "Trabzon Vip İletişim",
     telephone: "+905052754540",
   },
   serviceType: "Cep Telefonu Tamiri",
@@ -219,7 +222,7 @@ export default function FiyatlarPage() {
           <div className="mx-auto max-w-[1330px] px-6">
             {pc.hero.image && (
               <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <img src={pc.hero.image} alt="" aria-hidden="true" className="w-full h-full object-cover" />
+                <Image src={pc.hero.image} alt="" aria-hidden={true} fill className="object-cover" sizes="100vw" />
               </div>
             )}
             <nav aria-label="Breadcrumb">

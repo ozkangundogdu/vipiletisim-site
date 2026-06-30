@@ -12,6 +12,8 @@ import { getSettings } from "@/lib/settings";
 import { TableOfContents, extractToc, slugifyHeading } from "@/components/table-of-contents";
 import { AuthorCard, type AuthorInfo } from "@/components/author-card";
 
+export const revalidate = 600;
+
 export async function generateStaticParams() {
   return getAllSlugs().map((slug) => ({ slug }));
 }
@@ -31,7 +33,7 @@ export async function generateMetadata({
     keywords: post.keywords,
     alternates: { canonical: `https://vipiletisim.com.tr/blog/${slug}` },
     openGraph: {
-      title: `${post.title} | Vip İletişim Trabzon`,
+      title: `${post.title} | Trabzon Vip İletişim`,
       description: post.description,
       url: `https://vipiletisim.com.tr/blog/${slug}`,
       type: "article",
@@ -163,7 +165,7 @@ export default async function BlogPostPage({
     },
     publisher: {
       "@type": "Organization",
-      name: "Vip İletişim Trabzon",
+      name: "Trabzon Vip İletişim",
       url: "https://vipiletisim.com.tr",
       logo: { "@type": "ImageObject", url: "https://vipiletisim.com.tr/images/logo.png" },
     },

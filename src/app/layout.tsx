@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
     default: "Vip İletişim | Trabzon iPhone ve Cep Telefonu Tamiri",
-    template: "%s | Vip İletişim Trabzon",
+    template: "%s | Trabzon Vip İletişim",
   },
   description:
     "Trabzon'da profesyonel iPhone, Samsung, Xiaomi, Huawei ve Oppo tamiri. Orijinal parça, uzman teknisyen, aynı gün teslim. Hızlı ve güvenilir teknik servis.",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     "trabzon cep telefonu tamiri",
     "trabzon samsung tamiri",
     "trabzon telefon teknik servis",
-    "vip iletişim trabzon",
+    "Trabzon Vip İletişim",
   ],
   alternates: {
     canonical: BASE,
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     url: BASE,
-    siteName: "Vip İletişim Trabzon",
+    siteName: "Trabzon Vip İletişim",
     title: "Vip İletişim | Trabzon iPhone ve Cep Telefonu Tamiri",
     description:
       "Trabzon'da profesyonel iPhone, Samsung, Xiaomi, Huawei ve Oppo tamiri. Orijinal parça, uzman teknisyen, aynı gün teslim.",
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Vip İletişim Trabzon",
+  name: "Trabzon Vip İletişim",
   url: BASE,
   potentialAction: {
     "@type": "SearchAction",
@@ -76,7 +76,8 @@ const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": `${BASE}/#localbusiness`,
-  name: "Vip İletişim Teknik Servis",
+  name: "Trabzon Vip İletişim",
+  alternateName: "Vip İletişim Teknik Servis",
   description:
     "Trabzon'da iPhone, Samsung, Xiaomi, Huawei ve Oppo telefon tamiri. Orijinal parça, uzman kadro.",
   url: BASE,

@@ -9,6 +9,7 @@ export type Video = {
   description?: string;
   category: VideoCategory;
   thumbnail?: string;
+  visibleFrom?: string; // ISO tarihi — set ise bu tarihten önce public sayfada görünmez
 };
 
 export function youtubeThumbnail(videoId: string): string {

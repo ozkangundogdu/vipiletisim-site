@@ -5,6 +5,8 @@ import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getAllPosts } from "@/lib/blog";
 
+export const revalidate = 600;
+
 const BASE = "https://vipiletisim.com.tr";
 
 const CATEGORIES = ["Tümü", "Tamir Rehberi", "Arıza Rehberi", "iPhone Sorunları", "Acil Rehber", "Hizmet Rehberi"];
@@ -45,7 +47,7 @@ export async function generateMetadata({
       keywords: ["trabzon telefon tamiri", kategori.toLowerCase(), "trabzon vip iletişim"],
       alternates: { canonical: `${BASE}/blog?kategori=${encodeURIComponent(kategori)}` },
       openGraph: {
-        title: `${kategori} Makaleleri | Vip İletişim Trabzon`,
+        title: `${kategori} Makaleleri | Trabzon Vip İletişim`,
         description: `Trabzon Vip İletişim'den ${kategori} kategorisindeki uzman makaleler.`,
         url: `${BASE}/blog?kategori=${encodeURIComponent(kategori)}`,
       },
@@ -66,7 +68,7 @@ export async function generateMetadata({
     ],
     alternates: { canonical: `${BASE}/blog` },
     openGraph: {
-      title: "Telefon Tamir Rehberleri | Vip İletişim Trabzon",
+      title: "Telefon Tamir Rehberleri | Trabzon Vip İletişim",
       description:
         "iPhone ve Android telefon tamir rehberleri, arıza tanı ipuçları ve bakım önerileri. Trabzon Vip İletişim teknik ekibinden.",
       url: `${BASE}/blog`,

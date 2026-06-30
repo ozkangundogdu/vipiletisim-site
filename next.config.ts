@@ -27,13 +27,13 @@ const nextConfig: NextConfig = {
 
   // Resim optimizasyonu
   images: {
-    // Önce AVIF dene (daha küçük), olmazsa WebP
     formats: ["image/avif", "image/webp"],
-    // Responsive resimler için üretilecek genişlikler
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-    // Optimize edilmiş resimleri 1 yıl önbellekte tut
     minimumCacheTTL: 31_536_000,
+    remotePatterns: [
+      { protocol: "https", hostname: "img.youtube.com" },
+    ],
   },
 
   async headers() {
@@ -79,9 +79,19 @@ const nextConfig: NextConfig = {
         headers: [
           {
             key: "Cache-Control",
-            value: "public, max-age=86400", // 1 gün
+            value: "public, max-age=86400",
           },
         ],
+      },
+      // Admin API — asla cache'lenmemeli
+      {
+        source: "/api/admin/(.*)",
+        headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
+      },
+      // Admin sayfaları — asla cache'lenmemeli
+      {
+        source: "/admin(.*)",
+        headers: [{ key: "Cache-Control", value: "no-store, max-age=0" }],
       },
     ];
   },

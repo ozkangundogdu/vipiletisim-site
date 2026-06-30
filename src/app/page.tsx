@@ -8,6 +8,8 @@ import { ServicesSection } from "@/components/services-section";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
 
+export const revalidate = 600;
+
 const BASE = "https://vipiletisim.com.tr";
 
 export const metadata: Metadata = {
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
     "trabzon cep telefonu tamiri",
     "trabzon samsung tamiri",
     "trabzon telefon teknik servis",
-    "vip iletişim trabzon",
+    "Trabzon Vip İletişim",
     "trabzon telefon servisi",
     "iphone ekran değişimi trabzon",
   ],
@@ -30,7 +32,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "tr_TR",
     url: BASE,
-    siteName: "Vip İletişim Trabzon",
+    siteName: "Trabzon Vip İletişim",
     title: "Vip İletişim | Trabzon iPhone ve Cep Telefonu Tamiri",
     description:
       "Trabzon'da profesyonel iPhone, Samsung, Xiaomi, Huawei ve Oppo tamiri. Orijinal parça, uzman teknisyen, aynı gün teslim.",

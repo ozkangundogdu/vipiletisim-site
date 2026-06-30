@@ -6,6 +6,7 @@ import path from "path";
 import { services } from "@/data/services";
 import { cities } from "@/data/cities";
 import { getAllPosts } from "@/lib/blog";
+import { getAllMarkaTamirler } from "@/lib/marka-tamir";
 
 const BASE = "https://vipiletisim.com.tr";
 
@@ -32,15 +33,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE}/iletisim`, lastModified: "2026-06-25", changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE}/kurumsal/hakkimizda`, lastModified: "2026-06-25", changeFrequency: "monthly", priority: 0.6 },
     { url: `${BASE}/kurumsal/sikca-sorulan-sorular`, lastModified: "2026-06-25", changeFrequency: "monthly", priority: 0.6 },
+    { url: `${BASE}/kurumsal/ekibimiz`, lastModified: "2026-06-25", changeFrequency: "monthly", priority: 0.5 },
+    { url: `${BASE}/cep-tamir-videolar`, lastModified: "2026-06-25", changeFrequency: "monthly", priority: 0.6 },
   ];
 
   const repairPagesDir = path.join(process.cwd(), "content/repair-pages");
+  const markaTamirDir = path.join(process.cwd(), "content/marka-tamirler");
 
+  // Eski model bazlı sayfalar (şu an boş, ileride kullanılabilir)
   const servicePages: MetadataRoute.Sitemap = services.map((s) => ({
     url: `${BASE}/tamir-hizmetleri/${s.slug}`,
     lastModified: fileMtime(path.join(repairPagesDir, `${s.slug}.json`), "2026-06-25"),
-    changeFrequency: "monthly",
+    changeFrequency: "monthly" as const,
     priority: 0.85,
+  }));
+
+  // Yeni marka bazlı tamir sayfaları (58 sayfa)
+  const markaTamirPages: MetadataRoute.Sitemap = getAllMarkaTamirler().map((m) => ({
+    url: `${BASE}/tamir-hizmetleri/${m.slug}`,
+    lastModified: fileMtime(path.join(markaTamirDir, `${m.slug}.json`), "2026-06-30"),
+    changeFrequency: "monthly" as const,
+    priority: 0.9,
   }));
 
   const cityPages: MetadataRoute.Sitemap = cities.map((c) => ({
@@ -57,5 +70,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...servicePages, ...cityPages, ...blogPosts];
+  return [...staticPages, ...markaTamirPages, ...servicePages, ...cityPages, ...blogPosts];
 }

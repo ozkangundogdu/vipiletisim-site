@@ -22,6 +22,7 @@ export default function BlogListPage() {
   const [filter, setFilter] = useState<"all" | "draft" | "published">("all");
   const [page, setPage] = useState(1);
   const [deleting, setDeleting] = useState<string | null>(null);
+  const [publishing, setPublishing] = useState<string | null>(null);
 
   useEffect(() => {
     fetch("/api/admin/blog")
@@ -65,6 +66,18 @@ export default function BlogListPage() {
     await fetch(`/api/admin/blog/${slug}`, { method: "DELETE" });
     setPosts((prev) => prev.filter((p) => p.slug !== slug));
     setDeleting(null);
+  }
+
+  async function handlePublishNow(slug: string) {
+    setPublishing(slug);
+    const now = new Date().toISOString().slice(0, 16);
+    await fetch(`/api/admin/blog/${slug}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ publishedAt: now }),
+    });
+    setPosts((prev) => prev.map((p) => p.slug === slug ? { ...p, publishedAt: now, isDraft: false } : p));
+    setPublishing(null);
   }
 
   if (loading) return <div className="p-8 pt-16 md:pt-8 text-sm text-zinc-400">Yükleniyor...</div>;
@@ -129,8 +142,26 @@ export default function BlogListPage() {
           {paginated.map((post) => (
             <div
               key={post.slug}
-              className="bg-white rounded-xl border border-zinc-100 shadow-sm flex items-center gap-4 px-5 py-3.5 hover:shadow-md transition-shadow"
+              className="bg-white rounded-xl border border-zinc-100 shadow-sm flex items-center gap-3 px-4 py-3 hover:shadow-md transition-shadow"
             >
+              {/* Kapak görseli */}
+              <div className="shrink-0 w-12 h-12 rounded-lg overflow-hidden border border-zinc-100 bg-zinc-50 flex items-center justify-center">
+                {post.coverImage ? (
+                  <img
+                    src={post.coverImage}
+                    alt=""
+                    className="w-full h-full object-cover"
+                    onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                  />
+                ) : (
+                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-zinc-300" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <rect x="3" y="3" width="18" height="18" rx="2" />
+                    <circle cx="8.5" cy="8.5" r="1.5" />
+                    <path d="m21 15-5-5L5 21" />
+                  </svg>
+                )}
+              </div>
+
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-0.5">
                   <span
@@ -140,12 +171,28 @@ export default function BlogListPage() {
                   >
                     {post.isDraft ? "Taslak" : "Yayında"}
                   </span>
+                  {!post.coverImage && (
+                    <span className="text-[10px] font-black uppercase tracking-wide px-2 py-0.5 rounded-full bg-zinc-100 text-zinc-400">
+                      Resim yok
+                    </span>
+                  )}
                   <span className="text-[11px] text-zinc-400">{post.category}</span>
                 </div>
                 <p className="font-black text-zinc-900 text-sm line-clamp-1">{post.title || post.slug}</p>
                 <p className="text-[11px] text-zinc-400 mt-0.5 font-mono truncate">{post.slug}</p>
               </div>
+
               <div className="flex gap-2 shrink-0">
+                {post.isDraft && (
+                  <button
+                    onClick={() => handlePublishNow(post.slug)}
+                    disabled={publishing === post.slug}
+                    className="px-3 py-1.5 text-xs font-bold rounded-lg text-white transition-opacity hover:opacity-90 disabled:opacity-40"
+                    style={{ background: "#16a34a" }}
+                  >
+                    {publishing === post.slug ? "..." : "Yayınla"}
+                  </button>
+                )}
                 <Link
                   href={`/admin/blog/${post.slug}`}
                   className="px-3 py-1.5 text-xs font-bold rounded-lg text-white"

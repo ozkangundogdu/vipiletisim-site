@@ -453,7 +453,7 @@ export function BlogEditor({ mode, initialData }: Props) {
                   <div className="border border-zinc-200 rounded-lg p-4 bg-white">
                     <p className="text-xs text-green-700 mb-0.5">vipiletisim.com.tr/blog/{data.slug || "slug"}</p>
                     <p className="text-[17px] font-medium text-blue-700 hover:underline cursor-pointer line-clamp-1">
-                      {data.title || "Sayfa Başlığı"} | Vip İletişim Trabzon
+                      {data.title || "Sayfa Başlığı"} | Trabzon Vip İletişim
                     </p>
                     <p className="text-sm text-zinc-600 mt-0.5 line-clamp-2">
                       {data.description || "Meta açıklama buraya gelecek..."}

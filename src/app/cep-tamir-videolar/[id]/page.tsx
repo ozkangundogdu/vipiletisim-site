@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -128,9 +129,9 @@ export default async function VideoDetailPage({ params }: Props) {
                       href={`/cep-tamir-videolar/${v.id}`}
                       className="flex gap-3 rounded-xl border border-zinc-200 bg-white p-3 hover:border-zinc-400 hover:shadow-sm transition group"
                     >
-                      <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-zinc-100">
+                      <div className="h-16 w-24 shrink-0 overflow-hidden rounded-lg bg-zinc-100 relative">
                         {thumb ? (
-                          <img src={thumb} alt={v.title} className="h-full w-full object-cover group-hover:scale-105 transition" />
+                          <Image src={thumb} alt={v.title} fill className="object-cover group-hover:scale-105 transition" sizes="96px" />
                         ) : (
                           <div className="h-full w-full bg-gradient-to-br from-purple-800 to-pink-600" />
                         )}

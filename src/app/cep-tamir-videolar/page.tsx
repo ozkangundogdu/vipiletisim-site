@@ -19,7 +19,8 @@ export const metadata: Metadata = {
 };
 
 export default function TamirVideolariPage() {
-  const videos = getVideos();
+  const now = new Date();
+  const videos = getVideos().filter(v => !v.visibleFrom || new Date(v.visibleFrom) <= now);
 
   return (
     <>
