@@ -2,10 +2,18 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { cities, getCityBySlug } from "@/data/cities";
-import { services } from "@/data/services";
+import { getMarkaTamir } from "@/lib/marka-tamir";
 import { generateCityFaqs } from "@/lib/faq-generators";
 import { SiteFooter } from "@/components/site-footer";
 import { SiteHeader } from "@/components/site-header";
+
+const POPULAR_SERVICE_SLUGS = [
+  "iphone-ekran-degisimi",
+  "samsung-ekran-degisimi",
+  "xiaomi-ekran-degisimi",
+  "iphone-batarya-degisimi",
+  "samsung-batarya-degisimi",
+];
 
 export const revalidate = 600;
 
@@ -45,7 +53,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
   const city = getCityBySlug(slug);
   if (!city) notFound();
 
-  const { name, il, title } = city;
+  const { name, il, title, localNote } = city;
   const isKargo = il !== "Trabzon";
   const faqs = generateCityFaqs(name, il);
 
@@ -81,16 +89,8 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
     openingHours: "Mo-Sa 09:00-19:00",
   };
 
-  const popularServiceList = [
-    services.find(s => s.slug === "iphone-16-ekran-degisimi"),
-    services.find(s => s.slug === "iphone-14-batarya-degisimi"),
-    services.find(s => s.slug === "iphone-x-ekran-degisimi"),
-    services.find(s => s.slug === "samsung-galaxy-s24-ekran-degisimi"),
-    services.find(s => s.slug === "samsung-batarya-degisimi"),
-    services.find(s => s.slug === "iphone-sarj-soketi-tamiri"),
-    services.find(s => s.slug === "xiaomi-ekran-degisimi"),
-    services.find(s => s.slug === "iphone-kamera-cami-degisimi"),
-  ].filter(Boolean) as typeof services;
+  const popularServiceList = POPULAR_SERVICE_SLUGS.map((s) => getMarkaTamir(s))
+    .filter((s): s is NonNullable<typeof s> => s !== null);
 
   return (
     <>
@@ -113,11 +113,15 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
           {name} iPhone ve Cep Telefonu Tamiri | Vip İletişim
         </h1>
 
-        <p className="mb-8 text-[16px] leading-relaxed text-zinc-600">
+        <p className="mb-3 text-[16px] leading-relaxed text-zinc-600">
           {isKargo
             ? `${name} (${il}) ilinden Trabzon'daki Vip İletişim Teknik Servis'e kargo ile telefon gönderip aynı gün tamir ettirip geri alabilirsiniz. iPhone, Samsung, Xiaomi, Huawei ve Oppo dahil tüm marka ve modellerde orijinal parça ve uzman kadroyla profesyonel tamir hizmeti sunuyoruz.`
             : `${name}'da telefon tamiri için Vip İletişim Teknik Servis'e gelin. iPhone, Samsung, Xiaomi, Huawei ve Oppo dahil tüm marka ve modellerde uzman kadromuz ve orijinal yedek parçalarımız ile hizmet veriyoruz. Aynı gün teslim, ücretsiz ön inceleme.`
           }
+        </p>
+
+        <p className="mb-8 text-[14px] leading-relaxed text-zinc-500">
+          {localNote}
         </p>
 
         <div className="grid gap-8 lg:grid-cols-3">
