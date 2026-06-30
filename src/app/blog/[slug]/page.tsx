@@ -11,6 +11,10 @@ import { getAllPosts, getPostBySlug, getAllSlugs } from "@/lib/blog";
 import { getSettings } from "@/lib/settings";
 import { TableOfContents, extractToc, slugifyHeading } from "@/components/table-of-contents";
 import { AuthorCard, type AuthorInfo } from "@/components/author-card";
+import { RelatedServices } from "@/components/related-services";
+import { decideInternalLinks } from "@/lib/internal-linking/decide-links";
+import { scoreServicesForPost, pickRelatedServices } from "@/lib/internal-linking/select-links";
+import { remarkApplyLinks } from "@/lib/internal-linking/remark-apply-links";
 
 export const revalidate = 600;
 
@@ -188,6 +192,12 @@ export default async function BlogPostPage({
 
   const mdxComponents = makeMdxComponents();
 
+  const internalLinks = decideInternalLinks(post);
+  const relatedServices = pickRelatedServices(
+    scoreServicesForPost(post),
+    new Set(internalLinks.map((l) => l.service.url))
+  );
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
@@ -246,8 +256,15 @@ export default async function BlogPostPage({
 
             {/* MDX İçerik */}
             <div className="prose-custom">
-              <MDXRemote source={post.content} components={mdxComponents} />
+              <MDXRemote
+                source={post.content}
+                components={mdxComponents}
+                options={{ mdxOptions: { remarkPlugins: [[remarkApplyLinks, { links: internalLinks }]] } }}
+              />
             </div>
+
+            {/* İlgili Hizmetler */}
+            <RelatedServices services={relatedServices} />
 
             {/* Yazar Kartı */}
             <div className="mt-10">
