@@ -152,7 +152,7 @@ export function MarkaTamirPage({ data, author }: Props) {
               📞 {settings.telefon}
             </a>
             <a
-              href={`https://wa.me/${settings.whatsapp}`}
+              href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${data.title} hakkında bilgi almak istiyorum.`)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover"

@@ -318,7 +318,7 @@ export default function ServicesListPage() {
               <a href="tel:+905052754540" className="rounded-lg bg-accent px-6 py-3 font-black text-zinc-900 hover:bg-accent-hover transition-colors">
                 +90 (505) 275 45 40
               </a>
-              <a href="https://wa.me/905052754540" target="_blank" rel="noopener noreferrer" className="rounded-lg bg-whatsapp px-6 py-3 font-black text-white hover:bg-whatsapp-hover transition-colors">
+              <a href={`https://wa.me/905052754540?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Tamir Hizmetleri hakkında bilgi almak istiyorum.")}`} target="_blank" rel="noopener noreferrer" className="rounded-lg bg-whatsapp px-6 py-3 font-black text-white hover:bg-whatsapp-hover transition-colors">
                 WhatsApp ile Yaz
               </a>
             </div>

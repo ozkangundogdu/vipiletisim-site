@@ -194,7 +194,7 @@ export default async function CityPage({ params }: { params: Promise<{ slug: str
                 📞 +90 (505) 275 45 40
               </a>
               <a
-                href="https://wa.me/905052754540"
+                href={`https://wa.me/905052754540?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${city.title} hakkında bilgi almak istiyorum.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover"

@@ -213,7 +213,7 @@ export default function IletisimPage() {
 
               <InfoCard icon={<WhatsAppIcon />} title="WhatsApp">
                 <a
-                  href="https://wa.me/905052754540"
+                  href={`https://wa.me/905052754540?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Hizmetleriniz hakkında bilgi almak istiyorum.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-[17px] font-black text-zinc-800 hover:text-whatsapp transition-colors"
@@ -379,7 +379,7 @@ export default function IletisimPage() {
                   Hemen WhatsApp'tan yazın, birkaç dakika içinde yanıt verelim.
                 </p>
                 <a
-                  href="https://wa.me/905052754540"
+                  href={`https://wa.me/905052754540?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Hizmetleriniz hakkında bilgi almak istiyorum.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="mt-4 inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-6 py-3 text-[14px] font-black text-white transition hover:bg-whatsapp-hover"

@@ -174,7 +174,7 @@ export default function EkibimizPage() {
               Cihazınızı en deneyimli ellere teslim etmek için hemen iletişime geçin.
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
-              <a href="https://wa.me/905052754540" target="_blank" rel="noopener noreferrer"
+              <a href={`https://wa.me/905052754540?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Ekibiniz hakkında bilgi almak istiyorum.")}`} target="_blank" rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-7 py-3.5 text-[15px] font-black text-white transition hover:bg-whatsapp-hover">
                 WhatsApp&#39;tan Yaz
               </a>

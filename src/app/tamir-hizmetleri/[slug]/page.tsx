@@ -473,7 +473,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
               <a href={`tel:+${settings.telefonRaw}`} className="mb-2 flex items-center gap-2 rounded-lg bg-accent px-4 py-3 font-bold text-zinc-900 hover:bg-accent-hover">
                 📞 {settings.telefon}
               </a>
-              <a href={`https://wa.me/${settings.whatsapp}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover">
+              <a href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${title} hakkında bilgi almak istiyorum.`)}`} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 rounded-lg bg-whatsapp px-4 py-3 font-bold text-white hover:bg-whatsapp-hover">
                 💬 WhatsApp ile Yaz
               </a>
             </div>

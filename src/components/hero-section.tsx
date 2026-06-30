@@ -100,7 +100,7 @@ export function HeroSection() {
               </Link>
 
               <a
-                href={`https://wa.me/${settings.whatsapp}`}
+                href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Cep Telefonu Tamiri hakkında bilgi almak istiyorum.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-[4px] bg-[linear-gradient(180deg,#55ee91_0%,#25D366_48%,#138f43_100%)] px-6 py-3.5 text-[15px] font-black text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.42),inset_0_-1px_0_rgba(0,70,30,0.3),0_10px_22px_rgba(0,0,0,0.32)] transition hover:bg-[linear-gradient(180deg,#6af2a0_0%,#25D366_45%,#107f3a_100%)]"

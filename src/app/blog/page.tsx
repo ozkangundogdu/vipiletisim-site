@@ -260,7 +260,7 @@ export default async function BlogPage({
                 +90 (505) 275 45 40
               </a>
               <a
-                href="https://wa.me/905052754540"
+                href={`https://wa.me/905052754540?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Blog yazıları hakkında bilgi almak istiyorum.")}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="rounded-lg bg-whatsapp px-6 py-3 font-black text-white hover:bg-whatsapp-hover transition-colors"

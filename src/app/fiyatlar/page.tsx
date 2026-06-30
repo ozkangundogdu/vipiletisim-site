@@ -260,7 +260,7 @@ export default function FiyatlarPage() {
 
               <div className="flex shrink-0 flex-col items-start justify-center gap-3 lg:items-end">
                 <a
-                  href="https://wa.me/905052754540?text=Merhaba, tamir fiyatı öğrenmek istiyorum."
+                  href="https://wa.me/905052754540?text=Vipiletisim.com.tr%20ho%C5%9Fgeldiniz%20-%20Tamir%20Fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-5 py-3 text-[14px] font-black text-white transition hover:bg-whatsapp-hover"
@@ -338,7 +338,7 @@ export default function FiyatlarPage() {
                             <p className="text-[12px] text-zinc-400">{item.duration}</p>
                           </div>
                           <a
-                            href={`https://wa.me/905052754540?text=${encodeURIComponent(`Merhaba, ${item.label} için fiyat bilgisi almak istiyorum.`)}`}
+                            href={`https://wa.me/905052754540?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${item.label} fiyatı hakkında bilgi almak istiyorum.`)}`}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="shrink-0 inline-flex items-center gap-1.5 rounded-[4px] bg-whatsapp/10 px-3 py-1.5 text-[12px] font-bold text-whatsapp transition hover:bg-whatsapp hover:text-white"
@@ -429,7 +429,7 @@ export default function FiyatlarPage() {
             </p>
             <div className="mt-6 flex flex-wrap justify-center gap-4">
               <a
-                href="https://wa.me/905052754540?text=Merhaba, tamir fiyatı öğrenmek istiyorum."
+                href="https://wa.me/905052754540?text=Vipiletisim.com.tr%20ho%C5%9Fgeldiniz%20-%20Tamir%20Fiyatlar%C4%B1%20hakk%C4%B1nda%20bilgi%20almak%20istiyorum."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-8 py-3.5 text-[15px] font-black text-white transition hover:bg-whatsapp-hover"

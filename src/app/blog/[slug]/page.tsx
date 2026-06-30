@@ -270,7 +270,7 @@ export default async function BlogPostPage({
                   {settings.telefon}
                 </a>
                 <a
-                  href={`https://wa.me/${settings.whatsapp}`}
+                  href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${post.title} hakkında bilgi almak istiyorum.`)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="rounded-lg bg-whatsapp px-5 py-2.5 text-[14px] font-black text-white hover:bg-whatsapp-hover transition-colors"
@@ -298,7 +298,7 @@ export default async function BlogPostPage({
                 {settings.telefon}
               </a>
               <a
-                href={`https://wa.me/${settings.whatsapp}`}
+                href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${post.title} hakkında bilgi almak istiyorum.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 rounded-lg bg-whatsapp py-3 text-[14px] font-black text-white hover:bg-whatsapp-hover transition-colors"

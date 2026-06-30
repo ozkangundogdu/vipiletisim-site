@@ -295,7 +295,7 @@ export default function SikcaSorulanSorularPage() {
               </p>
               <div className="mt-6 flex flex-wrap justify-center gap-3">
                 <a
-                  href="https://wa.me/905052754540"
+                  href={`https://wa.me/905052754540?text=${encodeURIComponent("Vipiletisim.com.tr hoşgeldiniz - Sıkça Sorulan Sorular hakkında bilgi almak istiyorum.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-[4px] bg-whatsapp px-7 py-3.5 text-[15px] font-black text-white transition hover:bg-whatsapp-hover"
