@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
 import "./globals.css";
 import { getScripts } from "@/lib/scripts";
+import { StickyCtaBar } from "@/components/sticky-cta-bar";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin", "latin-ext"],
@@ -157,7 +158,7 @@ export default function RootLayout({
           <div dangerouslySetInnerHTML={{ __html: scripts.headExtra }} />
         )}
       </head>
-      <body className="min-h-full bg-background text-foreground antialiased">
+      <body className="min-h-full bg-background pb-[52px] text-foreground antialiased md:pb-0">
         {scripts.gtmId && (
           <noscript>
             <iframe
@@ -172,6 +173,7 @@ export default function RootLayout({
           <div dangerouslySetInnerHTML={{ __html: scripts.bodyStart }} />
         )}
         {children}
+        <StickyCtaBar />
         {scripts.bodyEnd && (
           <div dangerouslySetInnerHTML={{ __html: scripts.bodyEnd }} />
         )}

@@ -267,7 +267,7 @@ export function ServicesSection() {
                   </span>
                 </Link>
                 {arizoKey && (
-                  <div className="flex gap-1 px-5 pb-3">
+                  <div className="flex flex-wrap gap-1 px-5 pb-3">
                     {(TAMIR_MARKALAR[arizoKey] ?? TAMIR_MARKALAR.default).map((m) => (
                       <Link
                         key={m.key}

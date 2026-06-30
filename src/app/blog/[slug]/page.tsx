@@ -253,32 +253,6 @@ export default async function BlogPostPage({
             <div className="mt-10">
               <AuthorCard author={author} />
             </div>
-
-            {/* Alt CTA */}
-            <div className="mt-8 rounded-xl border border-zinc-200 bg-zinc-50 p-6">
-              <h3 className="mb-1 text-[17px] font-black text-zinc-900">
-                Telefonunuzda Bu Sorun mu Var?
-              </h3>
-              <p className="mb-4 text-[14px] text-zinc-500">
-                Trabzon Vip İletişim Teknik Servis'te ücretsiz ön inceleme yaptırın.
-              </p>
-              <div className="flex flex-wrap gap-3">
-                <a
-                  href={`tel:+${settings.telefonRaw}`}
-                  className="rounded-lg bg-accent px-5 py-2.5 text-[14px] font-black text-zinc-900 hover:bg-accent-hover transition-colors"
-                >
-                  {settings.telefon}
-                </a>
-                <a
-                  href={`https://wa.me/${settings.whatsapp}?text=${encodeURIComponent(`Vipiletisim.com.tr hoşgeldiniz - ${post.title} hakkında bilgi almak istiyorum.`)}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-lg bg-whatsapp px-5 py-2.5 text-[14px] font-black text-white hover:bg-whatsapp-hover transition-colors"
-                >
-                  WhatsApp ile Yaz
-                </a>
-              </div>
-            </div>
           </article>
 
           {/* Sidebar */}
