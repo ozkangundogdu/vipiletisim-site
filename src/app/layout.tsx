@@ -126,7 +126,7 @@ export default function RootLayout({
   const scripts = getScripts();
 
   return (
-    <html lang="tr" className={`h-full ${nunitoSans.variable}`}>
+    <html lang="tr" className={`h-full ${nunitoSans.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
@@ -158,7 +158,7 @@ export default function RootLayout({
           <div dangerouslySetInnerHTML={{ __html: scripts.headExtra }} />
         )}
       </head>
-      <body className="min-h-full bg-background pb-[52px] text-foreground antialiased md:pb-0">
+      <body className="min-h-full bg-background pb-[52px] text-foreground antialiased md:pb-0" suppressHydrationWarning>
         {scripts.gtmId && (
           <noscript>
             <iframe
