@@ -76,6 +76,11 @@ export default function VideolarPage() {
   const [channelResults, setChannelResults] = useState<YTResult[]>([]);
   const [channelSelected, setChannelSelected] = useState<Set<string>>(new Set());
   const [bulkCategory, setBulkCategory] = useState<VideoCategory>("tamir");
+  const [channelDescriptions, setChannelDescriptions] = useState<Record<string, string>>({});
+
+  // ── Seçili video (URL çek veya arama sonucu) ─────────────────────
+  type SelectedVideo = { videoId: string; url: string; title: string; description: string; thumbnail: string; isShorts: boolean; category: VideoCategory };
+  const [selectedVideo, setSelectedVideo] = useState<SelectedVideo | null>(null);
 
   // ── Staging (düzenleme + zamanlama) ──────────────────────────────
   const [stagingVideos, setStagingVideos] = useState<StagingVideo[] | null>(null);
@@ -110,7 +115,7 @@ export default function VideolarPage() {
     return dt.toISOString().slice(0, 16);
   }
 
-  function resetBot() { setBotError(null); setSearchResults([]); setChannelResults([]); setChannelSelected(new Set()); }
+  function resetBot() { setBotError(null); setSearchResults([]); setChannelResults([]); setChannelSelected(new Set()); setChannelDescriptions({}); }
 
   function move(index: number, dir: -1 | 1) {
     const next = [...videos]; const t = index + dir;
@@ -132,7 +137,13 @@ export default function VideolarPage() {
       const res = await fetch("/api/admin/youtube-fetch", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "url", url: botUrl.trim() }) });
       const data = await res.json() as { error?: string; title?: string; description?: string };
       if (data.error) { setBotError(data.error); return; }
-      setAddForm(f => f ? { ...f, url: botUrl.trim(), title: data.title ?? "", description: data.description ?? "" } : f);
+      const vid = extractYouTubeId(botUrl.trim());
+      setSelectedVideo({
+        videoId: vid, url: botUrl.trim(),
+        title: data.title ?? "", description: data.description ?? "",
+        thumbnail: `https://img.youtube.com/vi/${vid}/mqdefault.jpg`,
+        isShorts: false, category: "tamir",
+      });
       setBotUrl("");
     } catch { setBotError("Bağlantı hatası"); }
     finally { setBotLoading(false); }
@@ -152,7 +163,7 @@ export default function VideolarPage() {
   }
 
   function selectSearchResult(r: YTResult) {
-    setAddForm(f => f ? { ...f, url: r.url, title: r.title, description: r.description ?? "" } : f);
+    setSelectedVideo({ videoId: r.videoId, url: r.url, title: r.title, description: r.description ?? "", thumbnail: r.thumbnail, isShorts: r.isShorts, category: "tamir" });
     setSearchResults([]); setBotQuery("");
   }
 
@@ -174,6 +185,15 @@ export default function VideolarPage() {
       setChannelResults(fresh);
       setChannelSelected(new Set(fresh.map(r => r.videoId)));
       if (skipped > 0) setBotError(`ℹ️ ${skipped} video zaten ekli olduğu için listede gösterilmedi.`);
+
+      // Açıklamaları arka planda paralel çek
+      setChannelDescriptions({});
+      for (const r of fresh) {
+        fetch("/api/admin/youtube-fetch", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ mode: "url", url: r.url }) })
+          .then(res => res.json())
+          .then((d: { description?: string }) => { if (d.description) setChannelDescriptions(prev => ({ ...prev, [r.videoId]: d.description! })); })
+          .catch(() => {});
+      }
     } catch { setBotError("Kanal çekilemedi"); }
     finally { setBotLoading(false); }
   }
@@ -191,7 +211,7 @@ export default function VideolarPage() {
     const toStage = channelResults.filter(r => channelSelected.has(r.videoId));
     const staged = toStage.map((r, i) => ({
       videoId: r.videoId, url: r.url, title: r.title,
-      description: r.description ?? "", category: bulkCategory,
+      description: channelDescriptions[r.videoId] ?? r.description ?? "", category: bulkCategory,
       thumbnail: r.thumbnail, isShorts: r.isShorts,
       visibleFrom: schedMode === "interval" ? computeVisibleFrom(i) : undefined,
     }));
@@ -257,7 +277,23 @@ export default function VideolarPage() {
     setFetchingDesc(null);
   }
 
-  // ── Manuel tek video ekle ──────────────────────────────────────────
+  // ── Bot'tan seçilen YouTube videosu ekle ──────────────────────────
+  async function addSelectedVideo() {
+    if (!selectedVideo) return;
+    const id = `v${Date.now()}`;
+    const newVideo: Video = { id, platform: "youtube" as const, videoId: selectedVideo.videoId, title: selectedVideo.title, description: selectedVideo.description || undefined, category: selectedVideo.category };
+    const allVideos = [newVideo, ...videos];
+    setVideos(allVideos);
+    setSelectedVideo(null); setAddForm(null); resetBot();
+    setSaving(true);
+    await fetch("/api/admin/videos", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(allVideos) });
+    setSaving(false); setSaved(true);
+    setTimeout(() => setSaved(false), 2500);
+    fetch("/api/admin/videos/thumbnail", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, platform: "youtube", videoId: selectedVideo.videoId }) })
+      .then(r => r.json()).then((d: { path: string | null }) => { if (d.path) setVideos(prev => prev.map(v => v.id === id ? { ...v, thumbnail: d.path ?? undefined } : v)); }).catch(() => {});
+  }
+
+  // ── Manuel tek video ekle (Instagram) ─────────────────────────────
   async function addVideo() {
     if (!addForm || !addForm.url.trim() || !addForm.title.trim()) return;
     const videoId = addForm.platform === "youtube" ? extractYouTubeId(addForm.url) : extractInstagramShortcode(addForm.url);
@@ -405,7 +441,10 @@ export default function VideolarPage() {
 
                       {/* Düzenle / Sil */}
                       <div className="flex gap-1 shrink-0">
-                        <button onClick={() => setStagingExpanded(isExp ? null : sv.videoId)}
+                        <button onClick={() => {
+                            if (isExp) { setStagingExpanded(null); }
+                            else { setStagingExpanded(sv.videoId); if (!sv.description) fetchStagingDesc(sv); }
+                          }}
                           className={`px-2.5 py-1 rounded-lg text-[11px] font-black border transition-colors ${isExp ? "border-[#ff351b] text-[#ff351b] bg-red-50" : "border-zinc-200 text-zinc-500 hover:border-zinc-400"}`}>
                           {isExp ? "Kapat" : "Düzenle"}
                         </button>
@@ -429,12 +468,7 @@ export default function VideolarPage() {
                           <div className="sm:col-span-2">
                             <div className="flex items-center justify-between mb-1">
                               <label className="block text-[10px] font-black text-zinc-500 uppercase tracking-wide">Açıklama</label>
-                              <button
-                                onClick={() => fetchStagingDesc(sv)}
-                                disabled={fetchingDesc === sv.videoId}
-                                className="text-[10px] font-black text-blue-500 hover:text-blue-700 disabled:opacity-50 flex items-center gap-1">
-                                {fetchingDesc === sv.videoId ? "⏳ Çekiliyor..." : "↓ YouTube'dan Çek"}
-                              </button>
+                              {fetchingDesc === sv.videoId && <span className="text-[10px] text-zinc-400 font-bold">⏳ Çekiliyor...</span>}
                             </div>
                             <textarea value={sv.description}
                               onChange={e => updateStaging(sv.videoId, { description: e.target.value })}
@@ -493,7 +527,7 @@ export default function VideolarPage() {
           <div className="flex gap-2">
             {(["youtube", "instagram"] as VideoPlatform[]).map(p => (
               <button key={p}
-                onClick={() => { setAddForm(f => f ? { ...f, platform: p } : f); resetBot(); }}
+                onClick={() => { setAddForm(f => f ? { ...f, platform: p } : f); resetBot(); setSelectedVideo(null); }}
                 className={`px-4 py-2 rounded-lg text-sm font-black transition-colors ${addForm.platform === p ? "text-white" : "bg-white border border-zinc-200 text-zinc-600"}`}
                 style={addForm.platform === p ? { background: p === "youtube" ? "#dc2626" : "linear-gradient(135deg,#7c3aed,#ec4899)" } : undefined}>
                 {p === "youtube" ? "🔴 YouTube" : "📷 Instagram Reels"}
@@ -629,28 +663,62 @@ export default function VideolarPage() {
                           </div>
                         </div>
 
-                        <div className="max-h-72 overflow-y-auto space-y-1">
+                        <div className="max-h-96 overflow-y-auto space-y-1">
                           {channelResults.map(r => {
                             const sel = channelSelected.has(r.videoId);
+                            const desc = channelDescriptions[r.videoId];
+                            const descLoading = desc === undefined;
                             return (
-                              <button key={r.videoId} onClick={() => toggleChannelSelect(r.videoId)}
-                                className={`w-full flex items-center gap-3 p-2 rounded-lg border transition-colors text-left ${sel ? "border-red-300 bg-red-50" : "border-zinc-100 hover:border-zinc-300"}`}>
-                                <div className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center transition-colors ${sel ? "bg-red-500 border-red-500" : "border-zinc-300"}`}>
-                                  {sel && <span className="text-white text-[10px] font-black leading-none">✓</span>}
-                                </div>
-                                <div className="relative h-10 w-16 rounded overflow-hidden shrink-0 bg-zinc-100">
-                                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                                  <img src={r.thumbnail} alt="" className="h-full w-full object-cover" />
-                                  {r.isShorts && <span className="absolute bottom-0 right-0 text-[8px] font-black bg-black/80 text-white px-0.5">S</span>}
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <p className="text-[12px] font-bold text-zinc-800 line-clamp-1">{r.title || r.videoId}</p>
-                                  <div className="flex gap-2">
-                                    <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full ${r.isShorts ? "bg-red-100 text-red-600" : "bg-blue-100 text-blue-600"}`}>{r.isShorts ? "SHORT" : "VIDEO"}</span>
-                                    {r.publishedTime && <span className="text-[10px] text-zinc-400">{r.publishedTime}</span>}
+                              <div key={r.videoId}
+                                className={`rounded-lg border transition-colors ${sel ? "border-red-300 bg-red-50" : "border-zinc-100 hover:border-zinc-200"}`}>
+                                {/* Üst satır: checkbox + thumb + başlık + hemen ekle */}
+                                <div className="flex items-center gap-3 p-2">
+                                  <div className={`w-4 h-4 rounded border-2 shrink-0 flex items-center justify-center transition-colors cursor-pointer ${sel ? "bg-red-500 border-red-500" : "border-zinc-300"}`}
+                                    onClick={() => toggleChannelSelect(r.videoId)}>
+                                    {sel && <span className="text-white text-[10px] font-black leading-none">✓</span>}
                                   </div>
+                                  <div className="relative h-10 w-16 rounded overflow-hidden shrink-0 bg-zinc-100 cursor-pointer" onClick={() => toggleChannelSelect(r.videoId)}>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img src={r.thumbnail} alt="" className="h-full w-full object-cover" />
+                                    {r.isShorts && <span className="absolute bottom-0 right-0 text-[8px] font-black bg-black/80 text-white px-0.5">S</span>}
+                                  </div>
+                                  <div className="flex-1 min-w-0 cursor-pointer" onClick={() => toggleChannelSelect(r.videoId)}>
+                                    <p className="text-[12px] font-bold text-zinc-800 line-clamp-1">{r.title || r.videoId}</p>
+                                    <div className="flex gap-2">
+                                      <span className={`text-[9px] font-black px-1.5 py-0.5 rounded-full ${r.isShorts ? "bg-red-100 text-red-600" : "bg-blue-100 text-blue-600"}`}>{r.isShorts ? "SHORT" : "VIDEO"}</span>
+                                      {r.publishedTime && <span className="text-[10px] text-zinc-400">{r.publishedTime}</span>}
+                                    </div>
+                                  </div>
+                                  <button
+                                    onClick={async e => {
+                                      e.stopPropagation();
+                                      const id = `v${Date.now()}`;
+                                      const newVideo: Video = { id, platform: "youtube" as const, videoId: r.videoId, title: r.title, description: channelDescriptions[r.videoId] || undefined, category: bulkCategory };
+                                      const allVideos = [newVideo, ...videos];
+                                      setVideos(allVideos);
+                                      setChannelResults(prev => prev.filter(v => v.videoId !== r.videoId));
+                                      setChannelSelected(prev => { const n = new Set(prev); n.delete(r.videoId); return n; });
+                                      await fetch("/api/admin/videos", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(allVideos) });
+                                      setSaved(true); setTimeout(() => setSaved(false), 2000);
+                                      fetch("/api/admin/videos/thumbnail", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, platform: "youtube", videoId: r.videoId }) })
+                                        .then(res => res.json()).then((d: { path: string | null }) => { if (d.path) setVideos(prev => prev.map(v => v.id === id ? { ...v, thumbnail: d.path ?? undefined } : v)); }).catch(() => {});
+                                    }}
+                                    className="shrink-0 px-2.5 py-1.5 rounded-lg text-[11px] font-black border-2 border-green-400 text-green-700 hover:bg-green-50 transition-colors whitespace-nowrap">
+                                    + Ekle
+                                  </button>
                                 </div>
-                              </button>
+                                {/* Açıklama satırı */}
+                                <div className="px-9 pb-2">
+                                  <textarea
+                                    value={desc ?? ""}
+                                    onChange={e => setChannelDescriptions(prev => ({ ...prev, [r.videoId]: e.target.value }))}
+                                    onClick={e => e.stopPropagation()}
+                                    placeholder={descLoading ? "⏳ Açıklama çekiliyor..." : "Açıklama yok"}
+                                    rows={2}
+                                    className="w-full text-[11px] text-zinc-600 bg-transparent border border-zinc-200 rounded-md px-2 py-1.5 resize-none focus:outline-none focus:border-red-300 placeholder:text-zinc-400"
+                                  />
+                                </div>
+                              </div>
                             );
                           })}
                         </div>
@@ -662,46 +730,86 @@ export default function VideolarPage() {
             </div>
           )}
 
-          {/* Manuel alanlar */}
-          <div className="grid gap-3">
-            <div>
-              <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">
-                {addForm.platform === "youtube" ? "YouTube URL veya Video ID" : "Instagram Reels URL"}
-              </label>
-              <input key="video-url" value={addForm.url}
-                onChange={e => setAddForm(f => f ? { ...f, url: e.target.value } : f)}
-                placeholder={addForm.platform === "youtube" ? "https://www.youtube.com/watch?v=..." : "https://www.instagram.com/reel/..."}
-                className="input w-full" />
+          {/* YouTube: seçili video önizleme kartı */}
+          {addForm.platform === "youtube" && selectedVideo && (
+            <div className="rounded-xl border-2 border-red-200 bg-red-50 p-4 space-y-3">
+              <div className="flex items-start gap-3">
+                <div className="relative h-16 w-24 rounded-lg overflow-hidden shrink-0 bg-zinc-200">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={selectedVideo.thumbnail} alt="" className="h-full w-full object-cover" />
+                  {selectedVideo.isShorts && <span className="absolute bottom-0.5 right-0.5 text-[9px] font-black bg-black/80 text-white px-1 rounded">SHORT</span>}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <p className="font-bold text-zinc-800 text-sm line-clamp-2">{selectedVideo.title}</p>
+                  {selectedVideo.description && <p className="text-xs text-zinc-500 mt-0.5 line-clamp-2">{selectedVideo.description}</p>}
+                </div>
+                <button onClick={() => setSelectedVideo(null)} className="text-zinc-400 hover:text-red-500 text-xl font-black shrink-0 leading-none">×</button>
+              </div>
+              <div>
+                <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Kategori</label>
+                <select value={selectedVideo.category}
+                  onChange={e => setSelectedVideo(v => v ? { ...v, category: e.target.value as VideoCategory } : v)}
+                  className="input w-full">
+                  {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+                </select>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={addSelectedVideo}
+                  className="px-5 py-2 rounded-lg text-white text-sm font-black" style={{ background: "#ff351b" }}>
+                  Ekle
+                </button>
+                <button onClick={() => { setSelectedVideo(null); setAddForm(null); resetBot(); }}
+                  className="px-5 py-2 rounded-lg text-sm font-black bg-zinc-200 text-zinc-700 hover:bg-zinc-300">
+                  İptal
+                </button>
+              </div>
             </div>
-            <div>
-              <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Video Başlığı</label>
-              <input value={addForm.title} onChange={e => setAddForm(f => f ? { ...f, title: e.target.value } : f)}
-                placeholder="Örn: iPhone 15 Pro Ekran Değişimi" className="input w-full" />
-            </div>
-            <div>
-              <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Açıklama <span className="normal-case font-medium text-zinc-400">(isteğe bağlı)</span></label>
-              <textarea value={addForm.description} onChange={e => setAddForm(f => f ? { ...f, description: e.target.value } : f)}
-                placeholder="Tamirin detayları..." rows={3} className="input w-full resize-none" />
-            </div>
-            <div>
-              <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Kategori</label>
-              <select value={addForm.category} onChange={e => setAddForm(f => f ? { ...f, category: e.target.value as VideoCategory } : f)}
-                className="input w-full">
-                {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
-              </select>
-            </div>
-          </div>
+          )}
 
-          <div className="flex gap-2">
-            <button onClick={addVideo} disabled={!addForm.url.trim() || !addForm.title.trim()}
-              className="px-5 py-2 rounded-lg text-white text-sm font-black disabled:opacity-40" style={{ background: "#ff351b" }}>
-              Ekle
-            </button>
-            <button onClick={() => { setAddForm(null); resetBot(); }}
-              className="px-5 py-2 rounded-lg text-sm font-black bg-zinc-200 text-zinc-700 hover:bg-zinc-300">
-              İptal
-            </button>
-          </div>
+          {/* YouTube: video seçilmediyse İptal butonu (kanal sekmesi hariç) */}
+          {addForm.platform === "youtube" && !selectedVideo && botTab !== "channel" && (
+            <div className="flex justify-end">
+              <button onClick={() => { setAddForm(null); resetBot(); }}
+                className="px-5 py-2 rounded-lg text-sm font-black bg-zinc-200 text-zinc-700 hover:bg-zinc-300">
+                İptal
+              </button>
+            </div>
+          )}
+
+          {/* Instagram: manuel form */}
+          {addForm.platform === "instagram" && (
+            <div className="space-y-3">
+              <div>
+                <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Instagram Reels URL</label>
+                <input key="ig-url" value={addForm.url}
+                  onChange={e => setAddForm(f => f ? { ...f, url: e.target.value } : f)}
+                  placeholder="https://www.instagram.com/reel/..."
+                  className="input w-full" />
+              </div>
+              <div>
+                <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Video Başlığı</label>
+                <input value={addForm.title} onChange={e => setAddForm(f => f ? { ...f, title: e.target.value } : f)}
+                  placeholder="Örn: iPhone 15 Pro Ekran Değişimi" className="input w-full" />
+              </div>
+              <div>
+                <label className="block text-xs font-black text-zinc-500 mb-1 uppercase tracking-wide">Kategori</label>
+                <select value={addForm.category} onChange={e => setAddForm(f => f ? { ...f, category: e.target.value as VideoCategory } : f)}
+                  className="input w-full">
+                  {CATEGORIES.map(c => <option key={c.value} value={c.value}>{c.label}</option>)}
+                </select>
+              </div>
+              <div className="flex gap-2">
+                <button onClick={addVideo} disabled={!addForm.url.trim() || !addForm.title.trim()}
+                  className="px-5 py-2 rounded-lg text-white text-sm font-black disabled:opacity-40" style={{ background: "#ff351b" }}>
+                  Ekle
+                </button>
+                <button onClick={() => { setAddForm(null); resetBot(); }}
+                  className="px-5 py-2 rounded-lg text-sm font-black bg-zinc-200 text-zinc-700 hover:bg-zinc-300">
+                  İptal
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       ) : (
         <button onClick={() => setAddForm(emptyForm())}
