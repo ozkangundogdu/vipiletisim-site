@@ -1,9 +1,9 @@
 {
   "firmaBaslik": "Vip İletişim Trabzon Cep Telefonu Teknik Servisi",
   "popularHizmetler": [
-    { "label": "iPhone 16 Ekran Değişimi", "href": "/tamir-hizmetleri/iphone-16-ekran-degisimi" },
-    { "label": "iPhone 14 Ekran Değişimi", "href": "/tamir-hizmetleri/iphone-14-ekran-degisimi" },
-    { "label": "Samsung S24 Ekran", "href": "/tamir-hizmetleri/samsung-galaxy-s24-ekran-degisimi" },
+    { "label": "iPhone Ekran Değişimi", "href": "/tamir-hizmetleri/iphone-ekran-degisimi" },
+    { "label": "Samsung Ekran Değişimi", "href": "/tamir-hizmetleri/samsung-ekran-degisimi" },
+    { "label": "Xiaomi Ekran Değişimi", "href": "/tamir-hizmetleri/xiaomi-ekran-degisimi" },
     { "label": "iPhone Şarj Soketi Tamiri", "href": "/tamir-hizmetleri/iphone-sarj-soketi-tamiri" },
     { "label": "iPhone Batarya Değişimi", "href": "/tamir-hizmetleri/iphone-batarya-degisimi" }
   ],

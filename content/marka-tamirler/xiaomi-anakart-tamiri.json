@@ -6,31 +6,31 @@
   "tamirLabel": "Anakart Tamiri",
   "title": "Xiaomi Anakart Tamiri",
   "metaDescription": "Trabzon'da Xiaomi anakart tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi Anakart Tamiri Hakkında\n\nXiaomi anakart tamiri, bootloop, güç açılmama veya şarj entegre arızası gibi sorunları kapsar. Trabzon'da Vip İletişim, Xiaomi anakart tamirini uzman ekipmanla gerçekleştirir.\n\n## Xiaomi Anakart Tamiri Gerektiren Belirtiler\n\n- Cihaz hiç açılmıyor\n- Ekran tamamen kararıyor, ses devam ediyor\n- Şarj alıyor ama cihaz başlamıyor\n- Belirli uygulamalarda sürekli çöküyor\n- Sıvı temasından sonra cihaz çalışmıyor\n\n## Neden Zamanında Anakart Tamiri Yaptırmalısınız?\n\nAnakart arızası cihazın tamamen işlevsiz kalmasına yol açabilir. Müdahale gecikildiğinde hasar genişler ve onarım imkânsız hale gelebilir. Uzman chip-level onarımla cihaz yeniden işler hale getirilebilir; bu yeni cihaz almaktan çok daha ekonomiktir.\n\n## Trabzon'da Xiaomi Anakart Tamiri Süreci\n\nTrabzon Vip İletişim'de Xiaomi Anakart Tamiri süreci şu adımlarla ilerler:\n\n1. **Ücretsiz Ön İnceleme:** Arızanın kaynağı ve boyutu ücretsiz olarak tespit edilir.\n2. **Net Fiyat Bildirimi:** İşleme başlamadan önce onayınız alınır; reddetme hakkınız saklıdır.\n3. **Orijinal Parça Takımı:** Sertifikalı OEM veya orijinal parçayla müdahale gerçekleştirilir.\n4. **Kapsamlı Test:** Tamir edilen bileşen ve bağlı tüm fonksiyonlar test edilir.\n5. **Garantili Teslim:** İşçilik garantisiyle cihaz teslim edilir.\n\n## Anakart Tamiri Sırasında Verilerim Güvende mi?\n\nİşlem süresince cihazınızın depolama birimine müdahale edilmez. Tüm verileriniz korunur; tamir tamamlandıktan sonra cihazınız eksiksiz teslim edilir.\n\n## Xiaomi Anakart Tamiri Fiyatı — Trabzon\n\nXiaomi anakart tamiri ücreti; kullanılacak parçanın orijinallik düzeyine, cihazın modeline ve mevcut durumuna göre belirlenir. İşleme başlamadan önce [ücretsiz ön inceleme](/iletisim) yaparak net fiyatı paylaşıyoruz; onaylamazsanız herhangi bir ücret talep etmiyoruz. Güncel fiyat bilgisi ve randevu için WhatsApp veya telefon hattımızdan bize ulaşabilirsiniz.\n\n**Kargo ile Tamir:** Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan [teknik servisimize](/tamir-hizmetleri) kargo ile cihaz gönderebilirsiniz. Tamir sonrası adresinize göndeririz.",
+  "icerik": "## Xiaomi Anakart Tamiri\n\nXiaomi'nin anakartı; Snapdragon veya MediaTek işlemcisini, güç yönetim entegresini (PMIC), hafızayı ve ekran bağlantı soketlerini barındıran ana devredir. Bu devre kendiliğinden bozulmaz — neredeyse her vakanın arkasında dört sebepten biri vardır: yağmur, çay veya kahve gibi sıvıların içeri girip devrede oksidasyon ve kısa devre yaratması; sert bir düşüşün lehim noktalarında mikro çatlak oluşturması; orijinal olmayan şarj adaptörünün veya prizdeki voltaj dalgalanmasının entegreleri yakması; ya da şarjdayken yoğun kullanımın (özellikle oyun) cihazı aşırı ısıtıp anakartı deforme etmesi.\n\n**Yaygın belirtiler:**\n\n- Şarj olmuyor veya çok hızlı bitiyor (PMIC veya şarj entegresi şüphesi)\n- Dokunmatik ekran hiç tepki vermiyor\n- WiFi veya Bluetooth çalışmıyor\n- Mi/Redmi logosunda kalıp tekrar başlıyor (bootloop)\n\nBu belirtilerden biri varsa cihaz EDL (Emergency Download) moduna alınmaya çalışılır; bilgisayar bu modda tanıyorsa işlemci hayatta demektir, sorun çevresindeki destek çiplerindedir.\n\nMümkün olduğunda anakartın komple değişimi değil, onarımı tercih edilir — bu yaklaşım orijinal anakartı korur, seri numarasını değiştirmez ve maliyeti belirgin şekilde düşürür. Vip İletişim Trabzon'da süreç şöyle işler: cihaz önce mikroskop altında incelenir, kısa devre testiyle arızalı bölge belirlenir; tespit edilen entegre sökülüp BGA lehimleme tekniğiyle yenisi monte edilir; son olarak şarj, ses, WiFi, kamera ve ekran tek tek kontrol edilir.\n\nArıza tespiti ücretsizdir, onarılamayan cihazdan ücret alınmaz. Geniş parça tedarik ağı sayesinde maliyetler genelde diğer markalara göre daha ekonomiktir. [Çevre illerden](/tamir-hizmetleri) kargoyla gönderim de kabul edilir.",
   "sss": [
     {
-      "soru": "Xiaomi Anakart Tamiri ne kadar sürer?",
-      "cevap": "Çoğu durumda 30–90 dakika içinde teslim yapılır. Parça stokta mevcutsa aynı gün servisini tamamlarız. Ek hasar tespiti veya anakart müdahalesi gereken durumlarda süre uzayabilir; bu konuda sizi önceden bilgilendiririz."
+      "soru": "Mi/Redmi logosunda kalıp tekrar başlıyor, bu ne demek?",
+      "cevap": "Bu bootloop arızasıdır ve genelde hafıza veya işlemci çevresindeki bağlantıyla ilgilidir. Kendi başınıza tekrar tekrar açıp kapatmak hasarı büyütebilir, ön incelemeye getirin."
     },
     {
-      "soru": "Xiaomi Anakart Tamiri fiyatı ne kadar?",
-      "cevap": "Net fiyat, cihaz servis bankosunda incelendikten sonra paylaşılır. Ön inceleme tamamen ücretsizdir; fiyatı onaylamazsanız herhangi bir ödeme yapmanız gerekmez. Güncel bilgi için WhatsApp hattımızdan ulaşabilirsiniz."
+      "soru": "Süre ne kadar?",
+      "cevap": "Tek nokta kısa devreyse birkaç saat, çoklu çip hasarında 2-3 gün."
     },
     {
-      "soru": "Anakart Tamiri sırasında verilerim silinir mi?",
-      "cevap": "Hayır, verileriniz güvende. Fotoğraf, mesaj ve uygulamalarınıza müdahale edilmez. Yine de işlem öncesinde iCloud, Google veya bilgisayar yedeği almanızı öneririz."
+      "soru": "Anakart değişimi mi onarımı mı daha mantıklı?",
+      "cevap": "Mümkünse onarım tercih edilir: orijinal anakart korunur, seri numarası değişmez ve maliyet belirgin şekilde düşer. Tamiri mümkün olmayan ağır hasarlarda değişim önerilir."
     },
     {
-      "soru": "Trabzon dışından tamir yaptırabilir miyim?",
-      "cevap": "Evet, kargo ile tamir yapıyoruz. Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan cihazınızı bize gönderebilirsiniz. Tamir tamamlandıktan sonra adresinize kargolanır. Detaylar için WhatsApp hattımızdan bilgi alabilirsiniz."
+      "soru": "Verilerim ne olur?",
+      "cevap": "Hafıza arızası dışındaki çoğu vakada verileriniz silinmez; ileri korozyonda risk olabileceğini dürüstçe söyleriz."
     },
     {
-      "soru": "Tamir sonrası garanti sunuluyor mu?",
-      "cevap": "Evet. Tüm tamir işlemlerimize işçilik garantisi verilir. Anakart ve kapsamlı işlemlerde 90 gün garanti uygulanır. Garanti kapsamı ve süresi teslim sırasında yazılı olarak bildirilir."
+      "soru": "Onarılamazsa ücret alınır mı?",
+      "cevap": "Hayır, onarılamayan cihazdan ücret talep etmiyoruz."
     },
     {
-      "soru": "Orijinal parça mı kullanılıyor?",
-      "cevap": "Evet, orijinal veya OEM kalitesinde sertifikalı parça kullanılır. Hangi parçanın takıldığı işlem başlamadan önce size bildirilir. Daha düşük maliyetli alternatif parça tercih etmek isterseniz bu seçeneği de sunabiliriz; karar tamamen sizindir."
+      "soru": "Snapdragon ve MediaTek modellerinde fark var mı?",
+      "cevap": "Devre yerleşimi farklı olsa da onarım yaklaşımı benzerdir; her iki platformda da deneyimliyiz."
     }
   ],
   "desteklenenModeller": [

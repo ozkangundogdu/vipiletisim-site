@@ -6,31 +6,31 @@
   "tamirLabel": "Şarj Entegresi Tamiri",
   "title": "Samsung Şarj Entegresi Tamiri",
   "metaDescription": "Trabzon'da Samsung şarj entegresi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung Şarj Entegresi Tamiri Hakkında\n\nSamsung şarj entegresi, USB-C hızlı şarj protokollerini yönetir. Entegre arızasında şarj hızı düşer veya tamamen kesilir. Trabzon'da Vip İletişim, Samsung şarj entegresi tamirini uzman ekipmanla tamamlar.\n\n## Samsung Şarj Entegresi Tamiri Gerektiren Belirtiler\n\n- Hızlı şarj desteği kayboldu\n- Şarj olmuyor veya çok yavaş oluyor\n- Farklı kablo ve adaptörle aynı sorun yaşanıyor\n- Cihaz yalnızca belirli voltajda şarj alıyor\n- Şarj sırasında cihaz aşırı ısınıyor\n\n## Neden Zamanında Şarj Entegresi Tamiri Yaptırmalısınız?\n\nŞarj entegresi arızası hızlı şarjı devre dışı bırakır; uzun vadede bataryayı da olumsuz etkiler. Chip-level onarımla entegre değiştirilebilir; bu, yeni cihaz almaktan çok daha ekonomiktir.\n\n## Trabzon'da Samsung Şarj Entegresi Tamiri Süreci\n\nTrabzon Vip İletişim'de Samsung Şarj Entegresi Tamiri süreci şu adımlarla ilerler:\n\n1. **Ücretsiz Ön İnceleme:** Arızanın kaynağı ve boyutu ücretsiz olarak tespit edilir.\n2. **Net Fiyat Bildirimi:** İşleme başlamadan önce onayınız alınır; reddetme hakkınız saklıdır.\n3. **Orijinal Parça Takımı:** Sertifikalı OEM veya orijinal parçayla müdahale gerçekleştirilir.\n4. **Kapsamlı Test:** Tamir edilen bileşen ve bağlı tüm fonksiyonlar test edilir.\n5. **Garantili Teslim:** İşçilik garantisiyle cihaz teslim edilir.\n\n## Şarj Entegresi Tamiri Sırasında Verilerim Güvende mi?\n\nBu tamir işleminde verileriniz güvende kalır. Depolama birimine erişilmez; yalnızca ilgili donanım bileşeni değiştirilir. Fotoğraf ve uygulamalarınız tamir öncesi ve sonrası aynı şekilde cihazınızda yer alır.\n\n## Samsung Şarj Entegresi Tamiri Fiyatı — Trabzon\n\nSamsung sarj entegresi tamiri ücreti; kullanılacak parçanın orijinallik düzeyine, cihazın modeline ve mevcut durumuna göre belirlenir. İşleme başlamadan önce [ücretsiz ön inceleme](/iletisim) yaparak net fiyatı paylaşıyoruz; onaylamazsanız herhangi bir ücret talep etmiyoruz. Güncel fiyat bilgisi ve randevu için WhatsApp veya telefon hattımızdan bize ulaşabilirsiniz.\n\n**Kargo ile Tamir:** Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan [teknik servisimize](/tamir-hizmetleri) kargo ile cihaz gönderebilirsiniz. Tamir sonrası adresinize göndeririz.",
+  "icerik": "## Samsung Şarj Entegresi Tamiri\n\nŞarj soketi temizse, kablo sağlamsa ama cihaz hâlâ şarj olmuyorsa veya çok yavaş şarj oluyorsa, sorun genelde anakart üzerindeki güç yönetim çipinde (PMIC) — akım denetimini ve Super Fast Charging iletişimini yöneten entegrede. Bu, soket değişiminden farklı, mikroskop altında yapılan bir chip-level işlemdir.\n\nBelirti genelde kademeli ilerler: önce Super Fast Charging kaybolur, telefon yalnızca standart hızda şarj olmaya başlar. Sonra Wireless PowerShare de etkilenebilir. Son aşamada cihaz hiçbir şekilde akım almaz hale gelir. Erken yakalanan vakalarda yalnızca hızlı şarj kaybı varken, geciken vakalarda tam şarj kesilmesi görülür.\n\nVip İletişim Trabzon önce diğer ihtimalleri eler — kablo, soket, batarya sağlıklı mı kontrol edilir. Hepsi sağlamsa entegre üzerinde ısı kamerasıyla anormal sıcaklık taraması yapılır; bu, hangi noktanın arızalı olduğunu gösterir. Tespit edilen çip, komşu bileşenlere zarar vermeden mikroskop altında değiştirilir.\n\nİşlem sonrası kablolu ve kablosuz şarj ayrı ayrı test edilir. [Ücretsiz ön inceleme](/iletisim) ile anakart değişiminden çok daha ekonomik bir çözüm sunulur.",
   "sss": [
     {
-      "soru": "Samsung Şarj Entegresi Tamiri ne kadar sürer?",
-      "cevap": "Çoğu durumda 30–90 dakika içinde teslim yapılır. Parça stokta mevcutsa aynı gün servisini tamamlarız. Ek hasar tespiti veya anakart müdahalesi gereken durumlarda süre uzayabilir; bu konuda sizi önceden bilgilendiririz."
+      "soru": "Bu, soket temizliğinden farklı mı?",
+      "cevap": "Evet, soket fiziksel bir parça değişimidir; şarj entegresi tamiri anakart üzerinde mikro lehimleme gerektiren bir işlemdir."
     },
     {
-      "soru": "Samsung Şarj Entegresi Tamiri fiyatı ne kadar?",
-      "cevap": "Net fiyat, cihaz servis bankosunda incelendikten sonra paylaşılır. Ön inceleme tamamen ücretsizdir; fiyatı onaylamazsanız herhangi bir ödeme yapmanız gerekmez. Güncel bilgi için WhatsApp hattımızdan ulaşabilirsiniz."
+      "soru": "Hızlı şarj kaybı her zaman bu sorundan mı kaynaklanır?",
+      "cevap": "Hayır, batarya yaşlanması da hızlı şarjı yavaşlatabilir; ön incelemede ayırt edilir."
     },
     {
-      "soru": "Şarj Entegresi Tamiri sırasında verilerim silinir mi?",
-      "cevap": "Hayır, verileriniz güvende. Fotoğraf, mesaj ve uygulamalarınıza müdahale edilmez. Yine de işlem öncesinde iCloud, Google veya bilgisayar yedeği almanızı öneririz."
+      "soru": "Ne kadar sürer?",
+      "cevap": "Genellikle 60-120 dakika arası."
     },
     {
-      "soru": "Trabzon dışından tamir yaptırabilir miyim?",
-      "cevap": "Evet, kargo ile tamir yapıyoruz. Giresun, Rize, Artvin, Gümüşhane ve Bayburt'tan cihazınızı bize gönderebilirsiniz. Tamir tamamlandıktan sonra adresinize kargolanır. Detaylar için WhatsApp hattımızdan bilgi alabilirsiniz."
+      "soru": "Anakart değişiminden farkı ne?",
+      "cevap": "Yalnızca arızalı çip değişir, anakartın tamamı değil; bu çok daha ekonomiktir."
     },
     {
-      "soru": "Tamir sonrası garanti sunuluyor mu?",
-      "cevap": "Evet. Tüm tamir işlemlerimize işçilik garantisi verilir. Anakart ve kapsamlı işlemlerde 90 gün garanti uygulanır. Garanti kapsamı ve süresi teslim sırasında yazılı olarak bildirilir."
+      "soru": "Garanti var mı?",
+      "cevap": "Evet, işçilik garantisi sunuyoruz."
     },
     {
-      "soru": "Orijinal parça mı kullanılıyor?",
-      "cevap": "Evet, orijinal veya OEM kalitesinde sertifikalı parça kullanılır. Hangi parçanın takıldığı işlem başlamadan önce size bildirilir. Daha düşük maliyetli alternatif parça tercih etmek isterseniz bu seçeneği de sunabiliriz; karar tamamen sizindir."
+      "soru": "Riskli bir işlem mi?",
+      "cevap": "Deneyimli teknisyen ve doğru ekipmanla düşük risklidir."
     }
   ],
   "desteklenenModeller": [
