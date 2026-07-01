@@ -12,18 +12,36 @@ import { youtubeThumbnail, instagramEmbedUrl } from "@/lib/video-utils";
 
 const BASE = "https://vipiletisim.com.tr";
 
+// Herhangi bir tarih değerini geçerli W3C ISO 8601 biçimine çevir
+function normalizeDate(value: string): string {
+  const parsed = new Date(value);
+  if (!Number.isNaN(parsed.getTime())) return parsed.toISOString();
+
+  if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
+    return `${value}T00:00:00.000Z`;
+  }
+
+  return new Date().toISOString();
+}
+
+// Göreli yolları mutlak URL'ye çevir (sitemap'te URL'ler mutlak olmalı)
+function absoluteUrl(value: string): string {
+  if (value.startsWith("http")) return value;
+  return `${BASE}${value.startsWith("/") ? value : `/${value}`}`;
+}
+
 // Dosya yoksa fallback tarih döndür
 function fileMtime(filePath: string, fallback: string): string {
   try {
     return fs.statSync(filePath).mtime.toISOString();
   } catch {
-    return fallback;
+    return normalizeDate(fallback);
   }
 }
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const posts = getAllPosts();
-  const latestPost = posts[0]?.publishedAt ?? "2026-06-25";
+  const latestPost = normalizeDate(posts[0]?.publishedAt ?? "2026-06-25");
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: BASE, lastModified: latestPost, changeFrequency: "weekly", priority: 1 },
@@ -68,14 +86,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const blogPosts: MetadataRoute.Sitemap = posts.map((p) => {
     const entry: MetadataRoute.Sitemap[number] = {
       url: `${BASE}/blog/${p.slug}`,
-      lastModified: p.publishedAt,
+      lastModified: normalizeDate(p.publishedAt),
       changeFrequency: "monthly",
       priority: 0.7,
     };
     // Kapak görselini görsel sitemap'ine (<image:image>) ekle
     if (p.coverImage) {
-      const imgUrl = p.coverImage.startsWith("http") ? p.coverImage : `${BASE}${p.coverImage}`;
-      entry.images = [imgUrl];
+      entry.images = [absoluteUrl(p.coverImage)];
     }
     return entry;
   });
@@ -93,10 +110,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const publicationDate =
         Number.isFinite(ts) && ts > 1_000_000_000_000
           ? new Date(ts).toISOString()
-          : v.visibleFrom ?? videosMtime;
+          : normalizeDate(v.visibleFrom ?? videosMtime);
       const description = v.description?.trim() || `Trabzon Vip İletişim — ${v.title}`;
-      const thumbnail =
-        v.thumbnail ?? (v.platform === "youtube" ? youtubeThumbnail(v.videoId) : undefined);
+      const thumbnail = v.thumbnail
+        ? absoluteUrl(v.thumbnail)
+        : v.platform === "youtube"
+          ? youtubeThumbnail(v.videoId)
+          : undefined;
       // player_loc: sorgu parametresiz temiz embed URL (XML'de "&" kaçış sorununu önler)
       const playerLoc =
         v.platform === "youtube"
@@ -119,7 +139,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
             thumbnail_loc: thumbnail,
             description,
             player_loc: playerLoc,
-            publication_date: publicationDate,
+            publication_date: normalizeDate(publicationDate),
             family_friendly: "yes",
           },
         ];
