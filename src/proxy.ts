@@ -4,11 +4,24 @@ import { verifyToken, COOKIE_NAME } from "@/lib/admin-auth";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  if (pathname === "/admin/giris") return NextResponse.next();
+  // Giriş sayfası ve giriş/çıkış API'si oturum gerektirmeden erişilebilir olmalı.
+  if (pathname === "/vippanel/giris" || pathname === "/api/vippanel/auth") {
+    return NextResponse.next();
+  }
 
   const token = request.cookies.get(COOKIE_NAME)?.value;
-  if (!token || !verifyToken(token)) {
-    const loginUrl = new URL("/admin/giris", request.url);
+  const authenticated = !!token && verifyToken(token);
+
+  if (pathname.startsWith("/api/vippanel")) {
+    // API route'ları HTML'e yönlendirilemez; oturumsuz istek 401 JSON almalı.
+    if (!authenticated) {
+      return NextResponse.json({ error: "Yetkisiz erişim" }, { status: 401 });
+    }
+    return NextResponse.next();
+  }
+
+  if (!authenticated) {
+    const loginUrl = new URL("/vippanel/giris", request.url);
     loginUrl.searchParams.set("from", pathname);
     return NextResponse.redirect(loginUrl);
   }
@@ -17,5 +30,5 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/vippanel/:path*", "/api/vippanel/:path*"],
 };
