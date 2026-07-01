@@ -1,7 +1,7 @@
 import crypto from "crypto";
 
 const COOKIE_NAME = "vip_admin_session";
-const EXPIRY_MS = 7 * 24 * 60 * 60 * 1000;
+const EXPIRY_MS = 60 * 60 * 1000; // 1 saat
 
 function getSecret(): string {
   const s = process.env.ADMIN_SESSION_SECRET;
