@@ -5,32 +5,32 @@
   "tamirKey": "servis-yok-arizasi",
   "tamirLabel": "Servis Yok Arızası",
   "title": "iPhone Servis Yok Arızası",
-  "metaDescription": "Trabzon'da iPhone servis yok arızası için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## iPhone Servis Yok Arızası\n\nEkranda \"Servis Yok\" yazısı çıktığında akla ilk operatör sorunu gelir, ama Vip İletişim Trabzon'a gelen vakaların önemli kısmında neden cihazda — SIM tepsisi kontağı, anten kablosu veya baz bandı entegresi. Önce hangisi olduğunu ayırt etmek tamiri yönlendiren ilk adımdır.\n\nTanı basit bir mantıkla başlar: aynı SIM kart başka bir telefonda çekiyor mu? Çekiyorsa sorun cihazda demektir. Cihazda eSIM kullanılıyorsa profil ayarları da ayrıca kontrol edilir, çünkü bazen sorun fiziksel değil yazılımsal yapılandırmadan kaynaklanır.\n\n**Yaygın belirtiler:** Sinyal çubukları hiç görünmüyor; SIM tanınıyor ama \"Aranan numaraya ulaşılamıyor\" hatası alınıyor; uçak modu açıp kapatmak geçici düzeliyor ama tekrar bozuluyor; yalnızca acil aramalar yapılabiliyor.\n\n**Süreç:** SIM tepsisi ve okuyucu kontağı fiziksel olarak incelenir. Sorun yoksa anten kablosunun bağlantı noktaları test edilir. Hiçbiri değilse sinyal ölçüm cihazıyla baz bandı entegresinin gücü ölçülür ve gerekirse mikro lehimleme ile değiştirilir.\n\nTrabzon'da ücretsiz ön inceleme ile başlanır. Kargoyla [Giresun, Rize, Artvin, Gümüşhane, Bayburt'tan](/tamir-hizmetleri) gönderim kabul edilir, [iletişim sayfasından](/iletisim) randevu alınabilir.",
+  "metaDescription": "Trabzon iPhone servis yok arızası: baseband (modem) devresi, düşmede kopan RF kondansatörü ve flying wire onarımı. Sinyal ve arama çözümü — Vip İletişim.",
+  "icerik": "## iPhone Servis Yok Arızası\n\niPhone servis yok arızası; ekranın üstünde \"Servis Yok\" ya da \"Arama Yok\" yazdığında, SIM kart takılı olduğu halde şebekeye bağlanılamadığında ortaya çıkar. Bu sorunun kalbinde çoğu zaman baseband (modem) devresi bulunur. iPhone'da baseband; kendi entegresi, güç yönetimi ve RF (radyo frekans) hattıyla birlikte çalışır. Özellikle düşme sonrası, bu hattaki minik bir kondansatörün ya da bağlantının kopması sinyali tamamen kesebilir.\n\n### Servis Yok Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun SIM tarafında mı yoksa baseband devresinde mi olduğunu gösterir. Ayrıca şikayetin ne zaman başladığı çok önemlidir. Bu yüzden düşme, su teması ya da yazılım güncellemesi ayrı ayrı sorgulanır.\n\n- **\"Servis Yok\" yazıyor, SIM okunmuyor:** SIM okuyucu ya da baseband hattı arızalı olabilir.\n- **Düşme sonrası sinyal gitti:** RF hattındaki kondansatör ya da bağlantı kopmuş olabilir.\n- **Sürekli \"arıyor\" ama bağlanmıyor:** baseband entegresi ya da güç yönetimi zayıflamıştır.\n- **Baseband sürümü \"bilinmiyor\" görünüyor:** modem tanınmıyordur ve sorun genelde donanımsaldır.\n\n### iPhone Servis Yok Arızası Nasıl Giderilir?\n\niPhone servis yok arızası, önce yazılım ve SIM elemesiyle giderilir. İlk olarak farklı bir SIM ve ağ ayarları sıfırlaması denenir. Sorun sürüyorsa cihaz açılıp baseband ve RF hattı incelenir. Düşme öyküsü varsa kopan kondansatör ya da iz (trace) aranır ve gerekiyorsa flying wire ile köprülenir. Baseband entegresi arızalıysa yeniden lehimlenir ya da değiştirilir. Son olarak sinyal çekimi, arama ve mobil veri ayrı ayrı test edilir.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece sorunun basit bir yazılım mı yoksa baseband arızası mı olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, gereksiz masrafı önler. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### iPhone Servis Yok Arızası Ne Kadar Sürede Çözülür?\n\nSüre arızanın kaynağına bağlıdır. Yazılım çözümü anında biterken, kopan bir bağlantının köprülenmesi ya da baseband onarımı çoğu zaman birkaç saat sürebilir. Ayrıca baseband işlemleri hassas olduğu için acele edilmez. Böylece cihazınıza yalnızca gereken işlem uygulanır. Bunun yanında teslim öncesinde sinyal, arama ve mobil veri gerçek bir hatta denenerek sonuç doğrulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Önce ne kontrol etmeliyim?",
-      "cevap": "SIM kartı başka bir telefonda deneyin; orada da çekmiyorsa sorun SIM'de, çekiyorsa cihazda demektir."
+      "soru": "Telefonum düştü, sonra 'Servis Yok' yazdı; ilişkili mi?",
+      "cevap": "Büyük olasılıkla evet. Düşme sonrası RF hattındaki minik bir kondansatör ya da iz kopabilir; bu, flying wire köprüleme veya lehim onarımıyla giderilir."
     },
     {
-      "soru": "eSIM kullanıyorum, farklı mı?",
-      "cevap": "eSIM profilinin yeniden kurulması bazen sorunu çözer; ön incelemede bu da denenir."
+      "soru": "SIM'i değiştirdim yine çekmiyor, sorun ne?",
+      "cevap": "SIM sağlamsa sorun baseband devresinde olabilir. Ön incelemede SIM okuyucu mu yoksa baseband mı sorumlu, ayrıştırılır."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "SIM/anten sorunuysa aynı gün, baz bandı çip değişimi gerekiyorsa 1-2 gün."
+      "soru": "Baseband sürümü 'bilinmiyor' yazıyor, ne demek?",
+      "cevap": "Cihaz modemi tanıyamıyor demektir. Bu genellikle donanımsaldır ve baseband entegresinin onarımını gerektirir."
     },
     {
-      "soru": "Fiyat neye göre belirlenir?",
-      "cevap": "Hangi bileşenin (SIM okuyucu, anten, baz bandı) etkilendiğine göre değişir."
+      "soru": "Ne kadar sürede çözülür?",
+      "cevap": "Yazılım çözümü anında; baseband onarımı ya da köprüleme birkaç saat sürebilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "İşçilik garantisi verilir, süresi teslimde bildirilir."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",
-      "cevap": "Evet, Trabzon dışından kargo kabul edilir, tamir sonrası adresinize gönderilir."
+      "cevap": "Evet, Trabzon dışından kargo kabul ediyoruz."
     }
   ],
   "desteklenenModeller": [

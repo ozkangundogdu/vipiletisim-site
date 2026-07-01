@@ -42,3 +42,14 @@ body {
 textarea.input {
   resize: vertical;
 }
+
+/* Yorumlar (reviews) sonsuz kayan şerit animasyonu */
+.reviews-scroll {
+  animation-name: reviewsScroll;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+@keyframes reviewsScroll {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}

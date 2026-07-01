@@ -5,28 +5,28 @@
   "tamirKey": "wifi-tamiri",
   "tamirLabel": "WiFi Tamiri",
   "title": "iPhone WiFi Tamiri",
-  "metaDescription": "Trabzon'da iPhone wifi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## iPhone WiFi Tamiri\n\nAyarlar'da WiFi seçeneği griye dönüp tıklanamaz hale geldiyse, bu Apple cihazlarında bilinen bir donanım belirtisidir; yazılım sıfırlaması çoğu zaman işe yaramaz. Vip İletişim Trabzon önce yazılımı, sonra donanımı sırayla eler.\n\nWiFi ve Bluetooth iPhone'da aynı entegre üzerinden çalışır — bu yüzden ikisi birden bozulursa donanımsal bir arıza güçlü ihtimaldir. Yalnızca 5GHz ağlar görünmüyorsa veya bağlantı sürekli düşüyorsa anten bağlantısı şüphelidir; tamamen kayıpsa entegrenin kendisi sorumlu olabilir.\n\nÖnce Ayarlar > Genel > Sıfırla > Ağ Ayarlarını Sıfırla denenir; bu adım yazılım kaynaklı sorunların büyük kısmını çözer. Hâlâ sonuç yoksa antenin fiziksel bağlantı noktaları kontrol edilir. Son aşamada entegrenin sinyal gücü ölçülür, gerekirse mikroskop altında değiştirilir.\n\nYazılım sorunuysa aynı gün, donanım değişimi gerekiyorsa 1-2 gün sürer. [Ücretsiz ön inceleme](/iletisim) ile hangi aşamada olduğunuz netleşir.",
+  "metaDescription": "Trabzon iPhone WiFi tamiri: gri kalan WiFi anahtarı, WiFi/BT entegresi ve firmware/MAC adresi yazımı. Bluetooth ile birlikte çözüm — Vip İletişim.",
+  "icerik": "## iPhone WiFi Tamiri\n\niPhone WiFi tamiri; WiFi ağlarına bağlanılamadığında, WiFi anahtarının gri renkte kalıp tıklanamadığında ya da bağlantının sürekli koptuğu durumlarda gerekir. iPhone'da WiFi ve Bluetooth çoğu zaman aynı entegre (WiFi/BT IC) tarafından yönetilir. Bu yüzden WiFi sorunu sık sık Bluetooth sorunuyla birlikte gelir. Ayrıca WiFi çipi değiştiğinde, cihazın ağ adresini tanıması için firmware yeniden yazılır.\n\n### iPhone WiFi Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun yazılımda mı yoksa donanımda mı olduğunu gösterir. Ayrıca her belirti farklı bir nedene işaret eder. Bu yüzden önce yazılım tarafı elenir, ardından çip incelenir. Böylece gereksiz bir entegre değişiminin önüne geçilir ve doğru çözüme daha hızlı ulaşılır.\n\n- **WiFi anahtarı gri ve tıklanamıyor:** klasik bir donanım belirtisidir; genelde WiFi/BT entegresi arızalıdır.\n- **WiFi ile Bluetooth birlikte çalışmıyor:** ortak entegre etkilenmiştir.\n- **Bağlantı var ama sürekli kopuyor:** anten ya da lehim bağlantısı zayıflamıştır.\n- **Su temasından sonra WiFi gitti:** çip çevresinde korozyon oluşmuştur.\n\n### iPhone WiFi Tamiri Nasıl Yapılır?\n\niPhone WiFi tamiri, önce yazılım ve ayar kontrolüyle başlar. İlk olarak ağ ayarları sıfırlanır ve güncelleme denenir. Sorun sürüyorsa cihaz açılıp WiFi/BT entegresi ve anteni incelenir. Soğuk lehim varsa entegre yeniden lehimlenir; çip hasarlıysa yenisiyle değiştirilir. Çip değişiminde ağ adresi (MAC) firmware'i yeniden yazılır, çünkü bu olmadan WiFi açılmaz. Son olarak WiFi, Bluetooth ve konum işlevleri birlikte test edilir.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece sorunun basit bir yazılım mı yoksa entegre arızası mı olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, gereksiz masrafı önler. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### iPhone WiFi Tamiri Ne Kadar Sürer?\n\nSüre arızanın kaynağına bağlıdır. Yazılım çözümü anında biterken, entegre lehimi ya da çip değişimi çoğu zaman 60-120 dakika sürebilir. Ayrıca firmware yazımı gereken durumlarda küçük bir ek süre gerekir. Böylece cihazınıza yalnızca gereken işlem uygulanır. Bunun yanında teslim öncesinde WiFi, Bluetooth ve konum işlevleri gerçek bir ağda denenerek sonuç doğrulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "WiFi açma butonu gri, tıklanamıyor — bu ne demek?",
-      "cevap": "Genelde donanımsal bir işaret. Önce ağ ayarları sıfırlanır, sonuç yoksa anten/entegre kontrol edilir."
+      "soru": "WiFi anahtarı gri ve tıklanmıyor, bu yazılım sorunu mu?",
+      "cevap": "Genellikle hayır. Gri ve tıklanamayan WiFi anahtarı klasik bir donanım belirtisidir; çoğu zaman WiFi/BT entegresi arızalıdır."
     },
     {
-      "soru": "Bluetooth da etkilenir mi?",
-      "cevap": "Evet, aynı entegre üzerinden çalıştıkları için donanım arızasında genelde ikisi birlikte bozulur."
+      "soru": "WiFi çipi değişince neden firmware yazılıyor?",
+      "cevap": "Yeni çipin cihaza tanıtılması ve ağ adresinin (MAC) tanımlanması için firmware yazımı şarttır; bu olmadan WiFi açılmaz."
     },
     {
-      "soru": "Süre ne kadar?",
-      "cevap": "Yazılımsa anında, donanım değişimiyse 1-2 gün."
+      "soru": "WiFi ile birlikte Bluetooth de gitti, ilişkili mi?",
+      "cevap": "Evet. iPhone'da WiFi ve Bluetooth çoğu modelde aynı entegrededir; bu çip etkilenince ikisi birlikte bozulabilir."
     },
     {
-      "soru": "Fiyat neye göre?",
-      "cevap": "Yazılım mı donanım mı olduğuna göre belirlenir."
+      "soru": "Ne kadar sürer?",
+      "cevap": "Yazılım çözümü anında; entegre lehimi ya da çip değişimi 60-120 dakika sürebilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

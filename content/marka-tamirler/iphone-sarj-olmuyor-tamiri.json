@@ -5,28 +5,28 @@
   "tamirKey": "sarj-olmuyor-tamiri",
   "tamirLabel": "Şarj Olmuyor Tamiri",
   "title": "iPhone Şarj Olmuyor Tamiri",
-  "metaDescription": "Trabzon'da iPhone şarj olmuyor tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## iPhone Şarj Olmuyor Tamiri\n\nBu şikayetle gelen her cihaz aynı arızadan muzdarip değil — dört ayrı ihtimal var ve Vip İletişim Trabzon bunları sırayla eler: kablo, soket, şarj entegresi, batarya. Doğru sıralama gereksiz parça değişimini önler.\n\nÖnce en ucuz ihtimalden başlanır: farklı bir MFi sertifikalı kablo ve adaptörle denenir. Sonuç değişmiyorsa Lightning/USB-C soketi büyüteçle incelenir — cep içi tüy ve toz birikimi şarj olmama vakalarının önemli bir kısmının tek sebebidir. \"Bu aksesuar desteklenmeyebilir\" uyarısı sürekli çıkıyorsa bu genelde fiziksel nemden değil, sensör kontağının kirlenmesinden kaynaklanır.\n\nBunların hiçbiri sonuç vermezse şarj entegresine (Tristar/Hydra çipi) bakılır; bu noktada artık mikroskop altında çalışma gerekir. En nadir ama en ciddi ihtimal ise bataryanın elektriksel olarak tamamen ölmüş olmasıdır — bu durumda batarya değişimi tek çözümdür.\n\nÇoğu vaka ilk iki adımda (kablo veya soket temizliği) çözülür ve aynı gün biter. Entegre değişimi gerekiyorsa süreç birkaç saate uzar. Ücretsiz ön incelemede hangi aşamada olduğunuz netleşir; onay vermeden ücret alınmaz.",
+  "metaDescription": "Trabzon iPhone şarj olmuyor tamiri: kablo, şarj soketi, batarya ve U2/Tristar çipi elemesi. Adım adım teşhis, aynı gün teslim — Vip İletişim.",
+  "icerik": "## iPhone Şarj Olmuyor Tamiri\n\niPhone şarj olmuyor tamiri; cihaz kabloya takılı olduğu halde hiç şarj almadığında ya da şarj yüzdesi artmadığında gerekir. Bu şikayetin tek bir nedeni yoktur. Kablo, şarj soketi, batarya ve anakart üzerindeki U2 (Tristar) çipi ayrı ayrı devreye girebilir. Dolayısıyla doğru sonuç, aceleci bir parça değişimiyle değil, adım adım eleme ile bulunur.\n\n### Şarj Olmama Sorununun Belirtileri ve Nedenleri\n\nBelirtiler, sorunun hangi aşamada olduğunu gösterir. Ayrıca her belirti farklı bir bileşeni işaret eder. Bu yüzden şikayeti dikkatle dinlemek, doğru nedene daha hızlı ulaştırır.\n\n- **Kabloyu takınca hiç tepki yok:** genellikle şarj soketi ya da tail fleks arızalıdır.\n- **Şimşek işareti görünüp kayboluyor:** bağlantı kararsızdır; soket veya U2 kaynaklı olabilir.\n- **\"Bu aksesuar desteklenmiyor\" uyarısı:** U2/Tristar çipi kabloyu doğrulayamıyordur.\n- **Şarj oluyor ama yüzde artmıyor:** çoğu zaman batarya ömrünü tamamlamıştır.\n\n### iPhone Şarj Olmuyor Tamiri Nasıl Yapılır?\n\niPhone şarj olmuyor tamiri, en basit ihtimalden başlayan bir eleme ile ilerler. İlk olarak orijinal kablo ve adaptörle deneme yapılır; böylece sorunun aksesuarda olup olmadığı anlaşılır. Bunun yanında iOS'taki \"Optimize Edilmiş Şarj\" ayarı da gözden geçirilir, çünkü bu özellik bazen şarjı bilinçli olarak yavaşlatır. Ardından şarj soketi temizlenir veya değiştirilir, çünkü toz ve oksit en sık görülen nedendir. Sonra batarya sağlığı ölçülür. Bunların hepsi sağlamsa anakarta güç kaynağı bağlanır ve çekilen akım (mA) okunur; anormal bir değer U2 çipini işaret eder. Son olarak kablolu şarj ve veri aktarımı test edilir.\n\nVip İletişim Trabzon, bu eleme sürecini ücretsiz ön inceleme aşamasında yürütür. Böylece ucuz bir soket sorunu, pahalı bir işleme dönüşmeden çözülür. Kısacası doğru sıra, hem zamanı hem de maliyeti korur. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### iPhone Şarj Olmuyor Tamiri Ne Kadar Sürer?\n\nİşlem, arızanın kaynağına göre değişir. Soket temizliği dakikalar içinde biterken, batarya değişimi çoğu zaman 30-45 dakika, U2 çipi onarımı ise 60-120 dakika sürebilir. Ayrıca sorun tek bir nedene bağlıysa maliyet düşük kalır. Böylece yalnızca gerçekten gereken işlem uygulanır ve cihazınız gereksiz yere açılmaz. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Evde önce ne deneyebilirim?",
-      "cevap": "Farklı kablo/adaptör deneyin, soketi ışığa tutup tüy-toz olup olmadığına bakın. Çoğu vaka bu aşamada anlaşılır."
+      "soru": "Şarj olmuyor sorunu her zaman anakart arızası mı demek?",
+      "cevap": "Hayır. Çoğu zaman neden kablo, kirli soket ya da yaşlı bataryadır. Anakart üzerindeki U2 çipi ancak bunlar elendikten sonra değerlendirilir."
     },
     {
-      "soru": "Sadece temizlik mi yeterli olur genelde?",
-      "cevap": "Evet, vakaların büyük bölümü ultrasonik soket temizliğiyle çözülür."
+      "soru": "'Bu aksesuar desteklenmiyor' uyarısı neden çıkıyor?",
+      "cevap": "U2/Tristar çipi kabloyu doğrulayamadığında bu uyarı görülür. Bazen soket teması, bazen de çip arızası kaynaklıdır."
     },
     {
-      "soru": "Entegre değişimi ne kadar sürer?",
-      "cevap": "Mikro lehimleme gerektirdiğinden 1-2 saat civarındadır."
+      "soru": "Önce en ucuz ihtimal mi deneniyor?",
+      "cevap": "Evet. Kablo, soket ve batarya sırayla elenir; böylece gereksiz ve pahalı işlemlerden kaçınılır."
     },
     {
-      "soru": "Fiyat neye göre değişir?",
-      "cevap": "Hangi aşamada çözüldüğüne (temizlik, soket, entegre) göre belirlenir."
+      "soru": "Ne kadar sürer?",
+      "cevap": "Soket temizliği kısa sürer; batarya 30-45 dakika, U2 onarımı 60-120 dakika alabilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

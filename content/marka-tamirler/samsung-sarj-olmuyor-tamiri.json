@@ -5,28 +5,28 @@
   "tamirKey": "sarj-olmuyor-tamiri",
   "tamirLabel": "Şarj Olmuyor Tamiri",
   "title": "Samsung Şarj Olmuyor Tamiri",
-  "metaDescription": "Trabzon'da Samsung şarj olmuyor tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung Şarj Olmuyor Tamiri\n\nBu şikayetle gelen her cihaz aynı arızadan muzdarip değil — dört ayrı ihtimal var ve Vip İletişim Trabzon bunları sırayla eler: kablo, soket, şarj entegresi, batarya. Doğru sıralama gereksiz parça değişimini önler.\n\nÖnce en ucuz ihtimalden başlanır: farklı bir orijinal kablo ve Super Fast Charging adaptörüyle denenir. Sonuç değişmiyorsa USB-C soketi büyüteçle incelenir — cep içi tüy ve toz birikimi şarj olmama vakalarının önemli bir kısmının tek sebebidir. \"Şarj yuvasında nem tespit edildi\" uyarısı kuru havada bile çıkıyorsa bu genelde fiziksel nemden değil, sensör kontağının kirlenmesinden kaynaklanır.\n\nBunların hiçbiri sonuç vermezse şarj entegresine (PMIC) bakılır; bu noktada artık mikroskop altında çalışma gerekir. En nadir ama en ciddi ihtimal ise bataryanın elektriksel olarak tamamen ölmüş olmasıdır — bu durumda batarya değişimi tek çözümdür.\n\nÇoğu vaka ilk iki adımda (kablo veya soket temizliği) çözülür ve aynı gün biter. Entegre değişimi gerekiyorsa süreç birkaç saate uzar. Ücretsiz ön incelemede hangi aşamada olduğunuz netleşir; onay vermeden ücret alınmaz.",
+  "metaDescription": "Trabzon Samsung Galaxy şarj olmuyor tamiri: alt kart USB-C soketi, batarya ve güç çipi (PMIC) elemesi. Ekonomik modüler çözüm — Vip İletişim.",
+  "icerik": "## Samsung Şarj Olmuyor Tamiri\n\nSamsung şarj olmuyor tamiri; cihaz kabloya takılı olduğu halde şarj almadığında ya da çok yavaş şarj olduğunda gerekir. Galaxy modellerinde bir avantaj vardır: şarj soketi çoğu zaman anakartta değil, ayrı bir alt kart üzerindedir. Bu yüzden en sık neden olan soket arızası, ekonomik bir modüler değişimle çözülür. Yine de kablo, batarya ve güç yönetim çipi (PMIC) de olası nedenler arasındadır.\n\n### Şarj Olmama Sorununun Belirtileri ve Nedenleri\n\nBelirtiler, sorunun kaynağını büyük ölçüde ele verir. Ayrıca her belirti farklı bir bileşeni işaret eder. Bu yüzden şikayetin ne zaman başladığını bilmek, teşhisi belirgin biçimde hızlandırır.\n\n- **Kabloyu takınca hiç tepki yok:** alt karttaki USB-C soketi ya da fleks arızalı olabilir.\n- **\"Yavaş şarj oluyor\" bildirimi:** kablo, adaptör ya da soket teması zayıftır.\n- **Batarya şişmiş veya çabuk bitiyor:** batarya ömrünü tamamlamıştır.\n- **Isınıyor ama dolmuyor:** güç yönetim çipi kaynaklı bir arıza olabilir.\n\n### Samsung Şarj Olmuyor Tamiri Nasıl Yapılır?\n\nSamsung şarj olmuyor tamiri, en olası ve en ekonomik nedenden başlar. İlk olarak kablo ve adaptör test edilir. Ardından alt karttaki USB-C soketi incelenir; kirlenme, oksit ya da fiziksel hasar aranır. Soket arızalıysa modüler alt kart değiştirilir, bu da hızlı ve uygun maliyetli bir işlemdir. Sonra batarya sağlığı ölçülür. Tüm bunlar sağlamsa anakart güç kaynağına bağlanır ve akım davranışı okunarak PMIC değerlendirilir. Böylece hem hızlı şarj hem de kablosuz şarj yolları ayrı ayrı doğrulanmış olur. Son olarak şarj ve veri aktarımı test edilir.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece basit bir soket arızası, gereksiz yere anakart işlemine dönüşmez. Kısacası doğru sıra, size hem zaman hem de maliyet kazandırır. [Ücretsiz ön inceleme](/iletisim) için bize ulaşabilirsiniz.\n\n### Samsung Şarj Olmuyor Tamiri Ne Kadar Sürer?\n\nİşlem, arızanın kaynağına göre değişir. Modüler alt kart değişimi çoğu zaman 30-45 dakikada biter; batarya değişimi benzer sürede tamamlanır. PMIC onarımı ise daha uzun sürebilir. Ayrıca sorun tek bir nedene bağlıysa maliyet düşük kalır. Böylece cihazınıza yalnızca gereken işlem uygulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Evde önce ne deneyebilirim?",
-      "cevap": "Farklı kablo/adaptör deneyin, soketi ışığa tutup tüy-toz olup olmadığına bakın. Çoğu vaka bu aşamada anlaşılır."
+      "soru": "Şarj soketi için anakart açılıyor mu?",
+      "cevap": "Çoğu Galaxy modelinde soket ayrı bir alt karttadır. Anakarta dokunmadan modüler değişir; bu yüzden hem hızlı hem ekonomiktir."
     },
     {
-      "soru": "Nem uyarısı yanıltıcı olabilir mi?",
-      "cevap": "Evet, sensör kontağı kirlendiğinde gerçek nem olmasa da uyarı çıkabilir; servis bankosunda gerçek nedeni tespit ederiz."
+      "soru": "Yavaş şarj bildirimi neden geliyor?",
+      "cevap": "Genellikle kablo, adaptör ya da soket temasındaki zayıflıktan kaynaklanır. Ön incelemede kaynağı netleşir."
     },
     {
-      "soru": "Entegre değişimi ne kadar sürer?",
-      "cevap": "Mikro lehimleme gerektirdiğinden 1-2 saat civarındadır."
+      "soru": "Batarya şişmesi tehlikeli mi?",
+      "cevap": "Evet, şişmiş batarya risklidir ve zaman kaybetmeden değiştirilmelidir. Şişme, şarj olmama sorununun sık nedenlerindendir."
     },
     {
-      "soru": "Fiyat neye göre değişir?",
-      "cevap": "Hangi aşamada çözüldüğüne (temizlik, soket, entegre) göre belirlenir."
+      "soru": "Ne kadar sürer?",
+      "cevap": "Alt kart ya da batarya değişimi 30-45 dakika; PMIC onarımı daha uzun sürebilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

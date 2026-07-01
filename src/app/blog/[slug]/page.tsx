@@ -42,7 +42,7 @@ export async function generateMetadata({
       url: `https://vipiletisim.com.tr/blog/${slug}`,
       type: "article",
       publishedTime: post.publishedAt,
-      images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.title }],
+      images: [{ url: post.coverImage, width: 1200, height: 630, alt: post.coverImageAlt || post.title }],
     },
   };
 }
@@ -243,7 +243,8 @@ export default async function BlogPostPage({
             <div className="relative mb-8 h-64 w-full overflow-hidden rounded-xl bg-zinc-100 lg:h-80">
               <Image
                 src={post.coverImage}
-                alt={post.title}
+                alt={post.coverImageAlt || post.title}
+                title={post.coverImageAlt || post.title}
                 fill
                 className="object-cover"
                 priority
@@ -336,7 +337,7 @@ export default async function BlogPostPage({
                       <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-lg bg-zinc-100">
                         <Image
                           src={p.coverImage}
-                          alt={p.title}
+                          alt={p.coverImageAlt || p.title}
                           fill
                           className="object-cover transition group-hover:scale-105"
                           sizes="80px"

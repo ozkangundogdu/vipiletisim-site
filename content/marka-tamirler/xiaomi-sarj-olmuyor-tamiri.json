@@ -5,28 +5,28 @@
   "tamirKey": "sarj-olmuyor-tamiri",
   "tamirLabel": "Şarj Olmuyor Tamiri",
   "title": "Xiaomi Şarj Olmuyor Tamiri",
-  "metaDescription": "Trabzon'da Xiaomi şarj olmuyor tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi Şarj Olmuyor Tamiri\n\nBu şikayetle gelen her cihaz aynı arızadan muzdarip değil — dört ayrı ihtimal var ve Vip İletişim Trabzon bunları sırayla eler: kablo, soket, şarj entegresi, batarya. Doğru sıralama gereksiz parça değişimini önler.\n\nÖnce en ucuz ihtimalden başlanır: farklı bir orijinal Xiaomi kablo ve HyperCharge adaptörüyle denenir. Sonuç değişmiyorsa USB-C soketi büyüteçle incelenir — cep içi tüy ve toz birikimi şarj olmama vakalarının önemli bir kısmının tek sebebidir. Cihazın hangi watt değerinde tepki verdiği ölçülerek entegrenin tam kapasitede çalışıp çalışmadığı anlaşılır.\n\nBunların hiçbiri sonuç vermezse şarj entegresine (PMIC) bakılır; bu noktada artık mikroskop altında çalışma gerekir. En nadir ama en ciddi ihtimal ise bataryanın elektriksel olarak tamamen ölmüş olmasıdır — bu durumda batarya değişimi tek çözümdür.\n\nÇoğu vaka ilk iki adımda (kablo veya soket temizliği) çözülür ve aynı gün biter. Entegre değişimi gerekiyorsa süreç birkaç saate uzar. Ücretsiz ön incelemede hangi aşamada olduğunuz netleşir; geniş parça tedarik ağı sayesinde maliyetler genelde ekonomiktir.",
+  "metaDescription": "Trabzon Xiaomi ve Redmi şarj olmuyor tamiri: şarj soketi, batarya ve şarj IC elemesi. 'Birkaç saniye şarj olup kesiliyor' arızasına çözüm — Vip İletişim.",
+  "icerik": "## Xiaomi Şarj Olmuyor Tamiri\n\nXiaomi şarj olmuyor tamiri; cihaz kabloya takılıyken hiç şarj almadığında ya da şarjı bir türlü tutmadığında gerekir. Xiaomi ve Redmi modellerinde en sık nedenler şunlardır: şarj soketi, yaşlanan batarya ve anakart üzerindeki şarj IC. Özellikle \"birkaç saniye şarj olup kesiliyor\" şikayeti, bu markalarda tanıdık bir sinyaldir. Dolayısıyla doğru sonuç, bu nedenleri sırayla elemekten geçer.\n\n### Şarj Olmama Sorununun Belirtileri ve Nedenleri\n\nBelirtiler, sorunun kaynağı hakkında güçlü ipuçları verir. Ayrıca her belirti farklı bir bileşene işaret eder. Bu yüzden erken fark edilen bir şarj sorunu, çoğu zaman daha kolay ve ucuz çözülür.\n\n- **Kabloyu takınca tepki yok:** şarj soketi ya da fleks arızalı olabilir.\n- **Birkaç saniye şarj olup kesiliyor:** çoğu zaman şarj IC akımı sabit tutamıyordur.\n- **Şarj çok yavaş, yüzde zor artıyor:** batarya yorulmuş olabilir.\n- **Isınıyor ama dolmuyor:** güç çipi kararsız çalışıyordur.\n\n### Xiaomi Şarj Olmuyor Tamiri Nasıl Yapılır?\n\nXiaomi şarj olmuyor tamiri, en ucuz ihtimalden başlayan bir eleme ile ilerler. İlk olarak kablo ve adaptör denenir. Ardından şarj soketi incelenir ve gerekiyorsa değiştirilir; toz ve oksit birikimi bu markalarda sık görülür. Sonra batarya sağlığı ölçülür, çünkü yaşlanan batarya şarjı tutamaz. Bunlar sağlamsa anakart güç kaynağına bağlanır ve akım davranışı izlenir; saniyeler içinde düşen akım şarj IC arızasını doğrular. Ayrıca HyperCharge destekli modellerde beklenen yüksek watt değerinin gerçekten geldiği ölçülerek doğrulanır. Son olarak farklı watt değerleriyle şarj test edilir.\n\nVip İletişim Trabzon, bu eleme sürecini ücretsiz ön inceleme aşamasında yürütür. Böylece basit bir soket ya da batarya sorunu, pahalı bir işleme karışmadan çözülür. Kısacası doğru sıra, gereksiz masrafı baştan engeller. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### Xiaomi Şarj Olmuyor Tamiri Ne Kadar Sürer?\n\nİşlem, arızanın kaynağına göre değişir. Soket ya da batarya değişimi çoğu zaman 30-45 dakikada biter; şarj IC onarımı daha uzun sürebilir. Ayrıca geniş parça tedarik ağı sayesinde Xiaomi soket ve bataryaları uygun maliyetlidir. Bu sayede yüksek watt'lı HyperCharge şarjı, işlem sonrası yeniden sorunsuz çalışır hale gelir. Böylece cihazınıza yalnızca gereken işlem uygulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Evde önce ne deneyebilirim?",
-      "cevap": "Farklı kablo/adaptör deneyin, soketi ışığa tutup tüy-toz olup olmadığına bakın. Çoğu vaka bu aşamada anlaşılır."
+      "soru": "Birkaç saniye şarj olup kesiliyor, nedeni ne?",
+      "cevap": "Genellikle şarj IC akımı sabit tutamıyordur. Bu, Xiaomi ve Redmi modellerinde sık görülen bir belirtidir ve entegre onarımıyla çözülür."
     },
     {
-      "soru": "Sadece temizlik mi yeterli olur genelde?",
-      "cevap": "Evet, vakaların büyük bölümü ultrasonik soket temizliğiyle çözülür."
+      "soru": "Şarj olmuyor sorunu her zaman çip arızası mı?",
+      "cevap": "Hayır. Çoğu zaman neden soket, kablo ya da yaşlı bataryadır. Şarj IC ancak bunlar elendikten sonra değerlendirilir."
     },
     {
-      "soru": "Entegre değişimi ne kadar sürer?",
-      "cevap": "Mikro lehimleme gerektirdiğinden 1-2 saat civarındadır."
+      "soru": "Xiaomi bataryası pahalı mı?",
+      "cevap": "Hayır. Geniş parça tedarik ağı sayesinde Xiaomi ve Redmi bataryaları uygun maliyetle temin edilir."
     },
     {
-      "soru": "Fiyat neye göre değişir?",
-      "cevap": "Hangi aşamada çözüldüğüne (temizlik, soket, entegre) göre belirlenir."
+      "soru": "Ne kadar sürer?",
+      "cevap": "Soket ya da batarya değişimi 30-45 dakika; şarj IC onarımı daha uzun sürebilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

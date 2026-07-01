@@ -5,28 +5,28 @@
   "tamirKey": "mikrofon-tamiri",
   "tamirLabel": "Mikrofon Tamiri",
   "title": "Xiaomi Mikrofon Tamiri",
-  "metaDescription": "Trabzon'da Xiaomi mikrofon tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi Mikrofon Tamiri\n\nXiaomi iki mikrofonla çalışır: ana mikrofon (konuşma) ve gürültü önleyici mikrofon (arka plan sesini filtreler). Şikayet hangi senaryoda ortaya çıkıyorsa, sorunlu mikrofon da ona göre değişir.\n\nKarşı taraf görüşmede sizi duymuyorsa ana mikrofon şüphelidir. Gürültülü ortamda sesiniz tamamen kayboluyorsa, muhtemelen gürültü önleyici mikrofon arızalı ve cihaz yanlışlıkla ortam gürültüsünü baskın algılıyor. Google Asistan komutlarını algılamıyorsa da genelde aynı mikrofonlar sorumludur.\n\nVip İletişim Trabzon her iki mikrofonu da ayrı ayrı test eder — bu adım atlanırsa sağlam bir mikrofon gereksiz yere değiştirilebilir. Toz birikimiyse ultrasonik temizlik genelde yeterlidir; fiziksel hasar varsa yalnızca o mikrofon modülü değiştirilir.\n\nTest aşamasında sesli asistanın komutları algılaması, ses kaydı netliği ve görüşme kalitesi ayrı ayrı doğrulanır. Geniş parça tedarik ağı sayesinde fiyatlar genelde ekonomiktir.",
+  "metaDescription": "Trabzon Xiaomi ve Redmi mikrofon tamiri: alt USB-C flex mikrofonu ve işlemci kaynaklı çoklu arıza ayrımı. Ekonomik parça, aynı gün teslim — Vip İletişim.",
+  "icerik": "## Xiaomi Mikrofon Tamiri\n\nXiaomi mikrofon tamiri, doğru teşhisle başladığında hem hızlı hem ekonomik ilerler. Çünkü Xiaomi ve Redmi modellerinde ses yolu, yalnızca mikrofona değil aynı zamanda anakart üzerindeki ses codec'ine ve işlemciye bağlıdır. Bu yüzden her sessizlik doğrudan mikrofon arızası anlamına gelmez. Ana mikrofon genellikle alt USB-C flex kartında, gürültü önleyici mikrofon ise cihazın üst kısmında yer alır.\n\n### Mikrofon Arızasının Belirtileri ve Nedenleri\n\nBelirtiyi doğru okumak, tamirin ilk ve en önemli adımıdır. Ayrıca bu ayrım, gereksiz parça değişimini önler.\n\n- **Karşı taraf sizi duymuyor:** genellikle alt USB-C flex kartındaki ana mikrofon sorumludur. Bu kart ucuzdur ve çoğu Redmi Note modelinde tek başına değişir.\n- **Ses ve WiFi birlikte bozuk:** bu tablo önemli bir ipucudur. Çünkü Xiaomi'de iki arıza aynı anda çıkıyorsa, sorun genellikle mikrofonda değil işlemci (Snapdragon) lehim bağlantısındadır.\n- **Google Asistan veya çağrı kaydı çalışmıyor:** çoğu zaman HyperOS/MIUI izinleri ya da ses codec beslemesi kaynaklıdır. Bu yüzden önce yazılım tarafı elenir.\n- **Sıvı teması sonrası:** alt flex kartında korozyon oluşur. Ancak erken müdahalede temizlik çoğu zaman yeterli olur.\n\n### Xiaomi Mikrofon Tamiri Nasıl Yapılır?\n\nXiaomi mikrofon tamiri, arızanın kaynağını ayırmakla başlar. İlk olarak sorunun tek bir mikrofonda mı yoksa işlemciye bağlı çoklu bir arıza mı olduğu belirlenir. Ardından basit durumlarda ekonomik alt flex kart değişimi uygulanır. İşlemci kaynaklı arızada ise lehim (reflow) işlemi yapılır. Son olarak ses kaydı, görüşme netliği ve asistan algısı tek tek test edilir.\n\nVip İletişim Trabzon, geniş parça tedarik ağı sayesinde Xiaomi mikrofon parçalarını uygun maliyetle temin eder. Dolayısıyla işlem çoğu zaman ekonomik biçimde tamamlanır. Kısacası doğru teşhis, Xiaomi mikrofon tamiri sürecinin anahtarıdır. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### Xiaomi Mikrofon Tamiri Ne Kadar Sürer?\n\nXiaomi mikrofon tamiri, alt flex kart değişiminde çoğu zaman 30 ila 45 dakikada tamamlanır. Örneğin modüler flex kart, kısa sürede takılıp test edilebilir. Buna karşılık işlemci kaynaklı lehim (reflow) işlemleri daha fazla zaman ister. Ayrıca her işlemin ardından cihaz baştan sona test edilir. Böylece ses ve bağlantı performansı teslimden önce doğrulanır. Son olarak yapılan işçiliğe garanti verilir; dolayısıyla kalıcı bir sonuç hedeflenir.",
   "sss": [
     {
-      "soru": "İki mikrofon da mı değişiyor?",
-      "cevap": "Hayır, yalnızca arızalı olan değişir; diğeri test edilip sağlam olduğu doğrulandıktan sonra dokunulmaz."
+      "soru": "Sesim gidince WiFi de bozuldu, ikisi bağlantılı mı?",
+      "cevap": "Xiaomi'de ses ve WiFi birlikte bozuluyorsa neredeyse her zaman işlemci (Snapdragon) lehim sorunudur. Bu durumda tek tek parça değil, işlemci reflow işlemi gerekir."
     },
     {
-      "soru": "Hangi senaryoda hangi mikrofon sorumlu?",
-      "cevap": "Görüşmede sorun varsa ana mikrofon, gürültülü ortamda sorun varsa gürültü önleyici mikrofon kontrol edilir."
+      "soru": "Redmi Note mikrofonu pahalı mı?",
+      "cevap": "Hayır. Çoğu Redmi Note modelinde ana mikrofon, ucuz ve modüler olan alt USB-C flex kartındadır; tek başına ekonomik biçimde değişir."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 30-60 dakika."
+      "soru": "Önce yazılım mı kontrol ediliyor?",
+      "cevap": "Evet. HyperOS/MIUI mikrofon izinleri ve güncelleme kaynaklı sorunlar donanıma geçmeden elenir; gereksiz parça değişiminin önüne geçer."
     },
     {
-      "soru": "Fiyat neye göre?",
-      "cevap": "Temizlik mi yoksa modül değişimi mi gerektiğine göre belirlenir."
+      "soru": "Sıvı değdi, sesim gitti; parça şart mı?",
+      "cevap": "Genelde hayır. Alt flex kartındaki korozyon temizlenince ses geri gelir; parça yalnızca kalıcı hasar varsa değişir."
     },
     {
-      "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "soru": "Ne kadar sürer ve garanti var mı?",
+      "cevap": "Alt flex değişimi çoğunlukla 30-45 dakika sürer; işlemci lehimi biraz daha uzundur. İşçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

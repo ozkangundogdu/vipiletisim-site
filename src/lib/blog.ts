@@ -9,6 +9,7 @@ export type BlogPost = {
   publishedAt: string;
   category: string;
   coverImage: string;
+  coverImageAlt?: string;
   keywords: string[];
   readingTime: number;
   content: string;
@@ -52,6 +53,7 @@ function toBlogPost(raw: RawPost): BlogPost {
     publishedAt: data.publishedAt as string,
     category: data.category as string,
     coverImage: data.coverImage as string,
+    coverImageAlt: (data.coverImageAlt as string | undefined) ?? undefined,
     keywords: (data.keywords as string[]) ?? [],
     readingTime: Math.max(1, Math.ceil(content.split(/\s+/).length / 200)),
     content,

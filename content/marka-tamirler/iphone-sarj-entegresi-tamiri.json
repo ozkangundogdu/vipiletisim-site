@@ -5,32 +5,32 @@
   "tamirKey": "sarj-entegresi-tamiri",
   "tamirLabel": "Şarj Entegresi Tamiri",
   "title": "iPhone Şarj Entegresi Tamiri",
-  "metaDescription": "Trabzon'da iPhone şarj entegresi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## iPhone Şarj Entegresi Tamiri\n\nŞarj soketi temizse, kablo sağlamsa ama cihaz hâlâ şarj olmuyorsa veya çok yavaş şarj oluyorsa, sorun genelde anakart üzerindeki Tristar veya Hydra çipindedir — Apple'ın akım denetimini ve hızlı şarj iletişimini yöneten entegresi. Bu, soket değişiminden farklı, mikroskop altında yapılan bir chip-level işlemdir.\n\nBelirti genelde kademeli ilerler: önce hızlı şarj kaybolur, telefon yalnızca standart hızda şarj olmaya başlar. Sonra MagSafe de etkilenebilir. Son aşamada cihaz hiçbir şekilde akım almaz hale gelir. Erken yakalanan vakalarda yalnızca hızlı şarj kaybı varken, geciken vakalarda tam şarj kesilmesi görülür.\n\nVip İletişim Trabzon önce diğer ihtimalleri eler — kablo, soket, batarya sağlıklı mı kontrol edilir. Hepsi sağlamsa entegre üzerinde ısı kamerasıyla anormal sıcaklık taraması yapılır; bu, hangi noktanın arızalı olduğunu gösterir. Tespit edilen çip, komşu bileşenlere zarar vermeden mikroskop altında değiştirilir.\n\nİşlem sonrası kablolu şarj, MagSafe ve veri aktarımı ayrı ayrı test edilir. [Ücretsiz ön inceleme](/iletisim) ile anakart değişiminden çok daha ekonomik bir çözüm sunulur.",
+  "metaDescription": "Trabzon iPhone şarj entegresi tamiri: U2/Tristar çipi, akım kaçağı ve hızlı şarj arızası tespiti. Anakart değişimine göre ekonomik çözüm — Vip İletişim.",
+  "icerik": "## iPhone Şarj Entegresi Tamiri\n\niPhone şarj entegresi tamiri, şarj soketi ve kablo sağlam olduğu halde cihaz şarj almadığında ya da yalnızca yavaş şarj olduğunda gündeme gelir. Bu tabloda sorun çoğu zaman soket değil, anakart üzerindeki U2 (Tristar) veya Tigris entegresidir. Apple'ın akım denetimini ve hızlı şarj iletişimini bu çip yönetir. Üstelik U2, aynı zamanda USB ve veri hattından da sorumludur. Dolayısıyla arıza buradaysa, hem şarj hem de bilgisayara bağlanma sorunu birlikte görülebilir.\n\n### Şarj Arızasının Belirtileri ve Nedenleri\n\nBelirtiler çoğu zaman kademeli ilerler. Ayrıca her aşama farklı bir ipucu verir. Bu yüzden şikayetin ne zaman başladığını bilmek, doğru çipe daha hızlı ulaşmayı sağlar.\n\n- **Önce hızlı şarj kaybolur:** telefon standart hızda şarj olmaya başlar; bu genelde ilk uyarıdır.\n- **MagSafe zayıflıyor veya kesiliyor:** kablosuz şarj hattı da aynı entegreye bağlıdır.\n- **Bilgisayar cihazı görmüyor:** U2 bozulunca iTunes ya da Finder telefonu tanımayabilir.\n- **Elma logosunda takılıp yeniden başlıyor:** ileri vakalarda hasarlı çip, cihazı açılışta kilitler.\n\n### iPhone Şarj Entegresi Tamiri Nasıl Yapılır?\n\niPhone şarj entegresi tamiri, dikkatli bir eleme süreciyle başlar. İlk olarak kablo, soket ve batarya sağlığı kontrol edilir; böylece basit nedenler dışlanır. Ardından cihaz bilgisayara bağlanır ve iTunes'un onu görüp görmediğine bakılır, çünkü bu, U2'nin durumu hakkında güçlü bir ipucudur. Sonra anakarta güç kaynağı bağlanır ve standby'daki kaçak akım ölçülür; anormal bir değer kısa devreli çipi işaret eder. Son olarak arızalı entegre mikroskop altında sökülüp yenisi lehimlenir; kablolu şarj, MagSafe ve veri aktarımı tek tek doğrulanır.\n\nVip İletişim Trabzon, tüm bu adımları ücretsiz ön inceleme aşamasında uygular. Dolayısıyla arızanın gerçekten U2 kaynaklı olup olmadığı, işleme başlanmadan netleşir. Böylece hem gereksiz parça değişimi hem de fazladan maliyet baştan önlenir.\n\n### iPhone Şarj Entegresi Tamiri Ne Kadar Sürer?\n\nBu işlem, arızanın karmaşıklığına göre çoğu zaman 60 ila 120 dakika arasında tamamlanır. Basit vakalarda süre kısalırken, ek hasar varsa biraz uzayabilir. Ayrıca anakartın tamamı değil yalnızca arızalı çip değiştiği için maliyet belirgin biçimde düşer. Böylece hem ekonomik hem kalıcı bir çözüm elde edilir. Son olarak yapılan işçiliğe garanti verilir. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.",
   "sss": [
     {
-      "soru": "Bu, soket temizliğinden farklı mı?",
-      "cevap": "Evet, soket fiziksel bir parça değişimidir; şarj entegresi tamiri anakart üzerinde mikro lehimleme gerektiren bir işlemdir."
+      "soru": "Şarj entegresi (U2) ile şarj soketi aynı şey mi?",
+      "cevap": "Hayır. Soket fiziksel bir parça değişimidir; U2/Tristar ise anakart üzerinde mikro-lehim gerektiren bir çip işlemidir."
     },
     {
-      "soru": "Hızlı şarj kaybı her zaman bu sorundan mı kaynaklanır?",
-      "cevap": "Hayır, batarya yaşlanması da hızlı şarjı yavaşlatabilir; ön incelemede ayırt edilir."
+      "soru": "Şarj çipi bozulunca bilgisayar neden telefonu görmüyor?",
+      "cevap": "U2 aynı zamanda USB ve veri hattını yönetir. Hasarlıysa iTunes ya da Finder cihazı tanımayabilir; bu yüzden şarj sorunu bazen veri sorunuyla birlikte gelir."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 60-120 dakika arası."
+      "soru": "İşlem sırasında verilerim gider mi?",
+      "cevap": "Hayır. Çip değişimi depolama ünitesine dokunmaz; fotoğraf ve verileriniz korunur."
     },
     {
       "soru": "Anakart değişiminden farkı ne?",
-      "cevap": "Yalnızca arızalı çip değişir, anakartın tamamı değil; bu çok daha ekonomiktir."
+      "cevap": "Yalnızca arızalı çip değişir, anakartın tamamı değil. Bu yüzden çok daha ekonomik bir çözümdür."
     },
     {
-      "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "soru": "Ne kadar sürer ve garanti var mı?",
+      "cevap": "Genellikle 60-120 dakika sürer; yapılan lehim işçiliğine garanti veriyoruz."
     },
     {
       "soru": "Riskli bir işlem mi?",
-      "cevap": "Deneyimli teknisyen ve doğru ekipmanla düşük risklidir."
+      "cevap": "Deneyimli teknisyen, mikroskop ve doğru ekipmanla düşük risklidir."
     }
   ],
   "desteklenenModeller": [

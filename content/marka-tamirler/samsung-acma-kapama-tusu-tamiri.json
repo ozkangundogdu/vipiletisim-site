@@ -5,32 +5,32 @@
   "tamirKey": "acma-kapama-tusu-tamiri",
   "tamirLabel": "Açma/Kapama Tuşu Tamiri",
   "title": "Samsung Açma/Kapama Tuşu Tamiri",
-  "metaDescription": "Trabzon'da Samsung açma/kapama tuşu tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung Açma/Kapama Tuşu Tamiri\n\nYan tuş yalnızca ekranı uyandırmaz — eski modellerde Bixby kısayolu, yeni modellerde ekran görüntüsü alma kombinasyonunun da parçasıdır. Bu kadar çok işlevi olan bir düğmenin arızalanması, cihazı günlük kullanımda ciddi şekilde zorlaştırır.\n\nMekanik yorulma en yaygın nedendir: yıllarca binlerce kez basılan tuş zamanla tıklama hissini kaybeder. Daha endişe verici olan, tuşun sürekli basılı kalması durumudur — bu, cihazın sürekli kapanıp açılmasına ve pil ömrünün hızla tükenmesine yol açar.\n\nVip İletişim Trabzon önce tuşun elektriksel kontağını test eder; bazen sorun mekanik değil, kontak temasındaki kirlenmedir ve temizlikle çözülür. Fiziksel aşınma varsa tuş modülünün tamamı, kasa hassas şekilde açılarak değiştirilir.\n\nTeslim öncesi ekran uyandırma ve ekran görüntüsü kombinasyonu ayrı ayrı test edilir. [Ücretsiz ön inceleme](/iletisim) sonrası net süre ve fiyat verilir; çoğu vaka 30-60 dakikada biter.",
+  "metaDescription": "Trabzon Samsung Galaxy açma/kapama tuşu tamiri: yan güç tuşu flexi, ses tuşu ortak hattı ve sıkışan tuş onarımı. Aynı gün teslim, garanti — Vip İletişim.",
+  "icerik": "## Samsung Açma/Kapama Tuşu Tamiri\n\nSamsung açma/kapama tuşu tamiri; yan güç tuşu bastığınızda çalışmadığında, sıkıştığında ya da kendiliğinden tetiklendiğinde gerekir. Galaxy modellerinde bu tuş, ses tuşlarıyla aynı yan fleks hattı üzerinde yer alır. Bazı modellerde ise ayrı bir yan tuş kartına bağlıdır. Dolayısıyla güç tuşu arızası çoğu zaman ses tuşlarını da birlikte etkiler. Bu yüzden yan tuş şikayetinde güç ve ses tuşları her zaman birlikte değerlendirilir; böylece ikinci bir arıza atlanmaz.\n\n### Açma/Kapama Tuşu Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun fleks hattında mı yoksa tuş mekanizmasında mı olduğunu ele verir. Ayrıca her belirti farklı bir nedene işaret eder.\n\n- **Tuş tepki vermiyor:** yan fleks kopmuş ya da konnektöründen ayrılmıştır.\n- **Tuş sıkışıyor veya basılı kalıyor:** kasaya oturan mekanizma zorlanmış olabilir.\n- **Ses tuşları da çalışmıyor:** aynı fleks hattı zarar görmüştür.\n- **Sıvı temasından sonra takıldı:** fleks konnektöründe korozyon oluşmuştur.\n\n### Samsung Açma/Kapama Tuşu Tamiri Nasıl Yapılır?\n\nSamsung açma/kapama tuşu tamiri, önce basit nedenlerin elenmesiyle başlar. Örneğin kılıf ya da kasadaki sıkışma tuşu bloke ediyor olabilir; bu ihtimal ilk adımda kontrol edilir. Ardından cihaz açılır ve yan fleks hattı incelenir. Sorun konnektörde ise yeniden oturtma, fleks hasarlıysa değişim uygulanır. Sonra güç ve ses tuşları birlikte test edilir. Son olarak açma, kapama ve ekran kilidi tek tek doğrulanır.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece arızanın basit bir sıkışma mı yoksa fleks hasarı mı olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, hem süreyi hem de maliyeti azaltır. [Ücretsiz ön inceleme](/iletisim) için bize ulaşabilirsiniz.\n\n### Samsung Açma/Kapama Tuşu Tamiri Ne Kadar Sürer?\n\nİşlem, çoğu zaman 45 ila 90 dakika arasında tamamlanır. Konnektör kaynaklı basit arızalar daha kısa sürerken, fleks değişimi biraz daha zaman alabilir. Ayrıca her işlem sonrası cihaz baştan sona test edilir. Böylece hem güç hem de ses tuşlarının sorunsuz çalıştığından emin oluruz. Ayrıca teslim öncesinde tuşlar tek tek denenerek sıkışmanın kalmadığı doğrulanır. Böylece cihazınızı, güç ve ses tuşları tam çalışır durumda teslim alırsınız. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Tuş çalışmıyorken cihazı nasıl açarım?",
-      "cevap": "Erişilebilirlik menüsündeki Yardımcı Menü özelliğini etkinleştirerek ekrandan sanal güç tuşu kullanabilirsiniz; bu geçici bir çözümdür."
+      "soru": "Güç tuşu bozulunca ses tuşları neden etkileniyor?",
+      "cevap": "Çoğu Galaxy modelinde güç ve ses tuşları aynı yan fleks hattındadır. Bu hat zarar görünce her iki tuş birlikte etkilenebilir."
     },
     {
-      "soru": "Sürekli basılı kalan tuş tehlikeli mi?",
-      "cevap": "Evet, pil ömrünü hızla tüketir ve cihazı sürekli yeniden başlatma döngüsüne sokar; geciktirmeyin."
+      "soru": "Tuş sıkışması her zaman fleks arızası mı demek?",
+      "cevap": "Hayır. Bazen kılıf ya da kasadaki mekanik sıkışma tuşu bloke eder; bu, fleks değişimi gerektirmeden çözülebilir."
+    },
+    {
+      "soru": "Bixby tuşu ayrıca sorun çıkarır mı?",
+      "cevap": "Bazı modellerde güç tuşu Bixby işlevini de taşır; fleks yenilendiğinde bu işlev de birlikte düzelir."
     },
     {
       "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 30-60 dakika."
-    },
-    {
-      "soru": "Temizlik mi değişim mi gerekiyor, nasıl anlaşılır?",
-      "cevap": "Ön incelemede elektriksel kontak test edilir; bazen yalnızca temizlik yeterlidir."
+      "cevap": "Genellikle 45-90 dakika; fleks değişimi gerekiyorsa biraz uzayabilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
-      "soru": "Orijinal Samsung parçası mı kullanılıyor?",
-      "cevap": "Talebinize göre orijinal veya sertifikalı OEM kalitesinde tuş modülü kullanılabilir."
+      "soru": "Kargoyla gönderebilir miyim?",
+      "cevap": "Evet, Trabzon dışından kargo kabul ediyoruz."
     }
   ],
   "desteklenenModeller": [

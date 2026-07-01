@@ -7,6 +7,8 @@ import { services } from "@/data/services";
 import { cities } from "@/data/cities";
 import { getAllPosts } from "@/lib/blog";
 import { getAllMarkaTamirler } from "@/lib/marka-tamir";
+import { getVideos } from "@/lib/videos";
+import { youtubeThumbnail, instagramEmbedUrl } from "@/lib/video-utils";
 
 const BASE = "https://vipiletisim.com.tr";
 
@@ -63,12 +65,74 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  const blogPosts: MetadataRoute.Sitemap = posts.map((p) => ({
-    url: `${BASE}/blog/${p.slug}`,
-    lastModified: p.publishedAt,
-    changeFrequency: "monthly",
-    priority: 0.7,
-  }));
+  const blogPosts: MetadataRoute.Sitemap = posts.map((p) => {
+    const entry: MetadataRoute.Sitemap[number] = {
+      url: `${BASE}/blog/${p.slug}`,
+      lastModified: p.publishedAt,
+      changeFrequency: "monthly",
+      priority: 0.7,
+    };
+    // Kapak görselini görsel sitemap'ine (<image:image>) ekle
+    if (p.coverImage) {
+      const imgUrl = p.coverImage.startsWith("http") ? p.coverImage : `${BASE}${p.coverImage}`;
+      entry.images = [imgUrl];
+    }
+    return entry;
+  });
 
-  return [...staticPages, ...markaTamirPages, ...servicePages, ...cityPages, ...blogPosts];
+  // Video detay sayfaları (cep-tamir-videolar/[id]) + video sitemap etiketleri.
+  // getVideos() noStore() kullandığı için yeni video eklenince sitemap anında güncellenir.
+  const videosMtime = fileMtime(path.join(process.cwd(), "content/videos.json"), "2026-06-25");
+  const now = Date.now();
+  const videoPages: MetadataRoute.Sitemap = getVideos()
+    // Yayın tarihi ileri olan (henüz gizli) videoları hariç tut
+    .filter((v) => !v.visibleFrom || new Date(v.visibleFrom).getTime() <= now)
+    .map((v) => {
+      // id "v" + epoch(ms) formatında; yayın tarihini buradan türet
+      const ts = Number(String(v.id).replace(/^v/, ""));
+      const publicationDate =
+        Number.isFinite(ts) && ts > 1_000_000_000_000
+          ? new Date(ts).toISOString()
+          : v.visibleFrom ?? videosMtime;
+      const description = v.description?.trim() || `Trabzon Vip İletişim — ${v.title}`;
+      const thumbnail =
+        v.thumbnail ?? (v.platform === "youtube" ? youtubeThumbnail(v.videoId) : undefined);
+      // player_loc: sorgu parametresiz temiz embed URL (XML'de "&" kaçış sorununu önler)
+      const playerLoc =
+        v.platform === "youtube"
+          ? `https://www.youtube.com/embed/${v.videoId}`
+          : instagramEmbedUrl(v.videoId);
+
+      const entry: MetadataRoute.Sitemap[number] = {
+        url: `${BASE}/cep-tamir-videolar/${v.id}`,
+        lastModified: videosMtime,
+        changeFrequency: "monthly",
+        priority: 0.6,
+      };
+
+      // Geçerli bir thumbnail varsa <video:video> etiketlerini ekle
+      // (YouTube'da her zaman vardır; Instagram için ancak thumbnail tanımlıysa)
+      if (thumbnail) {
+        entry.videos = [
+          {
+            title: v.title,
+            thumbnail_loc: thumbnail,
+            description,
+            player_loc: playerLoc,
+            publication_date: publicationDate,
+            family_friendly: "yes",
+          },
+        ];
+      }
+      return entry;
+    });
+
+  return [
+    ...staticPages,
+    ...markaTamirPages,
+    ...servicePages,
+    ...cityPages,
+    ...blogPosts,
+    ...videoPages,
+  ];
 }

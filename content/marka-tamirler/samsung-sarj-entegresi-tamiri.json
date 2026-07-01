@@ -5,28 +5,28 @@
   "tamirKey": "sarj-entegresi-tamiri",
   "tamirLabel": "Şarj Entegresi Tamiri",
   "title": "Samsung Şarj Entegresi Tamiri",
-  "metaDescription": "Trabzon'da Samsung şarj entegresi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung Şarj Entegresi Tamiri\n\nŞarj soketi temizse, kablo sağlamsa ama cihaz hâlâ şarj olmuyorsa veya çok yavaş şarj oluyorsa, sorun genelde anakart üzerindeki güç yönetim çipinde (PMIC) — akım denetimini ve Super Fast Charging iletişimini yöneten entegrede. Bu, soket değişiminden farklı, mikroskop altında yapılan bir chip-level işlemdir.\n\nBelirti genelde kademeli ilerler: önce Super Fast Charging kaybolur, telefon yalnızca standart hızda şarj olmaya başlar. Sonra Wireless PowerShare de etkilenebilir. Son aşamada cihaz hiçbir şekilde akım almaz hale gelir. Erken yakalanan vakalarda yalnızca hızlı şarj kaybı varken, geciken vakalarda tam şarj kesilmesi görülür.\n\nVip İletişim Trabzon önce diğer ihtimalleri eler — kablo, soket, batarya sağlıklı mı kontrol edilir. Hepsi sağlamsa entegre üzerinde ısı kamerasıyla anormal sıcaklık taraması yapılır; bu, hangi noktanın arızalı olduğunu gösterir. Tespit edilen çip, komşu bileşenlere zarar vermeden mikroskop altında değiştirilir.\n\nİşlem sonrası kablolu ve kablosuz şarj ayrı ayrı test edilir. [Ücretsiz ön inceleme](/iletisim) ile anakart değişiminden çok daha ekonomik bir çözüm sunulur.",
+  "metaDescription": "Trabzon Samsung Galaxy şarj entegresi tamiri: güç yönetim çipi (PMIC), akım kaçağı ve Super Fast Charging arızası tespiti. Ekonomik çözüm — Vip İletişim.",
+  "icerik": "## Samsung Şarj Entegresi Tamiri\n\nSamsung şarj entegresi tamiri, şarj soketi ve kablo sorunsuz olmasına rağmen cihazın şarj almadığı ya da yavaş şarj olduğu durumlarda gerekir. Bu tabloda sorun çoğu zaman anakart üzerindeki güç yönetim çipidir (PMIC). Söz konusu entegre, Super Fast Charging iletişimini ve akım denetimini yürütür. Bununla birlikte PMIC yalnızca şarjı değil, cihazın ana beslemesini de düzenler. Bu yüzden arıza ağırlaştığında telefon tümüyle açılmayabilir.\n\n### Şarj Arızasının Belirtileri ve Nedenleri\n\nBelirtiler genellikle adım adım ağırlaşır. Ayrıca her belirti farklı bir bileşeni işaret eder. Bu yüzden belirtinin şiddeti, arızanın hangi aşamada olduğunu da ortaya koyar.\n\n- **Super Fast Charging kayboluyor:** telefon yalnızca standart hızda şarj olur; bu ilk sinyaldir.\n- **Wireless PowerShare çalışmıyor:** kablosuz ve ters şarj aynı güç hattına bağlıdır.\n- **Cihaz ısınıyor ama şarj artmıyor:** kararsız çip enerjiyi ısıya çevirir.\n- **Telefon açılmıyor, güç kaçağı var:** ileri vakalarda arızalı çip anakartta kaçak oluşturur ve cihaz hiç açılmaz.\n\n### Samsung Şarj Entegresi Tamiri Nasıl Yapılır?\n\nSamsung şarj entegresi tamiri, kademeli bir teşhisle ilerler. İlk olarak kablo, soket ve batarya elenir; böylece basit nedenler saf dışı bırakılır. Ardından anakart güç kaynağına bağlanır ve çekilen akım izlenir. Örneğin sabit ve yüksek bir kaçak akım, kısa devreli PMIC'i doğrudan ele verir. Sonra ısı kamerasıyla anormal ısınan nokta belirlenir; bu, hasarlı bölgeyi net gösterir. Son olarak arızalı çip mikroskop altında sökülüp yenisiyle değiştirilir ve hem kablolu hem kablosuz şarj ayrı ayrı test edilir.\n\nVip İletişim Trabzon, bu ölçümleri ücretsiz ön inceleme aşamasında yapar. Böylece sorunun soketten mi yoksa PMIC'ten mi kaynaklandığı, işleme başlanmadan ortaya çıkar. Kısacası doğru teşhis, hem süreyi hem de maliyeti azaltır.\n\n### Samsung Şarj Entegresi Tamiri Ne Kadar Sürer?\n\nİşlem, arızanın kapsamına göre çoğu zaman 60 ila 120 dakikada tamamlanır. Basit durumlarda süre kısalır, geniş kaçak varsa biraz uzayabilir. Ayrıca anakartın tümü değil yalnızca arızalı çip değiştiği için maliyet belirgin biçimde düşer. Böylece hem cebinizi hem de cihazınızı koruyan bir çözüm ortaya çıkar. Son olarak yapılan işçiliğe garanti verilir. [Ücretsiz ön inceleme](/iletisim) için bize ulaşabilirsiniz.",
   "sss": [
     {
-      "soru": "Bu, soket temizliğinden farklı mı?",
-      "cevap": "Evet, soket fiziksel bir parça değişimidir; şarj entegresi tamiri anakart üzerinde mikro lehimleme gerektiren bir işlemdir."
+      "soru": "Şarj entegresi ile şarj soketi farkı nedir?",
+      "cevap": "Soket, cihazın altındaki fiziksel bir parçadır; şarj entegresi (PMIC) ise anakart üzerinde mikro-lehim gerektiren bir çiptir."
     },
     {
-      "soru": "Hızlı şarj kaybı her zaman bu sorundan mı kaynaklanır?",
-      "cevap": "Hayır, batarya yaşlanması da hızlı şarjı yavaşlatabilir; ön incelemede ayırt edilir."
+      "soru": "Cihaz hiç açılmıyor, yine de şarj çipi mi olur?",
+      "cevap": "Evet, olabilir. Bazı Galaxy modellerinde arızalı PMIC anakartta güç kaçağı yapar ve cihaz açılmaz; bu, akım ölçümüyle doğrulanır."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 60-120 dakika arası."
+      "soru": "Kablosuz şarj da düzelir mi?",
+      "cevap": "Genellikle evet. Wireless PowerShare aynı güç hattına bağlıdır; entegre onarılınca kablosuz şarj de geri gelir."
     },
     {
-      "soru": "Anakart değişiminden farkı ne?",
-      "cevap": "Yalnızca arızalı çip değişir, anakartın tamamı değil; bu çok daha ekonomiktir."
+      "soru": "Şarj sırasında telefon neden ısınıyor?",
+      "cevap": "Kararsız çalışan güç çipi, enerjinin bir kısmını ısıya çevirir. Bu, entegrenin değişmesi gerektiğinin işareti olabilir."
     },
     {
-      "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "soru": "Ne kadar sürer ve garanti var mı?",
+      "cevap": "Genellikle 60-120 dakika sürer; yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Riskli bir işlem mi?",

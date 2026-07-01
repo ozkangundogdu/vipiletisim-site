@@ -5,7 +5,7 @@ import Link from "next/link";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import { getVideos } from "@/lib/videos";
-import { youtubeEmbedUrl, instagramEmbedUrl, instagramUrl, CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/video-utils";
+import { youtubeEmbedUrl, youtubeThumbnail, instagramEmbedUrl, instagramUrl, CATEGORY_LABELS, CATEGORY_COLORS } from "@/lib/video-utils";
 
 type Props = { params: Promise<{ id: string }> };
 
@@ -30,8 +30,42 @@ export default async function VideoDetailPage({ params }: Props) {
   const categoryLabel = CATEGORY_LABELS[video.category] ?? "Diğer";
   const categoryColor = CATEGORY_COLORS[video.category] ?? CATEGORY_COLORS.diger;
 
+  // VideoObject JSON-LD (video rich results için)
+  const BASE = "https://vipiletisim.com.tr";
+  const ts = Number(String(video.id).replace(/^v/, ""));
+  const uploadDate =
+    Number.isFinite(ts) && ts > 1_000_000_000_000
+      ? new Date(ts).toISOString()
+      : video.visibleFrom ?? new Date().toISOString();
+  const rawThumb =
+    video.thumbnail ??
+    (video.platform === "youtube"
+      ? youtubeThumbnail(video.videoId)
+      : `${BASE}/images/hero/phone-repair-hero.webp`);
+  const thumbnailUrl = rawThumb.startsWith("http") ? rawThumb : `${BASE}${rawThumb}`;
+  const embedUrl =
+    video.platform === "youtube"
+      ? `https://www.youtube.com/embed/${video.videoId}`
+      : instagramEmbedUrl(video.videoId);
+  const videoSchema = {
+    "@context": "https://schema.org",
+    "@type": "VideoObject",
+    name: video.title,
+    description: video.description ?? `Trabzon Vip İletişim — ${video.title}`,
+    thumbnailUrl: [thumbnailUrl],
+    uploadDate,
+    embedUrl,
+    publisher: {
+      "@type": "Organization",
+      name: "Trabzon Vip İletişim",
+      url: BASE,
+      logo: { "@type": "ImageObject", url: `${BASE}/images/logo.png` },
+    },
+  };
+
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(videoSchema) }} />
       <SiteHeader />
 
       <main className="mx-auto max-w-[1330px] px-6 py-10 lg:py-14">

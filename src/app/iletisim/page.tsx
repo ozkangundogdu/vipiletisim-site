@@ -268,7 +268,7 @@ export default function IletisimPage() {
                   <iframe
                     title="Vip İletişim Trabzon Konum"
                     src="https://maps.google.com/maps?q=41.0056994,39.7254092&z=18&output=embed&hl=tr"
-                    width="100%"
+                    className="w-full"
                     height="300"
                     loading="lazy"
                     style={{ border: 0, display: "block" }}
@@ -326,7 +326,7 @@ export default function IletisimPage() {
                 </p>
               </div>
               <div className="h-px w-full bg-zinc-200 sm:hidden" aria-hidden="true" />
-              <ul className="flex flex-wrap gap-2" role="list">
+              <ul className="flex flex-wrap gap-2">
                 {serviceAreas.map((area) => (
                   <li key={area.href}>
                     <Link
@@ -353,22 +353,22 @@ export default function IletisimPage() {
                 Çevre illerden tamir, kargo gönderimi ve süreçler hakkında merak edilenler.
               </p>
 
-              <dl className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3">
                 {faqItems.map((item) => (
                   <details
                     key={item.q}
                     className="group rounded-xl bg-white shadow-sm ring-1 ring-zinc-100"
                   >
                     <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-[15px] font-bold text-zinc-800 hover:text-brand transition-colors">
-                      <dt>{item.q}</dt>
+                      <span>{item.q}</span>
                       <ChevronDownIcon />
                     </summary>
-                    <dd className="border-t border-zinc-100 px-5 pb-5 pt-4 text-[14px] leading-relaxed text-zinc-600">
+                    <div className="border-t border-zinc-100 px-5 pb-5 pt-4 text-[14px] leading-relaxed text-zinc-600">
                       {item.a}
-                    </dd>
+                    </div>
                   </details>
                 ))}
-              </dl>
+              </div>
 
               {/* Yine de bulamadın mı? CTA */}
               <div className="mt-8 rounded-xl bg-surface-hero p-6 text-center">

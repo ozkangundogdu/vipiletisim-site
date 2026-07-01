@@ -44,7 +44,7 @@ function FeatureItem({ feature }: { feature: HeroOzellik }) {
         {ICONS[feature.ikon] ?? ICONS.check}
       </div>
       <div>
-        <h3 className="text-[15px] font-black leading-snug text-white">{feature.baslik}</h3>
+        <div className="text-[15px] font-black leading-snug text-white">{feature.baslik}</div>
         <p className="mt-1 text-[13px] leading-relaxed text-white/70">{feature.aciklama}</p>
       </div>
     </div>

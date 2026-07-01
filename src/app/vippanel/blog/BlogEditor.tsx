@@ -12,6 +12,7 @@ type BlogData = {
   publishedAt: string;
   category: string;
   coverImage: string;
+  coverImageAlt: string;
   keywords: string[];
   content: string;
   faqs: FaqEntry[];
@@ -183,6 +184,7 @@ export function BlogEditor({ mode, initialData }: Props) {
     publishedAt: initialData?.publishedAt ?? new Date().toISOString().slice(0, 10),
     category: initialData?.category ?? DEFAULT_CATEGORIES[0],
     coverImage: initialData?.coverImage ?? "",
+    coverImageAlt: (initialData as { coverImageAlt?: string })?.coverImageAlt ?? "",
     keywords: initialData?.keywords ?? [],
     content: initialData?.content ?? "",
     faqs: (initialData as { faqs?: FaqEntry[] })?.faqs ?? [],
@@ -242,7 +244,7 @@ export function BlogEditor({ mode, initialData }: Props) {
     }
   }
 
-  async function handleSelectSearchImage(imageUrl: string) {
+  async function handleSelectSearchImage(imageUrl: string, searchTitle?: string) {
     setUploadingImage(true);
     setCoverUploadError("");
     try {
@@ -257,7 +259,12 @@ export function BlogEditor({ mode, initialData }: Props) {
       const uploadRes = await fetch("/api/vippanel/upload", { method: "POST", body: fd });
       const uploadJson = await uploadRes.json();
       if (uploadJson.url) {
-        setData((prev) => ({ ...prev, coverImage: uploadJson.url }));
+        // Bot arama sonucunun başlığını alt metni için başlangıç değeri yap (düzenlenebilir)
+        setData((prev) => ({
+          ...prev,
+          coverImage: uploadJson.url,
+          coverImageAlt: prev.coverImageAlt || searchTitle || prev.title || "",
+        }));
         setImageSearchResults([]);
         setImageSearchQuery("");
       } else {
@@ -282,7 +289,7 @@ export function BlogEditor({ mode, initialData }: Props) {
     const json = await res.json();
     setUploadingImage(false);
     if (json.url) {
-      setData((prev) => ({ ...prev, coverImage: json.url }));
+      setData((prev) => ({ ...prev, coverImage: json.url, coverImageAlt: prev.coverImageAlt || prev.title || "" }));
     } else {
       setCoverUploadError(json.error ?? "Yükleme başarısız");
     }
@@ -300,8 +307,12 @@ export function BlogEditor({ mode, initialData }: Props) {
     fd.append("filename", seoName);
     const res = await fetch("/api/vippanel/upload", { method: "POST", body: fd });
     const json = await res.json();
-    const altText = data.title || file.name;
-    if (json.url) insertMarkdown(`![${altText}](`, ")", altText);
+    if (json.url) {
+      // SEO için betimleyici alt metni sor (varsayılan: başlık)
+      const suggested = data.title || file.name.replace(/\.[^.]+$/, "");
+      const altText = (window.prompt("Görsel alt metni (SEO için betimleyici):", suggested) || suggested).trim();
+      insertMarkdown(`![${altText}](${json.url})`, "", "");
+    }
     e.target.value = "";
   }
 
@@ -601,6 +612,14 @@ export function BlogEditor({ mode, initialData }: Props) {
                 className="input" placeholder="/images/blog/kapak.webp" />
             </div>
 
+            <div className="mt-3">
+              <label className="block text-xs font-bold text-zinc-600 mb-1">Görsel alt metni (SEO)</label>
+              <input value={data.coverImageAlt}
+                onChange={(e) => setData((prev) => ({ ...prev, coverImageAlt: e.target.value }))}
+                className="input" placeholder="Görseli betimleyen, anahtar kelimeli kısa metin" />
+              <p className="text-[11px] text-zinc-400 mt-1">Boş bırakılırsa yazı başlığı kullanılır. Google Görseller ve erişilebilirlik için önemlidir.</p>
+            </div>
+
             {/* Görsel Arama */}
             <div className="mt-3 pt-3 border-t border-zinc-100">
               <label className="block text-xs font-bold text-zinc-600 mb-1">veya Google'da ara</label>
@@ -631,7 +650,7 @@ export function BlogEditor({ mode, initialData }: Props) {
                     <button
                       key={i}
                       type="button"
-                      onClick={() => handleSelectSearchImage(img.url)}
+                      onClick={() => handleSelectSearchImage(img.url as string, img.title as string)}
                       disabled={uploadingImage}
                       className="relative rounded-lg overflow-hidden border-2 border-transparent hover:border-[#ff351b] transition-all group"
                       title={img.title as string}

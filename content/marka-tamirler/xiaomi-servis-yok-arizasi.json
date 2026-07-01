@@ -5,32 +5,32 @@
   "tamirKey": "servis-yok-arizasi",
   "tamirLabel": "Servis Yok Arızası",
   "title": "Xiaomi Servis Yok Arızası",
-  "metaDescription": "Trabzon'da Xiaomi servis yok arızası için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi Servis Yok Arızası\n\nEkranda \"Servis Yok\" yazısı çıktığında akla ilk operatör sorunu gelir, ama Vip İletişim Trabzon'a gelen vakaların önemli kısmında neden cihazda — SIM kontağı, anten kablosu, baz bandı entegresi ya da nadiren bölgesel ROM uyumsuzluğu. Dual SIM modellerde bazen yalnızca bir hat etkilenir.\n\nTanı basit bir mantıkla başlar: aynı SIM kart başka bir telefonda çekiyor mu? Çekiyorsa sorun cihazda demektir. Global olmayan ROM sürümlerinde bazı bantların desteklenmemesi de nadir bir ihtimal olarak değerlendirilir.\n\n**Yaygın belirtiler:** Sinyal çubukları hiç görünmüyor; SIM tanınıyor ama arama yapılamıyor; uçak modu açıp kapatmak geçici düzeliyor ama tekrar bozuluyor; yalnızca acil aramalar yapılabiliyor.\n\n**Süreç:** Her iki SIM yuvası ve okuyucu kontağı fiziksel olarak incelenir. Sorun yoksa anten kablosunun bağlantı noktaları test edilir. Hiçbiri değilse sinyal ölçüm cihazıyla baz bandı entegresinin gücü ölçülür ve gerekirse mikro lehimleme ile değiştirilir.\n\nTrabzon'da ücretsiz ön inceleme ile başlanır. Geniş parça tedarik ağı sayesinde fiyatlar genelde ekonomiktir. Kargoyla [Giresun, Rize, Artvin, Gümüşhane, Bayburt'tan](/tamir-hizmetleri) gönderim kabul edilir, [iletişim sayfasından](/iletisim) randevu alınabilir.",
+  "metaDescription": "Trabzon Xiaomi ve Redmi servis yok arızası: baseband ve RF-işlemci trace kopması onarımı. Çift SIM ve düşme sonrası sinyal kaybına çözüm — Vip İletişim.",
+  "icerik": "## Xiaomi Servis Yok Arızası\n\nXiaomi servis yok arızası; \"Servis Yok\" uyarısı çıktığında, çift SIM'de biri ya da ikisi çekmediğinde ortaya çıkar. Xiaomi ve Redmi modellerinde sinyal; baseband devresi ve RF hattı üzerinden yönetilir. Özellikle düşme sonrası, RF ile işlemci arasındaki ince bağlantı izleri kopabilir. Bu durumda sinyal, yazılımla değil ancak lehim seviyesinde bir onarımla geri gelir.\n\n### Servis Yok Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun tek SIM'de mi yoksa tüm baseband hattında mı olduğunu gösterir. Ayrıca şikayetin ne zaman başladığı yön verir. Bu yüzden düşme ve su öyküsü ilk adımda sorgulanır.\n\n- **Her iki SIM de çekmiyor:** ortak baseband devresi ya da RF hattı arızalı olabilir.\n- **Çift SIM'de yalnızca biri çekmiyor:** yalnızca o yuvanın hattı ya da okuyucusu sorunludur.\n- **Sarsıntıdan sonra sinyal kayboldu:** RF ile işlemci arasındaki mikro izler kopmuş olabilir.\n- **Rutubet sonrası şebeke yok:** anakartta korozyon başlamış olabilir.\n\n### Xiaomi Servis Yok Arızası Nasıl Giderilir?\n\nXiaomi servis yok arızası, çift SIM mantığı göz önünde tutularak giderilir. Başlangıçta her iki yuva ayrı ayrı denenir; böylece sorunun tek bir hatta mı yoksa ortak devrede mi olduğu ayrılır. HyperOS tarafında ağ ve APN ayarları gözden geçirilir. Donanım şüphesinde anakart açılıp RF ile işlemci arasındaki mikro izler mikroskop altında taranır. Kopuk iz bulunursa ince telle köprülenir; baseband bölgesinde çürük lehim varsa ısıtılıp yenilenir. Kapanışta her iki hattın çekim gücü tek tek ölçülür.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece sorunun tek bir SIM hattında mı yoksa baseband devresinde mi olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, gereksiz masrafı baştan engeller. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### Xiaomi Servis Yok Arızası Ne Kadar Sürede Çözülür?\n\nSüre arızanın kaynağına bağlıdır. Kopuk bir izin köprülenmesi çoğu zaman birkaç saat sürerken, basit SIM hattı onarımları daha kısadır. Ayrıca geniş parça tedarik ağı sayesinde Xiaomi RF ve SIM parçaları uygun maliyetlidir. Böylece cihazınıza yalnızca gereken işlem uygulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Önce ne kontrol etmeliyim?",
-      "cevap": "SIM kartı başka bir telefonda deneyin; orada da çekmiyorsa sorun SIM'de, çekiyorsa cihazda demektir."
+      "soru": "Çift SIM'de sadece biri çekmiyor, neden?",
+      "cevap": "Genellikle o SIM'in hattı ya da okuyucusu sorunludur. Ortak baseband sağlamsa yalnızca ilgili hat onarılır."
     },
     {
-      "soru": "Bölgesel ROM bu soruna neden olabilir mi?",
-      "cevap": "Nadiren evet; bazı global olmayan sürümlerde belirli bantlar desteklenmeyebilir. Ön incelemede bu ihtimal de değerlendirilir."
+      "soru": "Telefon düştü, sonra sinyal gitti; çözülür mü?",
+      "cevap": "Evet. Düşme, RF ile işlemci arasındaki ince izleri koparabilir; bu izler flying wire ile köprülenerek sinyal geri getirilir."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "SIM/anten sorunuysa aynı gün, baz bandı çip değişimi gerekiyorsa 1-2 gün."
+      "soru": "Xiaomi baseband onarımı pahalı mı?",
+      "cevap": "Onarım türüne göre değişir; ayrıca geniş parça ağı sayesinde RF ve SIM parçaları uygun maliyetle temin edilir."
     },
     {
-      "soru": "Fiyat neye göre belirlenir?",
-      "cevap": "Hangi bileşenin (SIM okuyucu, anten, baz bandı) etkilendiğine göre değişir."
+      "soru": "Ne kadar sürede çözülür?",
+      "cevap": "SIM hattı onarımı kısa; kopuk iz köprüleme ya da baseband işlemi birkaç saat sürebilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "İşçilik garantisi verilir, süresi teslimde bildirilir."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",
-      "cevap": "Evet, Trabzon dışından kargo kabul edilir, tamir sonrası adresinize gönderilir."
+      "cevap": "Evet, Trabzon dışından kargo kabul ediyoruz."
     }
   ],
   "desteklenenModeller": [

@@ -5,32 +5,32 @@
   "tamirKey": "acma-kapama-tusu-tamiri",
   "tamirLabel": "Açma/Kapama Tuşu Tamiri",
   "title": "iPhone Açma/Kapama Tuşu Tamiri",
-  "metaDescription": "Trabzon'da iPhone açma/kapama tuşu tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## iPhone Açma/Kapama Tuşu Tamiri\n\nYan tuş yalnızca ekranı uyandırmaz — 5 kez hızlı basıldığında SOS Acil Durum'u tetikler, Apple Pay'i onaylar. Bu kadar çok işlevi olan bir düğmenin arızalanması, cihazı günlük kullanımda ciddi şekilde zorlaştırır.\n\nMekanik yorulma en yaygın nedendir: yıllarca binlerce kez basılan tuş zamanla tıklama hissini kaybeder. Daha endişe verici olan, tuşun sürekli basılı kalması durumudur — bu, cihazın sürekli kapanıp açılmasına ve pil ömrünün hızla tükenmesine yol açar.\n\nVip İletişim Trabzon önce tuşun elektriksel kontağını test eder; bazen sorun mekanik değil, kontak temasındaki kirlenmedir ve temizlikle çözülür. Fiziksel aşınma varsa tuş modülünün tamamı, kasa hassas şekilde açılarak değiştirilir.\n\nTeslim öncesi ekran uyandırma, SOS tetikleme ve Apple Pay onayı ayrı ayrı test edilir. [Ücretsiz ön inceleme](/iletisim) sonrası net süre ve fiyat verilir; çoğu vaka 30-60 dakikada biter.",
+  "metaDescription": "Trabzon iPhone açma/kapama tuşu tamiri: güç tuşu flexi, aşınan tuş kubbesi ve flaş hattı arızası tespiti. Aynı gün teslim, işçilik garantisi — Vip İletişim.",
+  "icerik": "## iPhone Açma/Kapama Tuşu Tamiri\n\niPhone açma/kapama tuşu tamiri; güç tuşu bastığınızda tepki vermediğinde, gevşek hissettirdiğinde ya da kendiliğinden basılı kaldığında gündeme gelir. Bu tuş, iPhone'un yan tarafındaki fleks hattına bağlıdır. Üstelik birçok modelde flaş ve mikrofon da aynı fleks üzerindedir. Dolayısıyla tuş arızası bazen tek başına değil, yan yana birkaç sorunla birlikte ortaya çıkar. Bu yüzden güç tuşu şikayetinde flaş ve mikrofon da baştan birlikte kontrol edilir; böylece gözden kaçan bir yan arıza kalmaz.\n\n### Açma/Kapama Tuşu Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun flekste mi yoksa tuş mekanizmasında mı olduğunu gösterir. Ayrıca her belirtinin arkasında farklı bir neden yatar.\n\n- **Tuş hiç tepki vermiyor:** genellikle güç tuşu flexi kopmuş ya da aşınmıştır.\n- **Tuş gevşek veya içe kaçıyor:** metal kubbe yıpranmıştır ve tıklama hissi kaybolur.\n- **Kendiliğinden basılı kalıyor:** fleks kısa devre yapıyordur; telefon sürekli kilitlenip açılır.\n- **Tuşla birlikte flaş çalışmıyor:** aynı fleks hattı etkilenmiştir.\n\n### iPhone Açma/Kapama Tuşu Tamiri Nasıl Yapılır?\n\niPhone açma/kapama tuşu tamiri, önce yazılım ihtimalinin elenmesiyle başlar. Örneğin AssistiveTouch ile tuşun ekrandan geçici kullanılabilmesi, sorunun donanımsal olduğunu doğrular. Ardından cihaz açılır ve güç tuşu flexi incelenir; kopma, oksitlenme ya da fiziksel hasar aranır. Sonra fleks yenisiyle değiştirilir ve gerekiyorsa tuş kubbesi de yenilenir. Son olarak açma, kapama, ekran kilidi ve varsa flaş işlevi tek tek test edilir.\n\nVip İletişim Trabzon, bu incelemeyi ücretsiz ön inceleme aşamasında yapar. Böylece tuşun mu yoksa flexin mi değişmesi gerektiği, işleme başlanmadan belli olur. Kısacası doğru teşhis, gereksiz parça değişimini önler. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### iPhone Açma/Kapama Tuşu Tamiri Ne Kadar Sürer?\n\nİşlem, çoğu zaman 45 ila 90 dakika arasında tamamlanır. Basit fleks değişimi daha kısa sürerken, aynı hatta flaş veya mikrofon da etkilendiyse süre biraz uzayabilir. Ayrıca her işlem sonrası cihaz baştan sona test edilir. Böylece tuşun tam oturduğundan ve tıklama hissinin geri geldiğinden emin oluruz. Ayrıca teslim öncesinde tuş defalarca denenerek his kaybının giderildiği doğrulanır. Gerekirse tuşun tepki süresi de ölçülerek eski hızına döndüğü teyit edilir. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Tuş çalışmıyorken cihazı nasıl açarım?",
-      "cevap": "Erişilebilirlik > AssistiveTouch'ı etkinleştirerek ekrandan sanal güç tuşu kullanabilirsiniz; bu geçici bir çözümdür."
+      "soru": "Güç tuşu çalışmıyor, telefonu yine de kullanabilir miyim?",
+      "cevap": "Evet. AssistiveTouch özelliğini açarak güç işlevini ekrandan geçici olarak kullanabilirsiniz; ancak kalıcı çözüm fleks değişimidir."
     },
     {
-      "soru": "Sürekli basılı kalan tuş tehlikeli mi?",
-      "cevap": "Evet, pil ömrünü hızla tüketir ve cihazı sürekli yeniden başlatma döngüsüne sokar; geciktirmeyin."
+      "soru": "Sadece tuş mu yoksa fleksin tamamı mı değişiyor?",
+      "cevap": "Çoğu iPhone modelinde tuş, fleks hattına entegredir; bu yüzden genellikle fleks komple değişir. Böylece flaş ve mikrofon da aynı anda test edilir."
+    },
+    {
+      "soru": "Tuş kendiliğinden basılı kalıyor, tehlikeli mi?",
+      "cevap": "Cihaz sürekli kilitlenip açıldığı için bataryayı hızlı tüketir. Fleks kısa devresi giderilince sorun ortadan kalkar."
     },
     {
       "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 30-60 dakika."
-    },
-    {
-      "soru": "Temizlik mi değişim mi gerekiyor, nasıl anlaşılır?",
-      "cevap": "Ön incelemede elektriksel kontak test edilir; bazen yalnızca temizlik yeterlidir."
+      "cevap": "Genellikle 45-90 dakika; aynı fleks üzerindeki flaş veya mikrofon da etkilendiyse biraz uzayabilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan fleks ve tuş işçiliğine garanti veriyoruz."
     },
     {
-      "soru": "Orijinal Apple parçası mı kullanılıyor?",
-      "cevap": "Talebinize göre orijinal veya sertifikalı OEM kalitesinde tuş modülü kullanılabilir."
+      "soru": "Kargoyla gönderebilir miyim?",
+      "cevap": "Evet, Trabzon dışından kargo kabul ediyoruz."
     }
   ],
   "desteklenenModeller": [

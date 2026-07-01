@@ -53,14 +53,14 @@ export function ReviewsSection() {
                     {review.name.charAt(0)}
                   </div>
                   <div className="min-w-0">
-                    <p className="text-[14px] font-bold text-zinc-900 truncate">{review.name}</p>
+                    <h3 className="text-[14px] font-bold text-zinc-900 truncate">{review.name}</h3>
                     <p className="text-[12px] text-zinc-400 truncate">{review.hizmet}</p>
                   </div>
                 </div>
                 {GOOGLE_ICON}
               </div>
 
-              <p className="text-accent text-base leading-none" aria-label={`${review.rating} yıldız`}>
+              <p className="text-accent text-base leading-none" role="img" aria-label={`${review.rating} yıldız`}>
                 {"★".repeat(review.rating)}
               </p>
 
@@ -70,17 +70,6 @@ export function ReviewsSection() {
         </div>
       </div>
 
-      <style>{`
-        .reviews-scroll {
-          animation-name: reviewsScroll;
-          animation-timing-function: linear;
-          animation-iteration-count: infinite;
-        }
-        @keyframes reviewsScroll {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-      `}</style>
     </section>
   );
 }

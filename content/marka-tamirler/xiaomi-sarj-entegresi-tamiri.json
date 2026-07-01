@@ -5,32 +5,32 @@
   "tamirKey": "sarj-entegresi-tamiri",
   "tamirLabel": "Şarj Entegresi Tamiri",
   "title": "Xiaomi Şarj Entegresi Tamiri",
-  "metaDescription": "Trabzon'da Xiaomi şarj entegresi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi Şarj Entegresi Tamiri\n\nŞarj soketi temizse, kablo sağlamsa ama cihaz hâlâ şarj olmuyorsa veya çok yavaş şarj oluyorsa, sorun genelde anakart üzerindeki güç yönetim çipinde (PMIC) — akım denetimini ve HyperCharge iletişimini yöneten entegrede. Bu, soket değişiminden farklı, mikroskop altında yapılan bir chip-level işlemdir.\n\nBelirti genelde kademeli ilerler: önce HyperCharge hızlı şarj kaybolur, telefon yalnızca düşük watt değerinde şarj olmaya başlar. Sonra şarj göstergesi düzensizleşebilir. Son aşamada cihaz hiçbir şekilde akım almaz hale gelir. Erken yakalanan vakalarda yalnızca hızlı şarj kaybı varken, geciken vakalarda tam şarj kesilmesi görülür.\n\nVip İletişim Trabzon önce diğer ihtimalleri eler — kablo, soket, batarya sağlıklı mı kontrol edilir. Hepsi sağlamsa entegre üzerinde ısı kamerasıyla anormal sıcaklık taraması yapılır; bu, hangi noktanın arızalı olduğunu gösterir. Tespit edilen çip, komşu bileşenlere zarar vermeden mikroskop altında değiştirilir.\n\nİşlem sonrası kablolu şarj ve veri aktarımı ayrı ayrı test edilir. Geniş parça tedarik ağı sayesinde fiyatlar genelde ekonomiktir; [ücretsiz ön inceleme](/iletisim) ile anakart değişiminden çok daha ucuz bir çözüm sunulur.",
+  "metaDescription": "Trabzon Xiaomi ve Redmi şarj entegresi tamiri: güç yönetim çipi (PMIC), şarj IC ve HyperCharge arızası tespiti. Ekonomik parça, hızlı çözüm — Vip İletişim.",
+  "icerik": "## Xiaomi Şarj Entegresi Tamiri\n\nXiaomi şarj entegresi tamiri, şarj soketi ve kablo sağlamken cihazın şarj almadığı ya da yalnızca düşük watt aldığı durumlarda devreye girer. Bu vakalarda sorun genellikle anakart üzerindeki güç yönetim çipidir (PMIC ya da şarj IC). Bu entegre, HyperCharge hızlı şarj iletişimini ve akım denetimini yürütür. Özellikle yüksek watt değerleriyle çalışan Xiaomi ve Redmi modellerinde bu çip yoğun yük altında kalır. Bu yüzden zamanla yıpranması sık görülür.\n\n### Şarj Arızasının Belirtileri ve Nedenleri\n\nBelirtiler çoğu zaman kademeli gelişir. Ayrıca her belirti farklı bir nedene işaret eder. Bu yüzden erken fark edilen bir şarj sorunu, çoğu zaman daha kolay çözülür.\n\n- **HyperCharge kayboluyor:** telefon yüksek watt yerine düşük hızda şarj olur.\n- **Birkaç saniye şarj olup kesiliyor:** şarj IC akımı sabit tutamıyordur; bu, Xiaomi'de tanıdık bir belirtidir.\n- **Şarj göstergesi düzensiz:** kabloyu takıp çıkarınca ikon gelip gidiyorsa entegre kararsızdır.\n- **Hiç akım almıyor:** en ağır aşamadır ve genellikle çipin tümden arızalandığını gösterir.\n\n### Xiaomi Şarj Entegresi Tamiri Nasıl Yapılır?\n\nXiaomi şarj entegresi tamiri, sağlam bir eleme ile başlar. İlk olarak kablo, soket ve batarya kontrol edilir; ucuz bir arızayı pahalı bir işleme karıştırmamak için bu adım önemlidir. Ardından anakart güç kaynağına bağlanır ve akım davranışı izlenir. Örneğin şarjda saniyeler içinde düşen akım, doğrudan şarj IC arızasına işaret eder. Sonra ısı kamerasıyla ısınan bölge bulunur ve arızalı entegre mikroskop altında değiştirilir. Son olarak farklı watt değerleriyle şarj ve veri aktarımı denenerek sonuç doğrulanır.\n\nVip İletişim Trabzon, bu testleri ücretsiz ön inceleme aşamasında yapar. Böylece arızanın basit bir soket sorunu mu yoksa şarj IC arızası mı olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, gereksiz masrafı baştan engeller.\n\n### Xiaomi Şarj Entegresi Tamiri Ne Kadar Sürer?\n\nİşlem çoğu zaman 60 ila 120 dakikada tamamlanır. Basit vakalarda süre daha da kısalır. Ayrıca geniş parça tedarik ağı sayesinde Xiaomi şarj entegreleri uygun maliyetle temin edilir. Dolayısıyla çözüm, anakart değişimine göre çok daha ekonomiktir. Son olarak yapılan işçiliğe garanti verilir. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.",
   "sss": [
     {
-      "soru": "Bu, soket temizliğinden farklı mı?",
-      "cevap": "Evet, soket fiziksel bir parça değişimidir; şarj entegresi tamiri anakart üzerinde mikro lehimleme gerektiren bir işlemdir."
+      "soru": "Şarj entegresi ile şarj soketi aynı şey mi?",
+      "cevap": "Hayır. Soket fiziksel bir parçadır; şarj entegresi (PMIC / şarj IC) ise anakart üzerinde mikro-lehim gerektiren bir çiptir."
     },
     {
-      "soru": "Hızlı şarj kaybı her zaman bu sorundan mı kaynaklanır?",
-      "cevap": "Hayır, batarya yaşlanması da hızlı şarjı yavaşlatabilir; ön incelemede ayırt edilir."
+      "soru": "Birkaç saniye şarj olup kesiliyor, nedeni ne?",
+      "cevap": "Genellikle şarj IC akımı sabit tutamıyordur. Bu, Xiaomi'de sık görülen bir entegre arızasıdır ve çip değişimiyle çözülür."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 60-120 dakika arası."
+      "soru": "Xiaomi şarj entegresi pahalı mı?",
+      "cevap": "Hayır. Geniş parça tedarik ağı sayesinde Xiaomi ve Redmi şarj entegreleri uygun maliyetle temin edilir."
     },
     {
       "soru": "Anakart değişiminden farkı ne?",
-      "cevap": "Yalnızca arızalı çip değişir, anakartın tamamı değil; bu çok daha ekonomiktir."
+      "cevap": "Yalnızca arızalı çip değişir, anakartın tamamı değil. Bu yüzden çok daha ekonomik bir çözümdür."
     },
     {
-      "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "soru": "Ne kadar sürer ve garanti var mı?",
+      "cevap": "Genellikle 60-120 dakika sürer; yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Riskli bir işlem mi?",
-      "cevap": "Deneyimli teknisyen ve doğru ekipmanla düşük risklidir."
+      "cevap": "Deneyimli teknisyen, mikroskop ve doğru ekipmanla düşük risklidir."
     }
   ],
   "desteklenenModeller": [

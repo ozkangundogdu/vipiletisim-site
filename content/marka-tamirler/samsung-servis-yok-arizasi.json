@@ -5,32 +5,32 @@
   "tamirKey": "servis-yok-arizasi",
   "tamirLabel": "Servis Yok Arızası",
   "title": "Samsung Servis Yok Arızası",
-  "metaDescription": "Trabzon'da Samsung servis yok arızası için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung Servis Yok Arızası\n\nEkranda \"Servis Yok\" yazısı çıktığında akla ilk operatör sorunu gelir, ama Vip İletişim Trabzon'a gelen vakaların önemli kısmında neden cihazda — SIM kontağı, anten kablosu veya baz bandı entegresi. Dual SIM modellerde bazen yalnızca bir hat etkilenir; bu, tanıyı kolaylaştıran bir ipucudur.\n\nTanı basit bir mantıkla başlar: aynı SIM kart başka bir telefonda çekiyor mu? Çekiyorsa sorun cihazda demektir. İki SIM yuvasından biri çalışıp diğeri çalışmıyorsa, sorun genelde o yuvanın kontağıyla sınırlıdır.\n\n**Yaygın belirtiler:** Sinyal çubukları hiç görünmüyor; SIM tanınıyor ama arama yapılamıyor; uçak modu açıp kapatmak geçici düzeliyor ama tekrar bozuluyor; yalnızca acil aramalar yapılabiliyor.\n\n**Süreç:** Her iki SIM yuvası ve okuyucu kontağı fiziksel olarak incelenir. Sorun yoksa anten kablosunun bağlantı noktaları test edilir. Hiçbiri değilse sinyal ölçüm cihazıyla baz bandı entegresinin gücü ölçülür ve gerekirse mikro lehimleme ile değiştirilir.\n\nTrabzon'da ücretsiz ön inceleme ile başlanır. Kargoyla [Giresun, Rize, Artvin, Gümüşhane, Bayburt'tan](/tamir-hizmetleri) gönderim kabul edilir, [iletişim sayfasından](/iletisim) randevu alınabilir.",
+  "metaDescription": "Trabzon Samsung Galaxy servis yok arızası: baseband devresi, RF yükselteci ve anten hattı onarımı. Düşme ve su sonrası sinyal kaybına çözüm — Vip İletişim.",
+  "icerik": "## Samsung Servis Yok Arızası\n\nSamsung servis yok arızası; \"Servis Yok\" ya da \"Yalnızca Acil Aramalar\" uyarısı çıktığında, SIM takılı olduğu halde şebekeye bağlanılamadığında görülür. Galaxy modellerinde sinyal; baseband devresi, RF yükselteci ve anten hattı üzerinden çalışır. Özellikle düşme ya da su teması sonrası, bu hatlardan biri zarar görebilir. Bu yüzden doğru onarım, önce arızanın hangi aşamada olduğunu bulmayı gerektirir.\n\n### Servis Yok Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun anten hattında mı yoksa baseband devresinde mi olduğunu ele verir. Ayrıca şikayetin düşme ya da su sonrası mı başladığı önemlidir. Bu yüzden cihazın öyküsü dikkatle sorgulanır.\n\n- **\"Yalnızca Acil Aramalar\" uyarısı:** cihaz şebekeye kayıt olamıyordur; RF yükselteç (PA) ya da anten switch sorumlu olabilir.\n- **SIM tanınıyor ama sinyal yok:** RF yükselteç zayıflamış olabilir.\n- **Bir yerde çekiyor, başka yerde çekmiyor:** anten switch kararsız çalışıyordur.\n- **Nem aldıktan sonra şebeke gitti:** anten ve baseband çevresinde korozyon oluşmuş olabilir.\n\n### Samsung Servis Yok Arızası Nasıl Giderilir?\n\nSamsung servis yok arızası, kademeli bir eleme ile giderilir. Önce başka bir SIM ve ağ sıfırlaması denenir. Donanım şüphesinde ilk bakılan yer anten switch ve RF yükselteç (PA) olur; çünkü bu parçalar sinyal yolunun kalbindedir. Su izi varsa bu bölgedeki korozyon dikkatle temizlenir. Sorun sürerse baseband devresi ve lehim bağlantıları değerlendirilir. Kapanışta cihaz, farklı frekans bantlarında çekim gücü açısından sınanır.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece sorunun basit bir anten sorunu mu yoksa baseband arızası mı olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, hem süreyi hem de maliyeti azaltır. [Ücretsiz ön inceleme](/iletisim) için bize ulaşabilirsiniz.\n\n### Samsung Servis Yok Arızası Ne Kadar Sürede Çözülür?\n\nSüre arızanın kaynağına bağlıdır. Anten hattı onarımı daha kısa sürerken, baseband işlemleri ya da su korozyonu temizliği daha uzun olabilir. Ayrıca yalnızca gerçekten arızalı bölge onarıldığı için gereksiz masraf çıkmaz. Böylece cihazınıza yalnızca gereken işlem uygulanır. Bunun yanında teslim öncesinde farklı bantlarda çekim gücü ölçülerek bağlantı kararlılığı doğrulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Önce ne kontrol etmeliyim?",
-      "cevap": "SIM kartı başka bir telefonda deneyin; orada da çekmiyorsa sorun SIM'de, çekiyorsa cihazda demektir."
+      "soru": "'Yalnızca Acil Aramalar' yazıyor, sebebi ne?",
+      "cevap": "Bu, cihazın şebekeye kayıt olamadığını gösterir. Genellikle anten hattı ya da baseband devresi kaynaklıdır ve ön incelemede ayrıştırılır."
     },
     {
-      "soru": "Dual SIM'de bir hat çalışıyor bir hat çalışmıyor, neden?",
-      "cevap": "Genelde sorunlu SIM yuvasının kontak noktasındaki fiziksel hasar veya kirlenmedir; tek yuva temizliği veya değişimiyle çözülür."
+      "soru": "Su değdi, sinyal gitti; çözülür mü?",
+      "cevap": "Çoğu zaman evet. Erken müdahalede baseband çevresindeki korozyon temizlenince şebeke geri gelebilir; kalıcı hasarda ilgili bileşen onarılır."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "SIM/anten sorunuysa aynı gün, baz bandı çip değişimi gerekiyorsa 1-2 gün."
+      "soru": "Düşme sonrası sinyal düştü, neden?",
+      "cevap": "Düşme, RF hattını ya da anten bağlantısını zedeleyebilir. İlgili hat onarıldığında sinyal normale döner."
     },
     {
-      "soru": "Fiyat neye göre belirlenir?",
-      "cevap": "Hangi bileşenin (SIM okuyucu, anten, baz bandı) etkilendiğine göre değişir."
+      "soru": "Ne kadar sürede çözülür?",
+      "cevap": "Anten onarımı kısa sürer; baseband ya da korozyon işlemleri daha uzun olabilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "İşçilik garantisi verilir, süresi teslimde bildirilir."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",
-      "cevap": "Evet, Trabzon dışından kargo kabul edilir, tamir sonrası adresinize gönderilir."
+      "cevap": "Evet, Trabzon dışından kargo kabul ediyoruz."
     }
   ],
   "desteklenenModeller": [

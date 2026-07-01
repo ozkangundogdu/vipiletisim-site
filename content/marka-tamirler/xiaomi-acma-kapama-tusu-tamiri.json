@@ -5,32 +5,32 @@
   "tamirKey": "acma-kapama-tusu-tamiri",
   "tamirLabel": "Açma/Kapama Tuşu Tamiri",
   "title": "Xiaomi Açma/Kapama Tuşu Tamiri",
-  "metaDescription": "Trabzon'da Xiaomi açma/kapama tuşu tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi Açma/Kapama Tuşu Tamiri\n\nYan tuş yalnızca ekranı uyandırmaz — bazı Redmi/Poco modellerinde parmak izi sensörüyle birleşik tasarıma sahiptir. Bu kadar çok işlevi olan bir düğmenin arızalanması, cihazı günlük kullanımda ciddi şekilde zorlaştırır.\n\nMekanik yorulma en yaygın nedendir: yıllarca binlerce kez basılan tuş zamanla tıklama hissini kaybeder. Daha endişe verici olan, tuşun sürekli basılı kalması durumudur — bu, cihazın sürekli kapanıp açılmasına ve pil ömrünün hızla tükenmesine yol açar.\n\nVip İletişim Trabzon önce tuşun elektriksel kontağını test eder; bazen sorun mekanik değil, kontak temasındaki kirlenmedir ve temizlikle çözülür. Fiziksel aşınma varsa tuş modülünün tamamı (parmak izi entegreli ise dahil), kasa hassas şekilde açılarak değiştirilir.\n\nTeslim öncesi ekran uyandırma ve parmak izi tanıma (varsa) ayrı ayrı test edilir. [Ücretsiz ön inceleme](/iletisim) sonrası net süre ve fiyat verilir; çoğu vaka 30-60 dakikada biter.",
+  "metaDescription": "Trabzon Xiaomi ve Redmi açma/kapama tuşu tamiri: güç tuşuyla birleşik yan parmak izi modülü ve fleks onarımı. Ekonomik parça, garanti — Vip İletişim.",
+  "icerik": "## Xiaomi Açma/Kapama Tuşu Tamiri\n\nXiaomi açma/kapama tuşu tamiri; yan güç tuşu tepki vermediğinde, takıldığında ya da his kaybı yaşandığında gerekir. Xiaomi ve Redmi modellerinin çoğunda bu tuşun kritik bir özelliği vardır: yan güç tuşu aynı zamanda parmak izi okuyucusudur. Bu yüzden tuş arızası çoğu zaman parmak iziyle kilit açmayı da birlikte etkiler. Bu yüzden yan tuş şikayetinde hem güç hem parmak izi işlevi baştan birlikte test edilir; böylece eksik bir kontrol kalmaz.\n\n### Açma/Kapama Tuşu Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun yalnızca tuşta mı yoksa birleşik sensörde mi olduğunu gösterir. Ayrıca her belirti farklı bir nedene işaret eder.\n\n- **Tuş tepki vermiyor:** yan fleks ya da tuş modülü arızalanmıştır.\n- **Parmak izi de çalışmıyor:** güç tuşuyla birleşik sensör etkilenmiştir.\n- **Tuş takılıyor veya basılı kalıyor:** mekanizma yıpranmış olabilir.\n- **Sıvı temasından sonra bozuldu:** fleks üzerinde korozyon oluşmuştur.\n\n### Xiaomi Açma/Kapama Tuşu Tamiri Nasıl Yapılır?\n\nXiaomi açma/kapama tuşu tamiri, arızanın kapsamını belirlemekle başlar. İlk olarak sorunun yalnızca güç işlevinde mi yoksa parmak izinde de mi olduğu kontrol edilir. Çünkü ikisi birleşik olduğundan çözüm de buna göre değişir. Ardından cihaz açılır ve yan güç/parmak izi modülü incelenir. Modül hasarlıysa uyumlu bir parçayla değiştirilir. Sonra parmak izi yeniden tanıtılır ve açma, kapama, kilit açma işlevleri tek tek test edilir.\n\nVip İletişim Trabzon, bu kontrolü ücretsiz ön inceleme aşamasında yapar. Böylece yalnızca tuşun mu yoksa birleşik modülün mü değişmesi gerektiği, işleme başlanmadan netleşir. Kısacası doğru teşhis, gereksiz masrafı baştan engeller. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### Xiaomi Açma/Kapama Tuşu Tamiri Ne Kadar Sürer?\n\nİşlem, çoğu zaman 45 ila 90 dakika arasında tamamlanır. Yalnızca fleks değişiminde süre kısalırken, birleşik parmak izi modülü değişince tanıtma adımıyla birlikte biraz uzayabilir. Ayrıca geniş parça tedarik ağı sayesinde Xiaomi tuş modülleri uygun maliyetlidir. Bunun yanı sıra teslim öncesinde parmak izi ve güç işlevi birlikte denenerek sonuç doğrulanır. Böylece hem kilit açma hem de güç tuşu ilk günkü gibi çalışır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Tuş çalışmıyorken cihazı nasıl açarım?",
-      "cevap": "Erişilebilirlik menüsündeki kolay erişim özelliğini etkinleştirerek ekrandan sanal güç tuşu kullanabilirsiniz; bu geçici bir çözümdür."
+      "soru": "Güç tuşu bozulunca parmak izim neden çalışmıyor?",
+      "cevap": "Çoğu Xiaomi ve Redmi modelinde yan güç tuşu aynı zamanda parmak izi sensörüdür. Modül arızalanınca iki işlev birlikte etkilenir."
     },
     {
-      "soru": "Sürekli basılı kalan tuş tehlikeli mi?",
-      "cevap": "Evet, pil ömrünü hızla tüketir ve cihazı sürekli yeniden başlatma döngüsüne sokar; geciktirmeyin."
+      "soru": "Parmak izi modülü değişince yeniden tanıtmak gerekir mi?",
+      "cevap": "Evet. Yeni modül takıldıktan sonra parmak iziniz yeniden kaydedilir; bu, işlemin standart bir parçasıdır."
+    },
+    {
+      "soru": "Xiaomi tuş modülü pahalı mı?",
+      "cevap": "Hayır. Geniş parça tedarik ağı sayesinde Xiaomi ve Redmi güç/parmak izi modülleri uygun maliyetle temin edilir."
     },
     {
       "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 30-60 dakika."
-    },
-    {
-      "soru": "Parmak izi entegreli tuş da değişir mi?",
-      "cevap": "Evet, modele göre parmak izi sensörüyle birleşik tuş modülü mevcutsa tamamı birlikte değiştirilir."
+      "cevap": "Genellikle 45-90 dakika; birleşik parmak izi modülü değişiminde tanıtma adımıyla biraz uzayabilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
-      "soru": "Orijinal Xiaomi parçası mı kullanılıyor?",
-      "cevap": "Talebinize göre orijinal veya sertifikalı OEM kalitesinde tuş modülü kullanılabilir."
+      "soru": "Kargoyla gönderebilir miyim?",
+      "cevap": "Evet, Trabzon dışından kargo kabul ediyoruz."
     }
   ],
   "desteklenenModeller": [

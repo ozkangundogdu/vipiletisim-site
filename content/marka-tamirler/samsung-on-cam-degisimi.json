@@ -5,28 +5,28 @@
   "tamirKey": "on-cam-degisimi",
   "tamirLabel": "Ön Cam Değişimi",
   "title": "Samsung Ön Cam Değişimi",
-  "metaDescription": "Trabzon'da Samsung ön cam değişimi için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung Ön Cam Değişimi\n\nGorilla Glass Victus, Samsung'un üst seviye modellerinde kullandığı, darbeye dayanıklı cam teknolojisi — ama şiddetli bir düşmede yine de çatlayabilir. İyi haber şu: panel genelde sağlam kalır, sorun yalnızca üst yüzeydeki camdadır.\n\nCam mı yoksa panel mi etkilendiğini ayırt etmek ilk adımdır. Ekran görüntüsü net, dokunmatik tam çalışıyor ama yüzeyde çatlak varsa, yalnızca cam değişimi yeterlidir — bu, tüm ekran modülü değişiminden çok daha ekonomiktir. Görüntüde renk bozukluğu veya ekran altı parmak izi sensöründe hassasiyet düşüşü de varsa panel etkilenmiştir.\n\nVip İletişim Trabzon önce panelin sağlamlığını test eder. Yalnızca cam sorunluysa, ekran altı parmak izi sensörüne zarar vermeden eski cam ısı uygulamasıyla kaldırılır. Yeni cam orijinal kalibrasyon değerleriyle yerleştirilir; oleofobik kaplama da yenilenir.\n\nSon test parmak izi sensörü çalışması ve dokunmatik hassasiyetle yapılır. [Ücretsiz ön inceleme](/iletisim) ile hangi seçeneğin (cam mı panel mi) gerektiği netleşir.",
+  "metaDescription": "Trabzon Samsung Galaxy ön cam değişimi: kavisli AMOLED panel korunarak kırık cam laminasyonu. Komple ekrandan ekonomik çözüm — Vip İletişim.",
+  "icerik": "## Samsung Ön Cam Değişimi\n\nSamsung ön cam değişimi; AMOLED ekranın dış camı kırıldığı halde görüntü ve dokunmatiğin çalıştığı durumlarda gerekir. Galaxy modellerinde, özellikle kenarları kavisli (Edge) ekranlarda cam ile panel çok ince bir yapıştırıcıyla birleşiktir. Bu yüzden cam değişimi, düz ekranlara göre daha hassas bir laminasyon ister. Doğru uygulandığında ise yüksek komple ekran maliyetinden kaçınmayı sağlar. Ayrıca kavisli kenarlar sağlam kaldığında cihazın orijinal görünümü de korunur.\n\n### Ön Cam Değişimi Ne Zaman Gerekir?\n\nİlk bakışta cam çatlağı ile AMOLED panel hasarını birbirinden ayırmak çok önemlidir. Çünkü bu iki durum tamamen farklı çözümler ve bütçeler gerektirir. Bu yüzden panelin renk ve dokunuş sağlığı, işleme geçmeden önce dikkatle test edilir.\n\n- **Cam çatlak ama görüntü kusursuz:** yalnızca ön cam değişimi yeterlidir.\n- **Dokunmatik tam çalışıyor:** AMOLED panel sağlamdır ve korunabilir.\n- **Ekranda mor, yeşil leke ya da çizgi var:** panel hasarlıdır, cam değişimi yetmez.\n- **Kavisli kenarlarda kararma yok:** Edge panel sorunsuzdur.\n\n### Samsung Ön Cam Değişimi Nasıl Yapılır?\n\nSamsung ön cam değişimi, kavisli kenarları koruyan bir ayırma tekniğiyle başlar. Isı, alttaki AMOLED'i incitmeden dengeli biçimde dağıtılır. Edge modellerinde kenar açısı kritik olduğu için cam, kavisli forma uygun bir kalıpla hizalanır. Ardından yeni cam bu kalıba göre preslenir ve kenarların tam oturması sağlanır. S-Pen destekleyen Ultra modellerinde kalem basınç algısı ayrıca sınanır. Son olarak kenar dokunuşları, renk ve dokunmatik test edilir.\n\nVip İletişim Trabzon, bu işlemi ücretsiz ön inceleme aşamasında değerlendirir. Böylece sorunun yalnızca camda mı yoksa panelde de mi olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, hem süreyi hem de maliyeti azaltır. Böylece kavisli ekranınız için hem en doğru hem de en ekonomik yol seçilir. [Ücretsiz ön inceleme](/iletisim) için bize ulaşabilirsiniz.\n\n### Samsung Ön Cam Değişimi Ne Kadar Sürer?\n\nKavisli laminasyon, düz panele göre daha ince bir işçilik istediğinden işlem genelde birkaç saati bulur. Ultra modellerinde S-Pen kalibrasyonu da yapıldığından süreye küçük bir ekleme olabilir. Yine de orijinal AMOLED panel yerinde kaldığı için renk ve kenar dokunuşları hiç değişmez. Bu da yüksek komple ekran maliyetinden kaçınmanızı sağlar. Yapılan işçiliğe garanti veriyoruz.",
   "sss": [
     {
-      "soru": "Cam mı ekran mı değişmeli, nasıl anlarım?",
-      "cevap": "Görüntü net ve dokunmatik düzgünse muhtemelen yalnızca cam; renk bozukluğu veya parmak izi sorunu varsa panel de etkilenmiştir. Kesin tanı serviste yapılır."
+      "soru": "Kavisli ekranımın camı kırıldı, komple ekran şart mı?",
+      "cevap": "Hayır. Görüntü ve dokunmatik sağlamsa kavisli ekranlarda da yalnızca cam değişimi yapılabilir; bu, komple ekrandan daha ekonomiktir."
     },
     {
-      "soru": "Cam değişimi ekran değişiminden ne kadar ucuz?",
-      "cevap": "Belirgin şekilde daha ekonomiktir; panele dokunulmadığı için işçilik de daha azdır."
+      "soru": "AMOLED'de mor/yeşil leke var, cam değişimi çözer mi?",
+      "cevap": "Hayır. Bu tür lekeler AMOLED panelin hasar gördüğünü gösterir; cam değişimi değil ekran değişimi gerekir."
+    },
+    {
+      "soru": "Edge kavisli camda değişim riskli mi?",
+      "cevap": "Kavisli laminasyon daha hassastır; deneyim ve doğru ekipmanla güvenle yapılır ve kenar dokunuşları korunur."
     },
     {
       "soru": "Ne kadar sürer?",
-      "cevap": "Yalnızca cam değişimi 30-45 dakika; panel de etkilenmişse süre uzar."
-    },
-    {
-      "soru": "Parmak izi sensörü etkilenir mi?",
-      "cevap": "Hayır, ekran altı sensöre zarar verilmeden yapılan değişimde parmak izi okuyucu sorunsuz çalışmaya devam eder."
+      "cevap": "Kavisli laminasyon nedeniyle genelde birkaç saat sürebilir; panel korunduğu için sonuç orijinale yakındır."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan cam ve laminasyon işçiliğine garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

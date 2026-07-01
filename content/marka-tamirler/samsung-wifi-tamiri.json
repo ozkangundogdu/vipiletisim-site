@@ -5,28 +5,28 @@
   "tamirKey": "wifi-tamiri",
   "tamirLabel": "WiFi Tamiri",
   "title": "Samsung WiFi Tamiri",
-  "metaDescription": "Trabzon'da Samsung wifi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Samsung WiFi Tamiri\n\nWiFi sürekli kapanıyor veya hiç açılmıyorsa, önce WiFi Çağrı (WiFi Calling) özelliğinin de etkilenip etkilenmediğine bakılır — ikisi birden bozuksa donanımsal bir arıza güçlü ihtimaldir. Vip İletişim Trabzon önce yazılımı, sonra donanımı sırayla eler.\n\nWiFi ve Bluetooth Samsung'da aynı entegre üzerinden çalışır — bu yüzden ikisi birden bozulursa donanımsal bir arıza güçlü ihtimaldir. Yalnızca 5GHz ağlar görünmüyorsa veya bağlantı sürekli düşüyorsa anten bağlantısı şüphelidir; tamamen kayıpsa entegrenin kendisi sorumlu olabilir.\n\nÖnce Ayarlar > Genel Yönetim > Sıfırla > Ağ Ayarlarını Sıfırla denenir; bu adım yazılım kaynaklı sorunların büyük kısmını çözer. Hâlâ sonuç yoksa antenin fiziksel bağlantı noktaları kontrol edilir. Son aşamada entegrenin sinyal gücü ölçülür, gerekirse mikroskop altında değiştirilir.\n\nYazılım sorunuysa aynı gün, donanım değişimi gerekiyorsa 1-2 gün sürer. [Ücretsiz ön inceleme](/iletisim) ile hangi aşamada olduğunuz netleşir.",
+  "metaDescription": "Trabzon Samsung Galaxy WiFi tamiri: WiFi çipi, koaksiyel anten kablosu ve su korozyonu tespiti. Düşme sonrası zayıf sinyale çözüm — Vip İletişim.",
+  "icerik": "## Samsung WiFi Tamiri\n\nSamsung WiFi tamiri; WiFi ağına bağlanılamadığında, sinyalin çok zayıf olduğunda ya da bağlantının sürekli koptuğu durumlarda gerekir. Galaxy modellerinde WiFi; anakart üzerindeki WiFi çipi ve cihaz içinden geçen koaksiyel anten kablosu üzerinden çalışır. Bu yüzden özellikle düşme sonrası, sorun çoğu zaman gevşeyen ya da kopan anten kablosudur. Su teması ise çip çevresinde korozyona yol açabilir.\n\n### Samsung WiFi Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun antende mi yoksa çipte mi olduğunu ele verir. Ayrıca her belirti farklı bir nedene işaret eder. Bu yüzden şikayetin düşme ya da su sonrası mı başladığı önemlidir.\n\n- **WiFi hiç bağlanmıyor:** WiFi çipi ya da anten bağlantısı arızalı olabilir.\n- **Sinyal çok zayıf, yakında bile kopuyor:** koaksiyel anten kablosu gevşemiş ya da kopmuş olabilir.\n- **Su temasından sonra WiFi gitti:** çip çevresinde korozyon oluşmuştur.\n- **WiFi açılıyor ama ağ almıyor:** çip firmware ya da yazılım kaynaklı olabilir.\n\n### Samsung WiFi Tamiri Nasıl Yapılır?\n\nSamsung WiFi tamiri, önce yazılım ve ağ ayarlarının elenmesiyle başlar. Sorun sürüyorsa cihaz açılır ve ilk olarak koaksiyel anten kablosu kontrol edilir; çünkü düşme sonrası en sık neden budur. Kablo gevşemişse yeniden oturtulur, kopmuşsa değiştirilir. Anten sağlamsa WiFi çipi ve çevresi incelenir; korozyon temizlenir ya da çip yenilenir. Son olarak WiFi, Bluetooth ve sinyal gücü birlikte test edilir.\n\nVip İletişim Trabzon, bu adımları ücretsiz ön inceleme aşamasında uygular. Böylece sorunun basit bir anten gevşemesi mi yoksa çip arızası mı olduğu, işleme başlanmadan anlaşılır. Kısacası doğru teşhis, hem süreyi hem de maliyeti azaltır. [Ücretsiz ön inceleme](/iletisim) için bize ulaşabilirsiniz.\n\n### Samsung WiFi Tamiri Ne Kadar Sürer?\n\nSüre arızanın kaynağına bağlıdır. Gevşeyen anten kablosunun yeniden oturtulması kısa sürerken, çip onarımı ya da değişimi daha uzun olabilir. Ayrıca su hasarında korozyon temizliği süreye eklenir. Böylece cihazınıza yalnızca gereken işlem uygulanır. Bunun yanında teslim öncesinde farklı mesafelerde sinyal gücü ölçülerek bağlantı kararlılığı doğrulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "WiFi Çağrı da çalışmıyor, bu önemli mi?",
-      "cevap": "Evet, bu donanım arızası ihtimalini güçlendiren bir ipucudur."
+      "soru": "Telefonum düştü, WiFi sinyali çok zayıfladı; neden?",
+      "cevap": "Galaxy modellerinde WiFi anten kablosu koaksiyeldir ve düşme sonrası sıkça gevşer ya da kopar. Yeniden oturtma veya kablo değişimi çoğu zaman sorunu giderir."
     },
     {
-      "soru": "Bluetooth da etkilenir mi?",
-      "cevap": "Evet, aynı entegre üzerinden çalıştıkları için donanım arızasında genelde ikisi birlikte bozulur."
+      "soru": "Su değdi, WiFi kayboldu; çip mi değişecek?",
+      "cevap": "Her zaman değil. Erken müdahalede çip çevresindeki korozyon temizlenince WiFi geri gelebilir; kalıcı hasarda çip değişir."
     },
     {
-      "soru": "Süre ne kadar?",
-      "cevap": "Yazılımsa anında, donanım değişimiyse 1-2 gün."
+      "soru": "WiFi açılıyor ama ağ almıyor, sorun ne?",
+      "cevap": "Bu genellikle çip firmware ya da yazılım kaynaklıdır; ön incelemede donanım mı yazılım mı olduğu belirlenir."
     },
     {
-      "soru": "Fiyat neye göre?",
-      "cevap": "Yazılım mı donanım mı olduğuna göre belirlenir."
+      "soru": "Ne kadar sürer?",
+      "cevap": "Anten oturtma kısa sürer; çip onarımı ya da değişimi daha uzun olabilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

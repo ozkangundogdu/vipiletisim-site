@@ -32,7 +32,7 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json();
-  const { slug, title, description, publishedAt, category, coverImage, keywords, content, faqs } = body;
+  const { slug, title, description, publishedAt, category, coverImage, coverImageAlt, keywords, content, faqs } = body;
 
   if (!slug || !title) {
     return Response.json({ error: "slug ve title zorunlu" }, { status: 400 });
@@ -44,6 +44,7 @@ export async function POST(request: Request) {
   }
 
   const frontmatter: Record<string, unknown> = { title, description, publishedAt, category, coverImage, keywords };
+  if (coverImageAlt) frontmatter.coverImageAlt = coverImageAlt;
   if (faqs && faqs.length > 0) frontmatter.faqs = faqs;
   const fileContent = matter.stringify(content ?? "", frontmatter);
   fs.writeFileSync(filePath, fileContent, "utf-8");

@@ -205,7 +205,8 @@ export default async function BlogPage({
                     <div className="relative h-48 w-full overflow-hidden bg-zinc-100">
                       <Image
                         src={post.coverImage}
-                        alt={post.title}
+                        alt={post.coverImageAlt || post.title}
+                        title={post.coverImageAlt || post.title}
                         fill
                         className="object-cover transition duration-300 group-hover:scale-105"
                         sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"

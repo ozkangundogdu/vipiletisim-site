@@ -29,8 +29,9 @@ export async function PUT(
   const filePath = path.join(BLOG_DIR, `${slug}.mdx`);
 
   const body = await request.json();
-  const { title, description, publishedAt, category, coverImage, keywords, content, faqs } = body;
+  const { title, description, publishedAt, category, coverImage, coverImageAlt, keywords, content, faqs } = body;
   const frontmatter: Record<string, unknown> = { title, description, publishedAt, category, coverImage, keywords };
+  if (coverImageAlt) frontmatter.coverImageAlt = coverImageAlt;
   if (faqs && faqs.length > 0) frontmatter.faqs = faqs;
   const fileContent = matter.stringify(content ?? "", frontmatter);
   fs.mkdirSync(BLOG_DIR, { recursive: true });

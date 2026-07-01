@@ -5,28 +5,28 @@
   "tamirKey": "wifi-tamiri",
   "tamirLabel": "WiFi Tamiri",
   "title": "Xiaomi WiFi Tamiri",
-  "metaDescription": "Trabzon'da Xiaomi wifi tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## Xiaomi WiFi Tamiri\n\nWiFi ağları listede görünmüyorsa veya bağlanıp da internet çalışmıyorsa, önce HyperOS/MIUI ağ ayarlarının sıfırlanması denenir. Vip İletişim Trabzon önce yazılımı, sonra donanımı sırayla eler.\n\nWiFi ve Bluetooth Xiaomi'de aynı entegre üzerinden çalışır — bu yüzden ikisi birden bozulursa donanımsal bir arıza güçlü ihtimaldir. Yalnızca 5GHz ağlar görünmüyorsa veya bağlantı sürekli düşüyorsa anten bağlantısı şüphelidir; tamamen kayıpsa entegrenin kendisi sorumlu olabilir.\n\nÖnce Ayarlar > Cihaz Hakkında > Yedekleme ve Sıfırlama > Ağ Ayarlarını Sıfırla denenir; bu adım yazılım kaynaklı sorunların büyük kısmını çözer. Hâlâ sonuç yoksa antenin fiziksel bağlantı noktaları kontrol edilir. Son aşamada entegrenin sinyal gücü ölçülür, gerekirse mikroskop altında değiştirilir.\n\nYazılım sorunuysa aynı gün, donanım değişimi gerekiyorsa 1-2 gün sürer; geniş parça tedarik ağı sayesinde fiyatlar genelde ekonomiktir.",
+  "metaDescription": "Trabzon Xiaomi ve Redmi WiFi tamiri: WiFi çipi ve Snapdragon lehim kaynaklı arıza ayrımı. WiFi+ses birlikte bozulmasına çözüm — Vip İletişim.",
+  "icerik": "## Xiaomi WiFi Tamiri\n\nXiaomi WiFi tamiri; WiFi açılmadığında, ağa bağlanılamadığında ya da bağlantının sürekli koptuğu durumlarda gerekir. Xiaomi ve Redmi modellerinde kritik bir ipucu vardır: WiFi sorunu ses cızırtısı gibi başka bir arızayla birlikte geliyorsa, kaynak çoğu zaman WiFi çipi değil işlemci (Snapdragon) lehim bağlantısıdır. Özellikle Snapdragon 888 gibi işlemciler bu tür soğuk lehime yatkındır. Dolayısıyla doğru onarım, belirtilerin birlikteliğine bakar.\n\n### Xiaomi WiFi Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, sorunun WiFi çipinde mi yoksa işlemci hattında mı olduğunu gösterir. Ayrıca birden çok belirtinin birlikte gelmesi güçlü bir ipucudur. Bu yüzden şikayet tek başına değil, bütün olarak değerlendirilir.\n\n- **WiFi hiç açılmıyor:** WiFi çipi ya da işlemci lehimi kaynaklı olabilir.\n- **WiFi ve ses birlikte bozuk:** çoğu zaman işlemci (Snapdragon) soğuk lehimi vardır.\n- **Sinyal zayıf, sık kopuyor:** anten ya da çip bağlantısı zayıflamıştır.\n- **Su temasından sonra WiFi gitti:** çip çevresinde korozyon oluşmuştur.\n\n### Xiaomi WiFi Tamiri Nasıl Yapılır?\n\nXiaomi WiFi tamiri, belirtilerin birlikte değerlendirilmesiyle başlar. İlk olarak ağ ayarları ve HyperOS/MIUI güncellemesi kontrol edilir. Sorun sürüyorsa cihaz açılır ve WiFi çipiyle anteni incelenir. Eğer WiFi arızası ses cızırtısıyla birlikteyse, anakarta güç kaynağı bağlanır ve işlemci lehim bağlantısı değerlendirilir; bu durumda çözüm çip değil işlemci reflow işlemidir. Son olarak WiFi, Bluetooth ve sinyal gücü birlikte test edilir.\n\nVip İletişim Trabzon, bu ayrımı ücretsiz ön inceleme aşamasında yapar. Böylece basit bir WiFi çipi arızası ile işlemci kaynaklı çoklu arıza birbirinden ayrılır. Kısacası doğru teşhis, gereksiz masrafı baştan engeller. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### Xiaomi WiFi Tamiri Ne Kadar Sürer?\n\nSüre arızanın kaynağına bağlıdır. WiFi çipi onarımı çoğu zaman 60-120 dakika sürerken, işlemci lehimi (reflow) daha uzun olabilir. Ayrıca geniş parça tedarik ağı sayesinde Xiaomi WiFi parçaları uygun maliyetlidir. Böylece cihazınıza yalnızca gereken işlem uygulanır. Bunun yanında işlemci kaynaklı bir arızada bile WiFi ve ses birlikte test edilerek sonuç doğrulanır. Son olarak yapılan işçiliğe garanti verilir.",
   "sss": [
     {
-      "soru": "Ağ ayarlarını sıfırlamak işe yaramazsa ne olur?",
-      "cevap": "O zaman donanımsal bir arıza söz konusu olabilir; anten ve entegre testine geçilir."
+      "soru": "WiFi ve sesim birlikte bozuldu, ikisi bağlantılı mı?",
+      "cevap": "Xiaomi'de bu ikili birlikte gidiyorsa neredeyse her zaman işlemci (Snapdragon) lehim sorunudur. Çözüm çip değil, işlemci reflow işlemidir."
     },
     {
-      "soru": "Bluetooth da etkilenir mi?",
-      "cevap": "Evet, aynı entegre üzerinden çalıştıkları için donanım arızasında genelde ikisi birlikte bozulur."
+      "soru": "Sadece WiFi mi bozuk, çip mi değişecek?",
+      "cevap": "Tek başına WiFi arızasında genelde WiFi çipi ya da anten sorumludur; çip onarımı veya değişimiyle giderilir."
     },
     {
-      "soru": "Süre ne kadar?",
-      "cevap": "Yazılımsa anında, donanım değişimiyse 1-2 gün."
+      "soru": "Xiaomi WiFi parçası pahalı mı?",
+      "cevap": "Hayır. Geniş parça tedarik ağı sayesinde Xiaomi ve Redmi WiFi parçaları uygun maliyetle temin edilir."
     },
     {
-      "soru": "Fiyat neye göre?",
-      "cevap": "Yazılım mı donanım mı olduğuna göre belirlenir."
+      "soru": "Ne kadar sürer?",
+      "cevap": "WiFi çipi onarımı 60-120 dakika; işlemci lehimi daha uzun sürebilir."
     },
     {
       "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "cevap": "Evet, yapılan işçiliğe garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",

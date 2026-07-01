@@ -5,28 +5,28 @@
   "tamirKey": "mikrofon-tamiri",
   "tamirLabel": "Mikrofon Tamiri",
   "title": "iPhone Mikrofon Tamiri",
-  "metaDescription": "Trabzon'da iPhone mikrofon tamiri için Vip İletişim Teknik Servis. Orijinal parça, aynı gün teslim, 90 gün garanti. Ücretsiz ön inceleme için arayın.",
-  "icerik": "## iPhone Mikrofon Tamiri\n\niPhone tek değil üç mikrofonla çalışır: alt mikrofon (ana konuşma), üst mikrofon (selfie video, Siri) ve gürültü önleyici mikrofon (arka plan sesini filtreler). Şikayet hangi senaryoda ortaya çıkıyorsa, sorunlu mikrofon da ona göre değişir.\n\nKarşı taraf görüşmede sizi duymuyorsa alt mikrofon şüphelidir. Video çekerken ses gelmiyorsa üst mikrofon kontrol edilir. Gürültülü ortamda sesiniz tamamen kayboluyorsa, muhtemelen gürültü önleyici mikrofon arızalı ve cihaz yanlışlıkla ortam gürültüsünü baskın algılıyor.\n\nVip İletişim Trabzon üç mikrofonu da ayrı ayrı test eder — bu adım atlanırsa sağlam bir mikrofon gereksiz yere değiştirilebilir. Toz birikimiyse ultrasonik temizlik genelde yeterlidir; fiziksel hasar varsa yalnızca o mikrofon modülü değiştirilir, diğer ikisine dokunulmaz.\n\nTest aşamasında Siri'nin komutları algılaması, ses kaydı netliği ve görüşme kalitesi ayrı ayrı doğrulanır. [Ücretsiz ön inceleme](/iletisim) ile hangi mikrofonun sorumlu olduğu netleşir.",
+  "metaDescription": "Trabzon iPhone mikrofon tamiri: alt/üst mikrofon, audio codec ve flex korozyonu tespiti. Mikroskop altında test, aynı gün teslim — Vip İletişim.",
+  "icerik": "## iPhone Mikrofon Tamiri\n\niPhone mikrofon tamiri çoğu zaman mikrofonun kendisinden değil, bağlı olduğu flex hattından veya sesi yöneten audio codec entegresinden kaynaklanır. Bu yüzden doğru teşhis, gereksiz parça değişimini baştan önler. iPhone üç mikrofon kullanır: alt mikrofon şarj soketi (Lightning/USB-C) flexine entegredir, üst mikrofon ön kamera–kulaklık flexi hattındadır, arka gürültü önleyici mikrofon ise ana kamera çevresinde yer alır. Dolayısıyla şikayetin hangi senaryoda çıktığı, sorumlu mikrofonu doğrudan işaret eder.\n\n### Mikrofon Arızasının Belirtileri ve Nedenleri\n\nBelirtiler, hangi mikrofonun sorumlu olduğunu büyük ölçüde gösterir. Ayrıca her belirtinin arkasında farklı bir donanım nedeni bulunur.\n\n- **Karşı taraf sizi duymuyor:** genellikle alt mikrofon veya şarj soketi flexi sorumludur. Örneğin şarj soketi değişiminden sonra mikrofonun susması tipiktir; çünkü ikisi aynı flekstedir.\n- **\"Kayıt cihazı bulunamadı\" uyarısı:** cihaz mikrofonu donanım olarak göremiyor demektir. Bu durumda genellikle audio codec entegresi veya besleme hattı arızalıdır ve sorun lehim seviyesinde çözülür.\n- **Video veya Siri'de ses yok:** çoğunlukla üst mikrofon ya da ön kamera flexi etkilenmiştir.\n- **Sıvı teması sonrası ses gitti:** flex uçlarında korozyon oluşur. Ancak erken müdahalede temizlik çoğu zaman yeterli olur.\n\n### iPhone Mikrofon Tamiri Nasıl Yapılır?\n\niPhone mikrofon tamiri, adım adım ve kontrollü bir süreçle ilerler. İlk olarak üç mikrofon ayrı ayrı test edilir; böylece sağlam bir mikrofonun gereksiz yere değişmesi önlenir. Ardından korozyon varsa mikroskop altında temizlik yapılır ve gerekirse mikro-lehim uygulanır. Audio codec şüphesinde ise besleme hatları ölçülerek arızalı bileşen bulunur. Son olarak \"Hey Siri\", ses kaydı ve görüşme netliği tek tek doğrulanır.\n\nVip İletişim Trabzon, bu testleri ücretsiz ön inceleme aşamasında yapar. Dolayısıyla hangi hattın sorumlu olduğu, işleme başlamadan önce netleşir. Kısacası doğru teşhis, hem tamir süresini hem de maliyeti belirgin biçimde düşürür. [Ücretsiz ön inceleme](/iletisim) için bizimle iletişime geçebilirsiniz.\n\n### iPhone Mikrofon Tamiri Ne Kadar Sürer?\n\niPhone mikrofon tamiri, arızanın türüne göre çoğu zaman 30 ila 60 dakika arasında tamamlanır. Örneğin basit toz veya korozyon temizliği genellikle aynı gün biter. Buna karşılık audio codec gibi lehim gerektiren işlemler biraz daha uzun sürebilir. Ayrıca her işlemin ardından cihaz baştan sona test edilir. Böylece hem ses kalitesi hem de mikrofon performansı teslimden önce güvence altına alınır. Son olarak yapılan işçiliğe garanti verilir; dolayısıyla aynı sorun tekrarlarsa yeniden ücretsiz inceleme yaparız.",
   "sss": [
     {
-      "soru": "Üç mikrofon da mı değişiyor?",
-      "cevap": "Hayır, yalnızca arızalı olan değişir; diğer ikisi test edilip sağlam olduğu doğrulandıktan sonra dokunulmaz."
+      "soru": "Şarj soketini değiştirdim, mikrofon gitti — neden?",
+      "cevap": "iPhone'da alt mikrofon şarj soketi flexine entegredir. Kalitesiz bir soket flexi mikrofonu da etkiler; orijinal veya kaliteli flex ile ikisi birlikte düzelir."
     },
     {
-      "soru": "Hangi senaryoda hangi mikrofon sorumlu?",
-      "cevap": "Görüşmede sorun varsa alt mikrofon, video/Siri'de sorun varsa üst mikrofon, gürültülü ortamda sorun varsa gürültü önleyici mikrofon kontrol edilir."
+      "soru": "\"Kayıt cihazı bulunamadı\" hatası ne anlama gelir?",
+      "cevap": "Cihaz mikrofonu donanım olarak göremiyor demektir. Genelde audio codec entegresi veya mikrofon besleme hattı sorunludur; yazılımla değil lehim seviyesinde çözülür."
     },
     {
-      "soru": "Ne kadar sürer?",
-      "cevap": "Genellikle 30-60 dakika."
+      "soru": "Sıvı değdi, mikrofon sustu; parça şart mı?",
+      "cevap": "Çoğu zaman hayır. Flex uçlarındaki korozyon mikroskop altında temizlenince ses geri gelir; parça yalnızca fiziksel hasar varsa değişir."
     },
     {
-      "soru": "Fiyat neye göre?",
-      "cevap": "Temizlik mi yoksa modül değişimi mi gerektiğine göre belirlenir."
+      "soru": "Hey Siri çalışmıyor ama arama sesim gidiyor, sorun ne?",
+      "cevap": "Arama sesi alt mikrofondan, Siri ise çoğunlukla üst mikrofondan geçer. Bu tabloda üst mikrofon veya ön kamera flexi kontrol edilir."
     },
     {
-      "soru": "Garanti var mı?",
-      "cevap": "Evet, işçilik garantisi sunuyoruz."
+      "soru": "Ne kadar sürer ve garanti var mı?",
+      "cevap": "Genellikle 30-60 dakika; temizlik ve lehim işçiliğine garanti veriyoruz."
     },
     {
       "soru": "Kargoyla gönderebilir miyim?",
